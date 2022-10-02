@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { jobs } from './dummyData.js/jobs';
+import { jobs } from './dummyData/jobs';
 function App() {
   return (
     <div className="App">
