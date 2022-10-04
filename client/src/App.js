@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
 	BrowserRouter,
 	Routes,
@@ -17,6 +18,10 @@ import { createTheme, Container, Link } from "@mui/material";
 import Home from "./components/Home";
 import Counter from "./components/Counter";
 import logo from "./assets/logo.png" 
+=======
+import "./App.css";
+import { jobs } from './dummyData/jobs';
+>>>>>>> 59e1aad337539a854fb0264db0b21cd7f1d2f23c
 function App() {
 	const theme = createTheme({
 		palette: {
