@@ -2,17 +2,52 @@ import User from "../models/User.js";
 import { createError } from "../utils/errorUtil.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import Applicant from "../models/Applicant.js";
+import Rec from "../models/Rec.js";
 export const register = async (req, res, next) => {
   try {
     const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(req.body.password, salt);
+    const hash = bcrypt.hashSync(req.body.passwordInp, salt);
+    const {
+      usernameInp,
+      emailInp,
+      nameInp,
+      addressInp,
+      roleInp,
+      isAdminInp,
+      ...details
+    } = req.body;
     const newUser = new User({
-      username: req.body.username,
-      email: req.body.email,
+      username: usernameInp,
+      email: emailInp,
       password: hash,
+      name: nameInp,
+      address: addressInp,
+      role: roleInp,
     });
-
-    await newUser.save();
+    if (roleInp == "admin") newUser.isAdmin = true;
+    console.log(newUser);
+    let savedUser = await newUser.save();
+    try {
+      console.log("+++++++++++");
+      if (req.body.roleInp == "applicant") {
+        const newApplicant = new Applicant({
+          user_id: savedUser._id,
+          ...details,
+        });
+        console.log("-------------", newApplicant);
+        await newApplicant.save();
+        console.log("Save applicant success-----");
+      } else if (req.body.roleInp == "rec") {
+        const newRec = new Rec({
+          user_id: savedUser._id,
+          ...details,
+        });
+        await newRec.save();
+      }
+    } catch (e) {
+      next(e);
+    }
     res.status(200).send("user created successfully");
   } catch (err) {
     next(err);

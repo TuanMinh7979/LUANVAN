@@ -8,6 +8,11 @@ const UserSchema = new Schema(
     password: { type: String, required: true },
     name: { type: String, required: true },
     address: { type: String, required: true },
+    role: {
+      type: String,
+      enum: ["applicant", "rec", "admin"],
+      default: "user",
+    },
     isAdmin: {
       type: Boolean,
       default: false,
