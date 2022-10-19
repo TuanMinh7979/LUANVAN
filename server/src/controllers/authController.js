@@ -28,26 +28,29 @@ export const register = async (req, res, next) => {
     if (roleInp == "admin") newUser.isAdmin = true;
     console.log(newUser);
     let savedUser = await newUser.save();
-    try {
-      console.log("+++++++++++");
-      if (req.body.roleInp == "applicant") {
-        const newApplicant = new Applicant({
-          user_id: savedUser._id,
-          ...details,
-        });
-        console.log("-------------", newApplicant);
-        await newApplicant.save();
-        console.log("Save applicant success-----");
-      } else if (req.body.roleInp == "rec") {
-        const newRec = new Rec({
-          user_id: savedUser._id,
-          ...details,
-        });
-        await newRec.save();
+    if (roleInp !== "admin") {
+      try {
+        console.log("+++++++++++");
+        if (roleInp == "applicant") {
+          const newApplicant = new Applicant({
+            user_id: savedUser._id,
+            ...details,
+          });
+
+          await newApplicant.save();
+          console.log("Save applicant success-----");
+        } else if (roleInp == "rec") {
+          const newRec = new Rec({
+            user_id: savedUser._id,
+            ...details,
+          });
+          await newRec.save();
+        }
+      } catch (e) {
+        next(e);
       }
-    } catch (e) {
-      next(e);
     }
+
     res.status(200).send("user created successfully");
   } catch (err) {
     next(err);
@@ -73,12 +76,16 @@ export const login = async (req, res, next) => {
     );
     const { password, isAdmin, ...otherDetail } = user._doc;
 
+    //cookie  se luu tai client sau khi dang nhap
+
     res
       .cookie("access_token", token, {
         httpOnly: true,
       })
       .status(200)
+
       .send(user);
+    //user nay send ve de luu vao local(dung redux hay react gi do de luu vao localStorage),
   } catch (err) {
     next(err);
   }
