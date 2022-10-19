@@ -3,15 +3,16 @@ const { Schema } = mongoose;
 
 const UserSchema = new Schema(
   {
-    username: { type: String, required: true },
-    email: { type: String, required: true },
-    password: { type: String, required: true },
-    name: { type: String, required: true },
-    address: { type: String, required: true },
+    username: { type: String },
+    email: { type: String },
+    password: { type: String },
+    name: { type: String },
+    address: { type: String },
+    avatar: { type: String },
     role: {
       type: String,
       enum: ["applicant", "rec", "admin"],
-      default: "user",
+      default: "admin",
     },
     isAdmin: {
       type: Boolean,

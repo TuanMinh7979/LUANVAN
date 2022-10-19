@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 import { createError } from "../utils/errorUtil.js";
 //
+
 export const updateUser = async (req, res, next) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(

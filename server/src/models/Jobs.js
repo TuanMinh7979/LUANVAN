@@ -17,7 +17,7 @@ const JobSchema = new Schema(
       enum: ["Student", "Entry", "Experienced", "Manager", "Director"],
       default: "Student",
     },
-    //default like company 
+    //default like company
     //useful for searching
     address: {
       type: String,
@@ -26,6 +26,9 @@ const JobSchema = new Schema(
 
     skills: {
       type: [String],
+    },
+    benefit: {
+      type: String,
     },
     start_date: {
       type: Date,

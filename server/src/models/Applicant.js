@@ -6,9 +6,9 @@ const ApplicantSchema = new Schema(
     user_id: { type: String, required: true },
     experience: { type: String },
     education: { type: String },
-    skills: { type: String },
+    skills: { type: [String] },
     resume: { type: String },
-    image: { type: String },
+    phone: { type: String },
   }
   //createAt and updateAt
 );

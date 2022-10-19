@@ -5,7 +5,14 @@ import Applicant from "../models/Applicant.js";
 import Rec from "../models/Rec.js";
 export const updateUser = async (req, res, next) => {
   try {
-    const { usernameInp, emailInp, nameInp, addressInp, ...details } = req.body;
+    const {
+      usernameInp,
+      emailInp,
+      nameInp,
+      addressInp,
+      avatarInp,
+      ...details
+    } = req.body;
 
     //khong cho cap nhat role
     const generalUser = {
@@ -13,34 +20,34 @@ export const updateUser = async (req, res, next) => {
       email: emailInp,
       name: nameInp,
       address: addressInp,
+      avatarInp: avatarInp,
     };
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
       {
         $set: generalUser,
       },
-      //return updated model
       { new: true }
     );
 
     if (updatedUser === null)
       return next(createError(404, "Deo tim thay User roi"));
 
-    const updatedUserDetail = {};
+    let updatedUserDetail = {};
     if (updatedUser.role !== "admin") {
       try {
         if (updatedUser.role == "applicant") {
-          userDetail = await Applicant.findByIdAndUpdate(
-            req.params.id,
+          updatedUserDetail = await Applicant.findOneAndUpdate(
+            { user_id: updatedUser._id },
             {
               $set: details,
             },
-            //return updated model
             { new: true }
+            //return updated model
           );
         } else if (updatedUser.role == "rec") {
-          userDetail = await Rec.findByIdAndUpdate(
-            req.params.id,
+          updatedUserDetail = await Rec.findOneAndUpdate(
+            { user_id: updatedUser._id },
             {
               $set: details,
             },
@@ -54,7 +61,9 @@ export const updateUser = async (req, res, next) => {
     }
 
     //doi voi user la admin thi return o day
-    return res.status(200).json(...updatedUser, ...updatedUserDetail);
+    return res
+      .status(200)
+      .json({ ...updatedUser._doc, ...updatedUserDetail._doc });
   } catch (err) {
     next(err);
   }
@@ -62,6 +71,8 @@ export const updateUser = async (req, res, next) => {
 export const deleteUser = async (req, res, next) => {
   try {
     const deletedUser = await User.findByIdAndDelete(req.params.id);
+    if (deletedUser === null)
+      return next(createError(404, "Khong tim thay User roi"));
 
     if (deletedUser.role !== "admin") {
       try {
@@ -88,18 +99,18 @@ export const getUser = async (req, res, next) => {
   try {
     const user = await User.findById(req.params.id);
     if (user === null) return next(createError(404, "Khong tim thay User"));
-    const userDetail = {};
+    let userDetail = {};
     try {
       if (user.role === "applicant") {
-        userDetail = await Applicant.find({ user_id: user._id });
+        userDetail = await Applicant.findOne({ user_id: user._id });
       } else if (user.role === "rec") {
-        userDetail = await Rec.find({ user_id: user._id });
+        userDetail = await Rec.findOne({ user_id: user._id });
       }
     } catch (e) {
       next(e);
     }
 
-    res.status(200).json(...user, ...userDetail);
+    res.status(200).json({ ...user._doc, ...userDetail._doc });
   } catch (err) {
     next(err);
   }

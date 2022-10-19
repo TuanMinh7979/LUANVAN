@@ -5,7 +5,6 @@ const RecSchema = new Schema({
   user_id: { type: String },
   phone: { type: String },
   company_name: { type: String },
-  image: { type: String },
 });
 
 const Rec = mongoose.model("recs", RecSchema);

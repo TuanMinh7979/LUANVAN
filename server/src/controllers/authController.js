@@ -15,6 +15,7 @@ export const register = async (req, res, next) => {
       addressInp,
       roleInp,
       isAdminInp,
+      avatarInp,
       ...details
     } = req.body;
     const newUser = new User({
@@ -24,6 +25,7 @@ export const register = async (req, res, next) => {
       name: nameInp,
       address: addressInp,
       role: roleInp,
+      avatar: avatarInp,
     });
     if (roleInp == "admin") newUser.isAdmin = true;
     console.log(newUser);
@@ -62,7 +64,7 @@ export const login = async (req, res, next) => {
     if (!user)
       return next(createError(404, "wrong username or password(username)"));
 
-    console.log(req.body, user.password);
+    console.log(".....", req.body);
     const isPasswordCorrect = await bcrypt.compare(
       req.body.password,
       user.password
