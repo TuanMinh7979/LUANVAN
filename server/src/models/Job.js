@@ -46,6 +46,10 @@ const JobSchema = new Schema(
     expir_Date: {
       type: Date,
     },
+
+    salary: {
+      type: Number,
+    },
   },
   //createAt and updateAt
   { timestamps: true }

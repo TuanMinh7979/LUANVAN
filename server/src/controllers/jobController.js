@@ -1,5 +1,6 @@
 import { createError } from "../utils/errorUtil.js";
 import Job from "../models/Job.js";
+import QueryTool from "../utils/queryTool.js";
 export const createJob = async (req, res, next) => {
   try {
     const newJob = new Job(req.body);
@@ -50,12 +51,32 @@ export const getJob = async (req, res, next) => {
   }
 };
 
-//Tam thoi the da phan trang se lam sau
+//find all va phan trang
+
+//phan trang thi tham so page va limit
+//filter: age[gt]=10, age bigger than 10, hoac age=-1 tuc la khong lay thong tin age
+//sort : sort=age, sort theo tuoi tang dan hoac sort=-age theo tuoi giam dan
+
 export const getAllJob = async (req, res, next) => {
   try {
-    const jobs = await Job.find();
-    res.status(200).json(jobs);
+    let rs;
+
+    if (Object.keys(req.query).length >= 0) {
+      console.log("____________________)__))_)");
+      const queryTool = new QueryTool(Job.find(), req.query)
+        .filter()
+        .sort()
+        .paginate();
+
+      rs = await queryTool.query;
+    } else {
+      rs = await Job.find();
+    }
+
+    res.status(200).json(rs);
   } catch (err) {
     next(err);
   }
 };
+
+//PHAN TRANG

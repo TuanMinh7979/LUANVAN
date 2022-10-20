@@ -13,8 +13,7 @@ import { checkAdmin, checkToken, checkUser } from "../utils/checkToken.js";
 const router = express.Router();
 
 // router.use(checkToken);
-//get : home,  ADMIN
-router.get("/", getAllJob);
+
 
 //Sau này rảnh thì thêm chức năng duyệt job của thằng rec gởi lên, giờ thì cứ cho nó tạo thẳng
 //create: RecHome
@@ -30,5 +29,9 @@ router.delete("/:id", deleteJob);
 router.get("/:id", getJob);
 
 //API PHAN TRANG
+
+
+//get : home,  ADMIN
+router.get("/", getAllJob);
 
 export default router;
