@@ -2,7 +2,9 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import authRoute from "./src/routes/auth.js";
-import usersRoute from "./src/routes/users.js";
+import userRoute from "./src/routes/user.js";
+import categoryRoute from "./src/routes/category.js";
+import JobRoute from "./src/routes/Job.js";
 
 import cookieParser from "cookie-parser";
 
@@ -27,7 +29,9 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use("/api/auth", authRoute);
-app.use("/api/users", usersRoute);
+app.use("/api/user", userRoute);
+app.use("/api/category", categoryRoute);
+app.use("/api/job", JobRoute);
 
 app.use((err, req, res, next) => {
   // console.log(">>>globalerr", err);

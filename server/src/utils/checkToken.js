@@ -15,15 +15,18 @@ export const checkToken = (req, res, next) => {
 };
 //
 export const checkUser = (req, res, next) => {
+  //check xem token(hay user ) dang dang nhap vao co phai la user xem chi tiet vao path nay khong
+  //neu phai thi moi cho cap nhat thong tin user
+
+  //chi co user A va admin moi co the xoa duoc user A
   if (req.user.id.trim() === req.params.id.trim() || req.user.isAdmin) {
     return next();
   } else {
-    return next(createError(403, "You are not authorized!"));
+    return next(createError(403, `You are not user have id${req.params.id}`));
   }
 };
 
 export const checkAdmin = (req, res, next) => {
-  console.log(">>>>>>>payload user store in request req.user", req.user);
   if (req.user.isAdmin) {
     return next();
   } else {

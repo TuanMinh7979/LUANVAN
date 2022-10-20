@@ -1,46 +1,60 @@
-import User from "../models/User.js";
 import { createError } from "../utils/errorUtil.js";
-//
-
-export const updateUser = async (req, res, next) => {
+import Job from "../models/Job.js";
+export const createJob = async (req, res, next) => {
   try {
-    const updatedUser = await User.findByIdAndUpdate(
+    const newJob = new Job(req.body);
+    await newJob.save();
+    res.status(200).send("job created successfully");
+  } catch (e) {
+    next(e);
+  }
+};
+export const updateJob = async (req, res, next) => {
+  try {
+    const updatedJob = await Job.findByIdAndUpdate(
       req.params.id,
       {
         $set: req.body,
       },
-      //return updated model
       { new: true }
     );
-    if (updatedUser === null)
-      return next(createError(404, "Khong tim thay User roi"));
-    res.status(200).json(updatedUser);
+
+    if (updatedJob === null)
+      return next(createError(404, "Khong tim thay Job roi"));
+
+    return res.status(200).json(updatedJob);
   } catch (err) {
     next(err);
   }
 };
-export const deleteUser = async (req, res, next) => {
+export const deleteJob = async (req, res, next) => {
   try {
-    await User.findByIdAndDelete(req.params.id);
-    res.status(200).json("User deleted");
-  } catch (err) {
-    next(err);
-  }
-};
-export const getUser = async (req, res, next) => {
-  try {
-    const user = await User.findById(req.params.id);
-    if (user === null) return next(createError(404, "Khong tim thay User"));
-    res.status(200).json(user);
+    const deletedJob = await Job.findByIdAndDelete(req.params.id);
+    if (deletedJob === null)
+      return next(createError(404, "Khong tim thay Job roi"));
+
+    return res.status(200).json("Job deleted");
   } catch (err) {
     next(err);
   }
 };
 
-export const getAllUser = async (req, res, next) => {
+export const getJob = async (req, res, next) => {
   try {
-    const users = await User.find();
-    res.status(200).json(users);
+    const job = await Job.findById(req.params.id);
+    if (job === null) return next(createError(404, "Khong tim thay Job"));
+
+    res.status(200).json(job);
+  } catch (err) {
+    next(err);
+  }
+};
+
+//Tam thoi the da phan trang se lam sau
+export const getAllJob = async (req, res, next) => {
+  try {
+    const jobs = await Job.find();
+    res.status(200).json(jobs);
   } catch (err) {
     next(err);
   }
