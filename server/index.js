@@ -37,7 +37,7 @@ app.use((err, req, res, next) => {
   // console.log(">>>globalerr", err);
   const errStatus = err.status || 500;
   const errMessage = err.message || "Something went wrong";
-  return res.status(errStatus).json({
+  return res.status(200).json({
     status: errStatus,
     message: errMessage,
     stack: err.stack,

@@ -12,6 +12,7 @@ function Other() {
       console.log("YEP", resp);
     } catch (e) {
       console.log(e.response.data);
+      
     }
   };
 
