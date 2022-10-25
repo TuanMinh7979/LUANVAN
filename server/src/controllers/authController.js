@@ -4,31 +4,19 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import Applicant from "../models/Applicant.js";
 import Rec from "../models/Rec.js";
+
 export const register = async (req, res, next) => {
   try {
+    const { usernameInp, passwordInp, roleInp, ...details } = req.body;
     const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(req.body.passwordInp, salt);
-    const {
-      usernameInp,
-      emailInp,
-      nameInp,
-      addressInp,
-      roleInp,
-      isAdminInp,
-      avatarInp,
-      ...details
-    } = req.body;
+    const hash = bcrypt.hashSync(passwordInp, salt);
     const newUser = new User({
       username: usernameInp,
-      email: emailInp,
-      password: hash,
-      name: nameInp,
-      address: addressInp,
       role: roleInp,
-      avatar: avatarInp,
+      password: hash,
     });
     if (roleInp == "admin") newUser.isAdmin = true;
-    console.log(newUser);
+    console.log(newUser, "_____", details);
     let savedUser = await newUser.save();
     if (roleInp !== "admin") {
       try {
@@ -42,6 +30,7 @@ export const register = async (req, res, next) => {
           await newApplicant.save();
           console.log("Save applicant success-----");
         } else if (roleInp == "rec") {
+          console.log("details la ", details);
           const newRec = new Rec({
             user_id: savedUser._id,
             ...details,

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d30c545e-0e2d-470a-8929-2c680c320d8a",
+		"_postman_id": "db06bfa3-de3a-4f83-b438-32a4c2ff557a",
 		"name": "job",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -32,7 +32,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\r\n\"title\":\"Nhan vien tai chinh5\",\r\n\"rec_id\":\"63500994b17ae13efe8ce498\",\r\n\"company_name\":\"abc\",\r\n\"desc\":\"Nhân viên tài chính lương cao\",\r\n\"type\":\"fulltime\",\r\n\"level\":\"Student\",\r\n\"address\":\"Can tho\",\r\n\"skills\":[\"Quản lý tài chính\",\"Điều phối\"],\r\n\"benefit\":\"up to 1k, mien phi gui xe\",\r\n\"start_date\":\"09/09/2022\",\r\n\"category_id\":\"6350425ded1ee7636e6178cc\",\r\n\"expir_Date\":\"10/10/2022\",\r\n\"salary\":19\r\n\r\n}",
+					"raw": "{\r\n\r\n\"title\":\"Nhan vien tai chinh\",\r\n\"rec_id\":\"63500994b17ae13efe8ce498\",\r\n\"company_name\":\"abc\",\r\n\"desc\":\"Nhân viên tài chính lương cao\",\r\n\"type\":\"fulltime\",\r\n\"level\":\"Student\",\r\n\"address\":\"Can tho\",\r\n\"skills\":[\"Quản lý tài chính\",\"Điều phối\"],\r\n\"benefit\":\"up to 1k, mien phi gui xe\",\r\n\"start_date\":\"09/09/2022\",\r\n\"category_id\":\"6350425ded1ee7636e6178cc\",\r\n\"expir_Date\":\"10/10/2022\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -59,17 +59,8 @@
 			"request": {
 				"method": "PUT",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n\r\n\"title\":\"Nhan vien tai chinh\",\r\n\"rec_id\":\"63500994b17ae13efe8ce498\",\r\n\"company_name\":\"abc\",\r\n\"desc\":\"Nhân viên tài chính lương cao\",\r\n\"type\":\"fulltime\",\r\n\"level\":\"Student\",\r\n\"address\":\"Can tho\",\r\n\"skills\":[\"Quản lý tài chính\",\"Điều phối\"],\r\n\"benefit\":\"up to 1k, mien phi gui xe, luong cao\",\r\n\"start_date\":\"09/09/2022\",\r\n\"category_id\":\"6350425ded1ee7636e6178cc\",\r\n\"expir_Date\":\"10/10/2022\",\r\n  \"salary\": 15\r\n\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
 				"url": {
-					"raw": "localhost:8800/api/job/6350a1fecd97b841516a76f9",
+					"raw": "localhost:8800/api/job/",
 					"host": [
 						"localhost"
 					],
@@ -77,7 +68,7 @@
 					"path": [
 						"api",
 						"job",
-						"6350a1fecd97b841516a76f9"
+						""
 					]
 				}
 			},
@@ -98,97 +89,6 @@
 						"api",
 						"job",
 						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8800/api/job?filter=-level&page=2&limit=2",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8800/api/job?filter=-level&page=2&limit=2",
-					"host": [
-						"localhost"
-					],
-					"port": "8800",
-					"path": [
-						"api",
-						"job"
-					],
-					"query": [
-						{
-							"key": "filter",
-							"value": "-level"
-						},
-						{
-							"key": "page",
-							"value": "2"
-						},
-						{
-							"key": "limit",
-							"value": "2"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8800/api/job?fields=title, rec_id,salary&sort=-salary",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8800/api/job?fields=title, rec_id,salary&sort=-salary",
-					"host": [
-						"localhost"
-					],
-					"port": "8800",
-					"path": [
-						"api",
-						"job"
-					],
-					"query": [
-						{
-							"key": "fields",
-							"value": "title, rec_id,salary"
-						},
-						{
-							"key": "sort",
-							"value": "-salary"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8800/api/job?fields=title, rec_id,salary&sort=-salary Copy",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8800/api/job?fields=title, rec_id,salary&sort=-salary",
-					"host": [
-						"localhost"
-					],
-					"port": "8800",
-					"path": [
-						"api",
-						"job"
-					],
-					"query": [
-						{
-							"key": "fields",
-							"value": "title, rec_id,salary"
-						},
-						{
-							"key": "sort",
-							"value": "-salary"
-						}
 					]
 				}
 			},

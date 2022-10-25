@@ -41,7 +41,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n      \"usernameInp\":\"rec1\",\r\n      \"passwordInp\":\"123\",\r\n      \"emailInp\":\"rec1mail\",\r\n      \"nameInp\":\"rec1name\",\r\n      \"addressInp\":\"rec1address\",\r\n          \"avatarInp\":\"https://www.commonsensemedia.org/sites/default/files/styles/ratio_16_9_small/public/externals/f4925ca394735f1427e7e65140052c5f.jpg\",\r\n      \"roleInp\":\"rec\",\r\n      \"company_name\":\"abc\",\r\n      \"phone\":\"0999999999\"\r\n  \r\n\r\n}\r\n",
+					"raw": "{\r\n      \"usernameInp\":\"rec2\",\r\n      \"passwordInp\":\"123\",\r\n      \"email\":\"rec1mail\",\r\n      \"name\":\"rec1name\",\r\n      \"address\":\"rec1address\",\r\n      \"avatar\":\"https://www.commonsensemedia.org/sites/default/files/styles/ratio_16_9_small/public/externals/f4925ca394735f1427e7e65140052c5f.jpg\",\r\n      \"roleInp\":\"rec\",\r\n      \"company_name\":\"abc\",\r\n      \"phone\":\"0999999999\"\r\n  \r\n\r\n}\r\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -70,7 +70,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"usernameInp\": \"app1\",\r\n    \"passwordInp\": \"123\",\r\n    \"emailInp\": \"app1mail\",\r\n    \"nameInp\": \"app1name\",\r\n    \"addressInp\": \"app1address\",\r\n    \"roleInp\": \"applicant\",\r\n    \"avatarInp\": \"https://www.pluggedin.com/wp-content/uploads/2022/05/Boss-Baby-Back-in-the-Crib.jpg\",\r\n    \"experience\": \"1 year js java \",\r\n    \"skills\": [\r\n        \"py\",\r\n        \"java\",\r\n        \"js\"\r\n    ],\r\n    \"phone\":\"0888888888\",\r\n    \"resume\": \"link to resume\"\r\n    \r\n}",
+					"raw": "{\r\n    \"usernameInp\": \"app2\",\r\n    \"passwordInp\": \"123\",\r\n    \"email\": \"appaamail\",\r\n    \"name\": \"app1name\",\r\n    \"address\": \"app1address\",\r\n    \"roleInp\": \"applicant\",\r\n    \"avatar\": \"https://www.pluggedin.com/wp-content/uploads/2022/05/Boss-Baby-Back-in-the-Crib.jpg\",\r\n    \"experience\": \"1 year js java \",\r\n    \"skills\": [\r\n        \"py\",\r\n        \"java\",\r\n        \"js\"\r\n    ],\r\n    \"phone\":\"0888888888\",\r\n    \"resume\": \"link to resume\"\r\n    \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -99,7 +99,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"usernameInp\": \"admin\",\r\n    \"passwordInp\": \"123\",\r\n    \"emailInp\": \"adminmail\",\r\n    \"nameInp\": \"adminname\",\r\n    \"addressInp\": \"admin1address\",\r\n    \"roleInp\": \"admin\",\r\n     \"avatarInp\": \"https://seobyweb.com/wp-content/uploads/2017/10/admin-la-gi.jpg\",\r\n    \"company_name\": \"abc\",\r\n    \"phone\": \"0999999999\"\r\n   \r\n}",
+					"raw": "{\r\n    \"usernameInp\": \"admin\",\r\n    \"passwordInp\": \"123\",\r\n    \"roleInp\": \"admin\"\r\n  \r\n   \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

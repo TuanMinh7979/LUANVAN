@@ -3,24 +3,20 @@ import { createError } from "../utils/errorUtil.js";
 //
 import Applicant from "../models/Applicant.js";
 import Rec from "../models/Rec.js";
+import { filterNotObj } from "../utils/commonUtil.js";
+
 export const updateUser = async (req, res, next) => {
+  req.body = filterNotObj(req.body, "roleInp", "passwordInp");
   try {
     const {
       usernameInp,
-      emailInp,
-      nameInp,
-      addressInp,
-      avatarInp,
+
       ...details
     } = req.body;
 
     //khong cho cap nhat role
     const generalUser = {
       username: usernameInp,
-      email: emailInp,
-      name: nameInp,
-      address: addressInp,
-      avatarInp: avatarInp,
     };
     const updatedUser = await User.findByIdAndUpdate(
       req.params.id,
