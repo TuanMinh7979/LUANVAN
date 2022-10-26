@@ -42,7 +42,7 @@ export const register = async (req, res, next) => {
       }
     }
 
-    res.status(200).send("user created successfully");
+    res.status(200).send("Tạo tài khoản thành công");
   } catch (err) {
     next(err);
   }
@@ -51,7 +51,9 @@ export const login = async (req, res, next) => {
   try {
     const user = await User.findOne({ username: req.body.username });
     if (!user)
-      return next(createError(404, "wrong username or password(username)"));
+      return next(
+        createError(404, "Sai tên đăng nhập hoặc mật khẩu(username)")
+      );
 
     console.log(".....", req.body);
     const isPasswordCorrect = await bcrypt.compare(
@@ -59,7 +61,9 @@ export const login = async (req, res, next) => {
       user.password
     );
     if (!isPasswordCorrect)
-      return next(createError(404, "wrong username or password(pass)"));
+      return next(
+        createError(404, "Sai tên đăng nhập hoặc mật khẩu(password)")
+      );
 
     const token = jwt.sign(
       { id: user._id, isAdmin: user.isAdmin },
