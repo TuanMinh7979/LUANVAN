@@ -75,7 +75,7 @@ export const login = async (req, res, next) => {
       })
       .status(200)
 
-      .send(user);
+      .send({ data: user, status: 200 });
     //user nay send ve de luu vao local(dung redux hay react gi do de luu vao localStorage),
   } catch (err) {
     next(err);
