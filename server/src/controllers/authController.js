@@ -71,13 +71,11 @@ export const login = async (req, res, next) => {
     );
     const { password, isAdmin, ...otherDetail } = user._doc;
 
-    //cookie  se luu tai client sau khi dang nhap
-
     res
+      .status(200)
       .cookie("access_token", token, {
         httpOnly: true,
       })
-      .status(200)
 
       .send({ data: user, status: 200 });
     //user nay send ve de luu vao local(dung redux hay react gi do de luu vao localStorage),

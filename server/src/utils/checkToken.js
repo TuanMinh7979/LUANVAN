@@ -2,8 +2,8 @@ import jwt from "jsonwebtoken";
 import { createError } from "./errorUtil.js";
 
 export const checkToken = (req, res, next) => {
-  // console.log( req.cookies);
   const token = req.cookies.access_token;
+  console.log("+++CHECK INPUT TOKEN", token);
   if (!token) {
     return next(createError(401, "Authenticated failed"));
   }
