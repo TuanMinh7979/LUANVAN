@@ -32,7 +32,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\r\n\"title\":\"Nhan vien tai chinh\",\r\n\"rec_id\":\"63500994b17ae13efe8ce498\",\r\n\"company_name\":\"abc\",\r\n\"desc\":\"Nhân viên tài chính lương cao\",\r\n\"type\":\"fulltime\",\r\n\"level\":\"Student\",\r\n\"address\":\"Can tho\",\r\n\"skills\":[\"Quản lý tài chính\",\"Điều phối\"],\r\n\"benefit\":\"up to 1k, mien phi gui xe\",\r\n\"start_date\":\"09/09/2022\",\r\n\"category_id\":\"6350425ded1ee7636e6178cc\",\r\n\"expir_Date\":\"10/10/2022\"\r\n\r\n}",
+					"raw": "{\r\n\r\n\"title\":\"Nhan vien tai chinh\",\r\n\"recId\":\"63500994b17ae13efe8ce498\",\r\n\"company_name\":\"abc\",\r\n\"desc\":\"Nhân viên tài chính lương cao\",\r\n\"type\":\"fulltime\",\r\n\"level\":\"Student\",\r\n\"address\":\"Can tho\",\r\n\"skills\":[\"Quản lý tài chính\",\"Điều phối\"],\r\n\"benefit\":\"up to 1k, mien phi gui xe\",\r\n\"start_date\":\"09/09/2022\",\r\n\"category_id\":\"6350425ded1ee7636e6178cc\",\r\n\"expir_Date\":\"10/10/2022\"\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

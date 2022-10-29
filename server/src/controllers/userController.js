@@ -34,7 +34,7 @@ export const updateUser = async (req, res, next) => {
       try {
         if (updatedUser.role == "candidate") {
           updatedUserDetail = await Candidate.findOneAndUpdate(
-            { user_id: updatedUser._id },
+            { userId: updatedUser._id },
             {
               $set: details,
             },
@@ -43,7 +43,7 @@ export const updateUser = async (req, res, next) => {
           );
         } else if (updatedUser.role == "rec") {
           updatedUserDetail = await Rec.findOneAndUpdate(
-            { user_id: updatedUser._id },
+            { userId: updatedUser._id },
             {
               $set: details,
             },
@@ -74,11 +74,11 @@ export const deleteUser = async (req, res, next) => {
       try {
         if (deletedUser.role === "candidate") {
           let deletedCandidate = await Candidate.deleteOne({
-            user_id: req.params.id,
+            userId: req.params.id,
           });
         } else if (deletedUser.role === "rec") {
           let deletedRec = await Rec.deleteOne({
-            user_id: req.params.id,
+            userId: req.params.id,
           });
         }
       } catch (e) {
@@ -98,9 +98,9 @@ export const getUser = async (req, res, next) => {
     let userDetail = {};
     try {
       if (user.role === "candidate") {
-        userDetail = await Candidate.findOne({ user_id: user._id });
+        userDetail = await Candidate.findOne({ userId: user._id });
       } else if (user.role === "rec") {
-        userDetail = await Rec.findOne({ user_id: user._id });
+        userDetail = await Rec.findOne({ userId: user._id });
       }
     } catch (e) {
       next(e);

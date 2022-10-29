@@ -7,9 +7,9 @@ const RecSchema = new Schema(
     name: { type: String },
     address: { type: String },
     avatar: { type: String },
-    user_id: { type: String },
+    userId: { type: String },
     phone: { type: String },
-    company_name: { type: String },
+    companyName: { type: String },
   },
   { timestamps: true }
 );

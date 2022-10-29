@@ -5,8 +5,8 @@ const JobSchema = new Schema(
   {
     title: { type: String, required: true },
     //job so many should store like foreign key in  job schema
-    rec_id: { type: String, required: true },
-    company_name: {
+    recId: { type: String, required: true },
+    companyName: {
       type: String,
       required: true,
     },
@@ -34,16 +34,16 @@ const JobSchema = new Schema(
     benefit: {
       type: String,
     },
-    start_date: {
+    startDate: {
       type: Date,
     },
     //job so many should store like foreign key in  job schema
-    category_id: {
+    categoryId: {
       type: String,
       required: true,
     },
     //tao luoi tao viet tat cho nhanh
-    expir_Date: {
+    expirDate: {
       type: Date,
     },
 

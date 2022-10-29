@@ -7,7 +7,7 @@ const CandidateSchema = new Schema(
     name: { type: String },
     address: { type: String },
     avatar: { type: String },
-    user_id: { type: String, required: true },
+    userId: { type: String, required: true },
     experience: { type: String },
     education: { type: String },
     skills: { type: [String] },

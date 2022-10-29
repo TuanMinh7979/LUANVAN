@@ -23,7 +23,7 @@ export const register = async (req, res, next) => {
         console.log("+++++++++++");
         if (roleInp == "candidate") {
           const newCandidate = new Candidate({
-            user_id: savedUser._id,
+            userId: savedUser._id,
             ...details,
           });
 
@@ -32,7 +32,7 @@ export const register = async (req, res, next) => {
         } else if (roleInp == "rec") {
           console.log("details la ", details);
           const newRec = new Rec({
-            user_id: savedUser._id,
+            userId: savedUser._id,
             ...details,
           });
           await newRec.save();
