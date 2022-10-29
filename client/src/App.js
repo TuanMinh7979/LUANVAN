@@ -7,6 +7,7 @@ import Header from "./components/Header.js";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Other from "./components/other/Other.js";
+import Upload from "./components/other/Upload";
 function App() {
   return (
     <>
@@ -24,7 +25,7 @@ function App() {
             />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/other" element={<Other />} />
+            <Route path="/upload" element={<Upload />} />
           </Route>
         </Routes>
       </BrowserRouter>
