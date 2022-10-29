@@ -41,17 +41,22 @@ function Upload() {
   };
 
   const uploadImage = async (base64EncodedImage) => {
-    const message = await fetch("other/updateimg", {
-      method: "POST",
-      body: JSON.stringify({ data: base64EncodedImage }),
-      headers: { "Content-Type": "application/json" },
-    });
+    const res = await axios.post(
+      "other/updateimg",
+      JSON.stringify({ data: base64EncodedImage }),
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
 
     setFileInputState("");
     setPreviewSource("");
-    if (message.status == 200) {
-      alert("Image uploaded successfully");
+    console.log("FROM SEVER", res);
+    if (res.data.status === 200) {
+      console.log("succccccccccccccccccc");
+      alert(`Image uploaded successfully link : ${res.data.data}`);
     } else {
+      console.log("Wong");
       alert("Something wrong");
     }
   };
