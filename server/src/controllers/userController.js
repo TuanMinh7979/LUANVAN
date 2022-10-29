@@ -114,7 +114,7 @@ export const getUser = async (req, res, next) => {
 
 export const getAllUser = async (req, res, next) => {
   try {
-    const users = await User.find({ $ne: { role: "admin" } });
+    const users = await User.find({ role: { $ne: "admin" } });
     res.status(200).json(users);
   } catch (err) {
     next(err);
