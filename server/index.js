@@ -4,8 +4,9 @@ import mongoose from "mongoose";
 import authRoute from "./src/routes/auth.js";
 import userRoute from "./src/routes/user.js";
 import categoryRoute from "./src/routes/category.js";
-import JobRoute from "./src/routes/Job.js";
+import jobRoute from "./src/routes/Job.js";
 
+import otherRoute from "./src/routes/otherRoute.js";
 import cookieParser from "cookie-parser";
 
 import cors from "cors";
@@ -24,6 +25,8 @@ const connect = async () => {
 //middle ware
 
 //for jwt
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
@@ -31,7 +34,9 @@ app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/category", categoryRoute);
-app.use("/api/job", JobRoute);
+app.use("/api/job", jobRoute);
+
+app.use("/api/other", otherRoute);
 
 app.use((err, req, res, next) => {
   // console.log(">>>globalerr", err);
