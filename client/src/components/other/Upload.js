@@ -53,7 +53,6 @@ function Upload() {
     setPreviewSource("");
     console.log("FROM SEVER", res);
     if (res.data.status === 200) {
-      console.log("succccccccccccccccccc");
       alert(`Image uploaded successfully link : ${res.data.data}`);
     } else {
       console.log("Wong");
