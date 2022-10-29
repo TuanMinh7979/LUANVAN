@@ -9,7 +9,7 @@ const UserSchema = new Schema(
 
     role: {
       type: String,
-      enum: ["applicant", "rec", "admin"],
+      enum: ["candidate", "rec", "admin"],
       default: "admin",
     },
     isAdmin: {

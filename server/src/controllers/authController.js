@@ -2,7 +2,7 @@ import User from "../models/User.js";
 import { createError } from "../utils/errorUtil.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import Applicant from "../models/Applicant.js";
+import Candidate from "../models/Candidate.js";
 import Rec from "../models/Rec.js";
 
 export const register = async (req, res, next) => {
@@ -21,14 +21,14 @@ export const register = async (req, res, next) => {
     if (roleInp !== "admin") {
       try {
         console.log("+++++++++++");
-        if (roleInp == "applicant") {
-          const newApplicant = new Applicant({
+        if (roleInp == "candidate") {
+          const newCandidate = new Candidate({
             user_id: savedUser._id,
             ...details,
           });
 
-          await newApplicant.save();
-          console.log("Save applicant success-----");
+          await newCandidate.save();
+          console.log("Save candidate success-----");
         } else if (roleInp == "rec") {
           console.log("details la ", details);
           const newRec = new Rec({

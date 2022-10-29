@@ -1,7 +1,7 @@
 import User from "../models/User.js";
 import { createError } from "../utils/errorUtil.js";
 //
-import Applicant from "../models/Applicant.js";
+import Candidate from "../models/Candidate.js";
 import Rec from "../models/Rec.js";
 import { filterNotObj } from "../utils/commonUtil.js";
 
@@ -32,8 +32,8 @@ export const updateUser = async (req, res, next) => {
     let updatedUserDetail = {};
     if (updatedUser.role !== "admin") {
       try {
-        if (updatedUser.role == "applicant") {
-          updatedUserDetail = await Applicant.findOneAndUpdate(
+        if (updatedUser.role == "candidate") {
+          updatedUserDetail = await Candidate.findOneAndUpdate(
             { user_id: updatedUser._id },
             {
               $set: details,
@@ -72,8 +72,8 @@ export const deleteUser = async (req, res, next) => {
 
     if (deletedUser.role !== "admin") {
       try {
-        if (deletedUser.role === "applicant") {
-          let deletedApplicant = await Applicant.deleteOne({
+        if (deletedUser.role === "candidate") {
+          let deletedCandidate = await Candidate.deleteOne({
             user_id: req.params.id,
           });
         } else if (deletedUser.role === "rec") {
@@ -97,8 +97,8 @@ export const getUser = async (req, res, next) => {
     if (user === null) return next(createError(404, "Khong tim thay User"));
     let userDetail = {};
     try {
-      if (user.role === "applicant") {
-        userDetail = await Applicant.findOne({ user_id: user._id });
+      if (user.role === "candidate") {
+        userDetail = await Candidate.findOne({ user_id: user._id });
       } else if (user.role === "rec") {
         userDetail = await Rec.findOne({ user_id: user._id });
       }
@@ -114,7 +114,7 @@ export const getUser = async (req, res, next) => {
 
 export const getAllUser = async (req, res, next) => {
   try {
-    const users = await User.find({ $ne: { role: "amdin" } });
+    const users = await User.find({ $ne: { role: "admin" } });
     res.status(200).json(users);
   } catch (err) {
     next(err);

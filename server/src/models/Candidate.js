@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const ApplicantSchema = new Schema(
+const CandidateSchema = new Schema(
   {
     email: { type: String },
     name: { type: String },
@@ -18,5 +18,5 @@ const ApplicantSchema = new Schema(
   //createAt and updateAt
 );
 
-const Applicant = mongoose.model("applicants", ApplicantSchema);
-export default Applicant;
+const Candidate = mongoose.model("candidates", CandidateSchema);
+export default Candidate;
