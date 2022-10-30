@@ -62,7 +62,6 @@ export const getAllJob = async (req, res, next) => {
     let rs;
 
     if (Object.keys(req.query).length >= 0) {
-      console.log("____________________)__))_)");
       const queryTool = new QueryTool(Job.find(), req.query)
         .filter()
         .sort()
@@ -78,5 +77,3 @@ export const getAllJob = async (req, res, next) => {
     next(err);
   }
 };
-
-//PHAN TRANG

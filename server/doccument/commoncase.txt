@@ -1,0 +1,8 @@
+//REC REQUIREMENTS
+/// TÌM CV: Resume.find({isPublic: true})
+/// TẠO BÀI ĐĂNG CÔNG VIỆC
+
+
+
+//CANDIDATE REQUIREMENTS
+///

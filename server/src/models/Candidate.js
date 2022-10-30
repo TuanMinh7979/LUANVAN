@@ -13,6 +13,9 @@ const CandidateSchema = new Schema(
     skills: { type: [String] },
     resume: { type: String },
     phone: { type: String },
+    saveJobs: {
+      type: [String],
+    },
   },
   { timestamps: true }
   //createAt and updateAt

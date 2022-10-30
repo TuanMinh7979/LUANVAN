@@ -10,6 +10,10 @@ const RecSchema = new Schema(
     userId: { type: String, required: true, unique: true },
     phone: { type: String },
     companyName: { type: String },
+    companyId: { type: String },
+    saveCvs: {
+      type: [String],
+    },
   },
   { timestamps: true }
 );

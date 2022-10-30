@@ -46,9 +46,22 @@ const JobSchema = new Schema(
     expirDate: {
       type: Date,
     },
-
-    salary: {
+    vacancy: {
       type: Number,
+      default: 1,
+    },
+
+    salaryRange: {
+      salaryFrom: {
+        type: Number,
+      },
+      salaryTo: {
+        type: Number,
+      },
+    },
+    idActive: {
+      type: Boolean,
+      defautl: false,
     },
   },
   //createAt and updateAt
