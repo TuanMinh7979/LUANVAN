@@ -1,11 +1,14 @@
 import { Box, Button, InputAdornment, TextField, Typography, FormControl, Select, MenuItem, InputLabel } from "@mui/material";
 import Image from "mui-image";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import FeatureCard from "./FeatureCard";
 import JobList from "./JobList";
 
 function Home() {
     const [displayFilterBox, setDisplayFilterBox] = useState("none")
+    const user = useSelector(state=>state.user)
+    console.log(user.isLogin)
     return (
         <>
             <Box

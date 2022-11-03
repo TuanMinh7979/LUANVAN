@@ -1,4 +1,4 @@
 node_modules
 src/serviceWorker.js
 src/reportWebVitals.js
-src
+src/components
