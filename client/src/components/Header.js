@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux"
 import { ThemeProvider } from "@mui/system";
 import { createTheme } from "@mui/material";
 import AppBar from '@mui/material/AppBar';
@@ -6,10 +7,11 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { Link } from "react-router-dom";
 import Image from "mui-image";
 import logo from "../assets/logo.png"
+import AccountMenu from "./AccountMenu";
 export default function Header() {
+    const user = useSelector((state) => state.user)
     const navigate = useNavigate()
     const theme = createTheme({
         palette: {
@@ -19,7 +21,7 @@ export default function Header() {
             }
         }
     })
-    const navigateTo = function(location) {
+    const navigateTo = function (location) {
         navigate(location)
     }
     return (
@@ -29,6 +31,9 @@ export default function Header() {
                     <AppBar position="sticky" color="deepblue">
                         <Toolbar>
                             <Image
+                                onClick={()=>{
+                                    navigateTo("/")
+                                }}
                                 src={logo}
                                 width="120px"
                                 height="60px"
@@ -36,7 +41,9 @@ export default function Header() {
                                 duration="0"
                                 sx={{ margin: "0px", padding: "0px" }}
                             />
-                            <Typography variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer" }}>
+                            <Typography onClick={()=>{
+                                navigateTo("/jobs")
+                            }} variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer" }}>
                                 Việc làm
                             </Typography>
                             <Typography variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer" }}>
@@ -46,23 +53,27 @@ export default function Header() {
                                 Công cụ
                             </Typography>
                             <>
-                                <Button variant="outlined" sx={{
-                                    m: 2
-                                }} color="inherit">Đăng tuyển & tìm hồ sơ</Button>
-                                <Button sx={{
-                                    m: 2
-                                }} color="inherit" onClick={() => {
-                                    navigateTo("/login")
-                                }}>
-                                    Đăng nhập
-                                </Button>
-                                <Button sx={{
-                                    m: 2
-                                }} color="inherit" onClick={() => {
-                                    navigateTo("/register")
-                                }}>
-                                    Đăng ký
-                                </Button>
+                                {!user.isLogin && <>
+                                    <Button sx={{
+                                        m: 2
+                                    }} color="inherit" onClick={() => {
+                                        navigateTo("/login")
+                                    }}>
+                                        Đăng nhập
+                                    </Button>
+                                    <Button sx={{
+                                        m: 2
+                                    }} color="inherit" onClick={() => {
+                                        navigateTo("/register")
+                                    }}>
+                                        Đăng ký
+                                    </Button>
+                                    <Button variant="outlined" sx={{
+                                        m: 2
+                                    }} color="inherit">Đăng tuyển & tìm hồ sơ</Button>
+                                </>}
+
+                                {user.isLogin && <AccountMenu user={user.user} />}
                             </>
                         </Toolbar>
                     </AppBar>

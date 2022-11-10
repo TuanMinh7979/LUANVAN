@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
-import { setUser } from '../store/userSlice'
+import { setUserLogin } from '../store/userSlice'
 import { useNavigate } from "react-router-dom";
 import {
     Grid,
@@ -20,6 +20,7 @@ import Image from "mui-image";
 import logo from "../assets/logo_banner.png";
 import env from "react-dotenv";
 export default function Login() {
+
     const dispatch = useDispatch();
     let navigate = useNavigate()
     const user = useSelector(state => state.user)
@@ -28,6 +29,7 @@ export default function Login() {
     const username = useRef();
     const password = useRef();
     const [responseData, setResponseData] = useState()
+
     const Signin = () => {
         const data = {
             username: username.current.value,
@@ -45,7 +47,7 @@ export default function Login() {
                     message: res.data.message
                 });
             } else {
-                const action = setUser(res.data.data)
+                const action = setUserLogin(res.data.data, true)
                 dispatch(action)
             }
 

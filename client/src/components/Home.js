@@ -1,14 +1,23 @@
-import { Box, Button, InputAdornment, TextField, Typography, FormControl, Select, MenuItem, InputLabel } from "@mui/material";
+import { Box, Button, InputAdornment, TextField, Typography, FormControl, Select, MenuItem, InputLabel, ListItem, MenuList } from "@mui/material";
 import Image from "mui-image";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import FeatureCard from "./FeatureCard";
 import JobList from "./JobList";
+import env from 'react-dotenv'
+import { style } from "@mui/system";
+
 
 function Home() {
     const [displayFilterBox, setDisplayFilterBox] = useState("none")
-    const user = useSelector(state=>state.user)
-    console.log(user.isLogin)
+    const user = useSelector(state => state.user)
+    const MenuProps = {
+        PaperProps: {
+            style: {
+                maxHeight: 200,
+            },
+        },
+    };
     return (
         <>
             <Box
@@ -64,7 +73,6 @@ function Home() {
                                         <Button size="small" sx={{ p: 0 }} onClick={() => setDisplayFilterBox("none")}>Thu gọn</Button>
                                     </Box>
                                     <Box display="flex" flexWrap="wrap" width="100%">
-
                                         <FormControl
                                             size="small"
                                             sx={{ width: "40%", mb: 1, mr: 2 }}
@@ -72,12 +80,12 @@ function Home() {
                                             <InputLabel id="demo-simple-select-label">Ngành nghề</InputLabel>
                                             <Select
                                                 label="Ngành nghề"
+                                                MenuProps={MenuProps}
                                             >
-                                                <MenuItem value={10}>Ten</MenuItem>
-                                                <MenuItem value={20}>Twenty</MenuItem>
-                                                <MenuItem value={30}>Thirty</MenuItem>
+                                                {env.JOBS.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
                                             </Select>
                                         </FormControl>
+
                                         <FormControl
                                             size="small"
                                             sx={{ width: "40%", mb: 1, mr: 2 }}
@@ -85,12 +93,12 @@ function Home() {
                                             <InputLabel id="demo-simple-select-label">Cấp bậc</InputLabel>
                                             <Select
                                                 label="Cấp bậc"
+                                                MenuProps={MenuProps}
                                             >
-                                                <MenuItem value={10}>Ten</MenuItem>
-                                                <MenuItem value={20}>Twenty</MenuItem>
-                                                <MenuItem value={30}>Thirty</MenuItem>
+                                                {env.LEVEL.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
                                             </Select>
                                         </FormControl>
+
                                         <FormControl
                                             size="small"
                                             sx={{ width: "40%", mb: 1, mr: 2 }}
@@ -98,10 +106,9 @@ function Home() {
                                             <InputLabel id="demo-simple-select-label">Mức lương</InputLabel>
                                             <Select
                                                 label="Mức lương"
+                                                MenuProps={MenuProps}
                                             >
-                                                <MenuItem value={10}>Ten</MenuItem>
-                                                <MenuItem value={20}>Twenty</MenuItem>
-                                                <MenuItem value={30}>Thirty</MenuItem>
+                                                {env.GROSS.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
                                             </Select>
                                         </FormControl>
                                         <FormControl
@@ -111,10 +118,9 @@ function Home() {
                                             <InputLabel id="demo-simple-select-label">Địa điểm công ty</InputLabel>
                                             <Select
                                                 label="Địa điểm công ty"
+                                                MenuProps={MenuProps}
                                             >
-                                                <MenuItem value={10}>Ten</MenuItem>
-                                                <MenuItem value={20}>Twenty</MenuItem>
-                                                <MenuItem value={30}>Thirty</MenuItem>
+                                                {env.LOCATION.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
                                             </Select>
                                         </FormControl>
                                     </Box>

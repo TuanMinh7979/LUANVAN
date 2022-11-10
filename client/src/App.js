@@ -7,6 +7,8 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 
 import Upload from "./components/other/Upload";
+import Jobs from "./components/Jobs";
+import Test from "./components/Test";
 function App() {
   return (
     <>
@@ -22,9 +24,19 @@ function App() {
                 </>
               }
             />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/upload" element={<Upload />} />
+             <Route
+              path="jobs"
+              element={
+                <>
+                  <Header />
+                  <Jobs />
+                </>
+              }
+            />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="upload" element={<Upload />} />
+            <Route path="test" element={<Test />} />
           </Route>
         </Routes>
       </BrowserRouter>

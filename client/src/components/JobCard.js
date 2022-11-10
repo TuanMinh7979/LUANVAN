@@ -19,14 +19,16 @@ export default function JobCard({
 }) {
   function titleCut(jobTitle) {}
   const style1 = {
-    background: "#EFEFEF",
+    background: "#2E7D32",
     padding: "3px",
-    borderRadius: "10px",
+    borderRadius: "4px",
     mr: 2,
+    color: "white",
+    fontSize: "11px"
   };
   return (
     <>
-      <Card sx={{ boxShadow: "-1px 1px 4px rgb(0 0 0 / 20%)" }}>
+      <Card sx={{ boxShadow: "-1px 1px 4px rgb(0 0 0 / 20%)",  width: '95%', }}>
         <CardActionArea>
           <Box
             sx={{
