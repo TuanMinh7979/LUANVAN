@@ -5,8 +5,9 @@ import PlaceIcon from '@mui/icons-material/Place';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import BadgeIcon from '@mui/icons-material/Badge';
 import Image from "mui-image";
-import { fontWeight } from "@mui/system";
+import { borderRadius, fontWeight } from "@mui/system";
 import JobList from "./JobList";
+import banner from '../assets/banner.png'
 export default function Jobs() {
     const MenuProps = {
         PaperProps: {
@@ -147,10 +148,10 @@ export default function Jobs() {
                     </Typography>
                     <Image
                         sx={{
-                            mt: 2
+                            mt: 2,
+                            borderRadius:'5px'
                         }}
-                        src="https://static.topcv.vn/img/Banner%20cho%20TopCV-01.png"
-                        fit="cover"
+                        src={banner}
                         duration={0}
                     />
                 </Box>

@@ -6,6 +6,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecordOutlined';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import JobCard from "./JobCard";
+import companylogo from '../assets/companylogo_sample.png'
 function JobList() {
     return (<>
         <Container maxWidth >
@@ -52,7 +53,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -60,7 +61,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -68,7 +69,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -76,7 +77,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -84,7 +85,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -92,7 +93,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -100,7 +101,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -108,7 +109,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -116,7 +117,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -124,7 +125,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -132,7 +133,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -140,7 +141,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -148,7 +149,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -156,7 +157,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -164,7 +165,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -172,7 +173,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -180,7 +181,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -188,7 +189,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -196,7 +197,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -204,7 +205,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -212,7 +213,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -220,7 +221,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -228,7 +229,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
@@ -236,7 +237,7 @@ function JobList() {
                         <JobCard
                             jobTitle="Lorem Ipsum Text 1234"
                             companyName="RASEN GROUPS"
-                            companyLogo="https://cdn.topcv.vn/44/company_logos/trung-tam-tu-hoc-tieng-anh-x3english-5cf8e0057a2c3.jpg"
+                            companyLogo={companylogo}
                             salary="15 Triệu"
                             location="Hà nội"></JobCard>
                     </Grid>
