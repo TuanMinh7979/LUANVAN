@@ -124,7 +124,7 @@ export default function Jobs() {
         </Container>
         {/* Main */}
         <Container maxWidth
-            sx={{ background: "#F0F0F0", mt: 4 }}
+            sx={{ background: "#F0F0F0", mt: 4, pb: 4 }}
         >
             <Container
                 maxWidth
