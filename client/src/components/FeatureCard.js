@@ -21,7 +21,7 @@ function FeatureCard({ maxHeight, maxWidth, title, subTitle, buttonTitle, imageL
                     color="success"
                     variant="contained"
                     sx={{
-                        width: "8rem"
+                        width: "9rem"
                     }}
                 >{buttonTitle}</Button>
             </Box>

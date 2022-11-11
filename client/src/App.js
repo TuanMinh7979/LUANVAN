@@ -5,7 +5,7 @@ import Home from "./components/Home";
 import Header from "./components/Header.js";
 import Login from "./components/Login";
 import Register from "./components/Register";
-
+import Footer from "./components/Footer";
 import Upload from "./components/other/Upload";
 import Jobs from "./components/Jobs";
 import Test from "./components/Test";
@@ -21,6 +21,7 @@ function App() {
                 <>
                   <Header />
                   <Home />
+                  <Footer />
                 </>
               }
             />
@@ -30,6 +31,7 @@ function App() {
                 <>
                   <Header />
                   <Jobs />
+                  <Footer />
                 </>
               }
             />
@@ -39,6 +41,7 @@ function App() {
             <Route path="test" element={<Test />} />
           </Route>
         </Routes>
+
       </BrowserRouter>
     </>
   );
