@@ -17,7 +17,7 @@ export default function JobCard({
   salary,
   location,
 }) {
-  function titleCut(jobTitle) {}
+  function titleCut(jobTitle) { }
   const style1 = {
     background: "#2E7D32",
     padding: "3px",
@@ -28,7 +28,7 @@ export default function JobCard({
   };
   return (
     <>
-      <Card sx={{ boxShadow: "-1px 1px 4px rgb(0 0 0 / 20%)",  width: '95%', }}>
+      <Card sx={{ boxShadow: "-1px 1px 4px rgb(0 0 0 / 20%)", width: '95%', }}>
         <CardActionArea>
           <Box
             sx={{
@@ -56,9 +56,6 @@ export default function JobCard({
                 {companyName}
               </Typography>
             </Box>
-            <IconButton>
-              <FavoriteBorderOutlinedIcon />
-            </IconButton>
           </Box>
           <Box sx={{ display: "flex", padding: "10px", width: "50%" }}>
             <Typography sx={style1}>{salary}</Typography>
