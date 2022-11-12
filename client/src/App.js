@@ -22,8 +22,8 @@ function App() {
                                 <>
                                     <Header />
                                     <Home />
-                                  <Footer />
-                </>
+                                    <Footer />
+                                </>
                             }
                         />
                         <Route
@@ -32,8 +32,8 @@ function App() {
                                 <>
                                     <Header />
                                     <Jobs />
-                                  <Footer />
-                </>
+                                    <Footer />
+                                </>
                             }
                         />
                         <Route
@@ -42,6 +42,7 @@ function App() {
                                 <>
                                     <Header forHr />
                                     <HrHub />
+                                    <Footer />
                                 </>
                             }
                         />
@@ -51,8 +52,8 @@ function App() {
                         <Route path="test" element={<Test />} />
                     </Route>
                 </Routes>
-      
-      </BrowserRouter>
+
+            </BrowserRouter>
         </>
     );
 }
