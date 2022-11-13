@@ -1,5 +1,5 @@
 
-import { Autocomplete, Box, Button, Grid, IconButton, InputAdornment, OutlinedInput, TextField, Typography } from "@mui/material";
+import { Autocomplete, Box, Button, Grid, IconButton, InputAdornment, ListItemIcon, ListItemText, MenuItem, MenuList, OutlinedInput, TextField, Typography } from "@mui/material";
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import EditIcon from '@mui/icons-material/Edit';
 import ApartmentIcon from '@mui/icons-material/Apartment';
@@ -7,10 +7,21 @@ import ArticleIcon from '@mui/icons-material/Article';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { Editor, EditorState } from 'draft-js';
+import { styled, alpha } from '@mui/material/styles'
 import 'draft-js/dist/Draft.css';
 import env from 'react-dotenv'
 import { useState } from "react";
 import Test from "./Test";
+
+const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
+    '&:hover': {
+        background: `${alpha(theme.palette.success.dark, 1)}`,
+        color: 'white',
+        '& .MuiListItemIcon-root': {
+            color: 'white',
+        }
+    }
+}));
 function HrSideBar({ name, companyName, avatar }) {
     return (
         <Box
@@ -64,18 +75,33 @@ function HrSideBar({ name, companyName, avatar }) {
                     </Typography>
                 </Box>
             </Box>
-            <Box sx={{ mt: 2, p: 1 }}>
-                <Button startIcon={<EditIcon />} sx={{ fontWeight: 400, fontSize: 12 }} color="inherit">Đăng tin tuyển dụng mới</Button>
-            </Box>
-            <Box sx={{ p: 1 }}>
-                <Button startIcon={<ApartmentIcon />} sx={{ fontWeight: 400, fontSize: 12 }} color="inherit">Cập nhật thông tin công ty</Button>
-            </Box>
-            <Box sx={{ p: 1 }}>
-                <Button startIcon={<ApartmentIcon />} sx={{ fontWeight: 400, fontSize: 12 }} color="inherit">Báo cáo tuyển dụng</Button>
-            </Box>
-            <Box sx={{ p: 1 }}>
-                <Button startIcon={<ArticleIcon />} sx={{ fontWeight: 400, fontSize: 12 }} color="inherit">tin tuyển dụng</Button>
-            </Box>
+            <MenuList>
+                <CustomMenuItem
+                >
+                    <ListItemIcon sx={{ py: 2, }}>
+                        <EditIcon fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText>Đăng tin tuyển dụng mới</ListItemText>
+                </CustomMenuItem>
+                <CustomMenuItem>
+                    <ListItemIcon sx={{ py: 2 }}>
+                        <ApartmentIcon fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText>Cập nhật thông tin công ty</ListItemText>
+                </CustomMenuItem>
+                <CustomMenuItem>
+                    <ListItemIcon sx={{ py: 2 }}>
+                        <BarChartIcon fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText>Báo cáo tuyển dụng</ListItemText>
+                </CustomMenuItem>
+                <CustomMenuItem>
+                    <ListItemIcon sx={{ py: 2 }}>
+                        <ArticleIcon fontSize="small" />
+                    </ListItemIcon>
+                    <ListItemText>Tin tuyển dụng</ListItemText>
+                </CustomMenuItem>
+            </MenuList>
         </Box>
     )
 }
@@ -92,7 +118,6 @@ export default function HrHub() {
                     <HrSideBar name="Nguyen Anh" companyName="Chưa cập nhật công ty" />
                 </Grid>
                 <Grid item xs={10}
-
                 >
                     <Box
                         sx={{
@@ -205,6 +230,20 @@ export default function HrHub() {
                                         sx={{ mt: 1 }}
                                         options={env.JOBTYPES.split(", ")}
                                         renderInput={(params) => <TextField {...params} placeholder="-- Chọn loại công việc --" />}
+                                    />
+                                </Grid>
+                                <Grid item
+                                    xs={3}
+                                >
+                                    <Typography variant="p" >
+                                        Thời hạn tuyển
+                                    </Typography>
+                                    <OutlinedInput
+                                        fullWidth
+                                        size="small"
+                                        sx={{ mt: 1 }}
+                                        type="date"
+                                        placeholder="Số lượng cần tuyển"
                                     />
                                 </Grid>
                             </Grid>
@@ -382,8 +421,9 @@ export default function HrHub() {
                                 <Typography variant="p">
                                     Kỹ năng cần có
                                 </Typography>
-                                <OutlinedInput size="small" fullWidth  sx={{ mt:1 }} placeholder="VD: Kỹ năng photoshop, Word, Excel, ..."/>
+                                <OutlinedInput size="small" fullWidth sx={{ mt: 1 }} placeholder="VD: Kỹ năng photoshop, Word, Excel, ..." />
                             </Grid>
+                            <Button sx={{ mt: 1, minWidth: 200, mr:'auto'}} size="small" variant="contained">Đăng tin</Button>
                         </Grid>
                     </Box>
                 </Grid>

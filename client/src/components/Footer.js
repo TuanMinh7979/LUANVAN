@@ -8,7 +8,6 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 export default function Footer() {
-
   return (
     <Container
       sx={{
@@ -23,6 +22,7 @@ export default function Footer() {
         sx={{ display: 'flex', justifyContent: 'center' }}
       >
         <Image
+          duration={0}
           src={logo}
           sx={{ maxWidth: 150, maxHeight: 200 }}
         >

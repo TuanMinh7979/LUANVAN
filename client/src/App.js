@@ -10,6 +10,7 @@ import Upload from "./components/other/Upload";
 import Jobs from "./components/Jobs";
 import Test from "./components/Test";
 import HrHub from "./components/HrHub";
+import JobDetail from "./components/JobDetail";
 function App() {
     return (
         <>
@@ -42,6 +43,16 @@ function App() {
                                 <>
                                     <Header forHr />
                                     <HrHub />
+                                    <Footer />
+                                </>
+                            }
+                        />
+                        <Route
+                            path="jobdetail"
+                            element={
+                                <>
+                                    <Header />
+                                    <JobDetail />
                                     <Footer />
                                 </>
                             }

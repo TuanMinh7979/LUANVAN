@@ -22,6 +22,10 @@ export default function Test() {
             listStyeType: 'disc',
             listStylePosition: 'inside',
             marginLeft: '15px'
+        },
+        'RIGHT':{
+            width: '100%',
+            textAlign: 'right'
         }
     }
     return (
@@ -32,7 +36,7 @@ export default function Test() {
                     p: 1,
                     border: '1px solid rgba(0,0,0,0.1)',
                     borderRadius: "5px",
-                    minHeight: "300px"
+                    minHeight: '200px'
                 }}
             >
                 <Box
