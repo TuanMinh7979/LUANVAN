@@ -1,4 +1,4 @@
-import { Container, Box, TextField, FormControl, InputAdornment, InputLabel, Select, MenuItem, Button, Stack, Typography } from "@mui/material";
+import { Container, Box, TextField, FormControl, InputAdornment, InputLabel, Select, MenuItem, Button, Stack, Typography, createTheme, Grid } from "@mui/material";
 import env from "react-dotenv";
 import WorkIcon from '@mui/icons-material/Work';
 import PlaceIcon from '@mui/icons-material/Place';
@@ -8,7 +8,12 @@ import Image from 'mui-image'
 import logo from '../assets/companylogo_sample.png'
 import { useState } from "react";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import SendIcon from '@mui/icons-material/Send';
+import PaidIcon from '@mui/icons-material/Paid';
+import { alpha } from '@mui/material/styles'
 export default function JobDetail() {
+    const theme = createTheme()
+    console.log(theme)
     const MenuProps = {
         PaperProps: {
             style: {
@@ -31,7 +36,7 @@ export default function JobDetail() {
                 }}
             >
                 <Container
-                    maxWidth="xl"
+                    maxWidth
                     sx={{
                         py: 4,
                         background: 'white'
@@ -150,15 +155,18 @@ export default function JobDetail() {
                         background: '#f1f2f6'
                     }}
                 >
+                    {/* Title */}
                     <Stack
                         direction='row'
-                        spacing={2}
+                        spacing={24}
                         sx={{
                             background: 'white',
-                            p: 2,
+                            py: 3,
                             my: 2,
                             width: '70%',
-                            mx: 'auto'
+                            mx: 'auto',
+                            justifyContent: 'center',
+                            alignItems: 'center'
                         }}
 
                     >
@@ -180,18 +188,178 @@ export default function JobDetail() {
                                 justifyContent: 'center'
                             }}
                         >
-                            <Typography variant="h5" color="initial" fontWeight={600}>
+                            <Typography variant="h5" color="initial" fontWeight={600} sx={{ color: theme.palette.success.light }}>
                                 {data.jobTile}
                             </Typography>
                             <Typography variant="h6" color="initial">
                                 {data.companyName}
                             </Typography>
-                            <Stack direction='row' spacing={1} sx={{color: 'rgba(0,0,0,0.7)'}}>
+                            <Stack direction='row' spacing={1} sx={{ color: 'rgba(0,0,0,0.7)' }}>
                                 <AccessTimeIcon fontSize="small" />
                                 <Typography variant="body1" >Hạn nộp hồ sơ: {data.jobDuration}</Typography>
                             </Stack>
                         </Box>
+                        <Box>
+                            <Button startIcon={<SendIcon />} variant="contained" color="success">Ứng tuyển ngay</Button>
+                        </Box>
                     </Stack>
+                    <Grid
+                        container
+                        sx={{
+                            background: 'white',
+                            my: 2,
+                            mx: 'auto',
+                            width: '70%',
+                        }}
+                    >
+                        <Grid
+                            xs={12}
+                            sx={{ my: 2 }}
+                        >
+                            <Typography sx={{ px: 2, ml: 3, borderLeft: `7px solid ${theme.palette.success.light}` }} variant="h5" fontWeight={600} >Chi tiết tuyển dụng</Typography>
+                        </Grid>
+                        <Grid
+                            xs={12}
+                            container
+                            item
+                            sx={{
+                                mx: 3,
+                                py: 2,
+                                background: alpha(theme.palette.success.main, 0.08)
+                            }}
+                        >
+                            <Grid item sx={12}>
+                                <Typography variant="p"
+                                    sx={{
+                                        fontWeight: "bold",
+                                        textDecoration: 'underline',
+                                        ml: 3
+                                    }}>
+                                    Thông tin chung
+                                </Typography>
+                            </Grid>
+                            <Grid xs={12}
+                                container
+                                sx={{
+                                    mt: 3,
+                                    ml: 3,
+                                    rowGap: 3,
+                                    columnGap: 2
+                                }}
+                                item
+                            >
+                                <Grid
+                                    xs={3}
+                                    sx={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                    }}
+                                    item
+                                >
+                                    <PaidIcon fontSize="small" sx={{ mr: 1 }} />
+                                    <Box>
+                                        <Typography variant="p" fontWeight={600}>
+                                            Mức lương
+                                        </Typography><br></br>
+                                        <Typography variant="p" >
+                                            8 triệu
+                                        </Typography>
+                                    </Box>
+                                </Grid>
+                                <Grid
+                                    xs={3}
+                                    sx={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                    }}
+                                    item
+                                >
+                                    <PaidIcon fontSize="small" sx={{ mr: 1 }} />
+                                    <Box>
+                                        <Typography variant="p" fontWeight={600}>
+                                            Mức lương
+                                        </Typography><br></br>
+                                        <Typography variant="p" >
+                                            8 triệu
+                                        </Typography>
+                                    </Box>
+                                </Grid>
+                                <Grid
+                                    xs={3}
+                                    sx={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                    }}
+                                    item
+                                >
+                                    <PaidIcon fontSize="small" sx={{ mr: 1 }} />
+                                    <Box>
+                                        <Typography variant="p" fontWeight={600}>
+                                            Mức lương
+                                        </Typography><br></br>
+                                        <Typography variant="p" >
+                                            8 triệu
+                                        </Typography>
+                                    </Box>
+                                </Grid>
+                                <Grid
+                                    xs={3}
+                                    sx={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                    }}
+                                    item
+                                >
+                                    <PaidIcon fontSize="small" sx={{ mr: 1 }} />
+                                    <Box>
+                                        <Typography variant="p" fontWeight={600}>
+                                            Mức lương
+                                        </Typography><br></br>
+                                        <Typography variant="p" >
+                                            8 triệu
+                                        </Typography>
+                                    </Box>
+                                </Grid>
+                                <Grid
+                                    xs={3}
+                                    sx={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                    }}
+                                    item
+                                >
+                                    <PaidIcon fontSize="small" sx={{ mr: 1 }} />
+                                    <Box>
+                                        <Typography variant="p" fontWeight={600}>
+                                            Mức lương
+                                        </Typography><br></br>
+                                        <Typography variant="p" >
+                                            8 triệu
+                                        </Typography>
+                                    </Box>
+                                </Grid>
+                                <Grid
+                                    xs={3}
+                                    sx={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                    }}
+                                    item
+                                >
+                                    <PaidIcon fontSize="small" sx={{ mr: 1 }} />
+                                    <Box>
+                                        <Typography variant="p" fontWeight={600}>
+                                            Mức lương
+                                        </Typography><br></br>
+                                        <Typography variant="p" >
+                                            8 triệu
+                                        </Typography>
+                                    </Box>
+                                </Grid>
+
+                            </Grid>
+                        </Grid>
+                    </Grid>
                 </Container>
             </Container>
         </>

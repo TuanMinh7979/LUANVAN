@@ -20,11 +20,11 @@ export default function JobCard({
   function titleCut(jobTitle) { }
   const style1 = {
     background: "#2E7D32",
-    padding: "3px",
+    px: 1,
     borderRadius: "4px",
     mr: 2,
     color: "white",
-    fontSize: "11px"
+    fontSize: "16px"
   };
   return (
     <>
@@ -34,10 +34,9 @@ export default function JobCard({
             sx={{
               display: "flex",
               padding: "10px",
-              justifyContent: "space-around",
             }}
           >
-            <Grid container sx={{ width: "10%" }}>
+            <Grid container sx={{ width: "20%" }}>
               <Grid xs="12">
                 <Image
                   src={companyLogo}
@@ -45,10 +44,17 @@ export default function JobCard({
                   width="100%"
                   height="100%"
                   duration="0"
+                  sx={{
+                    borderRadius: "50%"
+                  }}
                 />
               </Grid>
             </Grid>
-            <Box>
+            <Box
+              sx={{
+                ml:4
+              }}
+            >
               <Typography fontWeight="600" fontSize="18px" variant="h6">
                 {jobTitle}
               </Typography>
@@ -57,7 +63,7 @@ export default function JobCard({
               </Typography>
             </Box>
           </Box>
-          <Box sx={{ display: "flex", padding: "10px", width: "50%" }}>
+          <Box sx={{ display: "flex", padding: "10px", minWidth: "50%" }}>
             <Typography sx={style1}>{salary}</Typography>
             <Typography sx={style1}>{location}</Typography>
           </Box>
