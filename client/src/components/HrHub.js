@@ -6,12 +6,12 @@ import ApartmentIcon from '@mui/icons-material/Apartment';
 import ArticleIcon from '@mui/icons-material/Article';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import { Editor, EditorState } from 'draft-js';
+import { Editor, EditorState, convertToRaw } from 'draft-js';
 import { styled, alpha } from '@mui/material/styles'
 import 'draft-js/dist/Draft.css';
 import env from 'react-dotenv'
 import { useState } from "react";
-import Test from "./Test";
+import RichText from "./RichText";
 
 const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
     '&:hover': {
@@ -108,9 +108,16 @@ function HrSideBar({ name, companyName, avatar }) {
 export default function HrHub() {
     const [grossType, setGrossType] = useState(false)
     const [currency, setCurrency] = useState()
-    const [editorState, setEditorState] = useState(
-        () => EditorState.createEmpty(),
+    const [jobDescription, setJobDescription] = useState(() =>
+        EditorState.createEmpty()
     );
+    const [jobRequired, setJobRequired] = useState(() =>
+        EditorState.createEmpty()
+    );
+    const [benefit, setBenefit] = useState(() =>
+        EditorState.createEmpty()
+    );
+    console.log(JSON.stringify(convertToRaw(jobDescription.getCurrentContent())))
     return (
         <>
             <Grid container sx={{ background: '#f1f2f6' }}>
@@ -409,13 +416,19 @@ export default function HrHub() {
                                 <Typography variant="p">
                                     Mô tả công việc
                                 </Typography>
-                                <Test />
+                                <RichText editorState={jobDescription} setEditorState={setJobDescription} />
                             </Grid>
                             <Grid item xs={12}>
                                 <Typography variant="p">
                                     Yêu cầu ứng viên
                                 </Typography>
-                                <Test />
+                                <RichText editorState={jobRequired} setEditorState={setJobRequired} />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Typography variant="p">
+                                    Quyền lợi
+                                </Typography>
+                                <RichText editorState={benefit} setEditorState={setBenefit} />
                             </Grid>
                             <Grid item xs={12}>
                                 <Typography variant="p">
@@ -423,7 +436,7 @@ export default function HrHub() {
                                 </Typography>
                                 <OutlinedInput size="small" fullWidth sx={{ mt: 1 }} placeholder="VD: Kỹ năng photoshop, Word, Excel, ..." />
                             </Grid>
-                            <Button sx={{ mt: 1, minWidth: 200, mr:'auto'}} size="small" variant="contained">Đăng tin</Button>
+                            <Button sx={{ mt: 1, minWidth: 200, mr: 'auto' }} size="small" variant="contained">Đăng tin</Button>
                         </Grid>
                     </Box>
                 </Grid>

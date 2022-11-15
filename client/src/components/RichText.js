@@ -7,10 +7,7 @@ import FormatItalicIcon from '@mui/icons-material/FormatItalic';
 import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
 import FormatBoldIcon from '@mui/icons-material/FormatBold';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-export default function Test() {
-    const [editorState, setEditorState] = useState(() =>
-        EditorState.createEmpty()
-    );
+export default function RichText({ editorState, setEditorState }) {
     const [editorState2, setEditorState2] = useState(() => EditorState.createEmpty())
     const staticToolbarPlugin = createToolbarPlugin();
     const [activeUtils, setActiveUtils] = useState({
@@ -25,25 +22,25 @@ export default function Test() {
                 console.log(util)
                 setActiveUtils({
                     ...activeUtils,
-                    bold: !activeUtils.bold,
+                    bold: !activeUtils.bold
                 })
                 break;
             case 'ITALIC':
                 setActiveUtils({
                     ...activeUtils,
-                    italic: !activeUtils.italic,
+                    italic: !activeUtils.italic
                 })
                 break;
             case 'UNDERLINE':
                 setActiveUtils({
                     ...activeUtils,
-                    underline: !activeUtils.underline,
+                    underline: !activeUtils.underline
                 })
                 break;
             case 'UL':
                 setActiveUtils({
                     ...activeUtils,
-                    list: !activeUtils.list,
+                    list: !activeUtils.list
                 })
                 break;
 
@@ -51,14 +48,10 @@ export default function Test() {
                 break;
         }
     }
-    const { Toolbar } = staticToolbarPlugin
     const plugins = [staticToolbarPlugin]
     const editor = React.useRef(null);
-    function focusEditor() {
-        editor.current.focus();
-    }
-    const customStyle = {
 
+    const customStyle = {
     }
     return (
         <>
@@ -82,9 +75,8 @@ export default function Test() {
                         }}
                         variant="p"
                         fontWeight={550}
-                        
                         sx={{ cursor: "pointer" }}>
-                        <FormatBoldIcon color={activeUtils.bold?'success':''} />
+                        <FormatBoldIcon color={activeUtils.bold ? 'success' : ''} />
                     </Typography>
                     <Typography
                         onMouseDown={(e) => {
@@ -95,7 +87,7 @@ export default function Test() {
                         variant="p"
                         fontWeight={550}
                         sx={{ cursor: "pointer" }}>
-                        <FormatItalicIcon  color={activeUtils.italic?'success':''}/>
+                        <FormatItalicIcon color={activeUtils.italic ? 'success' : ''} />
                     </Typography>
                     <Typography
                         onMouseDown={(e) => {
@@ -106,7 +98,7 @@ export default function Test() {
                         variant="p"
                         fontWeight={550}
                         sx={{ cursor: "pointer" }}>
-                        <FormatUnderlinedIcon  color={activeUtils.underline?'success':''}/>
+                        <FormatUnderlinedIcon color={activeUtils.underline ? 'success' : ''} />
                     </Typography>
                     <Typography
                         onMouseDown={(e) => {
@@ -117,14 +109,14 @@ export default function Test() {
                         variant="p"
                         fontWeight={550}
                         sx={{ cursor: "pointer" }}>
-                        <FormatListBulletedIcon  color={activeUtils.list?'success':''} />
+                        <FormatListBulletedIcon color={activeUtils.list ? 'success' : ''} />
                     </Typography>
                 </Box>
                 <Editor
                     ref={editor}
                     editorState={editorState}
                     onChange={setEditorState}
-                    placeholder="Write something!"
+                    placeholder="Nhập thông tin vào đây"
                     plugins={[plugins]}
                     customStyleMap={customStyle}
                 />
@@ -136,10 +128,16 @@ export default function Test() {
                     setEditorState2(EditorState.createWithContent(convertFromRaw(convertToRaw(editorState.getCurrentContent()))))
                 }}
             >Click</Button>
-            <Editor
-                readOnly={true}
-                editorState={editorState2}
-            /> */}
+            <RichTextDisplay data={editorState2} /> */}
         </>
     );
+}
+export const RichTextDisplay = function ({ data }) {
+    const [editorState, setEditorState] = useState(() =>
+        EditorState.createWithContent(convertFromRaw(data))
+    );
+    return (<Editor
+        readOnly={true}
+        editorState={editorState}
+    />)
 }

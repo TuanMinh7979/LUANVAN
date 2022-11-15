@@ -11,6 +11,11 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SendIcon from '@mui/icons-material/Send';
 import PaidIcon from '@mui/icons-material/Paid';
 import { alpha } from '@mui/material/styles'
+import PeopleIcon from '@mui/icons-material/People';
+import MilitaryTechIcon from '@mui/icons-material/MilitaryTech';
+import WcIcon from '@mui/icons-material/Wc';
+import StarIcon from '@mui/icons-material/Star';
+import { RichTextDisplay } from "./RichText";
 export default function JobDetail() {
     const theme = createTheme()
     console.log(theme)
@@ -24,8 +29,17 @@ export default function JobDetail() {
     const [data, setData] = useState({
         jobTile: "Chuyên Viên Quan Hệ Khách Hàng Tại Hà Nội ",
         companyName: "RASEN GROUPS",
-        jobDuration: '22/07/2024'
+        jobDuration: '22/07/2024',
+        gross: '8 Triệu',
+        workingType: 'Toàn thời gian',
+        level: 'Nhân viên',
+        amount: 10,
+        sex: 'Nam',
+        experience: 'Không yêu cầu kinh nghiệm',
+        location: 'Số 7, Ngô Tất Tố, KDC 91B, Phường An khánh, Ninh Kiều, Cần Thơ'
     })
+    const jsontest = {"blocks":[{"key":"d5jo","text":"- Tốt nghiệp đại học chính quy chuyên ngành Quản trị kinh doanh, Điện tử Viễn thông, Công nghệ thông tin hoặc các ngành Kinh tế.","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"2296c","text":"- Tối thiểu 2 năm kinh nghiệm ở vị trí tương đương","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"1nvj8","text":"- Độ tuổi không quá < 40","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"ca2g3","text":"- Có kỹ năng lập kế hoạch, triển khai, theo dõi việc thực hiện kế hoạch kinh doanh theo định kỳ và dài hạn","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"dmfpa","text":"- Có khả năng thu hút, tổ chức, quản lý, đào tạo và phát triển nhân viên","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"c6rv1","text":"- Có kỹ năng xử lý tình huống, giải quyết vấn đề và giao tiếp hiệu quả","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"1dllo","text":"- Am hiểu về hoạt động marketing và bán hàng trong lĩnh vực viễn thông","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}
+   
     return (
         <>
             <Container
@@ -158,7 +172,7 @@ export default function JobDetail() {
                     {/* Title */}
                     <Stack
                         direction='row'
-                        spacing={24}
+                        spacing={12}
                         sx={{
                             background: 'white',
                             py: 3,
@@ -199,7 +213,8 @@ export default function JobDetail() {
                                 <Typography variant="body1" >Hạn nộp hồ sơ: {data.jobDuration}</Typography>
                             </Stack>
                         </Box>
-                        <Box>
+                        <Box
+                        >
                             <Button startIcon={<SendIcon />} variant="contained" color="success">Ứng tuyển ngay</Button>
                         </Box>
                     </Stack>
@@ -209,7 +224,7 @@ export default function JobDetail() {
                             background: 'white',
                             my: 2,
                             mx: 'auto',
-                            width: '70%',
+                            width: '70%'
                         }}
                     >
                         <Grid
@@ -252,7 +267,7 @@ export default function JobDetail() {
                                     xs={3}
                                     sx={{
                                         display: 'flex',
-                                        alignItems: 'center',
+                                        alignItems: 'center'
                                     }}
                                     item
                                 >
@@ -262,7 +277,7 @@ export default function JobDetail() {
                                             Mức lương
                                         </Typography><br></br>
                                         <Typography variant="p" >
-                                            8 triệu
+                                            {data.gross}
                                         </Typography>
                                     </Box>
                                 </Grid>
@@ -270,17 +285,17 @@ export default function JobDetail() {
                                     xs={3}
                                     sx={{
                                         display: 'flex',
-                                        alignItems: 'center',
+                                        alignItems: 'center'
                                     }}
                                     item
                                 >
-                                    <PaidIcon fontSize="small" sx={{ mr: 1 }} />
+                                    <PeopleIcon fontSize="small" sx={{ mr: 1 }} />
                                     <Box>
                                         <Typography variant="p" fontWeight={600}>
-                                            Mức lương
+                                            Số lượng tuyển
                                         </Typography><br></br>
                                         <Typography variant="p" >
-                                            8 triệu
+                                            {data.amount}
                                         </Typography>
                                     </Box>
                                 </Grid>
@@ -288,17 +303,17 @@ export default function JobDetail() {
                                     xs={3}
                                     sx={{
                                         display: 'flex',
-                                        alignItems: 'center',
+                                        alignItems: 'center'
                                     }}
                                     item
                                 >
-                                    <PaidIcon fontSize="small" sx={{ mr: 1 }} />
+                                    <MilitaryTechIcon fontSize="small" sx={{ mr: 1 }} />
                                     <Box>
                                         <Typography variant="p" fontWeight={600}>
-                                            Mức lương
+                                            Cấp bậc
                                         </Typography><br></br>
                                         <Typography variant="p" >
-                                            8 triệu
+                                            {data.level}
                                         </Typography>
                                     </Box>
                                 </Grid>
@@ -306,17 +321,17 @@ export default function JobDetail() {
                                     xs={3}
                                     sx={{
                                         display: 'flex',
-                                        alignItems: 'center',
+                                        alignItems: 'center'
                                     }}
                                     item
                                 >
-                                    <PaidIcon fontSize="small" sx={{ mr: 1 }} />
+                                    <WorkIcon fontSize="small" sx={{ mr: 1 }} />
                                     <Box>
                                         <Typography variant="p" fontWeight={600}>
-                                            Mức lương
+                                            Hình thức làm việc
                                         </Typography><br></br>
                                         <Typography variant="p" >
-                                            8 triệu
+                                            {data.workingType}
                                         </Typography>
                                     </Box>
                                 </Grid>
@@ -324,17 +339,17 @@ export default function JobDetail() {
                                     xs={3}
                                     sx={{
                                         display: 'flex',
-                                        alignItems: 'center',
+                                        alignItems: 'center'
                                     }}
                                     item
                                 >
-                                    <PaidIcon fontSize="small" sx={{ mr: 1 }} />
+                                    <WcIcon fontSize="small" sx={{ mr: 1 }} />
                                     <Box>
                                         <Typography variant="p" fontWeight={600}>
-                                            Mức lương
+                                            Giới tính
                                         </Typography><br></br>
                                         <Typography variant="p" >
-                                            8 triệu
+                                            {data.sex}
                                         </Typography>
                                     </Box>
                                 </Grid>
@@ -342,24 +357,84 @@ export default function JobDetail() {
                                     xs={3}
                                     sx={{
                                         display: 'flex',
-                                        alignItems: 'center',
+                                        alignItems: 'center'
                                     }}
                                     item
                                 >
-                                    <PaidIcon fontSize="small" sx={{ mr: 1 }} />
+                                    <StarIcon fontSize="small" sx={{ mr: 1 }} />
                                     <Box>
                                         <Typography variant="p" fontWeight={600}>
-                                            Mức lương
+                                            Kinh nghiệm
                                         </Typography><br></br>
                                         <Typography variant="p" >
-                                            8 triệu
+                                            {data.experience}
                                         </Typography>
                                     </Box>
                                 </Grid>
 
                             </Grid>
                         </Grid>
+                        <Grid
+                            xs={12}
+                            container
+                            item
+                            sx={{
+                                mx: 3,
+                                mt: 2,
+                                py: 2,
+                                background: alpha(theme.palette.success.main, 0.08),
+                                display: 'flex',
+                                flexDirection: 'column',
+                            }}
+                        >
+                            <Typography variant="p"
+                                sx={{
+                                    fontWeight: "bold",
+                                    textDecoration: 'underline',
+                                    ml: 3
+                                }}>
+                                Địa điểm làm việc
+                            </Typography>
+                            <Typography variant="p"
+                                sx={{
+                                    ml: 3,
+                                    mt:2
+                                }}>
+                                {data.location}
+                            </Typography>
+                        </Grid>
+                        <Grid
+                            xs={12}
+                            container
+                            item
+                            sx={{
+                                mx: 3,
+                                mt: 2,
+                                py: 2,
+                                background: alpha(theme.palette.success.main, 0.08),
+                                display: 'flex',
+                                flexDirection: 'column',
+                            }}
+                        >
+                            <Typography variant="h6"
+                                sx={{
+                                    fontWeight: "bold",
+                                    textDecoration: 'underline',
+                                    ml: 3
+                                }}>
+                                Mô tả công việc
+                            </Typography>
+                            <Box
+                                sx={{
+                                    ml:3,
+                                    py:1
+                                }}
+                            >
+                                <RichTextDisplay data={jsontest} />
+                            </Box>
+                        </Grid>
                     </Grid>
+
                 </Container>
             </Container>
         </>

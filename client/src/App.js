@@ -8,7 +8,7 @@ import Register from "./components/Register";
 import Footer from "./components/Footer";
 import Upload from "./components/other/Upload";
 import Jobs from "./components/Jobs";
-import Test from "./components/Test";
+import RichText from "./components/RichText";
 import HrHub from "./components/HrHub";
 import JobDetail from "./components/JobDetail";
 function App() {
@@ -60,7 +60,7 @@ function App() {
                         <Route path="login" element={<Login />} />
                         <Route path="register" element={<Register />} />
                         <Route path="upload" element={<Upload />} />
-                        <Route path="test" element={<Test />} />
+                        <Route path="test" element={<RichText />} />
                     </Route>
                 </Routes>
 
