@@ -5,9 +5,10 @@ import PlaceIcon from '@mui/icons-material/Place';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import BadgeIcon from '@mui/icons-material/Badge';
 import Image from "mui-image";
-import { borderRadius, fontWeight } from "@mui/system";
+import { useNavigate, createSearchParams, useSearchParams } from "react-router-dom";
 import JobList from "./JobList";
 import banner from '../assets/banner.png'
+import { useEffect } from "react";
 export default function Jobs() {
     const MenuProps = {
         PaperProps: {
@@ -16,6 +17,31 @@ export default function Jobs() {
             },
         },
     };
+    const data = {
+        jobTile: "Chuyên Viên Quan Hệ Khách Hàng Tại Hà Nội ",
+        companyName: "RASEN GROUPS",
+        jobDuration: '22/07/2024',
+        gross: '8 Triệu',
+        workingType: 'Toàn thời gian',
+        level: 'Nhân viên',
+        amount: 10,
+        sex: 'Nam',
+        experience: 'Không yêu cầu kinh nghiệm',
+        location: 'Số 7, Ngô Tất Tố, KDC 91B, Phường An khánh, Ninh Kiều, Cần Thơ'
+    }
+    const navigate = useNavigate()
+    const [searchParams] = useSearchParams()
+    function getParams(){
+        return {
+            job: searchParams.get('job'),
+            location: searchParams.get('location'),
+            level: searchParams.get('level'),
+            gross: searchParams.get('gross'),    
+        }
+    }
+    useEffect(()=>{
+        console.log(getParams())
+    },[])
     return (<>
         <Container>
             {/* seacrch control */}
@@ -118,6 +144,12 @@ export default function Jobs() {
                     <Button
                         variant="contained"
                         color="success"
+                        onClick={() => {
+                            navigate({
+                                pathname: '/jobs',
+                                search: `?${createSearchParams(data)}`
+                            })
+                        }}
                     >Tìm việc ngay</Button>
                 </FormControl>
             </Box>
@@ -144,12 +176,12 @@ export default function Jobs() {
                         Tìm việc làm nhanh 24h, việc làm mới nhất trên toàn quốc
                     </Typography>
                     <Typography variant="p">
-                    Tiếp cận 30,000+ tin tuyển dụng việc làm mới mỗi ngày từ hàng nghìn doanh nghiệp uy tín tại Việt Nam
+                        Tiếp cận 30,000+ tin tuyển dụng việc làm mới mỗi ngày từ hàng nghìn doanh nghiệp uy tín tại Việt Nam
                     </Typography>
                     <Image
                         sx={{
                             mt: 2,
-                            borderRadius:'5px'
+                            borderRadius: '5px'
                         }}
                         src={banner}
                         duration={0}
@@ -157,9 +189,9 @@ export default function Jobs() {
                 </Box>
                 {/* Joblist */}
             </Container>
-            <Box sx={{mt: 3}}>
+            <Box sx={{ mt: 3 }}>
                 <JobList />
-                </Box>
+            </Box>
         </Container>
     </>)
 }

@@ -7,6 +7,7 @@ import BadgeIcon from '@mui/icons-material/Badge';
 import Image from 'mui-image'
 import logo from '../assets/companylogo_sample.png'
 import { useState } from "react";
+import { useNavigate, createSearchParams } from "react-router-dom";
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import SendIcon from '@mui/icons-material/Send';
 import PaidIcon from '@mui/icons-material/Paid';
@@ -18,7 +19,6 @@ import StarIcon from '@mui/icons-material/Star';
 import { RichTextDisplay } from "./RichText";
 export default function JobDetail() {
     const theme = createTheme()
-    console.log(theme)
     const MenuProps = {
         PaperProps: {
             style: {
@@ -38,8 +38,14 @@ export default function JobDetail() {
         experience: 'Không yêu cầu kinh nghiệm',
         location: 'Số 7, Ngô Tất Tố, KDC 91B, Phường An khánh, Ninh Kiều, Cần Thơ'
     })
-    const jsontest = {"blocks":[{"key":"d5jo","text":"- Tốt nghiệp đại học chính quy chuyên ngành Quản trị kinh doanh, Điện tử Viễn thông, Công nghệ thông tin hoặc các ngành Kinh tế.","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"2296c","text":"- Tối thiểu 2 năm kinh nghiệm ở vị trí tương đương","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"1nvj8","text":"- Độ tuổi không quá < 40","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"ca2g3","text":"- Có kỹ năng lập kế hoạch, triển khai, theo dõi việc thực hiện kế hoạch kinh doanh theo định kỳ và dài hạn","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"dmfpa","text":"- Có khả năng thu hút, tổ chức, quản lý, đào tạo và phát triển nhân viên","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"c6rv1","text":"- Có kỹ năng xử lý tình huống, giải quyết vấn đề và giao tiếp hiệu quả","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}},{"key":"1dllo","text":"- Am hiểu về hoạt động marketing và bán hàng trong lĩnh vực viễn thông","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}
-   
+    const jsontest = { "blocks": [{ "key": "d5jo", "text": "- Tốt nghiệp đại học chính quy chuyên ngành Quản trị kinh doanh, Điện tử Viễn thông, Công nghệ thông tin hoặc các ngành Kinh tế.", "type": "unstyled", "depth": 0, "inlineStyleRanges": [], "entityRanges": [], "data": {} }, { "key": "2296c", "text": "- Tối thiểu 2 năm kinh nghiệm ở vị trí tương đương", "type": "unstyled", "depth": 0, "inlineStyleRanges": [], "entityRanges": [], "data": {} }, { "key": "1nvj8", "text": "- Độ tuổi không quá < 40", "type": "unstyled", "depth": 0, "inlineStyleRanges": [], "entityRanges": [], "data": {} }, { "key": "ca2g3", "text": "- Có kỹ năng lập kế hoạch, triển khai, theo dõi việc thực hiện kế hoạch kinh doanh theo định kỳ và dài hạn", "type": "unstyled", "depth": 0, "inlineStyleRanges": [], "entityRanges": [], "data": {} }, { "key": "dmfpa", "text": "- Có khả năng thu hút, tổ chức, quản lý, đào tạo và phát triển nhân viên", "type": "unstyled", "depth": 0, "inlineStyleRanges": [], "entityRanges": [], "data": {} }, { "key": "c6rv1", "text": "- Có kỹ năng xử lý tình huống, giải quyết vấn đề và giao tiếp hiệu quả", "type": "unstyled", "depth": 0, "inlineStyleRanges": [], "entityRanges": [], "data": {} }, { "key": "1dllo", "text": "- Am hiểu về hoạt động marketing và bán hàng trong lĩnh vực viễn thông", "type": "unstyled", "depth": 0, "inlineStyleRanges": [], "entityRanges": [], "data": {} }], "entityMap": {} }
+    const [searchParams, setSearchParams] = useState({
+        job: '',
+        location: '',
+        level: '',
+        gross: ''
+    })
+    const navigate = useNavigate()
     return (
         <>
             <Container
@@ -89,6 +95,12 @@ export default function JobDetail() {
                                 }
                                 label="Ngành nghề"
                                 MenuProps={MenuProps}
+                                onChange={(e, item) => {
+                                    setSearchParams({
+                                        ...searchParams,
+                                        job: item.props.value
+                                    })
+                                }}
                             >
                                 {env.JOBS.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
                             </Select>
@@ -108,6 +120,12 @@ export default function JobDetail() {
                                 }
                                 label="Địa điểm công ty"
                                 MenuProps={MenuProps}
+                                onChange={(e, item) => {
+                                    setSearchParams({
+                                        ...searchParams,
+                                        location: item.props.value
+                                    })
+                                }}
                             >
                                 {env.LOCATION.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
                             </Select>
@@ -127,6 +145,12 @@ export default function JobDetail() {
                                         <BadgeIcon color="success" fontSize="small" />
                                     </InputAdornment>
                                 }
+                                onChange={(e, item) => {
+                                    setSearchParams({
+                                        ...searchParams,
+                                        level: item.props.value
+                                    })
+                                }}
                             >
                                 {env.LEVEL.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
                             </Select>
@@ -146,6 +170,12 @@ export default function JobDetail() {
                                         <AttachMoneyIcon color="success" fontSize="small" />
                                     </InputAdornment>
                                 }
+                                onChange={(e, item) => {
+                                    setSearchParams({
+                                        ...searchParams,
+                                        gross: item.props.value
+                                    })
+                                }}
                             >
                                 {env.GROSS.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
                             </Select>
@@ -156,7 +186,15 @@ export default function JobDetail() {
                             <Button
                                 variant="contained"
                                 color="success"
-                            >Tìm việc ngay</Button>
+                                onClick={()=>{
+                                    navigate({
+                                        pathname: '/jobs',
+                                        search: `?${createSearchParams(searchParams)}`
+                                    })
+                                }}
+                            >
+                                Tìm việc ngay
+                            </Button>
                         </FormControl>
                     </Box>
                 </Container>
@@ -224,7 +262,8 @@ export default function JobDetail() {
                             background: 'white',
                             my: 2,
                             mx: 'auto',
-                            width: '70%'
+                            width: '70%',
+                            pb: 3
                         }}
                     >
                         <Grid
@@ -256,7 +295,7 @@ export default function JobDetail() {
                             <Grid xs={12}
                                 container
                                 sx={{
-                                    mt: 3,
+                                    mt: 2,
                                     ml: 3,
                                     rowGap: 3,
                                     columnGap: 2
@@ -398,7 +437,7 @@ export default function JobDetail() {
                             <Typography variant="p"
                                 sx={{
                                     ml: 3,
-                                    mt:2
+                                    mt: 2
                                 }}>
                                 {data.location}
                             </Typography>
@@ -426,8 +465,8 @@ export default function JobDetail() {
                             </Typography>
                             <Box
                                 sx={{
-                                    ml:3,
-                                    py:1
+                                    ml: 3,
+                                    py: 1
                                 }}
                             >
                                 <RichTextDisplay data={jsontest} />

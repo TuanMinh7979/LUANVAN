@@ -1,5 +1,5 @@
 import { Container } from "@mui/system";
-import { Box, Paper, Typography, Button, IconButton, Link, Grid } from "@mui/material"
+import { Box, Paper, Typography, Button, IconButton, Link, Grid, Chip } from "@mui/material"
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -31,19 +31,25 @@ function JobList() {
                 <Box
                     sx={{
                         display: 'flex',
-                        width: '50%',
+                        width: '30%',
                         flexWrap: 'wrap',
-                        justifyContent: 'space-around'
+                        justifyContent: 'space-around',
+                        alignItems: 'center'
                     }}
                 >
                     <IconButton>
                         <ArrowBackIosNewIcon />
                     </IconButton>
-                    <Button variant="contained" color="success" size="small" sx={{ borderRadius: "10px" }}>Ngẫu nhiên</Button>
-                    <Button variant="contained" color="success" size="small" sx={{ borderRadius: "10px" }}>Hà Nội</Button>
-                    <Button variant="contained" color="success" size="small" sx={{ borderRadius: "10px" }}>Hồ Chí Minh</Button>
+                    {/* <Chip variant="contained" color="success" size="small" sx={{ borderRadius: "10px" }}>Ngẫu nhiên</Chip>
+                    <Chip variant="contained" color="success" size="small" sx={{ borderRadius: "10px" }}>Hà Nội</Chip>
+                    <Chi variant="contained" color="success" size="small" sx={{ borderRadius: "10px" }}>Hồ Chí Minh</Chi>
                     <Button variant="contained" color="success" size="small" sx={{ borderRadius: "10px" }}>Miền Bắc</Button>
-                    <Button variant="contained" color="success" size="small" sx={{ borderRadius: "10px" }}>Miền Nam</Button>
+                    <Button variant="contained" color="success" size="small" sx={{ borderRadius: "10px" }}>Miền Nam</Button> */}
+                    <Chip color="success" label="Ngẫu nhiên" />
+                    <Chip color="success" label="Hà Nội" />
+                    <Chip color="success" label="Hồ Chí Minh" />
+                    <Chip color="success" label="Miền Bắc" />
+                    <Chip color="success" label="Miền Nam" />
                     <IconButton>
                         <ArrowForwardIosIcon />
                     </IconButton>

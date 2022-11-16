@@ -6,7 +6,9 @@ import {
   Card,
   CardActionArea,
   IconButton,
+  Chip,
 } from "@mui/material";
+import { useNavigate, createSearchParams } from "react-router-dom";
 import Image from "mui-image";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
@@ -26,9 +28,20 @@ export default function JobCard({
     color: "white",
     fontSize: "16px"
   };
+  const navigate = useNavigate()
   return (
     <>
-      <Card sx={{ boxShadow: "-1px 1px 4px rgb(0 0 0 / 20%)", width: '95%', }}>
+      <Card 
+        sx={{ boxShadow: "-1px 1px 4px rgb(0 0 0 / 20%)", width: '95%', }}
+        onClick={()=>{
+          navigate({
+            pathname: '/jobdetail',
+            search: `?${createSearchParams({
+              id: 123
+            })}`
+          })
+        }}
+        >
         <CardActionArea>
           <Box
             sx={{
@@ -64,8 +77,8 @@ export default function JobCard({
             </Box>
           </Box>
           <Box sx={{ display: "flex", padding: "10px", minWidth: "50%" }}>
-            <Typography sx={style1}>{salary}</Typography>
-            <Typography sx={style1}>{location}</Typography>
+            <Chip color="success" label={salary} sx={{ mr:1 }}  />
+            <Chip color="success" label={location} />
           </Box>
         </CardActionArea>
       </Card>
