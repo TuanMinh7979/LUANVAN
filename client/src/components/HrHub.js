@@ -106,6 +106,26 @@ function HrSideBar({ name, companyName, avatar }) {
     )
 }
 export default function HrHub() {
+    const [data, setData] = useState({
+        jobTitle: '',
+        job: '',
+        location:"",
+        amount: '',
+        jobType: '',
+        deadline: '',
+        gender: '',
+        rank: '',
+        exp: '',
+        currency: '',
+        grossType: '',
+        gross: '',
+        grossTo: '',
+        grossFrom: '',
+        fullAddress: '',
+        jobDescription: '',
+        jobRequired: '',
+        jobBenefit: ''    
+    })
     const [grossType, setGrossType] = useState(false)
     const [currency, setCurrency] = useState()
     const [jobDescription, setJobDescription] = useState(() =>
