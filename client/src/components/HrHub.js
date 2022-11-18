@@ -12,13 +12,13 @@ import 'draft-js/dist/Draft.css';
 import env from 'react-dotenv'
 import { useState } from "react";
 import RichText from "./RichText";
-
+import axios from 'axios'
 const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
     '&:hover': {
         background: `${alpha(theme.palette.success.dark, 1)}`,
         color: 'white',
         '& .MuiListItemIcon-root': {
-            color: 'white',
+            color: 'white'
         }
     }
 }));
@@ -78,7 +78,7 @@ function HrSideBar({ name, companyName, avatar }) {
             <MenuList>
                 <CustomMenuItem
                 >
-                    <ListItemIcon sx={{ py: 2, }}>
+                    <ListItemIcon sx={{ py: 2 }}>
                         <EditIcon fontSize="small" />
                     </ListItemIcon>
                     <ListItemText>Đăng tin tuyển dụng mới</ListItemText>
@@ -138,6 +138,12 @@ export default function HrHub() {
     })
     const [grossType, setGrossType] = useState(false)
     const [currency, setCurrency] = useState()
+    const sendPostData = function() {
+        axios.post("/jobpost",data)
+            .then((res)=>{
+                console.log(res)
+            })
+    }
     return (
         <>
             <Grid container sx={{ background: '#f1f2f6' }}>
@@ -576,6 +582,7 @@ export default function HrHub() {
                                 variant="contained"
                                 onClick={() => {
                                     console.log(data)
+                                    sendPostData()
                                 }}
                             >Đăng tin</Button>
                         </Grid>
