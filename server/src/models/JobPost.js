@@ -26,7 +26,7 @@ const JobPostSchema = new Schema(
         currency: {
             type: String,
             enum: ["USD", "VND"],
-            default: "Student",
+            default: "USD",
         },
         grossType: {
             type: String,
