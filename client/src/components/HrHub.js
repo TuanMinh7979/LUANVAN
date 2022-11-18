@@ -106,28 +106,6 @@ function HrSideBar({ name, companyName, avatar }) {
     )
 }
 export default function HrHub() {
-    const [data, setData] = useState({
-        jobTitle: '',
-        job: '',
-        location:"",
-        amount: '',
-        jobType: '',
-        deadline: '',
-        gender: '',
-        rank: '',
-        exp: '',
-        currency: '',
-        grossType: '',
-        gross: '',
-        grossTo: '',
-        grossFrom: '',
-        fullAddress: '',
-        jobDescription: '',
-        jobRequired: '',
-        jobBenefit: ''    
-    })
-    const [grossType, setGrossType] = useState(false)
-    const [currency, setCurrency] = useState()
     const [jobDescription, setJobDescription] = useState(() =>
         EditorState.createEmpty()
     );
@@ -137,7 +115,29 @@ export default function HrHub() {
     const [benefit, setBenefit] = useState(() =>
         EditorState.createEmpty()
     );
-    console.log(JSON.stringify(convertToRaw(jobDescription.getCurrentContent())))
+    const [data, setData] = useState({
+        jobTitle: '',
+        job: '',
+        location: "",
+        amount: 0,
+        jobType: '',
+        deadline: '',
+        gender: '',
+        rank: '',
+        exp: '',
+        currency: '',
+        grossType: '',
+        gross: 0,
+        grossTo: 0,
+        grossFrom: 0,
+        fullAddress: '',
+        jobDescription: convertToRaw(jobDescription.getCurrentContent()),
+        jobRequired: convertToRaw(jobRequired.getCurrentContent()),
+        jobBenefit: convertToRaw(benefit.getCurrentContent()),
+        skillRequired: ''
+    })
+    const [grossType, setGrossType] = useState(false)
+    const [currency, setCurrency] = useState()
     return (
         <>
             <Grid container sx={{ background: '#f1f2f6' }}>
@@ -182,6 +182,12 @@ export default function HrHub() {
                                     size="small"
                                     sx={{ mt: 1 }}
                                     placeholder="Thiết kế đồ họa bán thời gian"
+                                    onBlur={(e) => {
+                                        setData({
+                                            ...data,
+                                            jobTitle: e.target.value
+                                        })
+                                    }}
                                 />
                             </Grid>
                             <Grid item
@@ -195,6 +201,18 @@ export default function HrHub() {
                                     size="small"
                                     sx={{ mt: 1 }}
                                     options={env.JOBS.split(", ")}
+                                    onInputChange={(e, value) => {
+                                        setData({
+                                            ...data,
+                                            job: value
+                                        })
+                                    }}
+                                    onBlur={(e) => {
+                                        setData({
+                                            ...data,
+                                            job: e.target.value
+                                        })
+                                    }}
                                     renderInput={(params) => <TextField {...params} placeholder="Chọn vị trí công việc cần tuyển" />}
                                 />
                             </Grid>
@@ -209,6 +227,12 @@ export default function HrHub() {
                                     sx={{ mt: 1 }}
                                     options={env.LOCATION.split(", ")}
                                     renderInput={(params) => <TextField {...params} placeholder="-- Chọn địa điểm làm việc --" />}
+                                    onInputChange={(e, value) => {
+                                        setData({
+                                            ...data,
+                                            location: value
+                                        })
+                                    }}
                                 />
                             </Grid>
                         </Grid>
@@ -244,6 +268,12 @@ export default function HrHub() {
                                         sx={{ mt: 1 }}
                                         type="number"
                                         placeholder="Số lượng cần tuyển"
+                                        onChange={(e) => {
+                                            setData({
+                                                ...data,
+                                                amount: e.target.value
+                                            })
+                                        }}
                                     />
                                 </Grid>
                                 <Grid item
@@ -257,6 +287,18 @@ export default function HrHub() {
                                         sx={{ mt: 1 }}
                                         options={env.JOBTYPES.split(", ")}
                                         renderInput={(params) => <TextField {...params} placeholder="-- Chọn loại công việc --" />}
+                                        onInputChange={(e, value) => {
+                                            setData({
+                                                ...data,
+                                                jobType: value
+                                            })
+                                        }}
+                                        onBlur={(e) => {
+                                            setData({
+                                                ...data,
+                                                jobType: e.target.value
+                                            })
+                                        }}
                                     />
                                 </Grid>
                                 <Grid item
@@ -271,6 +313,12 @@ export default function HrHub() {
                                         sx={{ mt: 1 }}
                                         type="date"
                                         placeholder="Số lượng cần tuyển"
+                                        onChange={(e) => {
+                                            setData({
+                                                ...data,
+                                                deadline: e.target.value
+                                            })
+                                        }}
                                     />
                                 </Grid>
                             </Grid>
@@ -286,6 +334,12 @@ export default function HrHub() {
                                         sx={{ mt: 1 }}
                                         options={env.SEXS.split(", ")}
                                         renderInput={(params) => <TextField {...params} placeholder="-- Chọn giới tính --" />}
+                                        onInputChange={(e, value) => {
+                                            setData({
+                                                ...data,
+                                                gender: value
+                                            })
+                                        }}
                                     />
                                 </Grid>
                                 <Grid item
@@ -300,6 +354,18 @@ export default function HrHub() {
                                         sx={{ mt: 1 }}
                                         options={env.LEVEL.split(", ")}
                                         renderInput={(params) => <TextField {...params} placeholder="Giám đốc kinh doanh" />}
+                                        onInputChange={(e, value) => {
+                                            setData({
+                                                ...data,
+                                                rank: value
+                                            })
+                                        }}
+                                        onBlur={(e) => {
+                                            setData({
+                                                ...data,
+                                                rank: e.target.value
+                                            })
+                                        }}
                                     />
                                 </Grid>
                                 <Grid item
@@ -314,6 +380,18 @@ export default function HrHub() {
                                         sx={{ mt: 1 }}
                                         options={env.EXP.split(", ")}
                                         renderInput={(params) => <TextField {...params} placeholder="Chưa có kinh nghiệm" />}
+                                        onInputChange={(e, value) => {
+                                            setData({
+                                                ...data,
+                                                exp: value
+                                            })
+                                        }}
+                                        onBlur={(e) => {
+                                            setData({
+                                                ...data,
+                                                exp: e.target.value
+                                            })
+                                        }}
                                     />
                                 </Grid>
                             </Grid>
@@ -330,6 +408,10 @@ export default function HrHub() {
                                         options={env.CURRENCY.split(", ")}
                                         onInputChange={(e, value) => {
                                             setCurrency(value)
+                                            setData({
+                                                ...data,
+                                                currency: value
+                                            })
                                         }}
                                         renderInput={(params) => <TextField {...params} placeholder="-- Chọn loại tiền lương --" />}
                                     />
@@ -346,8 +428,13 @@ export default function HrHub() {
                                         options={env.GROSSTYPES.split(", ")}
                                         onInputChange={(e, value) => {
                                             setGrossType(value)
+                                            setData({
+                                                ...data,
+                                                grossType: value
+                                            })
                                         }}
                                         renderInput={(params) => <TextField {...params} placeholder="-- Chọn kiểu lương"
+
                                         />}
                                     />
                                 </Grid>
@@ -365,6 +452,12 @@ export default function HrHub() {
                                             sx={{ mt: 1 }}
                                             type="number"
                                             endAdornment={<InputAdornment position="end">{currency}</InputAdornment>}
+                                            onBlur={(e) => {
+                                                setData({
+                                                    ...data,
+                                                    grossFrom: e.target.value
+                                                })
+                                            }}
                                         />
                                     </Grid>
                                     <Grid item
@@ -379,6 +472,13 @@ export default function HrHub() {
                                             sx={{ mt: 1 }}
                                             type="number"
                                             endAdornment={<InputAdornment position="end">{currency}</InputAdornment>}
+                                            onBlur={(e) => {
+                                                setData({
+                                                    ...data,
+                                                    grossTo: e.target.value,
+                                                    gross: ''
+                                                })
+                                            }}
                                         />
                                     </Grid>
                                 </>}
@@ -396,6 +496,14 @@ export default function HrHub() {
                                             sx={{ mt: 1 }}
                                             type="number"
                                             endAdornment={<InputAdornment position="end">{currency}</InputAdornment>}
+                                            onBlur={(e) => {
+                                                setData({
+                                                    ...data,
+                                                    gross: e.target.value,
+                                                    grossFrom: '',
+                                                    grossTo: ''
+                                                })
+                                            }}
                                         />
                                     </Grid>
                                 </>}
@@ -411,6 +519,12 @@ export default function HrHub() {
                                     size="small"
                                     sx={{ mt: 1 }}
                                     placeholder="Số 7, Ngô Tất Tố, KDC 91B, Phường An khánh, Ninh Kiều, Cần Thơ"
+                                    onBlur={(e) => {
+                                        setData({
+                                            ...data,
+                                            fullAddress: e.target.value
+                                        })
+                                    }}
                                 />
                             </Grid>
                         </Grid>
@@ -456,7 +570,14 @@ export default function HrHub() {
                                 </Typography>
                                 <OutlinedInput size="small" fullWidth sx={{ mt: 1 }} placeholder="VD: Kỹ năng photoshop, Word, Excel, ..." />
                             </Grid>
-                            <Button sx={{ mt: 1, minWidth: 200, mr: 'auto' }} size="small" variant="contained">Đăng tin</Button>
+                            <Button
+                                sx={{ mt: 1, minWidth: 200, mr: 'auto' }}
+                                size="small"
+                                variant="contained"
+                                onClick={() => {
+                                    console.log(data)
+                                }}
+                            >Đăng tin</Button>
                         </Grid>
                     </Box>
                 </Grid>
