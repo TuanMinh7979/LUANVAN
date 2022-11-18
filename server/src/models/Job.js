@@ -59,7 +59,7 @@ const JobSchema = new Schema(
         type: Number,
       },
     },
-    idActive: {
+    isActive: {
       type: Boolean,
       defautl: false,
     },
