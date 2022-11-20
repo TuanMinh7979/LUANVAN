@@ -3,24 +3,32 @@ const { Schema } = mongoose;
 
 const CompanySchema = new Schema(
   {
-    name: {
+    companyName: {
       type: String,
-      required: true,
+     
     },
-    companyCategory: {
-      type: String,
-      required: true,
-    },
-    address: { type: String },
+
+    location: { type: String },
     phone: {
       type: String,
     },
     email: {
       type: String,
     },
-    desc: { type: String },
-    services: [{}],
+    foundingAt: {
+      type: Date
+    },
+    introduce: {
+      type: String
+    },
+    members: {
+      type: Number
+    },
+    logo: { type: String },
+
+
   },
+
   //createAt and updateAt
   { timestamps: true }
 );
