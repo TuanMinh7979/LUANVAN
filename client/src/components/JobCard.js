@@ -31,9 +31,9 @@ export default function JobCard({
   const navigate = useNavigate()
   return (
     <>
-      <Card 
+      <Card
         sx={{ boxShadow: "-1px 1px 4px rgb(0 0 0 / 20%)", width: '95%', }}
-        onClick={()=>{
+        onClick={() => {
           navigate({
             pathname: '/jobdetail',
             search: `?${createSearchParams({
@@ -41,7 +41,7 @@ export default function JobCard({
             })}`
           })
         }}
-        >
+      >
         <CardActionArea>
           <Box
             sx={{
@@ -53,19 +53,20 @@ export default function JobCard({
               <Grid xs="12">
                 <Image
                   src={companyLogo}
-                  fit="contain"
-                  width="100%"
-                  height="100%"
-                  duration="0"
                   sx={{
-                    borderRadius: "50%"
+                    borderRadius: '100%',
+                    border: '1px solid gray'
                   }}
+                  width="80px"
+                  height="80px"
+                  duration={0}
+                  fit="scale-down"
                 />
               </Grid>
             </Grid>
             <Box
               sx={{
-                ml:4
+                ml: 4
               }}
             >
               <Typography fontWeight="600" fontSize="18px" variant="h6">
@@ -77,7 +78,7 @@ export default function JobCard({
             </Box>
           </Box>
           <Box sx={{ display: "flex", padding: "10px", minWidth: "50%" }}>
-            <Chip color="success" label={salary} sx={{ mr:1 }}  />
+            <Chip color="success" label={salary} sx={{ mr: 1 }} />
             <Chip color="success" label={location} />
           </Box>
         </CardActionArea>

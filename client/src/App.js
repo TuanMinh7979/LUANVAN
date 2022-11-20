@@ -11,6 +11,8 @@ import Jobs from "./components/Jobs";
 import RichText from "./components/RichText";
 import HrHub from "./components/HrHub";
 import JobDetail from "./components/JobDetail";
+import HrRegister from "./components/HrRegister";
+import HrLogin from "./components/HrLogin";
 function App() {
     return (
         <>
@@ -38,7 +40,7 @@ function App() {
                             }
                         />
                         <Route
-                            path="hrhub"
+                            path="hrhub/*"
                             element={
                                 <>
                                     <Header forHr />
@@ -59,11 +61,12 @@ function App() {
                         />
                         <Route path="login" element={<Login />} />
                         <Route path="register" element={<Register />} />
+                        <Route path="hrlogin" element={<HrLogin />} />
+                        <Route path="hrsignup" element={<HrRegister />} />
                         <Route path="upload" element={<Upload />} />
                         <Route path="test" element={<RichText />} />
                     </Route>
                 </Routes>
-
             </BrowserRouter>
         </>
     );
