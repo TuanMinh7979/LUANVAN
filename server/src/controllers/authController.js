@@ -7,6 +7,7 @@ import Rec from "../models/Rec.js";
 
 export const register = async (req, res, next) => {
   try {
+    
     const { usernameInp, passwordInp, roleInp, ...details } = req.body;
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(passwordInp, salt);

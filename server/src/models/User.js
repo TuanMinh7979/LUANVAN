@@ -10,7 +10,7 @@ const UserSchema = new Schema(
     role: {
       type: String,
       enum: ["candidate", "rec", "admin"],
-      default: "admin",
+      default: "candidate",
     },
     isAdmin: {
       type: Boolean,
