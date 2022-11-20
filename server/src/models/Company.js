@@ -5,7 +5,7 @@ const CompanySchema = new Schema(
   {
     companyName: {
       type: String,
-      required: true,
+     
     },
 
     location: { type: String },
