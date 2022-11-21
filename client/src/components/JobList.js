@@ -31,14 +31,14 @@ function JobList() {
                 <Box
                     sx={{
                         display: 'flex',
-                        width: '30%',
+                        width: '40%',
                         flexWrap: 'wrap',
                         justifyContent: 'space-around',
                         alignItems: 'center'
                     }}
                 >
                     <IconButton>
-                        <ArrowBackIosNewIcon />
+                        <ArrowBackIosNewIcon fontSize="small" color="success" />
                     </IconButton>
                     {/* <Chip variant="contained" color="success" size="small" sx={{ borderRadius: "10px" }}>Ngẫu nhiên</Chip>
                     <Chip variant="contained" color="success" size="small" sx={{ borderRadius: "10px" }}>Hà Nội</Chip>
@@ -46,12 +46,12 @@ function JobList() {
                     <Button variant="contained" color="success" size="small" sx={{ borderRadius: "10px" }}>Miền Bắc</Button>
                     <Button variant="contained" color="success" size="small" sx={{ borderRadius: "10px" }}>Miền Nam</Button> */}
                     <Chip color="success" label="Ngẫu nhiên" />
-                    <Chip color="success" label="Hà Nội" />
-                    <Chip color="success" label="Hồ Chí Minh" />
-                    <Chip color="success" label="Miền Bắc" />
-                    <Chip color="success" label="Miền Nam" />
+                    <Chip color="success" label="Hà Nội" variant="outlined"/>
+                    <Chip color="success" label="Hồ Chí Minh" variant="outlined" />
+                    <Chip color="success" label="Miền Bắc" variant="outlined" />
+                    <Chip color="success" label="Miền Nam" variant="outlined" />
                     <IconButton>
-                        <ArrowForwardIosIcon />
+                        <ArrowForwardIosIcon fontSize="small" color="success"/>
                     </IconButton>
                 </Box>
                 <Grid container sx={{ width: "100%", mt: 4, justifyContent: "center" }} rowGap={2}>

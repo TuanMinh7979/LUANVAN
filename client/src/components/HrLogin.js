@@ -17,9 +17,10 @@ import {
 import LockIcon from "@mui/icons-material/Lock";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Image from "mui-image";
-import logo from "../assets/logo_banner.png";
+import logo from "../assets/logo_business_white.png";
+import banner from '../assets/banner_business.png'
 import env from "react-dotenv";
-export default function Login() {
+export default function HrLogin() {
 
     const dispatch = useDispatch();
     let navigate = useNavigate()
@@ -53,8 +54,8 @@ export default function Login() {
 
         });
     };
-    if (user.isLogin && user.user.role == 'candidate') {
-        navigate('/')
+    if (user.isLogin && user.user.role == 'rec') {
+        navigate('/hrhub')
     }
     return (
         <>
@@ -79,15 +80,15 @@ export default function Login() {
                         <Box>
                             <Image
                                 sx={{
-                                    maxWidth: "300px",
-                                    maxHeight: "300px"
+                                    maxWidth: "140px",
+                                    maxHeight: "140px"
                                 }}
                                 src={logo}
                                 fit="cover"
                                 duration={0}
                             />
                         </Box>
-                        <Box sx={{ width: "80%", marginTop: "5%", mb: 4 }}>
+                        <Box sx={{ width: "80%", mb: 4 }}>
                             <Typography
                                 variant="h6"
                                 sx={{
@@ -174,7 +175,7 @@ export default function Login() {
                                 <Typography variant="p">
                   Bạn chưa có tài khoản{" "}
                                     <Link
-                                        href="/register"
+                                        href="/hrsignup"
                                         underline="none"
                                         sx={{ color: "#4caf50", fontWeight: "650" }}
                                     >
@@ -204,10 +205,10 @@ export default function Login() {
                         <Box>
                             <Image
                                 sx={{
-                                    maxWidth: "70%",
-                                    minHeight: "70%"
+                                    maxWidth: "80%",
+                                    minHeight: "80%"
                                 }}
-                                src={imageLink}
+                                src={banner}
                                 fit="cover"
                                 duration={0}
                             ></Image>

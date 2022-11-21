@@ -19,7 +19,6 @@ export default function RichText({ editorState, setEditorState }) {
     function toggleRichUtil(util) {
         switch (util) {
             case 'BOLD':
-                console.log(util)
                 setActiveUtils({
                     ...activeUtils,
                     bold: !activeUtils.bold

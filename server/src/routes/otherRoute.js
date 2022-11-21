@@ -11,7 +11,7 @@ router.post("/updateimg", async (req, res, next) => {
   try {
     //await a new promise
 
-    const upRs = await uploadImage(req.body.data);
+    const upRs = await uploadImage(req.body.data, "ifo999");
 
     if (upRs && upRs.secure_url) {
       return res.status(200).json({ status: 200, data: upRs.secure_url });

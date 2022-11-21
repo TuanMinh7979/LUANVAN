@@ -28,7 +28,7 @@ window.env = {
   "HOMEPATH": "\\Users\\ivs",
   "INIT_CWD": "D:\\My\\basicapp\\client",
   "JAVA_HOME": "C:\\Users\\ivs\\jdk1.8.0_201\\jdk1.8.0_201",
-  "JOBS": "Công nghệ thông tin, Xây dựng, Cơ khí, Kỹ thuật, Dệt may, Điện tử, Công nghệ cao, Công nghệ Ô tô, Công nhân xây dựng",
+  "JOBS": "Công nghệ thông tin, Kế toán, Marketing Xây dựng, Cơ khí, Kỹ thuật, Dệt may, Điện tử, Công nghệ cao, Công nghệ Ô tô, Công nhân xây dựng",
   "JOBTYPES": "Toàn thời gian, bán thời gian, thời vụ, Remote - Làm từ xa",
   "LANG": "en_US.UTF-8",
   "LEVEL": "Nhân viên, Trưởng nhóm, Trưởng/Phó phòng, Quản lý / Giám sát, Tổng chi nhánh, Giám đốc, Thực tập sinh",

@@ -13,9 +13,9 @@ export default function Jobs() {
     const MenuProps = {
         PaperProps: {
             style: {
-                maxHeight: 200,
-            },
-        },
+                maxHeight: 200
+            }
+        }
     };
     const data = {
         jobTile: "Chuyên Viên Quan Hệ Khách Hàng Tại Hà Nội ",
@@ -31,17 +31,17 @@ export default function Jobs() {
     }
     const navigate = useNavigate()
     const [searchParams] = useSearchParams()
-    function getParams(){
+    function getParams() {
         return {
             job: searchParams.get('job'),
             location: searchParams.get('location'),
             level: searchParams.get('level'),
-            gross: searchParams.get('gross'),    
+            gross: searchParams.get('gross')
         }
     }
-    useEffect(()=>{
+    useEffect(() => {
         console.log(getParams())
-    },[])
+    }, [])
     return (<>
         <Container>
             {/* seacrch control */}

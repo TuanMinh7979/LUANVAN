@@ -1,9 +1,9 @@
 import { createError } from "./errorUtil.js";
 import cloudinary from "./cloudinary.js";
-export const uploadImage = async (imageStr) => {
+export const uploadImage = async (imageStr, preset) => {
   try {
     let rs = await cloudinary.uploader.upload(imageStr, {
-      upload_preset: "ifo999",
+      upload_preset: preset,
     });
     console.log("_________________RS", rs);
     return rs;

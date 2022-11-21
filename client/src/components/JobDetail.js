@@ -186,7 +186,7 @@ export default function JobDetail() {
                             <Button
                                 variant="contained"
                                 color="success"
-                                onClick={()=>{
+                                onClick={() => {
                                     navigate({
                                         pathname: '/jobs',
                                         search: `?${createSearchParams(searchParams)}`
@@ -224,13 +224,15 @@ export default function JobDetail() {
                     >
                         <Box>
                             <Image
-                                sx={{
-                                    maxWidth: 110,
-                                    maxHeight: 110,
-                                    borderRadius: "50%"
-                                }}
                                 src={logo}
+                                sx={{
+                                    borderRadius: '100%',
+                                    border: '1px solid gray'
+                                }}
+                                width="100px"
+                                height="100px"
                                 duration={0}
+                                fit="scale-down"
                             ></Image>
                         </Box>
                         <Box
