@@ -39,8 +39,8 @@ export default function Company({ user }) {
     const [grossType, setGrossType] = useState(false)
     const [currency, setCurrency] = useState()
 
-    const sendPostData = function () {
-        axios.post("/jobpost", data)
+    const sendCompanyData = function () {
+        axios.post("/company", data)
             .then((res) => {
                 console.log(res)
             })
@@ -292,8 +292,7 @@ export default function Company({ user }) {
                     size="small"
                     variant="contained"
                     onClick={() => {
-                        console.log(data)
-                        // sendPostData()
+                        sendCompanyData()
                     }}
                 >Cập nhật</Button>
             </Grid>
