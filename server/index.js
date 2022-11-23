@@ -8,7 +8,7 @@ import categoryRoute from "./src/routes/category.js";
 import jobPostRoute from "./src/routes/jobPost.js";
 import companyRoute from "./src/routes/company.js";
 
-import candidateRoute from "./src/routes/candidates.js";
+import candidateRoute from "./src/routes/candidate.js";
 
 import otherRoute from "./src/routes/otherRoute.js";
 import cookieParser from "cookie-parser";

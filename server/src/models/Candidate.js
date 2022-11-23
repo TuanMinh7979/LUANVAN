@@ -5,7 +5,7 @@ const ProfileSchema = mongoose.Schema({
   major: {
     type: String,
   },
-  skills: { type: [string] },
+  skills: { type: [String] },
   location: {
     type: String,
   },
