@@ -13,6 +13,8 @@ import HrHub from "./components/HrHub";
 import JobDetail from "./components/JobDetail";
 import HrRegister from "./components/HrRegister";
 import HrLogin from "./components/HrLogin";
+import Company from "./components/Company";
+import UpdateProfile from "./components/UpdateProfile";
 function App() {
   return (
     <>
@@ -55,6 +57,16 @@ function App() {
                 <>
                   <Header />
                   <JobDetail />
+                  <Footer />
+                </>
+              }
+            />
+             <Route
+              path="updateprofile"
+              element={
+                <>
+                  <Header />
+                  <UpdateProfile />
                   <Footer />
                 </>
               }
