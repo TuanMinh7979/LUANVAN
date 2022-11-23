@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 const ProfileSchema = mongoose.Schema({
-  age: { type: Number },
   education: { type: String },
   major: {
     type: String,
@@ -18,6 +17,10 @@ const ProfileSchema = mongoose.Schema({
 });
 const CandidateSchema = new Schema(
   {
+    age: { type: Number },
+    dob: {
+      type: Date,
+    },
     email: { type: String },
     name: { type: String },
     address: { type: String },

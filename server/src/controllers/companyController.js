@@ -1,7 +1,7 @@
 
 import { createError } from "../utils/errorUtil.js";
 import { uploadImage } from "../utils/uploadUtil.js";
-import { filterNotObj } from "../utils/commonUtil.js";
+import { filterSkipField } from "../utils/commonUtil.js";
 import Company from "../models/Company.js";
 //
 
@@ -18,7 +18,7 @@ export const getAllCompany = async (req, res, next) => {
 export const createCompany = async (req, res, next) => {
     try {
         let logoBase64 = req.body.logo;
-        let notLogoFCom = filterNotObj(req.body, "logo");
+        let notLogoFCom = filterSkipField(req.body, "logo");
 
         const upRs = await uploadImage(logoBase64, "com999");
         const logo = upRs.secure_url;

@@ -3,10 +3,10 @@ import { createError } from "../utils/errorUtil.js";
 //
 import Candidate from "../models/Candidate.js";
 import Rec from "../models/Rec.js";
-import { filterNotObj } from "../utils/commonUtil.js";
+import { filterSkipField } from "../utils/commonUtil.js";
 
 export const updateUser = async (req, res, next) => {
-  req.body = filterNotObj(req.body, "roleInp", "passwordInp");
+  req.body = filterSkipField(req.body, "roleInp", "passwordInp", "profile");
   try {
     const {
       usernameInp,

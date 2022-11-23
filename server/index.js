@@ -6,7 +6,9 @@ import userRoute from "./src/routes/user.js";
 import categoryRoute from "./src/routes/category.js";
 // import jobRoute from "./src/routes/job.js";
 import jobPostRoute from "./src/routes/jobPost.js";
-import companyRoute from "./src/routes/company.js"
+import companyRoute from "./src/routes/company.js";
+
+import candidateRoute from "./src/routes/candidates.js";
 
 import otherRoute from "./src/routes/otherRoute.js";
 import cookieParser from "cookie-parser";
@@ -39,6 +41,9 @@ app.use("/api/category", categoryRoute);
 app.use("/api/company", companyRoute);
 // app.use("/api/job", jobRoute);
 app.use("/api/jobpost", jobPostRoute);
+
+//candidate update profile
+app.use("/api/candidate/profile", candidateRoute);
 
 app.use("/api/other", otherRoute);
 
