@@ -43,7 +43,7 @@ app.use("/api/company", companyRoute);
 app.use("/api/jobpost", jobPostRoute);
 
 //candidate update profile
-app.use("/api/candidate/profile", candidateRoute);
+app.use("/api/candidate", candidateRoute);
 
 app.use("/api/other", otherRoute);
 

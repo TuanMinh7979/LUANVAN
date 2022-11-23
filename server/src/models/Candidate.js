@@ -9,7 +9,7 @@ const ProfileSchema = mongoose.Schema({
   location: {
     type: String,
   },
-  
+
 
 
 });

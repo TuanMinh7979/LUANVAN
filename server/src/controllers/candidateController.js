@@ -1,20 +1,20 @@
 import { createError } from "../utils/errorUtil.js";
 import Candidate from "../models/Candidate.js";
 export const updateCandidateProfile = async (req, res, next) => {
-  const userToUpdate = await User.findById(req.params.id);
-  if (userToUpdate === null)
-    return next(createError(404, "Khong tim thay User roi"));
+
+
   try {
     const updatedCandidate = await Candidate.findOneAndUpdate(
-      { userId: userToUpdate._id },
+      { id: req.param.id },
       {
         $set: { profile: req.body },
       },
       { new: true }
       //return updated model
     );
-
-    return res.status(200).json({ ...updatedProfile._doc });
+    if (updatedCandidate === null)
+      return next(createError(404, "Khong tim thay User roi"));
+    return res.status(200).json({ ...updatedCandidate._doc });
   } catch (e) {
     next(e);
   }

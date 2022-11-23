@@ -10,5 +10,5 @@ const router = express.Router();
 //check is this app token 
 router.use(checkToken);
 //check is token of logged user
-router.put("/:id", checkUser, updateCandidateProfile);
+router.put("/:id/profile", checkUser, updateCandidateProfile);
 export default router;
