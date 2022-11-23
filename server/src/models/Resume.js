@@ -2,51 +2,49 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const ContactInfoSchema = mongoose.Schema({
-  name: String,
-  major: String,
-  dob: {
-    type: Date,
-  },
+  fullName: String,
+  title: String,
+  dob: String,
   gender: {
     type: String,
     enum: ["male", "female"],
   },
-  phone: {
-    type: String,
-  },
-  address: {
-    type: String,
-  },
-  social: {
-    type: String,
-  },
+  phone: String,
+
+  address: String,
+
+  avatar: String,
+  email: String,
+
+  website: String,
 });
+
 const Education = mongoose.Schema({
   school: String,
-  majors: String,
+  major: String,
 });
-const WorkExperience = mongoose.Schema({
-  startDate: Date,
-  endDate: Date,
+const Experience = mongoose.Schema({
+  from: String,
+  to: String,
   companyName: String,
   position: String,
   desc: String,
 });
 const Activities = mongoose.Schema({
-  startDate: Date,
-  endDate: Date,
-  orgName: String,
-  position: String,
+  role: String,
+  from: String,
+  to: String,
+  organizationName: String,
   desc: String,
 });
 
 const ResumeSchema = new Schema(
   {
-    contactInfo: ContactInfoSchema,
+    contact: ContactInfoSchema,
     interest: [String],
     objective: String,
     education: [Education],
-    workExperience: [WorkExperience],
+    experience: [Experience],
     activities: [Activities],
     skills: [{}],
     awards: [{}],
