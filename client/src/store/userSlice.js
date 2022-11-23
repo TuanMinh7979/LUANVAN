@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 export const userSlice = createSlice({
     name: 'user',
     initialState:{
-        user: "Người dùng",
-        isLogin: false
+        user: JSON.parse(sessionStorage.getItem('user')),
+        isLogin: sessionStorage.getItem('user')?true:false
     },
     reducers:{
         setUserLogin: (state, action) => {
@@ -15,7 +15,7 @@ export const userSlice = createSlice({
         setUserLogout: (state, action) => {
             state.user = "Người dùng"
             state.isLogin = false
-            console.log(state)
+            sessionStorage.clear()
         }
     }
 })

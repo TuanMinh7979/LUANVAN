@@ -13,9 +13,10 @@ import HrHub from "./components/HrHub";
 import JobDetail from "./components/JobDetail";
 import HrRegister from "./components/HrRegister";
 import HrLogin from "./components/HrLogin";
-import Company from "./components/Company";
+import {  useSelector } from 'react-redux'
 import UpdateProfile from "./components/UpdateProfile";
 function App() {
+  const user = useSelector(state=>state.user)
   return (
     <>
       <BrowserRouter>
@@ -61,12 +62,12 @@ function App() {
                 </>
               }
             />
-             <Route
-              path="updateprofile"
+            <Route
+              path="updateprofile/*"
               element={
                 <>
                   <Header />
-                  <UpdateProfile />
+                  <UpdateProfile user={user} />
                   <Footer />
                 </>
               }
@@ -79,7 +80,7 @@ function App() {
             <Route path="test" element={<RichText />} />
           </Route>
 
- 
+
         </Routes>
       </BrowserRouter>
     </>

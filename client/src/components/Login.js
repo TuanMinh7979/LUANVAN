@@ -47,6 +47,7 @@ export default function Login() {
                     message: res.data.message
                 });
             } else {
+                sessionStorage.setItem("user",JSON.stringify(res.data.data))
                 const action = setUserLogin(res.data.data, true)
                 dispatch(action)
             }
