@@ -5,21 +5,23 @@ const ProfileSchema = mongoose.Schema({
   major: {
     type: String,
   },
-  skills: { type: [{}] },
+  skills: { type: [string] },
   location: {
     type: String,
   },
-  gender: {
-    type: String,
-    enum: ["male", "female"],
-  },
-  experience: { type: [{}] },
+  
+
+
 });
 const CandidateSchema = new Schema(
   {
     age: { type: Number },
     dob: {
       type: Date,
+    },
+    gender: {
+      type: String,
+      enum: ["male", "female"],
     },
     email: { type: String },
     name: { type: String },
