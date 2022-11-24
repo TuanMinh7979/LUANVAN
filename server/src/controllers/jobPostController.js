@@ -71,7 +71,7 @@ export const getAllJobPost = async (req, res, next) => {
       },
     ]);
 
-    console.log(a);
+    
     res.status(200).json(a);
   } catch (err) {
     next(err);
@@ -80,8 +80,8 @@ export const getAllJobPost = async (req, res, next) => {
 
 /////test
 export const testA = async (req, res, next) => {
-  console.log(req.query);
   try {
+    console.log("_________________TEST");
     const a = await JobPost.aggregate([
       { $match: req.query },
       {
@@ -111,7 +111,6 @@ export const getAllJobPost1 = async (req, res, next) => {
         .sort()
         .paginate();
 
-      console.log(",,,,,,", queryTool.query);
       rs = await queryTool.query;
     } else {
       rs = await JobPost.find();

@@ -15,6 +15,7 @@ class QueryTool {
       (match) => `$${match}`
     );
 
+    // console.log("--------------1", queryStr);
     this.query.find(JSON.parse(queryStr));
 
     if (this.queryString.fields) {
