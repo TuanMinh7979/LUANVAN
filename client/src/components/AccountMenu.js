@@ -12,11 +12,11 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
+import WorkIcon from '@mui/icons-material/Work';
 import Logout from '@mui/icons-material/Logout';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-
+import NoteAltIcon from '@mui/icons-material/NoteAlt';
 export default function AccountMenu() {
     const user = useSelector((state) => state.user.user)
     const dispatch = useDispatch()
@@ -107,17 +107,19 @@ export default function AccountMenu() {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 <MenuItem >
-                    <Avatar /> {user.username}
+                    <Avatar fontSize="small"  /> {user.username}
                 </MenuItem>
-                <MenuItem>
-                    <Avatar /> Hồ sơ & CV của bạn
-                </MenuItem>
-                <Divider />
                 <MenuItem>
                     <ListItemIcon>
-                        <PersonAdd fontSize="small" />
+                        <NoteAltIcon fontSize="small" />
                     </ListItemIcon>
-                    Thêm tài khoản
+                    Hồ sơ & CV của bạn
+                </MenuItem>
+                <MenuItem>
+                    <ListItemIcon>
+                        <WorkIcon fontSize="small" />
+                    </ListItemIcon>
+                    ViecLamNhanh for business   
                 </MenuItem>
                 {/* <MenuItem>
                     <ListItemIcon>
@@ -125,6 +127,7 @@ export default function AccountMenu() {
                     </ListItemIcon>
                     Settings
                 </MenuItem> */}
+                 <Divider />
                 <MenuItem onClick={logOut}>
                     <ListItemIcon>
                         <Logout fontSize="small" />

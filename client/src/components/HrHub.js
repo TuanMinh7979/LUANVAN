@@ -40,10 +40,9 @@ import { jobCats } from "../store/selectData.js";
 
 const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
   "&:hover": {
-    background: `#2B332C`,
-    color: "white",
+    color: theme.palette.success.light,
     "& .MuiListItemIcon-root": {
-      color: "white",
+      color: theme.palette.success.light,
     },
   },
 }));
@@ -642,7 +641,7 @@ function JobPost({ user }) {
             variant="contained"
             onClick={() => {
               console.log(data);
-              sendPostData();
+              // sendPostData();
             }}
           >
             Đăng tin
@@ -653,8 +652,16 @@ function JobPost({ user }) {
   );
 }
 export default function HrHub() {
+  const navigate = useNavigate();
+  function navigateTo(location) {
+    navigate(location);
+  }
   const user = useSelector((state) => state.user);
-
+  useEffect(()=>{
+    if(user.user.role!="rec"){
+      navigateTo("/hrlogin")
+    } 
+  })
   return (
     <>
       <Grid container sx={{ background: "#f1f2f6" }}>

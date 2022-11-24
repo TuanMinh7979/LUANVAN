@@ -13,10 +13,11 @@ import HrHub from "./components/HrHub";
 import JobDetail from "./components/JobDetail";
 import HrRegister from "./components/HrRegister";
 import HrLogin from "./components/HrLogin";
-import {  useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import UpdateProfile from "./components/UpdateProfile";
+import CVManager from "./components/CVManager";
 function App() {
-  const user = useSelector(state=>state.user)
+  const user = useSelector(state => state.user)
   return (
     <>
       <BrowserRouter>
@@ -68,6 +69,16 @@ function App() {
                 <>
                   <Header />
                   <UpdateProfile user={user} />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="cvmanager"
+              element={
+                <>
+                  <Header />
+                  <CVManager user={user} />
                   <Footer />
                 </>
               }

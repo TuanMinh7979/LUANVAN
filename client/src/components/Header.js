@@ -13,6 +13,7 @@ import businessLogo from '../assets/logo_business.png'
 import AccountMenu from "./AccountMenu";
 export default function Header({ forHr }) {
     const user = useSelector((state) => state.user)
+    console.log(user)
     const navigate = useNavigate()
     const theme = createTheme({
         palette: {
