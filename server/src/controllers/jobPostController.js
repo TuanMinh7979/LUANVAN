@@ -43,7 +43,8 @@ export const deleteJobPost = async (req, res, next) => {
 export const getJobPost = async (req, res, next) => {
   try {
     const jobPost = await JobPost.findById(req.params.id);
-    if (jobPost === null) return next(createError(404, "Khong tim thay jobPost"));
+    if (jobPost === null)
+      return next(createError(404, "Khong tim thay jobPost"));
 
     res.status(200).json(jobPost);
   } catch (err) {
@@ -59,6 +60,49 @@ export const getJobPost = async (req, res, next) => {
 
 export const getAllJobPost = async (req, res, next) => {
   try {
+    const a = await JobPost.aggregate([
+      {
+        $lookup: {
+          from: "companies",
+          localField: "companyId",
+          foreignField: "_id",
+          as: "company",
+        },
+      },
+    ]);
+
+    console.log(a);
+    res.status(200).json(a);
+  } catch (err) {
+    next(err);
+  }
+};
+
+/////test
+export const testA = async (req, res, next) => {
+  console.log(req.query);
+  try {
+    const a = await JobPost.aggregate([
+      { $match: req.query },
+      {
+        $lookup: {
+          from: "companies",
+          localField: "companyId",
+          foreignField: "_id",
+          as: "company",
+        },
+      },
+    ]);
+
+    console.log(a);
+    res.status(200).json(a);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const getAllJobPost1 = async (req, res, next) => {
+  try {
     let rs;
 
     if (Object.keys(req.query).length >= 0) {
@@ -67,6 +111,7 @@ export const getAllJobPost = async (req, res, next) => {
         .sort()
         .paginate();
 
+      console.log(",,,,,,", queryTool.query);
       rs = await queryTool.query;
     } else {
       rs = await JobPost.find();
