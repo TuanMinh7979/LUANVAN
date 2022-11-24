@@ -71,7 +71,6 @@ export const getAllJobPost = async (req, res, next) => {
       },
     ]);
 
-    
     res.status(200).json(a);
   } catch (err) {
     next(err);
@@ -92,6 +91,9 @@ export const testA = async (req, res, next) => {
           as: "company",
         },
       },
+     
+      { $skip: 1 },
+      { $limit: 1 },
     ]);
 
     console.log(a);
