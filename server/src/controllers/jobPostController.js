@@ -82,7 +82,7 @@ export const testA = async (req, res, next) => {
   try {
     console.log("_________________TEST");
     const a = await JobPost.aggregate([
-      { $match: req.query },
+      { $match: {"amount":{"$lt":"2"}} },
       {
         $lookup: {
           from: "companies",

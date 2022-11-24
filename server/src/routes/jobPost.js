@@ -7,7 +7,8 @@ import {
   updateJobPost,
   deleteJobPost,
   getJobPost,
-  testA
+  testA,
+  getAllJobPost1
 } from "../controllers/jobPostController.js";
 
 const router = express.Router();
@@ -22,7 +23,7 @@ router.delete("/:id", deleteJobPost);
 
 router.get("/:id", getJobPost);
 
-router.get("/", getAllJobPost);
+router.get("/", getAllJobPost1);
 
 
 
