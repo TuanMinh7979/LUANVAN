@@ -11,6 +11,7 @@ const JobPostSchema = new Schema(
     jobType: {
       type: String,
     },
+
     deadline: { type: Date },
     gender: {
       type: String,
@@ -52,6 +53,12 @@ const JobPostSchema = new Schema(
     },
     skillRequired: {
       type: String,
+    },
+
+    companyId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Company",
+      required: true,
     },
   },
 
