@@ -3,7 +3,7 @@ window.env = {
   "ANDROID_SDK_ROOT": "C:\\Users\\ivs\\AppData\\Local\\Android\\Sdk",
   "APPDATA": "C:\\Users\\ivs\\AppData\\Roaming",
   "AUTH": "http://localhost:8800/api/auth/",
-  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_9920_NCKUHWTWJTTLAIHK",
+  "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_15904_YNXTUHHETCTGFQJQ",
   "COLOR": "1",
   "COLORTERM": "truecolor",
   "CommonProgramFiles": "C:\\Program Files\\Common Files",
