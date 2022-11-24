@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } from "draft-js";
 import "draft-js/dist/Draft.css";
 import createToolbarPlugin from '@draft-js-plugins/static-toolbar';
@@ -8,7 +8,6 @@ import FormatUnderlinedIcon from '@mui/icons-material/FormatUnderlined';
 import FormatBoldIcon from '@mui/icons-material/FormatBold';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 export default function RichText({ editorState, setEditorState }) {
-    const [editorState2, setEditorState2] = useState(() => EditorState.createEmpty())
     const staticToolbarPlugin = createToolbarPlugin();
     const [activeUtils, setActiveUtils] = useState({
         bold: false,
@@ -132,6 +131,11 @@ export default function RichText({ editorState, setEditorState }) {
     );
 }
 export const RichTextDisplay = function ({ data }) {
+    useEffect(()=>{
+        if(!data){
+            data = null
+        }
+    })
     const [editorState, setEditorState] = useState(() =>
         EditorState.createWithContent(convertFromRaw(data))
     );

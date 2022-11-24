@@ -13,7 +13,6 @@ import axios from 'axios'
 import SchoolIcon from '@mui/icons-material/School';
 import FlagIcon from '@mui/icons-material/Flag';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
-import background from '../assets/background.jpg'
 export default function UpdateProfile({ user }) {
     const imageRef = useRef()
     const navigate = useNavigate()
@@ -44,8 +43,6 @@ export default function UpdateProfile({ user }) {
         certificate: JSON.stringify(convertToRaw(certificate.getCurrentContent()))
 
     })
-    const [grossType, setGrossType] = useState(false)
-    const [currency, setCurrency] = useState()
     const upDateProfileData = function () {
         axios.put(`/candidate/${user.user._id}/profile`, data)
             .then((res) => {
@@ -60,8 +57,14 @@ export default function UpdateProfile({ user }) {
         if (!user.isLogin && user.user.role != "rec") {
             navigateTo('/login')
         }
-        console.log(user.user._id)
-    })
+        setData({
+            ...data,
+            literacy: JSON.stringify(convertToRaw(literacy.getCurrentContent())),
+            target: JSON.stringify(convertToRaw(target.getCurrentContent())),
+            activity: JSON.stringify(convertToRaw(activity.getCurrentContent())),
+            certificate: JSON.stringify(convertToRaw(certificate.getCurrentContent()))    
+        })
+    },[literacy,target,activity,certificate])
     return (<>
         <Grid
             sx={{
@@ -303,7 +306,7 @@ export default function UpdateProfile({ user }) {
                         variant="contained"
                         onClick={() => {
                             console.log(data)
-                            upDateProfileData()
+                            // upDateProfileData()
                         }}
                     >Cập nhật</Button>
                 </Grid>
