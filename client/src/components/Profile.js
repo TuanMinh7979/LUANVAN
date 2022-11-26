@@ -9,7 +9,7 @@ import SchoolIcon from '@mui/icons-material/School';
 import { useReactToPrint } from 'react-to-print'
 import { RichTextDisplay } from "./RichText"
 import fakedata from '../assets/test.json'
-export default function CVManager({ user }) {
+export default function Profile({ user }) {
   const ref = useRef()
   const theme = createTheme()
   const handlePrint = useReactToPrint({
@@ -25,12 +25,12 @@ export default function CVManager({ user }) {
     if (user.user.role != "candidate") {
       navigateTo("/")
     }
+    handlePrint()
   })
 
   return (
     <Grid
       container
-      ref={ref}
       sx={{
         justifyContent: 'center',
         background: "#f1f2f7",
@@ -42,6 +42,7 @@ export default function CVManager({ user }) {
         container
         component={Paper}
         sx={{
+          mt:3,
           rowGap: 3,
           justifyContent: 'center',
           p: 3
@@ -66,12 +67,12 @@ export default function CVManager({ user }) {
           }}
         >
           <Grid
-            xs={2}
+            xs={3}
           >
             <Image
               src={logo}
-              width="200px"
-              height="200px"
+              width="160px"
+              height="160px"
               duration={0}
               fit="scale-down"
               sx={{
@@ -86,7 +87,7 @@ export default function CVManager({ user }) {
             <Typography variant="p">Web developer</Typography>
           </Grid>
           <Grid
-            xs={3}
+            xs={4}
           >
             <Box
               sx={{

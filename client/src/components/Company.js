@@ -52,6 +52,10 @@ export default function Company({ user }) {
         if (!user.isLogin && user.user.role != "rec") {
             navigateTo('/hrlogin')
         }
+        setData({
+            ...data,
+            introduce: JSON.stringify(convertToRaw(introduce.getCurrentContent()))
+        })
     })
     return (<>
         <Grid

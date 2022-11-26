@@ -13,6 +13,7 @@ import axios from 'axios'
 import SchoolIcon from '@mui/icons-material/School';
 import FlagIcon from '@mui/icons-material/Flag';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 export default function UpdateProfile({ user }) {
     const imageRef = useRef()
     const navigate = useNavigate()
@@ -29,6 +30,9 @@ export default function UpdateProfile({ user }) {
     const [certificate, setCertificate] = useState(() =>
         EditorState.createEmpty()
     );
+    const [aboutMe, setAboutMe] = useState(() =>
+        EditorState.createEmpty()
+    );
     const [data, setData] = useState({
         fullname: '',
         dob: '',
@@ -40,7 +44,8 @@ export default function UpdateProfile({ user }) {
         literacy: JSON.stringify(convertToRaw(literacy.getCurrentContent())),
         target: JSON.stringify(convertToRaw(target.getCurrentContent())),
         activity: JSON.stringify(convertToRaw(activity.getCurrentContent())),
-        certificate: JSON.stringify(convertToRaw(certificate.getCurrentContent()))
+        certificate: JSON.stringify(convertToRaw(certificate.getCurrentContent())),
+        aboutMe: JSON.stringify(convertToRaw(aboutMe.getCurrentContent())),
 
     })
     const upDateProfileData = function () {
@@ -62,7 +67,8 @@ export default function UpdateProfile({ user }) {
             literacy: JSON.stringify(convertToRaw(literacy.getCurrentContent())),
             target: JSON.stringify(convertToRaw(target.getCurrentContent())),
             activity: JSON.stringify(convertToRaw(activity.getCurrentContent())),
-            certificate: JSON.stringify(convertToRaw(certificate.getCurrentContent()))    
+            certificate: JSON.stringify(convertToRaw(certificate.getCurrentContent())),
+            aboutMe: JSON.stringify(convertToRaw(aboutMe.getCurrentContent())),    
         })
     },[literacy,target,activity,certificate])
     return (<>
@@ -300,13 +306,17 @@ export default function UpdateProfile({ user }) {
                         <Chip icon={<WorkspacePremiumIcon />} label="Chứng chỉ" color="success" />
                         <RichText editorState={certificate} setEditorState={setCertificate} />
                     </Grid>
+                    <Grid item xs={12} sx={{ mb: 2 }}>
+                        <Chip icon={<SentimentVerySatisfiedIcon />} label="Giới thiệu về mình" color="success" />
+                        <RichText editorState={certificate} setEditorState={setCertificate} />
+                    </Grid>
                     <Button
                         sx={{ mt: 1, minWidth: 200, mr: 'auto' }}
                         size="small"
                         variant="contained"
                         onClick={() => {
                             console.log(data)
-                            // upDateProfileData()
+                            upDateProfileData()
                         }}
                     >Cập nhật</Button>
                 </Grid>

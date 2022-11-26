@@ -15,7 +15,8 @@ import HrRegister from "./components/HrRegister";
 import HrLogin from "./components/HrLogin";
 import { useSelector } from 'react-redux'
 import UpdateProfile from "./components/UpdateProfile";
-import CVManager from "./components/CVManager";
+import Profile from "./components/Profile";
+import ManageCV from "./components/ManageCV";
 function App() {
   const user = useSelector(state => state.user)
   return (
@@ -74,11 +75,21 @@ function App() {
               }
             />
             <Route
+              path="myprofile"
+              element={
+                <>
+                  <Header />
+                  <Profile user={user} />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
               path="cvmanager"
               element={
                 <>
                   <Header />
-                  <CVManager user={user} />
+                  <ManageCV user={user} />
                   <Footer />
                 </>
               }

@@ -17,7 +17,12 @@ import Logout from '@mui/icons-material/Logout';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import NoteAltIcon from '@mui/icons-material/NoteAlt';
+import { useNavigate } from 'react-router-dom';
 export default function AccountMenu() {
+    const navigate = useNavigate()
+    function navigateTo(location) {
+        navigate(location)
+    }
     const user = useSelector((state) => state.user.user)
     const dispatch = useDispatch()
     const logOut = function() {
@@ -109,17 +114,17 @@ export default function AccountMenu() {
                 <MenuItem >
                     <Avatar fontSize="small"  /> {user.username}
                 </MenuItem>
-                <MenuItem>
+                <MenuItem onClick={()=>navigateTo("/myprofile")}>
                     <ListItemIcon>
                         <NoteAltIcon fontSize="small" />
                     </ListItemIcon>
-                    Hồ sơ & CV của bạn
+                    Hồ sơ của bạn
                 </MenuItem>
-                <MenuItem>
+                <MenuItem onClick={()=>navigateTo("/hrlogin")}>
                     <ListItemIcon>
                         <WorkIcon fontSize="small" />
                     </ListItemIcon>
-                    ViecLamNhanh for business   
+                    ViecLamNhanh for Business   
                 </MenuItem>
                 {/* <MenuItem>
                     <ListItemIcon>

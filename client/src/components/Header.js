@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux"
 import { ThemeProvider } from "@mui/system";
-import { createTheme } from "@mui/material";
+import { createTheme, Dialog, List, ListItem, ListItemText } from "@mui/material";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,9 +11,13 @@ import Image from "mui-image";
 import logo from "../assets/logo.png"
 import businessLogo from '../assets/logo_business.png'
 import AccountMenu from "./AccountMenu";
+import { useState } from "react";
+
+
 export default function Header({ forHr }) {
     const user = useSelector((state) => state.user)
-    console.log(user)
+    const [open, setOpen] = useState(false)
+    const handleOpen = () =>{setOpen(true), console.log("OK open")}
     const navigate = useNavigate()
     const theme = createTheme({
         palette: {
@@ -46,11 +50,11 @@ export default function Header({ forHr }) {
             }} variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer" }}>
                 Việc làm
             </Typography>
-            <Typography variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer" }}>
-                Hồ sơ & CV
+            <Typography onClick={handleOpen} variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer" }}>
+                Quản lý CV của bạn
             </Typography>
             <Typography variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer", flexGrow: 1 }}>
-                Công cụ
+                Chỉnh sửa hồ sơ
             </Typography>
         </>
         <>
@@ -136,8 +140,8 @@ export default function Header({ forHr }) {
         <>
             <ThemeProvider theme={theme}>
                 <Box sx={{ flexGrow: 2 }}>
-                    <AppBar position="sticky" color={user.user.role == 'rec'?"darklord":"deepblue"}>
-                        {user.user.role == 'rec'?hrToolBar:defaultToolBar}
+                    <AppBar position="sticky" color={user.user.role == 'rec' ? "darklord" : "deepblue"}>
+                        {user.user.role == 'rec' ? hrToolBar : defaultToolBar}
                     </AppBar>
                 </Box>
             </ThemeProvider>
