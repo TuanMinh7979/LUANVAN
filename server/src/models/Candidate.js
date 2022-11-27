@@ -23,9 +23,8 @@ const ProfileSchema = mongoose.Schema({
 const CandidateSchema = new Schema(
   {
     //contact info
-    fullName: String,
-    title: String,
-    dob: String,
+    name: String,
+    dob: Date,
     gender: {
       type: String,
       enum: ["male", "female"],

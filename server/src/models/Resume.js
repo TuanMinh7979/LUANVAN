@@ -2,13 +2,10 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const ContactInfoSchema = mongoose.Schema({
-  fullName: String,
+  name: String,
   title: String,
   dob: String,
-  gender: {
-    type: String,
-    enum: ["male", "female"],
-  },
+  gender: String,
   phone: String,
   address: String,
   avatar: String,
@@ -26,8 +23,10 @@ const ResumeSchema = new Schema(
     activities: String,
     awards: String,
     skills: String,
-    skillsVal: String,
     certifications: String,
+
+
+    skillsVal: String,
     certificationsVal: String
   },
 
@@ -37,3 +36,5 @@ const ResumeSchema = new Schema(
 
 const Resume = mongoose.model("resumes", ResumeSchema);
 export default Resume;
+
+

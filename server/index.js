@@ -9,6 +9,7 @@ import jobPostRoute from "./src/routes/jobPost.js";
 import companyRoute from "./src/routes/company.js";
 
 import candidateRoute from "./src/routes/candidate.js";
+import resumeRoute from "./src/routes/resume.js";
 
 import otherRoute from "./src/routes/otherRoute.js";
 import cookieParser from "cookie-parser";
@@ -35,7 +36,9 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
+
 app.use("/api/auth", authRoute);
+app.use("/api/resume", resumeRoute);
 app.use("/api/user", userRoute);
 app.use("/api/category", categoryRoute);
 app.use("/api/company", companyRoute);
