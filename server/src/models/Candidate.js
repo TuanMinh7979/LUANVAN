@@ -1,35 +1,43 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 const ProfileSchema = mongoose.Schema({
-  education: { type: String },
-  major: {
-    type: String,
-  },
-  skills: { type: [String] },
-  location: {
-    type: String,
-  },
+  //additional for contact info
+  website: String,
+  //
+  //block
+  interest: String,
+  objective: String,
+  education: String,
+  experience: String,
+  activities: String,
+  awards: String,
+  skills: String,
+  certifications: String,
 
-
-
+  //blockval
+  skillsVal: String,
+  certificationsVal: String    
 });
+
+
 const CandidateSchema = new Schema(
   {
-    age: { type: Number },
-    dob: {
-      type: Date,
-    },
+    //contact info
+    fullName: String,
+    title: String,
+    dob: String,
     gender: {
       type: String,
       enum: ["male", "female"],
     },
-    email: { type: String },
-    name: { type: String },
-    address: { type: String },
-    avatar: { type: String },
+    phone: String,
+    address: String,
+    avatar: String,
+    email: String,
+    
+    age: { type: Number },
+    //one to one
     userId: { type: String, required: true, unique: true },
-    resume: { type: String },
-    phone: { type: String },
     profile: { type: ProfileSchema },
     saveJobs: {
       type: [String],

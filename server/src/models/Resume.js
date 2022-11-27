@@ -10,45 +10,25 @@ const ContactInfoSchema = mongoose.Schema({
     enum: ["male", "female"],
   },
   phone: String,
-
   address: String,
-
   avatar: String,
   email: String,
-
   website: String,
-});
-
-const Education = mongoose.Schema({
-  school: String,
-  major: String,
-});
-const Experience = mongoose.Schema({
-  from: String,
-  to: String,
-  companyName: String,
-  position: String,
-  desc: String,
-});
-const Activities = mongoose.Schema({
-  role: String,
-  from: String,
-  to: String,
-  organizationName: String,
-  desc: String,
 });
 
 const ResumeSchema = new Schema(
   {
     contact: ContactInfoSchema,
-    interest: [String],
+    interest: String,
     objective: String,
-    education: [Education],
-    experience: [Experience],
-    activities: [Activities],
-    skills: [{}],
-    awards: [{}],
-    certifications: [{}],
+    education: String,
+    experience: String,
+    activities: String,
+    awards: String,
+    skills: String,
+    skillsVal: String,
+    certifications: String,
+    certificationsVal: String
   },
 
   //createAt and updateAt

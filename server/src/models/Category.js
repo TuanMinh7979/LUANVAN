@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
-
+//category cua job
 const CategorySchema = new Schema(
   {
     title: { type: String, required: true },
