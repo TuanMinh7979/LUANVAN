@@ -3,17 +3,31 @@ const { Schema } = mongoose;
 
 const RecSchema = new Schema(
   {
-    email: { type: String },
-    name: { type: String },
-    address: { type: String },
+    email: { type: String, required: true },
+    name: { type: String , required: true},
+    address: { type: String, required: true },
+    phone: { type: String, required: true },
+
     avatar: { type: String },
-    userId: { type: String, required: true, unique: true },
-    phone: { type: String },
-    companyName: { type: String },
-    companyId: { type: String },
     saveCvs: {
       type: [String],
     },
+    //luc moi tao thi chua can companyName
+    //companyName se cap nhat sau
+    companyId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Company",
+     
+    },
+
+    userId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+      required: true,
+      unique: true
+    },
+
+
   },
   { timestamps: true }
 );

@@ -4,8 +4,7 @@ const { Schema } = mongoose;
 const JobPostSchema = new Schema(
   {
     jobTitle: { type: String },
-    categoryId: { type: String },
-    categoryName: { type: String },
+
     location: { type: String },
     amount: { type: Number },
     jobType: {
@@ -55,11 +54,24 @@ const JobPostSchema = new Schema(
       type: String,
     },
 
+
+    categoryId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Category",
+      required: true,
+    },
+    recId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Rec",
+      required: true,
+    },
     companyId: {
       type: mongoose.Schema.ObjectId,
       ref: "Company",
       required: true,
     },
+
+
   },
 
   { timestamps: true }

@@ -1,9 +1,23 @@
 import { createError } from "../utils/errorUtil.js";
 import JobPost from "../models/JobPost.js";
 import QueryTool from "../utils/queryTool.js";
+import { getDecodedTokenData } from "../utils/TokenUtils.js";
+
 export const createJobPost = async (req, res, next) => {
   try {
-    const newJobPost = new JobPost(req.body);
+
+    let recId = ""
+    if (req.user) {
+      //use in app
+      recId = req.user.id;
+    } else {
+      //use in postman
+      const decodeTokenData = getDecodedTokenData(req)
+      recId = decodeTokenData.id;
+    }
+
+    let newJobPost = new JobPost({ ...req.body, recId });
+
     await newJobPost.save();
     res.status(200).send("jobpost created successfully");
   } catch (e) {
@@ -52,11 +66,7 @@ export const getJobPost = async (req, res, next) => {
   }
 };
 
-//find all va phan trang
 
-//phan trang thi tham so page va limit
-//filter: age[gt]=10, age bigger than 10, hoac age=-1 tuc la khong lay thong tin age
-//sort : sort=age, sort theo tuoi tang dan hoac sort=-age theo tuoi giam dan
 
 export const getAllJobPost = async (req, res, next) => {
   try {
@@ -77,21 +87,24 @@ export const getAllJobPost = async (req, res, next) => {
   }
 };
 
-/////test
+
+
+// { "$toObjectId": "$userId" }
 export const testA = async (req, res, next) => {
   try {
-    console.log("_________________TEST");
+
     const a = await JobPost.aggregate([
-      { $match: {"amount":{"$lt":"2"}} },
+      { $addFields: { "companyOId": { "$toString": "$companyId" } } },
+      { $match: { "amount": { "$lt": "2" } } },
       {
         $lookup: {
           from: "companies",
-          localField: "companyId",
+          localField: "companyOId",
           foreignField: "_id",
           as: "company",
         },
       },
-     
+
       { $skip: 1 },
       { $limit: 1 },
     ]);

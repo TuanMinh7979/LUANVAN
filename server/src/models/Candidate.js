@@ -35,11 +35,17 @@ const CandidateSchema = new Schema(
     email: String,
     
     age: { type: Number },
-    //one to one
-    userId: { type: String, required: true, unique: true },
     profile: { type: ProfileSchema },
     saveJobs: {
       type: [String],
+    },
+
+     //one to one
+     userId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+      required: true,
+      unique: true
     },
   },
   { timestamps: true }
