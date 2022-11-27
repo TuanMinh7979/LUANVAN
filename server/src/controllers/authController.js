@@ -7,7 +7,7 @@ import Rec from "../models/Rec.js";
 
 export const register = async (req, res, next) => {
   try {
-    
+
     const { usernameInp, passwordInp, roleInp, ...details } = req.body;
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(passwordInp, salt);
@@ -56,7 +56,7 @@ export const login = async (req, res, next) => {
         createError(404, "Sai tên đăng nhập hoặc mật khẩu(username)")
       );
 
-    console.log(".....", req.body);
+
     const isPasswordCorrect = await bcrypt.compare(
       req.body.password,
       user.password
@@ -70,7 +70,17 @@ export const login = async (req, res, next) => {
       { id: user._id, isAdmin: user.isAdmin },
       process.env.JWT_SECRET
     );
-    const { password, isAdmin, ...otherDetail } = user._doc;
+    // const { password, isAdmin, ...otherDetail } = user._doc;
+
+
+    let resUser =  user._doc;
+    if (user.role == "rec") {
+
+      const recDetail = await Rec.findOne({ userId: user.id.toString() });
+      resUser = { ...resUser, detail: recDetail }
+    }
+
+
 
     res
       .status(200)
@@ -78,7 +88,7 @@ export const login = async (req, res, next) => {
         httpOnly: true,
       })
 
-      .send({ data: user, status: 200 });
+      .send({ data: resUser, status: 200 });
     //user nay send ve de luu vao local(dung redux hay react gi do de luu vao localStorage),
   } catch (err) {
     next(err);

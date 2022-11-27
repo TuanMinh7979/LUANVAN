@@ -5,9 +5,8 @@ const CompanySchema = new Schema(
   {
     companyName: {
       type: String,
-     
-    },
 
+    },
     location: { type: String },
     phone: {
       type: String,
@@ -22,7 +21,7 @@ const CompanySchema = new Schema(
       type: String
     },
     members: {
-      type: Number
+      type: String
     },
     logo: { type: String },
 
