@@ -90,7 +90,9 @@ export const login = async (req, res, next) => {
       .send({ data: resUser, status: 200 });
     //user nay send ve de luu vao local(dung redux hay react gi do de luu vao localStorage),
   } catch (err) {
-    next(err);
+    return next(
+      createError(400, "Đăng nhập thất bại")
+    );
   }
 };
 

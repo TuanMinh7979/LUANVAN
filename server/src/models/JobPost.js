@@ -60,16 +60,17 @@ const JobPostSchema = new Schema(
       ref: "Category",
       required: true,
     },
-    recId: {
-      type: mongoose.Schema.ObjectId,
-      ref: "Rec",
-      required: true,
-    },
     companyId: {
       type: mongoose.Schema.ObjectId,
       ref: "Company",
       required: true,
     },
+    recId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Rec",
+      required: true,
+    },
+
 
 
   },

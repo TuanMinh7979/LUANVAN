@@ -12,12 +12,3 @@ export const getAllCategory = async (req, res, next) => {
   }
 };
 
-export const createCategory = async (req, res, next) => {
-  try {
-    const newCategory = new Category(req.body);
-    await newCategory.save();
-    res.status(200).send("Category created successfully");
-  } catch (e) {
-    next(e);
-  }
-};

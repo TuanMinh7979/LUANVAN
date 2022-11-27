@@ -7,13 +7,13 @@ export const updateCandidateProfile = async (req, res, next) => {
     const updatedCandidate = await Candidate.findOneAndUpdate(
       { id: req.param.id },
       {
-        $set: { profile: req.body },
+        $set: req.body,
       },
       { new: true }
       //return updated model
     );
     if (updatedCandidate === null)
-      return next(createError(404, "Khong tim thay User roi"));
+      return next(createError(404, "Không tìm thấy ứng viên"));
     return res.status(200).json({ ...updatedCandidate._doc });
   } catch (e) {
     next(e);

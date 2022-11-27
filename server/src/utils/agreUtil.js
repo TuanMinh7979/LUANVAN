@@ -13,11 +13,4 @@ export const getMatch = (queryString) => {
   return JSON.parse(queryStr);
 };
 
-export const getProject = (queryString) => {
-    //FOR $MATCH
-    const fields = this.queryString.fields.split(",").join(" ");
-    this.query = this.query.select(fields);
-  
-    return queryStr;
-  };
-  
+
