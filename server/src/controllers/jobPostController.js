@@ -69,34 +69,13 @@ export const getJobPost = async (req, res, next) => {
 
 
 
-export const getAllJobPost = async (req, res, next) => {
-  try {
-    const a = await JobPost.aggregate([
-      {
-        $lookup: {
-          from: "companies",
-          localField: "companyId",
-          foreignField: "_id",
-          as: "company",
-        },
-      },
-    ]);
-
-    res.status(200).json(a);
-  } catch (err) {
-    next(err);
-  }
-};
-
 
 
 // { "$toObjectId": "$userId" }
-export const testA = async (req, res, next) => {
-  console.log("TESTA")
-  try {
-    let pipeLine = [
+export const getAllJobPost = async (req, res, next) => {
 
-    ]
+  try {
+    let pipeLine = []
     if (Object.keys(req.query).length > 0) {
       let matchQuery = getMatch(req.query, ["amount"]);
       if (Object.keys(matchQuery).length > 0) {
@@ -121,13 +100,7 @@ export const testA = async (req, res, next) => {
         as: "company",
       },
     },)
-
-    console.log(pipeLine)
-
     const a = await JobPost.aggregate(pipeLine);
-
-
-
     res.status(200).json(a);
   } catch (err) {
     next(err);
