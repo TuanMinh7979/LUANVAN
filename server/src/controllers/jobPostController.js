@@ -2,6 +2,7 @@ import { createError } from "../utils/errorUtil.js";
 import JobPost from "../models/JobPost.js";
 import QueryTool from "../utils/queryTool.js";
 import { getDecodedTokenData } from "../utils/TokenUtils.js";
+import { getMatch, getSort, getPagination } from "../utils/agreUtil.js";
 
 export const createJobPost = async (req, res, next) => {
   try {
@@ -91,25 +92,42 @@ export const getAllJobPost = async (req, res, next) => {
 
 // { "$toObjectId": "$userId" }
 export const testA = async (req, res, next) => {
+  console.log("TESTA")
   try {
+    let pipeLine = [
 
-    const a = await JobPost.aggregate([
-      { $addFields: { "companyOId": { "$toString": "$companyId" } } },
-      { $match: { "amount": { "$lt": "2" } } },
-      {
-        $lookup: {
-          from: "companies",
-          localField: "companyOId",
-          foreignField: "_id",
-          as: "company",
-        },
+    ]
+    if (Object.keys(req.query).length > 0) {
+      let matchQuery = getMatch(req.query, ["amount"]);
+      if (Object.keys(matchQuery).length > 0) {
+        pipeLine.push({ $match: matchQuery })
+      }
+
+      if (req.query.sort) {
+        const sortStage = getSort(req.query.sort);
+        pipeLine.push(sortStage)
+      }
+      if (req.query.page) {
+        const paginationStage = getPagination(req.query.page, req.query.limit);
+        pipeLine.push(...paginationStage)
+      }
+    }
+
+    pipeLine.push({
+      $lookup: {
+        from: "companies",
+        localField: "companyId",
+        foreignField: "_id",
+        as: "company",
       },
+    },)
 
-      { $skip: 1 },
-      { $limit: 1 },
-    ]);
+    console.log(pipeLine)
 
-    console.log(a);
+    const a = await JobPost.aggregate(pipeLine);
+
+
+
     res.status(200).json(a);
   } catch (err) {
     next(err);

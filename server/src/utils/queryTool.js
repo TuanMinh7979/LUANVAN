@@ -15,10 +15,8 @@ class QueryTool {
       (match) => `$${match}`
     );
 
-    console.log("--------------()))))))))))))))))))1", JSON.parse(queryStr));
-    this.query.find(JSON.parse(queryStr));
     
-    console.log(this.queryString.fields);
+    this.query.find(JSON.parse(queryStr));
     if (this.queryString.fields) {
       const fields = this.queryString.fields.split(",").join(" ");
       this.query = this.query.select(fields);
