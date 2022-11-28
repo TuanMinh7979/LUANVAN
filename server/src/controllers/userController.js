@@ -73,7 +73,7 @@ export const deleteUser = async (req, res, next) => {
   try {
     const deletedUser = await User.findByIdAndDelete(req.params.id);
     if (deletedUser === null)
-      return next(createError(404, "Khong tim thay User roi"));
+      return next(createError(404, "Không tìm thấy user rồi"));
 
     if (deletedUser.role !== "admin") {
       try {

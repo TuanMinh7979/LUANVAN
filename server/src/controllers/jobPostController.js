@@ -3,27 +3,31 @@ import JobPost from "../models/JobPost.js";
 import QueryTool from "../utils/queryTool.js";
 import { getDecodedTokenData } from "../utils/TokenUtils.js";
 import { getMatch, getSort, getPagination } from "../utils/agreUtil.js";
-
+import Rec from "../models/Rec.js";
 export const createJobPost = async (req, res, next) => {
-  
+
   console.log(req.body)
   try {
 
-    let recId = ""
+    let companyId = ""
+    let recUserId = ""
     if (req.user) {
       //use in app
-      recId = req.user.id;
+      recUserId = req.user.id;
     } else {
       //use in postman
       const decodeTokenData = getDecodedTokenData(req)
-      recId = decodeTokenData.id;
+      recUserId = decodeTokenData.id;
     }
-    console.log("_____________________")
-    let newJobPost = new JobPost({ ...req.body, recId });
+
+    let rec = await Rec.findOne({ userId: recUserId })
+    console.log(rec)
+    console.log(rec.id, rec.companyId)
+    let newJobPost = new JobPost({ ...req.body, recId: rec.id, companyId: rec.companyId });
 
     await newJobPost.save();
     console.log("___________________SAVE success")
-    res.status(200).send("jobpost created successfully");
+    res.status(200).send("Tạo jobpost thành công!");
   } catch (e) {
     next(e);
   }
