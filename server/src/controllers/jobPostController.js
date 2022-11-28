@@ -5,6 +5,8 @@ import { getDecodedTokenData } from "../utils/TokenUtils.js";
 import { getMatch, getSort, getPagination } from "../utils/agreUtil.js";
 
 export const createJobPost = async (req, res, next) => {
+  
+  console.log(req.body)
   try {
 
     let recId = ""
@@ -16,10 +18,11 @@ export const createJobPost = async (req, res, next) => {
       const decodeTokenData = getDecodedTokenData(req)
       recId = decodeTokenData.id;
     }
-
+    console.log("_____________________")
     let newJobPost = new JobPost({ ...req.body, recId });
 
     await newJobPost.save();
+    console.log("___________________SAVE success")
     res.status(200).send("jobpost created successfully");
   } catch (e) {
     next(e);

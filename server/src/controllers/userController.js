@@ -5,29 +5,34 @@ import Candidate from "../models/Candidate.js";
 import Rec from "../models/Rec.js";
 import { filterSkipField } from "../utils/commonUtil.js";
 
+
+//check user before=> req.param.id = req.user.id
 export const updateUser = async (req, res, next) => {
+  console.log("--------------------", req.params)
   req.body = filterSkipField(req.body, "roleInp", "passwordInp", "profile");
   try {
     const {
-      usernameInp,
-
-      ...details
+      detail, ...generalUser
     } = req.body;
 
     //khong cho cap nhat role
-    const generalUser = {
-      username: usernameInp,
-    };
-    const updatedUser = await User.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: generalUser,
-      },
-      { new: true }
-    );
+    let updatedUser;
+    console.log(req.params.id)
+    if (Object.keys(generalUser).length > 0) {
+      updatedUser = await User.findByIdAndUpdate(
+        req.params.id,
+        {
+          $set: generalUser,
+        },
+        { new: true }
+      );
+    } else {
+      updatedUser = await User.findById(req.params.id)
+    }
+
 
     if (updatedUser === null)
-      return next(createError(404, "Deo tim thay User roi"));
+      return next(createError(404, "Không tìm thấy user rồi"));
 
     let updatedUserDetail = {};
     if (updatedUser.role !== "admin") {
@@ -36,7 +41,7 @@ export const updateUser = async (req, res, next) => {
           updatedUserDetail = await Candidate.findOneAndUpdate(
             { userId: updatedUser._id },
             {
-              $set: details,
+              $set: detail,
             },
             { new: true }
             //return updated model
@@ -45,7 +50,7 @@ export const updateUser = async (req, res, next) => {
           updatedUserDetail = await Rec.findOneAndUpdate(
             { userId: updatedUser._id },
             {
-              $set: details,
+              $set: detail,
             },
             //return updated model
             { new: true }
@@ -59,9 +64,9 @@ export const updateUser = async (req, res, next) => {
     //doi voi user la admin thi return o day
     return res
       .status(200)
-      .json({ ...updatedUser._doc, ...updatedUserDetail._doc });
+      .json({ ...updatedUser._doc, detail: updatedUserDetail._doc });
   } catch (err) {
-    next(err);
+    next(createError(400, "Cập nhật user thất bại"));
   }
 };
 export const deleteUser = async (req, res, next) => {
@@ -106,7 +111,7 @@ export const getUser = async (req, res, next) => {
       next(e);
     }
 
-    res.status(200).json({ ...user._doc, ...userDetail._doc });
+    res.status(200).json({ ...user._doc, detail: userDetail._doc });
   } catch (err) {
     next(err);
   }
