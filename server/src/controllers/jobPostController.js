@@ -4,6 +4,7 @@ import QueryTool from "../utils/queryTool.js";
 import { getDecodedTokenData } from "../utils/TokenUtils.js";
 import { getMatch, getSort, getPagination } from "../utils/agreUtil.js";
 import Rec from "../models/Rec.js";
+import Company from "../models/Company.js";
 export const createJobPost = async (req, res, next) => {
 
   console.log(req.body)
@@ -21,12 +22,18 @@ export const createJobPost = async (req, res, next) => {
     }
 
     let rec = await Rec.findOne({ userId: recUserId })
-    console.log(rec)
-    console.log(rec.id, rec.companyId)
-    let newJobPost = new JobPost({ ...req.body, recId: rec.id, companyId: rec.companyId });
+    let newJobPost;
+    if (req.body.fullAddress) {
+      newJobPost = new JobPost({ ...req.body, recId: rec.id, companyId: rec.companyId });
+
+    } else {
+      let company = await Company.findById(rec.companyId);
+      newJobPost = new JobPost({ ...req.body, recId: rec.id, companyId: rec.companyId, fullAddress: company.location });
+
+    }
+
 
     await newJobPost.save();
-    console.log("___________________SAVE success")
     res.status(200).send("Tạo jobpost thành công!");
   } catch (e) {
     next(e);

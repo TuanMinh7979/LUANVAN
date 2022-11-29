@@ -196,7 +196,7 @@ function JobPost({ user }) {
     jobBenefit: JSON.stringify(convertToRaw(benefit.getCurrentContent())),
     skillRequired: "",
   });
-  useEffect(()=>{
+  useEffect(() => {
     console.log(user.user)
     setData({
       ...data,
@@ -206,29 +206,30 @@ function JobPost({ user }) {
       jobRequired: JSON.stringify(convertToRaw(jobRequired.getCurrentContent())),
       jobBenefit: JSON.stringify(convertToRaw(benefit.getCurrentContent())),
     })
-  },[jobDescription.getCurrentContent(),jobRequired.getCurrentContent(),benefit.getCurrentContent()])
+  }, [jobDescription.getCurrentContent(), jobRequired.getCurrentContent(), benefit.getCurrentContent()])
   const [grossType, setGrossType] = useState(false);
   const [currency, setCurrency] = useState();
   // Ham nay de lay text tu richtext
-  const getTextArrayFromRich = function(rawdata){
-    if(rawdata.blocks.length>0){
+  const getTextArrayFromRich = function (rawdata) {
+    if (rawdata.blocks.length > 0) {
       return (
-        rawdata.blocks.map((item)=>item.text)
+        rawdata.blocks.map((item) => item.text)
       )
     }
   }
   const sendPostData = function () {
     // console.log(
     //   "__________******", data);
-    console.log(getTextArrayFromRich(convertToRaw(jobDescription.getCurrentContent())))
-    // axios
-    //   .post("/jobpost", data)
-    //   .then((res) => {
+    let jobDescriptionRaw = getTextArrayFromRich(convertToRaw(jobDescription.getCurrentContent())).join("")
+    let jobRequiredRaw = getTextArrayFromRich(convertToRaw(jobRequired.getCurrentContent())).join("")
+    axios
+      .post("/jobpost", { ...data, jobDescriptionRaw, jobRequiredRaw })
+      .then((res) => {
 
-    //     console.log(res);
-    //   }).catch(err => {
-    //     console.log(err)
-    //   })
+        console.log(res);
+      }).catch(err => {
+        console.log(err)
+      })
   };
   function navigateTo(location) {
     navigate(location);

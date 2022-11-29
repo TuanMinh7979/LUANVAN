@@ -71,6 +71,14 @@ const JobPostSchema = new Schema(
       required: true,
     },
 
+    jobDescriptionRaw: {
+      type: String,
+    }
+    ,
+    jobRequiredRaw: {
+      type: String,
+    },
+
 
 
   },
