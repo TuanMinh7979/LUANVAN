@@ -1,10 +1,10 @@
-import { Box, Button, Chip, createTheme, Grid, styled, Typography } from "@mui/material";
+import { Box, Button, Chip, createTheme, Dialog, DialogContent, DialogTitle, Grid, styled, Typography } from "@mui/material";
 import { minHeight, width } from "@mui/system";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import background from '../../assets/FFF8F5.webp'
 import fakedata from '../../assets/test.json'
-import { RichTextDisplay } from "../RichText";
+import RichText, { RichTextDisplay } from "../RichText";
 import SchoolIcon from '@mui/icons-material/School';
 import FlagIcon from '@mui/icons-material/Flag';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
@@ -17,11 +17,90 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import MailIcon from '@mui/icons-material/Mail';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { convertToRaw, EditorState } from "draft-js";
+import EditIcon from '@mui/icons-material/Edit';
+// function EditDialog({ open, setOpen, title, item, isRich }) {
+//     const [editorState, setEditorState] = useState(() =>
+//         EditorState.createEmpty()
+//     );
+//     function updateData() {
+//         console.log(convertToRaw(editorState.getCurrentContent()))
+//     }
+//     return (<>
+//         <Dialog
+//             open={open}
+//             onClose={() => { setOpen(false) }}
+//             fullWidth
+//             maxWidth="md"
+//         >
+//             <DialogTitle><Chip size="medium" icon={<EditIcon />} color="success" label={`Chỉnh sửa ${title}`} /></DialogTitle>
+//             <DialogContent
+//             >
+//                 {isRich && <RichText editorState={editorState} setEditorState={setEditorState} />}
+//                 <Button sx={{ mt: 1 }} onClick={updateData}>Cập nhật</Button>
+//             </DialogContent>
+//         </Dialog>
+//     </>)
+// }
+function RichEditor({ editorState, setEditorState, item, data, setData, setOpen }) {
+    const [close, setClose] = useState()
+    useEffect(()=>{
+        if(close){
+            setOpen(false)
+        }
+    })
+    function handleClose() {
+        setClose(true)
+    }
+    function updateData() {
+        setClose(true)
+        setTimeout(()=>{
+            setData({
+                ...data,
+                [item]: convertToRaw(editorState.getCurrentContent())
+            })
+        }) 
+        setTimeout(()=>{
+            setEditorState(()=>EditorState.createEmpty())
+        })
+    }
+    return (
+        <>
+            <RichText editorState={editorState} setEditorState={setEditorState} />
+            <Box sx={{ m: 1 }}>
+                <Button
+                    onClick={handleClose}
+                    color="warning"
+                    variant="outlined"
+                    sx={{
+                        mr:1
+                    }}
+                >
+                    Đóng
+                </Button>
+                <Button
+                    variant="outlined"
+                    onClick={updateData}
+                >
+                    Cập nhật
+                </Button>
+            </Box>
+        </>
+    )
+}
 export default function CV1({ data, print }) {
     const ref = useRef()
-    useEffect(() => {
-
+    const [open, setOpen] = useState()
+    const [data1, setData1] = useState({
+        name: "anh"
     })
+    const [title, setTitle] = useState()
+    const [item, setItem] = useState()
+    const [isRich, setIsRich] = useState()
+    const [showItem, setShowItem] = useState(false)
+    const [editorState, setEditorState] = useState(() =>
+        EditorState.createEmpty()
+    )
     const handlePrint = useReactToPrint({
         content: () => ref.current,
         documentTitle: 'test',
@@ -39,9 +118,27 @@ export default function CV1({ data, print }) {
             '& .MuiChip-icon': {
                 color: 'white'
             },
-           
+
         },
     }));
+    useEffect(()=>{
+        console.log(data1)
+    },[data1])
+    const RichContent = function ({item}) {
+        return (
+            <>
+                {open ?
+                    <RichEditor
+                        item={item}
+                        setData={setData1}
+                        data={data1}
+                        editorState={editorState}
+                        setOpen={setOpen}
+                        setEditorState={setEditorState} /> :
+                    <RichTextDisplay data={fakedata} />}
+            </>
+        )
+    }
     return (<>
         <Box
             ref={ref}
@@ -76,12 +173,17 @@ export default function CV1({ data, print }) {
                             mb: 2,
                             px: 2,
                             mt: 1,
+                            width: '90%',
                             '&:hover': {
                                 border: '1px dashed red'
                             }
                         }}
+                        onClick={() => {
+                            // OpenEditDialog('Học vấn', 'Học vấn',true)
+                            setOpen(true)
+                        }}
                     >
-                        <RichTextDisplay data={fakedata} />
+                        <RichContent item="Studies" />
                     </Box>
 
                     <CustomChip icon={<CrisisAlertIcon color="success" />} label="Mục tiêu nghề nghiệp" />
@@ -147,12 +249,12 @@ export default function CV1({ data, print }) {
                             '& > h4:hover,h6:hover, p:hover': {
                                 border: '1px dashed red'
                             },
-                            ' p':{
+                            ' p': {
                                 color: 'rgba(0,0,0,0.7)'
                             }
                             ,
                             ml: '30px',
-                            mt:3
+                            mt: 3
                         }}
                     >
                         <Image
@@ -269,5 +371,6 @@ export default function CV1({ data, print }) {
                 handlePrint()
             }
         }} >IN</Button>
+        {/* <EditDialog open={open} title={title} item={item} setOpen={setOpen} isRich={isRich} /> */}
     </>)
 }

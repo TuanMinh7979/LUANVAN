@@ -15,7 +15,7 @@ import axios from 'axios'
 import { maxHeight, maxWidth } from "@mui/system";
 export default function Company({ user }) {
     const navigate = useNavigate()
-    const [logo,setLogo] = useState(logoImage)
+    const [logo, setLogo] = useState(logoImage)
     const [jobDescription, setJobDescription] = useState(() =>
         EditorState.createEmpty()
     );
@@ -40,6 +40,7 @@ export default function Company({ user }) {
     const [currency, setCurrency] = useState()
 
     const sendCompanyData = function () {
+        console.log(data)
         axios.post("/company", data)
             .then((res) => {
                 console.log(res)
@@ -52,11 +53,18 @@ export default function Company({ user }) {
         if (!user.isLogin && user.user.role != "rec") {
             navigateTo('/hrlogin')
         }
+
+        // setData({
+        //     ...data,
+        //     introduce: JSON.stringify(convertToRaw(introduce.getCurrentContent()))
+        // })
+    })
+    useEffect(() => {
         setData({
             ...data,
             introduce: JSON.stringify(convertToRaw(introduce.getCurrentContent()))
         })
-    })
+    },[introduce.getCurrentContent()])
     return (<>
         <Grid
             sx={{
@@ -83,8 +91,8 @@ export default function Company({ user }) {
                 container
                 sx={{ p: 2, rowGap: 2, columnGap: 2, background: "#fff", mb: 2, alignItems: 'center' }}
             >
-                <Grid xs={1} sx={{   }}>
-                    <Image 
+                <Grid xs={1} sx={{}}>
+                    <Image
                         src={logo}
                         sx={{
                             borderRadius: '100%',
@@ -238,7 +246,7 @@ export default function Company({ user }) {
                                 //     amount: e.target.value
                                 // })
                                 const fileReader = new FileReader()
-                                fileReader.onloadend =()=>{
+                                fileReader.onloadend = () => {
                                     setLogo(fileReader.result)
                                     setData({
                                         ...data,
@@ -296,7 +304,14 @@ export default function Company({ user }) {
                     size="small"
                     variant="contained"
                     onClick={() => {
-                        sendCompanyData()
+                        setData({
+                            ...data,
+                            introduce: JSON.stringify(convertToRaw(introduce.getCurrentContent()))
+                        })
+                        setTimeout(() => {
+                            sendCompanyData()
+                        })
+
                     }}
                 >Cập nhật</Button>
             </Grid>

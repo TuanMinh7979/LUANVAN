@@ -196,6 +196,17 @@ function JobPost({ user }) {
     jobBenefit: JSON.stringify(convertToRaw(benefit.getCurrentContent())),
     skillRequired: "",
   });
+  useEffect(()=>{
+    console.log(user.user)
+    setData({
+      ...data,
+      jobDescription: JSON.stringify(
+        convertToRaw(jobDescription.getCurrentContent())
+      ),
+      jobRequired: JSON.stringify(convertToRaw(jobRequired.getCurrentContent())),
+      jobBenefit: JSON.stringify(convertToRaw(benefit.getCurrentContent())),
+    })
+  },[jobDescription.getCurrentContent(),jobRequired.getCurrentContent(),benefit.getCurrentContent()])
   const [grossType, setGrossType] = useState(false);
   const [currency, setCurrency] = useState();
 
@@ -641,7 +652,7 @@ function JobPost({ user }) {
             variant="contained"
             onClick={() => {
               console.log(data);
-              // sendPostData();
+              sendPostData();
             }}
           >
             Đăng tin

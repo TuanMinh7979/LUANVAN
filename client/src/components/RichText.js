@@ -59,11 +59,11 @@ export default function RichText({ editorState, setEditorState }) {
                     p: 1,
                     border: '1px solid rgba(0,0,0,0.1)',
                     borderRadius: "5px",
-                    minHeight: '200px'
+                    minHeight: '200px',
                 }}
             >
                 <Box
-                    sx={{ display: 'flex', width: '10%', justifyContent: 'space-around' }}
+                    sx={{ display: 'flex', width: '10%',}}
                 >
                     <Typography
                         onMouseDown={(e) => {
