@@ -209,19 +209,26 @@ function JobPost({ user }) {
   },[jobDescription.getCurrentContent(),jobRequired.getCurrentContent(),benefit.getCurrentContent()])
   const [grossType, setGrossType] = useState(false);
   const [currency, setCurrency] = useState();
-
+  // Ham nay de lay text tu richtext
+  const getTextArrayFromRich = function(rawdata){
+    if(rawdata.blocks.length>0){
+      return (
+        rawdata.blocks.map((item)=>item.text)
+      )
+    }
+  }
   const sendPostData = function () {
-    console.log(
-      "__________******", data);
+    // console.log(
+    //   "__________******", data);
+    console.log(getTextArrayFromRich(convertToRaw(jobDescription.getCurrentContent())))
+    // axios
+    //   .post("/jobpost", data)
+    //   .then((res) => {
 
-    axios
-      .post("/jobpost", data)
-      .then((res) => {
-
-        console.log(res);
-      }).catch(err => {
-        console.log(err)
-      })
+    //     console.log(res);
+    //   }).catch(err => {
+    //     console.log(err)
+    //   })
   };
   function navigateTo(location) {
     navigate(location);
