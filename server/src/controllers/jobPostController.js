@@ -1,11 +1,33 @@
 import { createError } from "../utils/errorUtil.js";
 import JobPost from "../models/JobPost.js";
 import QueryTool from "../utils/queryTool.js";
+import { getDecodedTokenData } from "../utils/TokenUtils.js";
+import { getMatch, getSort, getPagination } from "../utils/agreUtil.js";
+import Rec from "../models/Rec.js";
 export const createJobPost = async (req, res, next) => {
+
+  console.log(req.body)
   try {
-    const newJobPost = new JobPost(req.body);
+
+    let companyId = ""
+    let recUserId = ""
+    if (req.user) {
+      //use in app
+      recUserId = req.user.id;
+    } else {
+      //use in postman
+      const decodeTokenData = getDecodedTokenData(req)
+      recUserId = decodeTokenData.id;
+    }
+
+    let rec = await Rec.findOne({ userId: recUserId })
+    console.log(rec)
+    console.log(rec.id, rec.companyId)
+    let newJobPost = new JobPost({ ...req.body, recId: rec.id, companyId: rec.companyId });
+
     await newJobPost.save();
-    res.status(200).send("jobpost created successfully");
+    console.log("___________________SAVE success")
+    res.status(200).send("Tạo jobpost thành công!");
   } catch (e) {
     next(e);
   }
@@ -52,51 +74,40 @@ export const getJobPost = async (req, res, next) => {
   }
 };
 
-//find all va phan trang
 
-//phan trang thi tham so page va limit
-//filter: age[gt]=10, age bigger than 10, hoac age=-1 tuc la khong lay thong tin age
-//sort : sort=age, sort theo tuoi tang dan hoac sort=-age theo tuoi giam dan
 
+
+
+// { "$toObjectId": "$userId" }
 export const getAllJobPost = async (req, res, next) => {
+
   try {
-    const a = await JobPost.aggregate([
-      {
-        $lookup: {
-          from: "companies",
-          localField: "companyId",
-          foreignField: "_id",
-          as: "company",
-        },
+    let pipeLine = []
+    if (Object.keys(req.query).length > 0) {
+      let matchQuery = getMatch(req.query, ["amount"]);
+      if (Object.keys(matchQuery).length > 0) {
+        pipeLine.push({ $match: matchQuery })
+      }
+
+      if (req.query.sort) {
+        const sortStage = getSort(req.query.sort);
+        pipeLine.push(sortStage)
+      }
+      if (req.query.page) {
+        const paginationStage = getPagination(req.query.page, req.query.limit);
+        pipeLine.push(...paginationStage)
+      }
+    }
+
+    pipeLine.push({
+      $lookup: {
+        from: "companies",
+        localField: "companyId",
+        foreignField: "_id",
+        as: "company",
       },
-    ]);
-
-    res.status(200).json(a);
-  } catch (err) {
-    next(err);
-  }
-};
-
-/////test
-export const testA = async (req, res, next) => {
-  try {
-    console.log("_________________TEST");
-    const a = await JobPost.aggregate([
-      { $match: {"amount":{"$lt":"2"}} },
-      {
-        $lookup: {
-          from: "companies",
-          localField: "companyId",
-          foreignField: "_id",
-          as: "company",
-        },
-      },
-     
-      { $skip: 1 },
-      { $limit: 1 },
-    ]);
-
-    console.log(a);
+    },)
+    const a = await JobPost.aggregate(pipeLine);
     res.status(200).json(a);
   } catch (err) {
     next(err);

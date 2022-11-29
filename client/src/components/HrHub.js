@@ -174,7 +174,7 @@ function JobPost({ user }) {
   const [benefit, setBenefit] = useState(() => EditorState.createEmpty());
   const [data, setData] = useState({
     jobTitle: "",
-    categoryName: "",
+
     categoryId: "",
     location: "",
     amount: 0,
@@ -211,16 +211,17 @@ function JobPost({ user }) {
   const [currency, setCurrency] = useState();
 
   const sendPostData = function () {
-    console.log({ ...data, categoryId: getCatIdFromName(data.categoryName) });
+    console.log(
+      "__________******", data);
 
     axios
-      .post("/jobpost", {
-        ...data,
-        categoryId: getCatIdFromName(data.categoryName),
-      })
+      .post("/jobpost", data)
       .then((res) => {
+
         console.log(res);
-      });
+      }).catch(err => {
+        console.log(err)
+      })
   };
   function navigateTo(location) {
     navigate(location);
@@ -286,13 +287,13 @@ function JobPost({ user }) {
               onInputChange={(e, value) => {
                 setData({
                   ...data,
-                  categoryName: value,
+                  categoryId: getCatIdFromName(e.target.value),
                 });
               }}
               onBlur={(e) => {
                 setData({
                   ...data,
-                  categoryName: e.target.value,
+                  categoryId: getCatIdFromName(e.target.value),
                 });
               }}
               renderInput={(params) => (
@@ -668,10 +669,10 @@ export default function HrHub() {
     navigate(location);
   }
   const user = useSelector((state) => state.user);
-  useEffect(()=>{
-    if(user.user.role!="rec"){
+  useEffect(() => {
+    if (user.user.role != "rec") {
       navigateTo("/hrlogin")
-    } 
+    }
   })
   return (
     <>

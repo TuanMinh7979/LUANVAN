@@ -5,6 +5,7 @@ import jwt from "jsonwebtoken";
 import Candidate from "../models/Candidate.js";
 import Rec from "../models/Rec.js";
 
+
 export const register = async (req, res, next) => {
   try {
 
@@ -21,17 +22,18 @@ export const register = async (req, res, next) => {
     let savedUser = await newUser.save();
     if (roleInp !== "admin") {
       try {
-        console.log("+++++++++++");
+
         if (roleInp == "candidate") {
+
           const newCandidate = new Candidate({
             userId: savedUser._id,
             ...details,
           });
 
           await newCandidate.save();
-          console.log("Save candidate success-----");
+
         } else if (roleInp == "rec") {
-          console.log("details la ", details);
+
           const newRec = new Rec({
             userId: savedUser._id,
             ...details,
@@ -45,7 +47,7 @@ export const register = async (req, res, next) => {
 
     res.status(200).send("Tạo tài khoản thành công");
   } catch (err) {
-    next(err);
+    next(createError(400, "Tạo tài khoản thất bại"));
   }
 };
 export const login = async (req, res, next) => {
@@ -53,7 +55,7 @@ export const login = async (req, res, next) => {
     const user = await User.findOne({ username: req.body.username });
     if (!user)
       return next(
-        createError(404, "Sai tên đăng nhập hoặc mật khẩu(username)")
+        createError(400, "Sai tên đăng nhập hoặc mật khẩu")
       );
 
 
@@ -63,7 +65,7 @@ export const login = async (req, res, next) => {
     );
     if (!isPasswordCorrect)
       return next(
-        createError(404, "Sai tên đăng nhập hoặc mật khẩu(password)")
+        createError(400, "Sai tên đăng nhập hoặc mật khẩu(password)")
       );
 
     const token = jwt.sign(
@@ -73,15 +75,12 @@ export const login = async (req, res, next) => {
     // const { password, isAdmin, ...otherDetail } = user._doc;
 
 
-    let resUser =  user._doc;
+    let resUser = user._doc;
     if (user.role == "rec") {
 
       const recDetail = await Rec.findOne({ userId: user.id.toString() });
       resUser = { ...resUser, detail: recDetail }
     }
-
-
-
     res
       .status(200)
       .cookie("access_token", token, {
@@ -91,7 +90,9 @@ export const login = async (req, res, next) => {
       .send({ data: resUser, status: 200 });
     //user nay send ve de luu vao local(dung redux hay react gi do de luu vao localStorage),
   } catch (err) {
-    next(err);
+    return next(
+      createError(400, "Đăng nhập thất bại")
+    );
   }
 };
 
