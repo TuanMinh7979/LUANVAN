@@ -13,12 +13,15 @@ import HrHub from "./components/HrHub";
 import JobDetail from "./components/JobDetail";
 import HrRegister from "./components/HrRegister";
 import HrLogin from "./components/HrLogin";
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux";
 import UpdateProfile from "./components/UpdateProfile";
 import Profile from "./components/Profile";
 import ManageCV from "./components/ManageCV";
+
+import { ToastContainer } from "react-toastify";
+import Other from "./components/other/Other";
 function App() {
-  const user = useSelector(state => state.user)
+  const user = useSelector((state) => state.user);
   return (
     <>
       <BrowserRouter>
@@ -98,13 +101,24 @@ function App() {
             <Route path="register" element={<Register />} />
             <Route path="hrlogin" element={<HrLogin />} />
             <Route path="hrsignup" element={<HrRegister />} />
+
             <Route path="upload" element={<Upload />} />
+            <Route path="other" element={<Other />} />
             <Route path="test" element={<RichText />} />
           </Route>
-
-
         </Routes>
       </BrowserRouter>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      ></ToastContainer>
     </>
   );
 }

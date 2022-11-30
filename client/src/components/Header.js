@@ -14,6 +14,7 @@ import AccountMenu from "./AccountMenu";
 import { useState } from "react";
 
 
+
 export default function Header({ forHr }) {
     const user = useSelector((state) => state.user)
     const [open, setOpen] = useState(false)
@@ -33,6 +34,7 @@ export default function Header({ forHr }) {
     })
     // default toolbar, dont open it !!!
     const defaultToolBar = <Toolbar>
+         
         <Image
             onClick={() => {
                 navigateTo("/")
@@ -46,7 +48,9 @@ export default function Header({ forHr }) {
         />
         <>
             <Typography onClick={() => {
+              
                 navigateTo("/jobs")
+
             }} variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer" }}>
                 Việc làm
             </Typography>

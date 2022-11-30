@@ -1,6 +1,7 @@
 import React from "react";
 
 import axios from "axios";
+import { toast } from "react-toastify";
 function Other() {
   // DUNG CAI NAY THI T TRA VE MA LOI 400 THI PHAI TRY CATCH
   //   const postData = async () => {
@@ -36,8 +37,11 @@ function Other() {
   };
 
   return (
-    <div>
-      <button onClick={getData1WithToken}>Send data fake</button>
+    // toast.success("create new user success")
+    <div style={{ backgroundColor: "blue", width: "200px", height: "200px" }}>
+      <button onClick={() => toast.success("create ner success")}>
+        Send data fake
+      </button>
     </div>
   );
 }
