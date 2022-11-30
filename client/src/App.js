@@ -102,8 +102,7 @@ function App() {
             <Route path="hrlogin" element={<HrLogin />} />
             <Route path="hrsignup" element={<HrRegister />} />
 
-            <Route path="upload" element={<Upload />} />
-            <Route path="other" element={<Other />} />
+
             <Route path="test" element={<RichText />} />
           </Route>
         </Routes>
