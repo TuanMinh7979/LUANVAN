@@ -9,7 +9,9 @@ import { useNavigate, createSearchParams, useSearchParams } from "react-router-d
 import JobList from "./JobList";
 import banner from '../assets/banner.png'
 import { useEffect } from "react";
+import useFetch from "../hooks/useFetch";
 export default function Jobs() {
+    const { data, loading, error } = useFetch("/jobpost");
     const MenuProps = {
         PaperProps: {
             style: {
@@ -17,18 +19,18 @@ export default function Jobs() {
             }
         }
     };
-    const data = {
-        jobTile: "Chuyên Viên Quan Hệ Khách Hàng Tại Hà Nội ",
-        companyName: "RASEN GROUPS",
-        jobDuration: '22/07/2024',
-        gross: '8 Triệu',
-        workingType: 'Toàn thời gian',
-        level: 'Nhân viên',
-        amount: 10,
-        sex: 'Nam',
-        experience: 'Không yêu cầu kinh nghiệm',
-        location: 'Số 7, Ngô Tất Tố, KDC 91B, Phường An khánh, Ninh Kiều, Cần Thơ'
-    }
+    // const data = {
+    //     jobTile: "Chuyên Viên Quan Hệ Khách Hàng Tại Hà Nội ",
+    //     companyName: "RASEN GROUPS",
+    //     jobDuration: '22/07/2024',
+    //     gross: '8 Triệu',
+    //     workingType: 'Toàn thời gian',
+    //     level: 'Nhân viên',
+    //     amount: 10,
+    //     sex: 'Nam',
+    //     experience: 'Không yêu cầu kinh nghiệm',
+    //     location: 'Số 7, Ngô Tất Tố, KDC 91B, Phường An khánh, Ninh Kiều, Cần Thơ'
+    // }
     const navigate = useNavigate()
     const [searchParams] = useSearchParams()
     function getParams() {
@@ -190,7 +192,10 @@ export default function Jobs() {
                 {/* Joblist */}
             </Container>
             <Box sx={{ mt: 3 }}>
-                <JobList />
+                {loading
+                    ? "loading"
+                    : <JobList jobs={data} />
+                }
             </Box>
         </Container>
     </>)
