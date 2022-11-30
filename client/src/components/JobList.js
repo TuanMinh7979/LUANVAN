@@ -7,7 +7,7 @@ import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecord
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import JobCard from "./JobCard";
 import companylogo from '../assets/companylogo_sample.png'
-import useFetch from "../hooks/useFetch.js";
+
 function JobList({ jobs }) {
     return (<>
         <Container maxWidth >

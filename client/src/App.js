@@ -58,7 +58,7 @@ function App() {
               }
             />
             <Route
-              path="jobdetail"
+              path="jobdetail/:id"
               element={
                 <>
                   <Header />

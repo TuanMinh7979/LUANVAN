@@ -32,10 +32,12 @@ export default function JobCard(props) {
         sx={{ boxShadow: "-1px 1px 4px rgb(0 0 0 / 20%)", width: '95%', }}
         onClick={() => {
           navigate({
-            pathname: '/jobdetail',
-            search: `?${createSearchParams({
-              id: 123
-            })}`
+            pathname: `/jobdetail/${job._id}`,
+            // search: `?${createSearchParams({
+            //   id: 123
+            // }
+
+            // )}`
           })
         }}
       >

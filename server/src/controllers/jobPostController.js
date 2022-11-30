@@ -70,12 +70,16 @@ export const deleteJobPost = async (req, res, next) => {
 };
 
 export const getJobPost = async (req, res, next) => {
+
   try {
     const jobPost = await JobPost.findById(req.params.id);
+    const comId = jobPost.companyId;
+    const company = await Company.findById(comId);
+
     if (jobPost === null)
       return next(createError(404, "Khong tim thay jobPost"));
 
-    res.status(200).json(jobPost);
+    res.status(200).json({ ...jobPost._doc, company: company });
   } catch (err) {
     next(err);
   }
