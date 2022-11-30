@@ -19,7 +19,7 @@ import Profile from "./components/Profile";
 import ManageCV from "./components/ManageCV";
 
 import { ToastContainer } from "react-toastify";
-import Other from "./components/other/Other";
+
 function App() {
   const user = useSelector((state) => state.user);
   return (
