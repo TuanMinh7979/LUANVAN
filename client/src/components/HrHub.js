@@ -218,8 +218,7 @@ function JobPost({ user }) {
     }
   }
   const sendPostData = function () {
-    // console.log(
-    //   "__________******", data);
+
     let jobDescriptionRaw = getTextArrayFromRich(convertToRaw(jobDescription.getCurrentContent())).join("")
     let jobRequiredRaw = getTextArrayFromRich(convertToRaw(jobRequired.getCurrentContent())).join("")
     axios

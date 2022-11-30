@@ -6,11 +6,14 @@ import FeatureCard from "./FeatureCard";
 import JobList from "./JobList";
 import env from 'react-dotenv'
 import { style } from "@mui/system";
-
+import useFetch from "../hooks/useFetch";
 
 function Home() {
     const [displayFilterBox, setDisplayFilterBox] = useState("none")
     const user = useSelector(state => state.user)
+
+    const { data, loading, error } = useFetch("/jobpost");
+    console.log(data)
     const MenuProps = {
         PaperProps: {
             style: {
@@ -219,7 +222,12 @@ function Home() {
                         imageLink="https://www.topcv.vn/v4/image/welcome/mau_cv.png?v=1.0.0"
                         buttonTitle="Tạo CV ngay" />
                 </Box>
-                <JobList />
+                {loading
+                    ? "loading"
+                    : <JobList jobs={data} />
+                }
+
+
             </Box>
         </>
     )

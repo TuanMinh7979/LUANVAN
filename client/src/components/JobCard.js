@@ -12,13 +12,10 @@ import { useNavigate, createSearchParams } from "react-router-dom";
 import Image from "mui-image";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-export default function JobCard({
-  jobTitle,
-  companyLogo,
-  companyName,
-  salary,
-  location,
-}) {
+export default function JobCard(props) {
+
+  const { job } = props
+
   function titleCut(jobTitle) { }
   const style1 = {
     background: "#2E7D32",
@@ -52,7 +49,8 @@ export default function JobCard({
             <Grid container sx={{ width: "20%" }}>
               <Grid xs="12">
                 <Image
-                  src={companyLogo}
+                  src={job.company.linkToLogo
+                  }
                   sx={{
                     borderRadius: '100%',
                     border: '1px solid gray'
@@ -70,16 +68,16 @@ export default function JobCard({
               }}
             >
               <Typography fontWeight="600" fontSize="18px" variant="h6">
-                {jobTitle}
+                {job.jobTitle}
               </Typography>
               <Typography fontWeight="300" fontSize="20px" variant="h5">
-                {companyName}
+                {job.company.companyName}
               </Typography>
             </Box>
           </Box>
           <Box sx={{ display: "flex", padding: "10px", minWidth: "50%" }}>
-            <Chip color="success" label={salary} sx={{ mr: 1 }} />
-            <Chip color="success" label={location} />
+            <Chip color="success" label="5tr" sx={{ mr: 1 }} />
+            <Chip color="success" label={job.location} />
           </Box>
         </CardActionArea>
       </Card>

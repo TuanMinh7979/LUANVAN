@@ -114,6 +114,14 @@ export const getAllJobPost = async (req, res, next) => {
         as: "company",
       },
     },)
+    pipeLine.push({
+
+      "$unwind": {
+        "path": "$company",
+        "preserveNullAndEmptyArrays": true
+      }
+      ,
+    },)
     const a = await JobPost.aggregate(pipeLine);
     res.status(200).json(a);
   } catch (err) {

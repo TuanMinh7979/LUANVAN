@@ -7,10 +7,11 @@ import FiberManualRecordOutlinedIcon from '@mui/icons-material/FiberManualRecord
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import JobCard from "./JobCard";
 import companylogo from '../assets/companylogo_sample.png'
-function JobList() {
+import useFetch from "../hooks/useFetch.js";
+function JobList({ jobs }) {
     return (<>
         <Container maxWidth >
-            <Paper elevation={4} sx={{ p: 3}}>
+            <Paper elevation={4} sx={{ p: 3 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Typography variant="h5" fontWeight="600" gutterBottom sx={{ ml: 3 }}>
                         Tin tuyển dụng, việc làm mới nhất
@@ -46,207 +47,31 @@ function JobList() {
                     <Button variant="contained" color="success" size="small" sx={{ borderRadius: "10px" }}>Miền Bắc</Button>
                     <Button variant="contained" color="success" size="small" sx={{ borderRadius: "10px" }}>Miền Nam</Button> */}
                     <Chip color="success" label="Ngẫu nhiên" />
-                    <Chip color="success" label="Hà Nội" variant="outlined"/>
+                    <Chip color="success" label="Hà Nội" variant="outlined" />
                     <Chip color="success" label="Hồ Chí Minh" variant="outlined" />
                     <Chip color="success" label="Miền Bắc" variant="outlined" />
                     <Chip color="success" label="Miền Nam" variant="outlined" />
                     <IconButton>
-                        <ArrowForwardIosIcon fontSize="small" color="success"/>
+                        <ArrowForwardIosIcon fontSize="small" color="success" />
                     </IconButton>
                 </Box>
                 <Grid container sx={{ width: "100%", mt: 4, justifyContent: "center" }} rowGap={2}>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
-                    <Grid xs={3}>
-                        <JobCard
-                            jobTitle="Lorem Ipsum Text 1234"
-                            companyName="RASEN GROUPS"
-                            companyLogo={companylogo}
-                            salary="15 Triệu"
-                            location="Hà nội"></JobCard>
-                    </Grid>
+                    {
+                        jobs.map(item => {
+
+                            return (
+                                <Grid xs={3}>
+                                    <JobCard job={item} />
+
+                                </Grid>
+
+                            )
+
+
+                        })
+                    }
+
+
                 </Grid>
                 <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }} >
                     <IconButton>
