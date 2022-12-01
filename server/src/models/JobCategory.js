@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 //category cua job
-const CategorySchema = new Schema(
+const JobCategorySchema = new Schema(
   {
     title: { type: String, required: true },
   },
@@ -9,5 +9,5 @@ const CategorySchema = new Schema(
   { timestamps: true }
 );
 
-const Category = mongoose.model("categories", CategorySchema);
-export default Category;
+const JobCategory = mongoose.model("jobcategories", JobCategorySchema);
+export default JobCategory;
