@@ -21,7 +21,7 @@ export default function Jobs() {
     };
     // const data = {
     //     jobTile: "Chuyên Viên Quan Hệ Khách Hàng Tại Hà Nội ",
-    //     companyName: "RASEN GROUPS",
+    //     name: "RASEN GROUPS",
     //     jobDuration: '22/07/2024',
     //     gross: '8 Triệu',
     //     workingType: 'Toàn thời gian',

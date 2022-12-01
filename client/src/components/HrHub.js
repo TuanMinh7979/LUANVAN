@@ -165,49 +165,49 @@ function getCatIdFromName(catName) {
 ///
 function JobPost({ user }) {
   const navigate = useNavigate();
-  const [jobDescription, setJobDescription] = useState(() =>
+  const [description, setDescription] = useState(() =>
     EditorState.createEmpty()
   );
-  const [jobRequired, setJobRequired] = useState(() =>
+  const [candidateRequired, setCandidateRequired] = useState(() =>
     EditorState.createEmpty()
   );
   const [benefit, setBenefit] = useState(() => EditorState.createEmpty());
   const [data, setData] = useState({
-    jobTitle: "",
+    title: "",
 
     categoryId: "",
     location: "",
     amount: 0,
     jobType: "",
-    deadline: "",
+    endDate: "",
     gender: "",
     rank: "",
     exp: "",
     currency: "",
-    grossType: "",
-    gross: 0,
-    grossTo: 0,
-    grossFrom: 0,
+    salaryType: "",
+
+    salaryMax: 0,
+    salaryMin: 0,
     fullAddress: "",
-    jobDescription: JSON.stringify(
-      convertToRaw(jobDescription.getCurrentContent())
+    description: JSON.stringify(
+      convertToRaw(description.getCurrentContent())
     ),
-    jobRequired: JSON.stringify(convertToRaw(jobRequired.getCurrentContent())),
-    jobBenefit: JSON.stringify(convertToRaw(benefit.getCurrentContent())),
-    skillRequired: "",
+    candidateRequired: JSON.stringify(convertToRaw(candidateRequired.getCurrentContent())),
+    benefit: JSON.stringify(convertToRaw(benefit.getCurrentContent())),
+
   });
   useEffect(() => {
     console.log(user.user)
     setData({
       ...data,
-      jobDescription: JSON.stringify(
-        convertToRaw(jobDescription.getCurrentContent())
+      description: JSON.stringify(
+        convertToRaw(description.getCurrentContent())
       ),
-      jobRequired: JSON.stringify(convertToRaw(jobRequired.getCurrentContent())),
-      jobBenefit: JSON.stringify(convertToRaw(benefit.getCurrentContent())),
+      candidateRequired: JSON.stringify(convertToRaw(candidateRequired.getCurrentContent())),
+      benefit: JSON.stringify(convertToRaw(benefit.getCurrentContent())),
     })
-  }, [jobDescription.getCurrentContent(), jobRequired.getCurrentContent(), benefit.getCurrentContent()])
-  const [grossType, setGrossType] = useState(false);
+  }, [description.getCurrentContent(), candidateRequired.getCurrentContent(), benefit.getCurrentContent()])
+  const [salaryType, setSalaryType] = useState(false);
   const [currency, setCurrency] = useState();
   // Ham nay de lay text tu richtext
   const getTextArrayFromRich = function (rawdata) {
@@ -219,10 +219,10 @@ function JobPost({ user }) {
   }
   const sendPostData = function () {
 
-    let jobDescriptionRaw = getTextArrayFromRich(convertToRaw(jobDescription.getCurrentContent())).join("")
-    let jobRequiredRaw = getTextArrayFromRich(convertToRaw(jobRequired.getCurrentContent())).join("")
+    let descriptionText = getTextArrayFromRich(convertToRaw(description.getCurrentContent())).join("")
+    let candidateRequiredText = getTextArrayFromRich(convertToRaw(candidateRequired.getCurrentContent())).join("")
     axios
-      .post("/jobpost", { ...data, jobDescriptionRaw, jobRequiredRaw })
+      .post("/jobpost", { ...data, descriptionText, candidateRequiredText })
       .then((res) => {
 
         console.log(res);
@@ -277,7 +277,7 @@ function JobPost({ user }) {
               onBlur={(e) => {
                 setData({
                   ...data,
-                  jobTitle: e.target.value,
+                  title: e.target.value,
                 });
               }}
             />
@@ -403,11 +403,11 @@ function JobPost({ user }) {
                 size="small"
                 sx={{ mt: 1 }}
                 type="date"
-                placeholder="Số lượng cần tuyển"
+                placeholder=""
                 onChange={(e) => {
                   setData({
                     ...data,
-                    deadline: e.target.value,
+                    endDate: e.target.value,
                   });
                 }}
               />
@@ -509,10 +509,10 @@ function JobPost({ user }) {
                 sx={{ mt: 1 }}
                 options={env.GROSSTYPES.split(", ")}
                 onInputChange={(e, value) => {
-                  setGrossType(value);
+                  setSalaryType(value);
                   setData({
                     ...data,
-                    grossType: value,
+                    salaryType: value,
                   });
                 }}
                 renderInput={(params) => (
@@ -521,7 +521,7 @@ function JobPost({ user }) {
               />
             </Grid>
             {/* Lương theo khoảng */}
-            {grossType == "Trong khoảng" && (
+            {salaryType == "Trong khoảng" && (
               <>
                 <Grid item xs={2}>
                   <Typography variant="p">Từ</Typography>
@@ -536,7 +536,7 @@ function JobPost({ user }) {
                     onBlur={(e) => {
                       setData({
                         ...data,
-                        grossFrom: e.target.value,
+                        salaryMin: e.target.value,
                       });
                     }}
                   />
@@ -554,8 +554,8 @@ function JobPost({ user }) {
                     onBlur={(e) => {
                       setData({
                         ...data,
-                        grossTo: e.target.value,
-                        gross: "",
+                        salaryMax: e.target.value
+                        ,
                       });
                     }}
                   />
@@ -563,7 +563,7 @@ function JobPost({ user }) {
               </>
             )}
             {/* Lương cố định */}
-            {grossType == "Cố định" && (
+            {salaryType == "Cố định" && (
               <>
                 <Grid item xs={3}>
                   <Typography variant="p">Lương</Typography>
@@ -578,9 +578,9 @@ function JobPost({ user }) {
                     onBlur={(e) => {
                       setData({
                         ...data,
-                        gross: e.target.value,
-                        grossFrom: "",
-                        grossTo: "",
+                        salaryMax: e.target.value,
+                        salaryMin: e.target.value,
+
                       });
                     }}
                   />
@@ -630,15 +630,15 @@ function JobPost({ user }) {
           <Grid item xs={12}>
             <Typography variant="p">Mô tả công việc</Typography>
             <RichText
-              editorState={jobDescription}
-              setEditorState={setJobDescription}
+              editorState={description}
+              setEditorState={setDescription}
             />
           </Grid>
           <Grid item xs={12}>
             <Typography variant="p">Yêu cầu ứng viên</Typography>
             <RichText
-              editorState={jobRequired}
-              setEditorState={setJobRequired}
+              editorState={candidateRequired}
+              setEditorState={setCandidateRequired}
             />
           </Grid>
           <Grid item xs={12}>

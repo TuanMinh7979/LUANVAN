@@ -27,8 +27,6 @@ export default function JobDetail() {
 
 
 
-
-
     const theme = createTheme()
     const MenuProps = {
         PaperProps: {
@@ -244,14 +242,14 @@ export default function JobDetail() {
                                 }}
                             >
                                 <Typography variant="h5" color="initial" fontWeight={600} sx={{ color: theme.palette.success.light }}>
-                                    {data.jobTitle}
+                                    {data.title}
                                 </Typography>
                                 <Typography variant="h6" color="initial">
-                                    {data.company.companyName}
+                                    {data.company.name}
                                 </Typography>
                                 <Stack direction='row' spacing={1} sx={{ color: 'rgba(0,0,0,0.7)' }}>
                                     <AccessTimeIcon fontSize="small" />
-                                    <Typography variant="body1" >Hạn nộp hồ sơ: {data.deadline}</Typography>
+                                    <Typography variant="body1" >Hạn nộp hồ sơ: {data.endDate}</Typography>
                                 </Stack>
                             </Box>
                             <Box
@@ -319,7 +317,14 @@ export default function JobDetail() {
                                                 Mức lương
                                             </Typography><br></br>
                                             <Typography variant="p" >
-                                                {data.gross ? data.gross : <>{data.grossFrom}-{data.grossTo}</>}
+                                                {/* luong co dinh */}
+                                                {data.salaryMin == data.salaryMax && <>{data.salaryMax}</>}
+                                                {/* luong trong khoang */}
+                                                {data.salaryMin && data.salaryMax && <>{data.salaryMin}-{data.salaryMax}</>}
+                                                {data.salaryMin == 0 && data.salaryMax && <>Upto {data.salaryMax}</>}
+                                                {data.salaryMin && data.salaryMax == 0 && <>From {data.salaryMax}</>}
+
+
                                             </Typography>
                                         </Box>
                                     </Grid>
@@ -472,7 +477,7 @@ export default function JobDetail() {
                                         py: 1
                                     }}
                                 >
-                                    <RichTextDisplay data={JSON.parse(data.jobDescription)} />
+                                    <RichTextDisplay data={JSON.parse(data.description)} />
                                 </Box>
                             </Grid>
                             <Grid
@@ -502,7 +507,7 @@ export default function JobDetail() {
                                         py: 1
                                     }}
                                 >
-                                    <RichTextDisplay data={JSON.parse(data.jobRequired)} />
+                                    <RichTextDisplay data={JSON.parse(data.candidateRequired)} />
                                 </Box>
                             </Grid>
                             <Grid
@@ -532,7 +537,7 @@ export default function JobDetail() {
                                         py: 1
                                     }}
                                 >
-                                    <RichTextDisplay data={JSON.parse(data.jobBenefit)} />
+                                    <RichTextDisplay data={JSON.parse(data.benefit)} />
                                 </Box>
                             </Grid>
 

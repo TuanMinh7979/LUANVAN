@@ -78,7 +78,7 @@ export const getJobPost = async (req, res, next) => {
 
     if (jobPost === null)
       return next(createError(404, "Khong tim thay jobPost"));
-
+    console.log(jobPost)
     res.status(200).json({ ...jobPost._doc, company: company });
   } catch (err) {
     next(err);
@@ -91,7 +91,7 @@ export const getJobPost = async (req, res, next) => {
 
 // { "$toObjectId": "$userId" }
 export const getAllJobPost = async (req, res, next) => {
-
+  console.log("------------->>>")
   try {
     let pipeLine = []
     if (Object.keys(req.query).length > 0) {

@@ -28,10 +28,10 @@ export default function Register() {
     const validate = () => {
         if (
             username.current.value == "" ||
-      password.current.value == "" ||
-      email.current.value == "" ||
-      password.current.value == "" ||
-      retypepassword.current.value == ""
+            password.current.value == "" ||
+            email.current.value == "" ||
+            password.current.value == "" ||
+            retypepassword.current.value == ""
         ) {
             setResponse({
                 showArlert: true,
@@ -64,7 +64,7 @@ export default function Register() {
                 address: "",
                 avatar: "",
                 roleInp: "candidate",
-                companyName: "",
+
                 phone: ""
             };
             axios({
@@ -124,7 +124,7 @@ export default function Register() {
                                     fontWeight: "450"
                                 }}
                             >
-                Chào mừng bạn đến với ViecLamNhanh,
+                                Chào mừng bạn đến với ViecLamNhanh,
                             </Typography>
                             <Typography
                                 variant="p"
@@ -133,8 +133,8 @@ export default function Register() {
                                     fontSize: "16px"
                                 }}
                             >
-                Cùng xây dựng một hồ sơ nổi bật và nhận được các cơ hội sự
-                nghiệp lý tưởng
+                                Cùng xây dựng một hồ sơ nổi bật và nhận được các cơ hội sự
+                                nghiệp lý tưởng
                             </Typography>
                         </Box>
                         {response.showArlert && (
@@ -149,7 +149,7 @@ export default function Register() {
                                     variant=""
                                     sx={{ fontSize: "13px", mb: 1 }}
                                 >
-                  Username
+                                    Username
                                 </InputLabel>
                                 <OutlinedInput
                                     fullWidth
@@ -172,7 +172,7 @@ export default function Register() {
                                     variant=""
                                     sx={{ fontSize: "13px", mb: 1 }}
                                 >
-                  Email
+                                    Email
                                 </InputLabel>
                                 <OutlinedInput
                                     fullWidth
@@ -196,7 +196,7 @@ export default function Register() {
                                     variant=""
                                     sx={{ fontSize: "13px", mb: 1 }}
                                 >
-                  Mật khẩu
+                                    Mật khẩu
                                 </InputLabel>
                                 <OutlinedInput
                                     fullWidth
@@ -220,7 +220,7 @@ export default function Register() {
                                     variant=""
                                     sx={{ fontSize: "13px", mb: 1 }}
                                 >
-                  Nhập lại Mật khẩu
+                                    Nhập lại Mật khẩu
                                 </InputLabel>
                                 <OutlinedInput
                                     fullWidth
@@ -245,18 +245,18 @@ export default function Register() {
                                     color="success"
                                     fullWidth
                                 >
-                  Đăng ký
+                                    Đăng ký
                                 </Button>
                             </Box>
                             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                                 <Typography variant="p">
-                  Bạn đã có tài khoản{" "}
+                                    Bạn đã có tài khoản{" "}
                                     <Link
                                         href="/login"
                                         underline="none"
                                         sx={{ color: "#4caf50", fontWeight: "650" }}
                                     >
-                    Đăng nhập
+                                        Đăng nhập
                                     </Link>
                                 </Typography>
                             </Box>
@@ -297,15 +297,15 @@ export default function Register() {
                             }}
                         >
                             <Typography variant="h5" fontWeight={500}>
-                Công cụ viết CV miễn phí
+                                Công cụ viết CV miễn phí
                             </Typography>
                             <Typography
                                 variant="p"
                                 sx={{ width: "70%", textAlign: "center" }}
                             >
-                Nhiều mẫu CV đẹp, phù hợp nhu cầu ứng tuyển các vị trí khác
-                nhau. Dễ dàng chỉnh sửa thông tin, tạo CV online nhanh chóng
-                trong vòng 5 phút.
+                                Nhiều mẫu CV đẹp, phù hợp nhu cầu ứng tuyển các vị trí khác
+                                nhau. Dễ dàng chỉnh sửa thông tin, tạo CV online nhanh chóng
+                                trong vòng 5 phút.
                             </Typography>
                         </Box>
                     </Box>

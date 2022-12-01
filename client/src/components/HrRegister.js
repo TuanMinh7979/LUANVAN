@@ -65,7 +65,7 @@ export default function HrRegister() {
                 address: "",
                 avatar: "",
                 roleInp: "rec",
-                companyName: "",
+               
                 phone: ""
             };
             axios({

@@ -16,17 +16,13 @@ import { maxHeight, maxWidth } from "@mui/system";
 export default function Company({ user }) {
     const navigate = useNavigate()
     const [logo, setLogo] = useState(logoImage)
-    const [jobDescription, setJobDescription] = useState(() =>
-        EditorState.createEmpty()
-    );
+
     const [introduce, setIntroduce] = useState(() =>
         EditorState.createEmpty()
     );
-    const [benefit, setBenefit] = useState(() =>
-        EditorState.createEmpty()
-    );
+
     const [data, setData] = useState({
-        companyName: '',
+        name: '',
         type: '',
         location: '',
         members: 0,
@@ -64,7 +60,7 @@ export default function Company({ user }) {
             ...data,
             introduce: JSON.stringify(convertToRaw(introduce.getCurrentContent()))
         })
-    },[introduce.getCurrentContent()])
+    }, [introduce.getCurrentContent()])
     return (<>
         <Grid
             sx={{
@@ -118,7 +114,7 @@ export default function Company({ user }) {
                         onBlur={(e) => {
                             setData({
                                 ...data,
-                                companyName: e.target.value
+                                name: e.target.value
                             })
                         }}
                     />

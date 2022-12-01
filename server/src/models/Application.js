@@ -3,15 +3,11 @@ const { Schema } = mongoose;
 
 const ApplicantSchema = new Schema(
   {
-    jobId: {
-      type: String,
-      required: true,
-    },
-    resumeId: {
-      type: String,
-      required: true,
-      unique: true,
-    },
+    jobId: { type: mongoose.Schema.ObjectId, ref: "JobPost", required: true },
+    resumeId: { type: mongoose.Schema.ObjectId, ref: "Resume", required: true },
+    candidateId: { type: mongoose.Schema.ObjectId, ref: "Resume", required: true },
+    recId: { type: mongoose.Schema.ObjectId, ref: "Resume", required: true },
+    
     status: {
       type: String,
       enum: ["consider", "interview", "offer", "accept", "refuse"],

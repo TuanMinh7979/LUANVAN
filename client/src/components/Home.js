@@ -12,7 +12,7 @@ function Home() {
     const [displayFilterBox, setDisplayFilterBox] = useState("none")
     const user = useSelector(state => state.user)
 
-    const { data, loading, error } = useFetch("/jobpost");
+    const { data, loading, error } = useFetch("http://localhost:8800/api/jobpost");
     console.log(data)
     const MenuProps = {
         PaperProps: {

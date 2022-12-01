@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const CompanySchema = new Schema(
   {
-    companyName: {
+    name: {
       type: String,
 
     },
@@ -20,10 +20,13 @@ const CompanySchema = new Schema(
     introduce: {
       type: String
     },
+    linkToLogo:{
+
+    },
     members: {
       type: String
     },
-    logo: { type: String },
+
 
 
   },

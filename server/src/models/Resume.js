@@ -26,8 +26,9 @@ const ResumeSchema = new Schema(
     certifications: String,
 
 
-    skillsVal: String,
-    certificationsVal: String
+    
+    skillsText: String,
+    certificationsText: String
   },
 
   //createAt and updateAt

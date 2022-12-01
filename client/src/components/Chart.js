@@ -15,18 +15,11 @@ import axios from 'axios'
 import { maxHeight, maxWidth } from "@mui/system";
 export default function Charts({ user }) {
     const navigate = useNavigate()
-    const [logo, setLogo] = useState(logoImage)
-    const [jobDescription, setJobDescription] = useState(() =>
-        EditorState.createEmpty()
-    );
-    const [introduce, setIntroduce] = useState(() =>
-        EditorState.createEmpty()
-    );
-    const [benefit, setBenefit] = useState(() =>
-        EditorState.createEmpty()
-    );
+   
+ 
+ 
     const [data, setData] = useState({
-        companyName: '',
+        name: '',
         type: '',
         location: '',
         members: 0,

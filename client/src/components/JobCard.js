@@ -16,7 +16,7 @@ export default function JobCard(props) {
 
   const { job } = props
 
-  function titleCut(jobTitle) { }
+  function titleCut(title) { }
   const style1 = {
     background: "#2E7D32",
     px: 1,
@@ -70,10 +70,10 @@ export default function JobCard(props) {
               }}
             >
               <Typography fontWeight="600" fontSize="18px" variant="h6">
-                {job.jobTitle}
+                {job.title}
               </Typography>
               <Typography fontWeight="300" fontSize="20px" variant="h5">
-                {job.company.companyName}
+                {job.company.name}
               </Typography>
             </Box>
           </Box>

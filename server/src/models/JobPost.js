@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const JobPostSchema = new Schema(
   {
-    jobTitle: { type: String },
+    title: { type: String },
 
     location: { type: String },
     amount: { type: Number },
@@ -11,48 +11,51 @@ const JobPostSchema = new Schema(
       type: String,
     },
 
-    deadline: { type: Date },
-    gender: {
+    acceptDate: { type: Date },
+    endDate: { type: Date },
+    exp: {
       type: String,
     },
     rank: {
       type: String,
     },
-    exp: {
+    gender: {
       type: String,
+      enum: ["Nam", "Nữ", "Không yêu cầu"],
     },
     currency: {
       type: String,
       enum: ["USD", "VND"],
       default: "USD",
     },
-    grossType: {
+
+    salaryType: {
       type: String,
+      enum: ["Thoản thuận", "Cố định", "Trong khoảng"],
+      default: "USD",
     },
-    gross: {
+
+    salaryMin: {
       type: Number,
     },
-    grossTo: {
-      type: Number,
-    },
-    grossFrom: {
+    salaryMax: {
       type: Number,
     },
     fullAddress: {
       type: String,
     },
-    jobDescription: {
+
+
+    description: {
       type: String,
     },
-    jobRequired: {
+    candidateRequired: {
       type: String,
     },
-    jobBenefit: {
+    benefit: {
       type: String,
     },
-    skillRequired: {
-      type: String,
-    },
+
 
 
     categoryId: {
@@ -71,20 +74,23 @@ const JobPostSchema = new Schema(
       required: true,
     },
 
-    jobDescriptionRaw: {
+    descriptionText: {
       type: String,
     }
     ,
-    jobRequiredRaw: {
+    candidateRequiredText: {
       type: String,
     },
 
-
+    viewCount: {
+      type: Number,
+      default: 0
+    }
 
   },
 
   { timestamps: true }
 );
 
-const Job = mongoose.model("jobposts", JobPostSchema);
-export default Job;
+const JobPost = mongoose.model("jobposts", JobPostSchema);
+export default JobPost;

@@ -1,24 +1,6 @@
 import mongoose from "mongoose";
+import JobPost from "./JobPost.js";
 const { Schema } = mongoose;
-const ProfileSchema = mongoose.Schema({
-  //additional for contact info
-  website: String,
-  //
-  //block
-  interest: String,
-  objective: String,
-  education: String,
-  experience: String,
-  activities: String,
-  awards: String,
-  skills: String,
-  certifications: String,
-
-  //blockval
-  skillsVal: String,
-  certificationsVal: String    
-});
-
 
 const CandidateSchema = new Schema(
   {
@@ -33,19 +15,18 @@ const CandidateSchema = new Schema(
     address: String,
     avatar: String,
     email: String,
-    
-    age: { type: Number },
-    profile: { type: ProfileSchema },
-    saveJobs: {
-      type: [String],
-    },
 
-     //one to one
-     userId: {
+    age: { type: Number },
+
+    saveJobs: [{ type: mongoose.Schema.ObjectId, ref: "JobPost" }],
+
+
+    //one to one
+    userId: {
       type: mongoose.Schema.ObjectId,
       ref: "User",
       required: true,
-      unique: true
+      index: true
     },
   },
   { timestamps: true }
