@@ -129,7 +129,7 @@ export default function Company({ user }) {
                         freeSolo
                         size="small"
                         sx={{ mt: 1 }}
-                        options={env.JOBS.split(", ")}
+                        options={env.REACT_APP_JOBS.split(", ")}
                         onInputChange={(e, value) => {
                             setData({
                                 ...data,
@@ -154,7 +154,7 @@ export default function Company({ user }) {
                     <Autocomplete
                         size="small"
                         sx={{ mt: 1 }}
-                        options={env.LOCATION.split(", ")}
+                        options={env.REACT_APP_LOCATION.split(", ")}
                         renderInput={(params) => <TextField {...params} placeholder="-- Chọn địa điểm làm việc --" />}
                         onInputChange={(e, value) => {
                             setData({

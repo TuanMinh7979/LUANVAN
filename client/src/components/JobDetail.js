@@ -1,9 +1,5 @@
 import { Container, Box, TextField, FormControl, InputAdornment, InputLabel, Select, MenuItem, Button, Stack, Typography, createTheme, Grid } from "@mui/material";
-import env from "react-dotenv";
 import WorkIcon from '@mui/icons-material/Work';
-import PlaceIcon from '@mui/icons-material/Place';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import BadgeIcon from '@mui/icons-material/Badge';
 import Image from 'mui-image'
 import logo from '../assets/companylogo_sample.png'
 import { useState } from "react";
@@ -23,6 +19,7 @@ import useFetch from "../hooks/useFetch";
 export default function JobDetail() {
     const location = useLocation();
     const id = location.pathname.split("/")[2];
+    console.log(id)
     const { data, loading, error } = useFetch(`/jobpost/${id}`);
 
 
@@ -51,158 +48,14 @@ export default function JobDetail() {
                     disableGutters
                     maxWidth
                     sx={{
-                        background: '#f1f2f6'
+                        background: '#f1f2f6',
+                        py: 4,
                     }}
                 >
-                    {/*   <Container
-                        maxWidth
-                        sx={{
-                            py: 4,
-                            background: 'white'
-                        }}
-                    >
-                       
-                        <Box
-                            sx={{
-                                width: '80%',
-                                mx: 'auto',
-                                display: 'flex',
-                                flexWrap: 'wrap'
-                            }}
-                        >
-                            <TextField
-                                size="small"
-                                color="success"
-                                placeholder="Tên công việc, vị trí muốn ứng tuyển"
-                                sx={{
-                                    flexBasis: "20%",
-                                    mr: 2
-                                }}
-                            />
-                          
-                            <FormControl
-                                color="success"
-                                size="small"
-                                sx={{ width: "15%", mb: 1, mr: 2 }}
-                            >
-                                <InputLabel id="demo-simple-select-label">Ngành nghề</InputLabel>
-                                <Select
-                                    startAdornment={
-                                        <InputAdornment position="start">
-                                            <WorkIcon color="success" fontSize="small" />
-                                        </InputAdornment>
-                                    }
-                                    label="Ngành nghề"
-                                    MenuProps={MenuProps}
-                                    onChange={(e, item) => {
-                                        setSearchParams({
-                                            ...searchParams,
-                                            job: item.props.value
-                                        })
-                                    }}
-                                >
-                                    {env.JOBS.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
-                                </Select>
-                            </FormControl>
-                         
-                            <FormControl
-                                color="success"
-                                size="small"
-                                sx={{ width: "15%", mb: 1, mr: 2 }}
-                            >
-                                <InputLabel id="demo-simple-select-label">Địa điểm công ty</InputLabel>
-                                <Select
-                                    startAdornment={
-                                        <InputAdornment position="start">
-                                            <PlaceIcon color="success" fontSize="small" />
-                                        </InputAdornment>
-                                    }
-                                    label="Địa điểm công ty"
-                                    MenuProps={MenuProps}
-                                    onChange={(e, item) => {
-                                        setSearchParams({
-                                            ...searchParams,
-                                            location: item.props.value
-                                        })
-                                    }}
-                                >
-                                    {env.LOCATION.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
-                                </Select>
-                            </FormControl>
-                          
-                            <FormControl
-                                color="success"
-                                size="small"
-                                sx={{ width: "15%", mb: 1, mr: 2 }}
-                            >
-                                <InputLabel id="demo-simple-select-label">Cấp bậc</InputLabel>
-                                <Select
-                                    label="Cấp bậc"
-                                    MenuProps={MenuProps}
-                                    startAdornment={
-                                        <InputAdornment position="start">
-                                            <BadgeIcon color="success" fontSize="small" />
-                                        </InputAdornment>
-                                    }
-                                    onChange={(e, item) => {
-                                        setSearchParams({
-                                            ...searchParams,
-                                            level: item.props.value
-                                        })
-                                    }}
-                                >
-                                    {env.LEVEL.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
-                                </Select>
-                            </FormControl>
-                          
-                    <FormControl
-                        color="success"
-                        size="small"
-                        sx={{ width: "15%", mb: 1, mr: 2 }}
-                    >
-                        <InputLabel id="demo-simple-select-label">Mức lương</InputLabel>
-                        <Select
-                            label="Mức lương"
-                            MenuProps={MenuProps}
-                            startAdornment={
-                                <InputAdornment position="start">
-                                    <AttachMoneyIcon color="success" fontSize="small" />
-                                </InputAdornment>
-                            }
-                            onChange={(e, item) => {
-                                setSearchParams({
-                                    ...searchParams,
-                                    gross: item.props.value
-                                })
-                            }}
-                        >
-                            {env.GROSS.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
-                        </Select>
-                    </FormControl>
-                   
-                    <FormControl
-                    >
-                        <Button
-                            variant="contained"
-                            color="success"
-                            onClick={() => {
-                                navigate({
-                                    pathname: '/jobs',
-                                    search: `?${createSearchParams(searchParams)}`
-                                })
-                            }}
-                        >
-                            Tìm việc ngay
-                        </Button>
-                    </FormControl>
-                </Box>
-                    </Container> * /}
-                    {/* Body */ }
                     <Container
                         maxWidth
                         disableGutters
                         sx={{
-                            mt: 4,
                             background: '#f1f2f6'
                         }}
                     >
@@ -213,7 +66,7 @@ export default function JobDetail() {
                             sx={{
                                 background: 'white',
                                 py: 3,
-                                my: 2,
+                                mb: 2,
                                 width: '70%',
                                 mx: 'auto',
                                 justifyContent: 'center',

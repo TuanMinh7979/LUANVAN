@@ -85,7 +85,7 @@ function Home() {
                                                 label="Ngành nghề"
                                                 MenuProps={MenuProps}
                                             >
-                                                {env.JOBS.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
+                                                {env.REACT_APP_JOBS.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
                                             </Select>
                                         </FormControl>
 
@@ -98,7 +98,7 @@ function Home() {
                                                 label="Cấp bậc"
                                                 MenuProps={MenuProps}
                                             >
-                                                {env.LEVEL.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
+                                                {env.REACT_APP_LEVEL.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
                                             </Select>
                                         </FormControl>
 
@@ -111,7 +111,7 @@ function Home() {
                                                 label="Mức lương"
                                                 MenuProps={MenuProps}
                                             >
-                                                {env.GROSS.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
+                                                {env.REACT_APP_GROSS.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
                                             </Select>
                                         </FormControl>
                                         <FormControl
@@ -123,7 +123,7 @@ function Home() {
                                                 label="Địa điểm công ty"
                                                 MenuProps={MenuProps}
                                             >
-                                                {env.LOCATION.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
+                                                {env.REACT_APP_LOCATION.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
                                             </Select>
                                         </FormControl>
                                     </Box>

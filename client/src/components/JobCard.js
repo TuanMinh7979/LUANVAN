@@ -33,11 +33,6 @@ export default function JobCard(props) {
         onClick={() => {
           navigate({
             pathname: `/jobdetail/${job._id}`,
-            // search: `?${createSearchParams({
-            //   id: 123
-            // }
-
-            // )}`
           })
         }}
       >
@@ -78,7 +73,7 @@ export default function JobCard(props) {
             </Box>
           </Box>
           <Box sx={{ display: "flex", padding: "10px", minWidth: "50%" }}>
-            <Chip color="success" label="5tr" sx={{ mr: 1 }} />
+            <Chip color="success" label="5 triệu" sx={{ mr: 1 }} />
             <Chip color="success" label={job.location} />
           </Box>
         </CardActionArea>

@@ -26,7 +26,7 @@ export default function Charts({ user }) {
         foundingAt: '',
         logo: '',
         address: '',
-        introduce: JSON.stringify(convertToRaw(introduce.getCurrentContent()))
+        // introduce: JSON.stringify(convertToRaw(introduce.getCurrentContent()))
 
     })
     const [grossType, setGrossType] = useState(false)
@@ -84,7 +84,7 @@ export default function Charts({ user }) {
                         </TableHead>
                         <TableRow
                             onClick ={()=>{
-                                navigateTo("../")
+                                navigateTo("/jobdetail/6384cbe50fed53e7bcedda8d")
                             }}
                         >
                             <TableCell>Chuyên viên quan hệ khách hàng tại Cần Thơ thu nhập từ 10 triệu</TableCell>
