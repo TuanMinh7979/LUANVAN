@@ -38,19 +38,19 @@ export default function UpdateProfile({ user }) {
     EditorState.createEmpty()
 );
     const [data, setData] = useState({
-        fullname: '',
+        name: '',
         dob: '',
         gender: '',
         email: '',
         phone: '',
         avatar: avatar,
         address: '',
-        educationCV: JSON.stringify(convertToRaw(education.getCurrentContent())),
-        objectivesCV: JSON.stringify(convertToRaw(target.getCurrentContent())),
-        activityCV: JSON.stringify(convertToRaw(activity.getCurrentContent())),
-        certificateCV: JSON.stringify(convertToRaw(certificate.getCurrentContent())),
+        educationCv: JSON.stringify(convertToRaw(education.getCurrentContent())),
+        objectiveCv: JSON.stringify(convertToRaw(target.getCurrentContent())),
+        activitiesCv: JSON.stringify(convertToRaw(activity.getCurrentContent())),
+        certificationsCv: JSON.stringify(convertToRaw(certificate.getCurrentContent())),
         aboutMeCV: JSON.stringify(convertToRaw(aboutMe.getCurrentContent())),
-        experienceCV: JSON.stringify(convertToRaw(experience.getCurrentContent())),
+        experienceCv: JSON.stringify(convertToRaw(experience.getCurrentContent())),
     })
     const getTextArrayFromRich = function (rawdata) {
         if (rawdata.blocks.length > 0) {
@@ -60,6 +60,7 @@ export default function UpdateProfile({ user }) {
         }
       }
     const upDateProfileData = function () {
+        console.log(data)
         axios.put(`/candidate/${user.user._id}/profile`, data)
             .then((res) => {
                 console.log(res)
@@ -75,12 +76,17 @@ export default function UpdateProfile({ user }) {
         }
         setData({
             ...data,
-            educationCV: JSON.stringify(convertToRaw(education.getCurrentContent())),
-            objectivesCV: JSON.stringify(convertToRaw(target.getCurrentContent())),
-            activityCV: JSON.stringify(convertToRaw(activity.getCurrentContent())),
-            certificateCV: JSON.stringify(convertToRaw(certificate.getCurrentContent())),
+            educationCv: JSON.stringify(convertToRaw(education.getCurrentContent())),
+            objectiveCv: JSON.stringify(convertToRaw(target.getCurrentContent())),
+            activitiesCv: JSON.stringify(convertToRaw(activity.getCurrentContent())),
+            certificationsCv: JSON.stringify(convertToRaw(certificate.getCurrentContent())),
             aboutMeCV: JSON.stringify(convertToRaw(aboutMe.getCurrentContent())),
-            experienceCV: JSON.stringify(convertToRaw(experience.getCurrentContent())),
+            experienceCv: JSON.stringify(convertToRaw(experience.getCurrentContent())),
+            objective: getTextArrayFromRich(convertToRaw(target.getCurrentContent())).join(' '),
+            activities: getTextArrayFromRich(convertToRaw(activity.getCurrentContent())).join(' '),
+            certifications: getTextArrayFromRich(convertToRaw(certificate.getCurrentContent())).join(' '),
+            experience: getTextArrayFromRich(convertToRaw(experience.getCurrentContent())).join(' '),
+
         })
     },[education,target,activity,certificate,experience,aboutMe])
     return (<>
@@ -188,7 +194,7 @@ export default function UpdateProfile({ user }) {
                                     onBlur={(e) => {
                                         setData({
                                             ...data,
-                                            fullname: e.target.value
+                                            name: e.target.value
                                         })
                                     }}
                                 />
@@ -350,7 +356,7 @@ export default function UpdateProfile({ user }) {
                                     onChange={(e) => {
                                         setData({
                                             ...data,
-                                            skill: e.target.value
+                                            skills: e.target.value
                                         })
                                     }}
                                 />
@@ -413,8 +419,8 @@ export default function UpdateProfile({ user }) {
                         size="small"
                         variant="contained"
                         onClick={() => {
-                            console.log(data)
-                            // upDateProfileData()
+                            // console.log(data)
+                            upDateProfileData()
                         }}
                     >Cập nhật</Button>
                 </Grid>
