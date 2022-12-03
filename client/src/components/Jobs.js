@@ -80,7 +80,7 @@ export default function Jobs() {
                         label="Ngành nghề"
                         MenuProps={MenuProps}
                     >
-                        {env.JOBS.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
+                        {env.REACT_APP_JOBS.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
                     </Select>
                 </FormControl>
                 {/* Noi lam viec */}
@@ -99,7 +99,7 @@ export default function Jobs() {
                         label="Địa điểm công ty"
                         MenuProps={MenuProps}
                     >
-                        {env.LOCATION.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
+                        {env.REACT_APP_LOCATION.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
                     </Select>
                 </FormControl>
                 {/* Chi tiet cong viec */}
@@ -118,7 +118,7 @@ export default function Jobs() {
                             </InputAdornment>
                         }
                     >
-                        {env.LEVEL.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
+                        {env.REACT_APP_LEVEL.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
                     </Select>
                 </FormControl>
                 {/* Muc luong */}
@@ -137,7 +137,7 @@ export default function Jobs() {
                             </InputAdornment>
                         }
                     >
-                        {env.GROSS.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
+                        {env.REACT_APP_GROSS.split(", ").map((item, key) => (<MenuItem value={item} key={key}>{item}</MenuItem>))}
                     </Select>
                 </FormControl>
                 {/* search btn */}

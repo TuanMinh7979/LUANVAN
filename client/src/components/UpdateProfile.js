@@ -14,11 +14,12 @@ import SchoolIcon from '@mui/icons-material/School';
 import FlagIcon from '@mui/icons-material/Flag';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+import WorkIcon from '@mui/icons-material/Work';
 export default function UpdateProfile({ user }) {
     const imageRef = useRef()
     const navigate = useNavigate()
     const [avatar, setAvatar] = useState(logoImage)
-    const [literacy, setLiteracy] = useState(() =>
+    const [education, setEducation] = useState(() =>
         EditorState.createEmpty()
     );
     const [target, setTarget] = useState(() =>
@@ -33,6 +34,9 @@ export default function UpdateProfile({ user }) {
     const [aboutMe, setAboutMe] = useState(() =>
         EditorState.createEmpty()
     );
+    const [experience, setExperience] = useState(() =>
+    EditorState.createEmpty()
+);
     const [data, setData] = useState({
         fullname: '',
         dob: '',
@@ -41,13 +45,20 @@ export default function UpdateProfile({ user }) {
         phone: '',
         avatar: avatar,
         address: '',
-        literacy: JSON.stringify(convertToRaw(literacy.getCurrentContent())),
-        target: JSON.stringify(convertToRaw(target.getCurrentContent())),
-        activity: JSON.stringify(convertToRaw(activity.getCurrentContent())),
-        certificate: JSON.stringify(convertToRaw(certificate.getCurrentContent())),
-        aboutMe: JSON.stringify(convertToRaw(aboutMe.getCurrentContent())),
-
+        educationCV: JSON.stringify(convertToRaw(education.getCurrentContent())),
+        objectivesCV: JSON.stringify(convertToRaw(target.getCurrentContent())),
+        activityCV: JSON.stringify(convertToRaw(activity.getCurrentContent())),
+        certificateCV: JSON.stringify(convertToRaw(certificate.getCurrentContent())),
+        aboutMeCV: JSON.stringify(convertToRaw(aboutMe.getCurrentContent())),
+        experienceCV: JSON.stringify(convertToRaw(experience.getCurrentContent())),
     })
+    const getTextArrayFromRich = function (rawdata) {
+        if (rawdata.blocks.length > 0) {
+          return (
+            rawdata.blocks.map((item) => item.text)
+          )
+        }
+      }
     const upDateProfileData = function () {
         axios.put(`/candidate/${user.user._id}/profile`, data)
             .then((res) => {
@@ -64,13 +75,14 @@ export default function UpdateProfile({ user }) {
         }
         setData({
             ...data,
-            literacy: JSON.stringify(convertToRaw(literacy.getCurrentContent())),
-            target: JSON.stringify(convertToRaw(target.getCurrentContent())),
-            activity: JSON.stringify(convertToRaw(activity.getCurrentContent())),
-            certificate: JSON.stringify(convertToRaw(certificate.getCurrentContent())),
-            aboutMe: JSON.stringify(convertToRaw(aboutMe.getCurrentContent())),    
+            educationCV: JSON.stringify(convertToRaw(education.getCurrentContent())),
+            objectivesCV: JSON.stringify(convertToRaw(target.getCurrentContent())),
+            activityCV: JSON.stringify(convertToRaw(activity.getCurrentContent())),
+            certificateCV: JSON.stringify(convertToRaw(certificate.getCurrentContent())),
+            aboutMeCV: JSON.stringify(convertToRaw(aboutMe.getCurrentContent())),
+            experienceCV: JSON.stringify(convertToRaw(experience.getCurrentContent())),
         })
-    },[literacy,target,activity,certificate])
+    },[education,target,activity,certificate,experience,aboutMe])
     return (<>
         <Grid
             sx={{
@@ -144,10 +156,10 @@ export default function UpdateProfile({ user }) {
                                     const fileReader = new FileReader()
                                     fileReader.onloadend = () => {
                                         setAvatar(fileReader.result)
-                                        // setData({
-                                        //     ...data,
-                                        //     avatar: fileReader.result
-                                        // })
+                                        setData({
+                                            ...data,
+                                            avatar: fileReader.result
+                                        })
                                     }
                                     fileReader.readAsDataURL(e.target.files[0])
                                 }}
@@ -212,7 +224,7 @@ export default function UpdateProfile({ user }) {
                                     size="small"
                                     sx={{ mt: 1 }}
                                     color="success"
-                                    options={env.SEXS.split(", ")}
+                                    options={env.REACT_APP_SEXS.split(", ")}
                                     onInputChange={(e, value) => {
                                         setData({
                                             ...data,
@@ -277,9 +289,91 @@ export default function UpdateProfile({ user }) {
                                     onBlur={(e) => {
                                         setData({
                                             ...data,
-                                            address: e.target.value
+                                            fulladdress: e.target.value
                                         })
                                     }}
+                                />
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid
+                    container
+                    sx={{ p: 2, rowGap: 2, columnGap: 2, background: "#fff", mb: 2, alignItems: 'center' }}
+                >
+                    <Grid
+                        container
+                        item
+                        xs={12}
+                        sx={{ rowGap: 2, columnGap: 4, background: "#fff", alignItems: 'center' }}
+                    >
+                        <Grid
+                            container
+                            item xs={12}
+                            sx={{
+                                rowGap: 2,
+                                columnGap: 2
+                            }}
+                        >
+                            <Grid item
+                                xs={4}
+                            >
+                                <Typography variant="p" fontWeight={500}>
+                                    Công việc cần tìm
+                                </Typography>
+                                <OutlinedInput
+                                    fullWidth
+                                    color="success"
+                                    size="small"
+                                    sx={{ mt: 1 }}
+                                    placeholder="Web Developer"
+                                    onBlur={(e) => {
+                                        setData({
+                                            ...data,
+                                            title: e.target.value
+                                        })
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item
+                                xs={4}
+                            >
+                                <Typography variant="p" fontWeight={500} >
+                                    Kỹ năng
+                                </Typography>
+                                <OutlinedInput
+                                    color="success"
+                                    fullWidth
+                                    size="small"
+                                    sx={{ mt: 1 }}
+                                    placeholder="JavaScripts, HTML, CSS"
+                                    onChange={(e) => {
+                                        setData({
+                                            ...data,
+                                            skill: e.target.value
+                                        })
+                                    }}
+                                />
+                            </Grid>
+                            <Grid item
+                                xs={3}
+                            >
+                                <Typography variant="p" fontWeight={500} >
+                                    Địa chỉ tìm việc
+                                </Typography>
+                                <Autocomplete
+                                    freeSolo
+                                    size="small"
+                                    sx={{ mt: 1 }}
+                                    color="success"
+                                    options={env.REACT_APP_LOCATION.split(", ")}
+                                    onInputChange={(e, value) => {
+                                        setData({
+                                            ...data,
+                                            address: value
+                                        })
+                                    }}
+                                    renderInput={(params) => <TextField color="success" {...params} />}
                                 />
                             </Grid>
                         </Grid>
@@ -292,7 +386,11 @@ export default function UpdateProfile({ user }) {
                 >
                     <Grid item xs={12} sx={{ mb: 2 }}>
                         <Chip icon={<SchoolIcon />} label="Học vấn" color="success" />
-                        <RichText editorState={literacy} setEditorState={setLiteracy} />
+                        <RichText editorState={education} setEditorState={setEducation} />
+                    </Grid>
+                    <Grid item xs={12} sx={{ mb: 2 }}>
+                        <Chip icon={<WorkIcon />} label="Kinh nghiệm làm việc" color="success" />
+                        <RichText editorState={experience} setEditorState={setExperience} />
                     </Grid>
                     <Grid item xs={12} sx={{ mb: 2 }}>
                         <Chip icon={<CrisisAlertIcon />} label="Mục tiêu nghề nghiệp" color="success" />
@@ -308,7 +406,7 @@ export default function UpdateProfile({ user }) {
                     </Grid>
                     <Grid item xs={12} sx={{ mb: 2 }}>
                         <Chip icon={<SentimentVerySatisfiedIcon />} label="Giới thiệu về mình" color="success" />
-                        <RichText editorState={certificate} setEditorState={setCertificate} />
+                        <RichText editorState={aboutMe} setEditorState={setAboutMe} />
                     </Grid>
                     <Button
                         sx={{ mt: 1, minWidth: 200, mr: 'auto' }}
@@ -316,7 +414,7 @@ export default function UpdateProfile({ user }) {
                         variant="contained"
                         onClick={() => {
                             console.log(data)
-                            upDateProfileData()
+                            // upDateProfileData()
                         }}
                     >Cập nhật</Button>
                 </Grid>

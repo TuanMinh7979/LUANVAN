@@ -62,7 +62,6 @@ function JobList({ jobs }) {
                             return (
                                 <Grid xs={3}>
                                     <JobCard job={item} />
-
                                 </Grid>
 
                             )

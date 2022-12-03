@@ -37,7 +37,7 @@ import axios from "axios";
 import Company from "./Company";
 import Charts from "./Chart";
 import { jobCats } from "../store/selectData.js";
-
+import JobDetail from "./JobDetail"
 const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
   "&:hover": {
     color: theme.palette.success.light,
@@ -210,13 +210,14 @@ function JobPost({ user }) {
   const [salaryType, setSalaryType] = useState(false);
   const [currency, setCurrency] = useState();
   // Ham nay de lay text tu richtext
-  const getTextArrayFromRich = function (rawdata) {
+  getTextArrayFromRich = function (rawdata) {
     if (rawdata.blocks.length > 0) {
       return (
         rawdata.blocks.map((item) => item.text)
       )
     }
   }
+
   const sendPostData = function () {
 
     let descriptionText = getTextArrayFromRich(convertToRaw(description.getCurrentContent())).join("")
@@ -318,7 +319,7 @@ function JobPost({ user }) {
             <Autocomplete
               size="small"
               sx={{ mt: 1 }}
-              options={env.LOCATION.split(", ")}
+              options={env.REACT_APP_LOCATION.split(", ")}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -375,7 +376,7 @@ function JobPost({ user }) {
               <Autocomplete
                 size="small"
                 sx={{ mt: 1 }}
-                options={env.JOBTYPES.split(", ")}
+                options={env.REACT_APP_JOBTYPES.split(", ")}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -419,7 +420,7 @@ function JobPost({ user }) {
               <Autocomplete
                 size="small"
                 sx={{ mt: 1 }}
-                options={env.SEXS.split(", ")}
+                options={env.REACT_APP_SEXS.split(", ")}
                 renderInput={(params) => (
                   <TextField {...params} placeholder="-- Chọn giới tính --" />
                 )}
@@ -437,7 +438,7 @@ function JobPost({ user }) {
                 freeSolo
                 size="small"
                 sx={{ mt: 1 }}
-                options={env.LEVEL.split(", ")}
+                options={env.REACT_APP_LEVEL.split(", ")}
                 renderInput={(params) => (
                   <TextField {...params} placeholder="Giám đốc kinh doanh" />
                 )}
@@ -461,7 +462,7 @@ function JobPost({ user }) {
                 freeSolo
                 size="small"
                 sx={{ mt: 1 }}
-                options={env.EXP.split(", ")}
+                options={env.REACT_APP_EXP.split(", ")}
                 renderInput={(params) => (
                   <TextField {...params} placeholder="Chưa có kinh nghiệm" />
                 )}
@@ -486,7 +487,7 @@ function JobPost({ user }) {
               <Autocomplete
                 size="small"
                 sx={{ mt: 1 }}
-                options={env.CURRENCY.split(", ")}
+                options={env.REACT_APP_CURRENCY.split(", ")}
                 onInputChange={(e, value) => {
                   setCurrency(value);
                   setData({
@@ -507,7 +508,7 @@ function JobPost({ user }) {
               <Autocomplete
                 size="small"
                 sx={{ mt: 1 }}
-                options={env.GROSSTYPES.split(", ")}
+                options={env.REACT_APP_GROSSTYPES.split(", ")}
                 onInputChange={(e, value) => {
                   setSalaryType(value);
                   setData({
@@ -695,6 +696,7 @@ export default function HrHub() {
             <Route path="/" element={<JobPost user={user} />}></Route>
             <Route path="/editcompany" element={<Company user={user} />} />
             <Route path="/charts" element={<Charts user={user} />} />
+            <Route path="/jobdetail" element={<JobDetail  />} />
           </Routes>
         </Grid>
       </Grid>
