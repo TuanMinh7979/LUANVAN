@@ -14,7 +14,7 @@ const ResumeSchema = new Schema(
     email: String,
     fullAddress: String,
     // 
-    interest: String,
+  
     objective: String,
     education: String,
     experience: String,
@@ -23,7 +23,7 @@ const ResumeSchema = new Schema(
     certifications: String,
     //block
     //for cv
-    interestCv: String,
+   
     objectiveCv: String,
     educationCv: String,
     experienceCv: String,

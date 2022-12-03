@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useRef, useState } from "react";
+import { toast } from "react-toastify";
 import {
     Grid,
     Box,
@@ -54,7 +55,7 @@ export default function Register() {
         return true;
     };
 
-    const Signup = () => {
+    const Signup = async () => {
         if (validate()) {
             const data = {
                 usernameInp: username.current.value,
@@ -67,23 +68,23 @@ export default function Register() {
 
                 phone: ""
             };
-            axios({
+            const res = await axios({
                 method: "post",
                 url: env.AUTH + "register",
                 data: data
-            }).then((res) => {
-                console.log(res.data);
-                // if (res.data.status === 404) {
-                //     setResponse({
-                //         showArlert: true,
-                //         message: res.data.message
-                //     })
-                // }
-                // else {
-                //     window.location.href = "./"
-                // }
             });
+            console.log(res.data)
+            if (res.data.status == 200) {
+                toast.success("Đăng ký tài khoản thành công!")
+                setTimeout(() => {
+                    window.location.href = "/login"
+                }, 2000)
+
+            } else {
+                toast.warning("Đăng ký thất bại!")
+            }
         }
+
     };
     return (
         <>
