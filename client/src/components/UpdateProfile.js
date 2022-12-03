@@ -45,11 +45,13 @@ export default function UpdateProfile({ user }) {
         phone: '',
         avatar: avatar,
         address: '',
+        fullAddress:'',
+        skills:'',
         educationCv: JSON.stringify(convertToRaw(education.getCurrentContent())),
         objectiveCv: JSON.stringify(convertToRaw(target.getCurrentContent())),
         activitiesCv: JSON.stringify(convertToRaw(activity.getCurrentContent())),
         certificationsCv: JSON.stringify(convertToRaw(certificate.getCurrentContent())),
-        aboutMeCV: JSON.stringify(convertToRaw(aboutMe.getCurrentContent())),
+        aboutMe: JSON.stringify(convertToRaw(aboutMe.getCurrentContent())),
         experienceCv: JSON.stringify(convertToRaw(experience.getCurrentContent())),
     })
     const getTextArrayFromRich = function (rawdata) {
@@ -80,12 +82,13 @@ export default function UpdateProfile({ user }) {
             objectiveCv: JSON.stringify(convertToRaw(target.getCurrentContent())),
             activitiesCv: JSON.stringify(convertToRaw(activity.getCurrentContent())),
             certificationsCv: JSON.stringify(convertToRaw(certificate.getCurrentContent())),
-            aboutMeCV: JSON.stringify(convertToRaw(aboutMe.getCurrentContent())),
+            aboutMe: JSON.stringify(convertToRaw(aboutMe.getCurrentContent())),
             experienceCv: JSON.stringify(convertToRaw(experience.getCurrentContent())),
             objective: getTextArrayFromRich(convertToRaw(target.getCurrentContent())).join(' '),
             activities: getTextArrayFromRich(convertToRaw(activity.getCurrentContent())).join(' '),
             certifications: getTextArrayFromRich(convertToRaw(certificate.getCurrentContent())).join(' '),
             experience: getTextArrayFromRich(convertToRaw(experience.getCurrentContent())).join(' '),
+            education: getTextArrayFromRich(convertToRaw(education.getCurrentContent())).join(' '),
 
         })
     },[education,target,activity,certificate,experience,aboutMe])
@@ -295,7 +298,7 @@ export default function UpdateProfile({ user }) {
                                     onBlur={(e) => {
                                         setData({
                                             ...data,
-                                            fulladdress: e.target.value
+                                            fullAddress: e.target.value
                                         })
                                     }}
                                 />

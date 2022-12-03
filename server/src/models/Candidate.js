@@ -1,24 +1,24 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 const ProfileSchema = mongoose.Schema({
+  //table for this
+  //FOR PROFILE AND SEARCHING
+  skills: String,
 
-  //for searching
-  //full text search
-  interest: String,
+  aboutMe: String,
+
   objective: String,
   education: String,
   experience: String,
   activities: String,
-  skills: String,
   certifications: String,
-  //block
-  //for cv
-  interestCv: String,
+
+
+  //FOR CV
   objectiveCv: String,
   educationCv: String,
   experienceCv: String,
   activitiesCv: String,
-  skillsCv: String,
   certificationsCv: String,
 
 
@@ -38,10 +38,14 @@ const CandidateSchema = new Schema(
     },
     email: String,
     phone: String,
+    // addressId: {
+    //   type: mongoose.Schema.ObjectId,
+    //   ref: "Address",
+
+    // },
     addressId: {
-      type: mongoose.Schema.ObjectId,
-      ref: "Address",
-      required: true,
+      type: String
+
     },
     fullAddress: String,
 
