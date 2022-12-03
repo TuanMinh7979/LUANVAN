@@ -1,9 +1,37 @@
 import mongoose from "mongoose";
-import JobPost from "./JobPost.js";
 const { Schema } = mongoose;
+const ProfileSchema = mongoose.Schema({
+  //for cv
+  //for searching
+
+  interest: String,
+  objective: String,
+  education: String,
+  experience: String,
+  activities: String,
+  awards: String,
+  skills: String,
+  certifications: String,
+  //block
+  //for cv
+
+  interestCv: String,
+  objectiveCv: String,
+  educationCv: String,
+  experienceCv: String,
+  activitiesCv: String,
+  awardsCv: String,
+  skillsCv: String,
+  certificationsCv: String,
+
+
+});
+
 
 const CandidateSchema = new Schema(
+  //tim theo jobtitle ,kinh nghiem
   {
+    title: String,
     //contact info
     name: String,
     dob: Date,
@@ -11,16 +39,26 @@ const CandidateSchema = new Schema(
       type: String,
       enum: ["male", "female"],
     },
-    phone: String,
-    address: String,
-    avatar: String,
     email: String,
+    phone: String,
+    addressId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Address",
+      required: true,
+    },
+    fullAddress: String,
+
+    avatar: String,
 
     age: { type: Number },
 
+    profile: {
+      type: ProfileSchema
+    },
+
+
+    //
     saveJobs: [{ type: mongoose.Schema.ObjectId, ref: "JobPost" }],
-
-
     //one to one
     userId: {
       type: mongoose.Schema.ObjectId,

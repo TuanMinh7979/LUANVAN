@@ -197,7 +197,7 @@ function JobPost({ user }) {
 
   });
   useEffect(() => {
-    console.log(user.user)
+
     setData({
       ...data,
       description: JSON.stringify(
@@ -218,17 +218,19 @@ function JobPost({ user }) {
     }
   }
   const sendPostData = function () {
+    console.log("------")
+    console.log(JSON.stringify(convertToRaw(benefit.getCurrentContent())))
 
-    let descriptionText = getTextArrayFromRich(convertToRaw(description.getCurrentContent())).join("")
-    let candidateRequiredText = getTextArrayFromRich(convertToRaw(candidateRequired.getCurrentContent())).join("")
-    axios
-      .post("/jobpost", { ...data, descriptionText, candidateRequiredText })
-      .then((res) => {
+    // let descriptionText = getTextArrayFromRich(convertToRaw(description.getCurrentContent())).join("")
+    // let candidateRequiredText = getTextArrayFromRich(convertToRaw(candidateRequired.getCurrentContent())).join("")
+    // axios
+    //   .post("/jobpost", { ...data, descriptionText, candidateRequiredText })
+    //   .then((res) => {
 
-        console.log(res);
-      }).catch(err => {
-        console.log(err)
-      })
+    //     console.log(res);
+    //   }).catch(err => {
+    //     console.log(err)
+    //   })
   };
   function navigateTo(location) {
     navigate(location);
@@ -659,7 +661,7 @@ function JobPost({ user }) {
             size="small"
             variant="contained"
             onClick={() => {
-              console.log(data);
+
               sendPostData();
             }}
           >
