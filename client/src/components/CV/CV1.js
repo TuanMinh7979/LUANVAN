@@ -20,19 +20,19 @@ import ContactEditPopUp from "../ContactEditPopUp";
 
 export default function CV1({ data, print }) {
 
-    function RichEditor({  item, data, setData, setOpen }) {
+    function RichEditor({ item, data, setData, setOpen }) {
         const [editorState, setEditorState] = useState(() =>
-        EditorState.createEmpty()
-    )
+            EditorState.createEmpty()
+        )
         const [close, setClose] = useState()
         const getTextArrayFromRich = function (rawdata) {
             if (rawdata.blocks.length > 0) {
-              return (
-                rawdata.blocks.map((item) => item.text).join(' ')
-              )
+                return (
+                    rawdata.blocks.map((item) => item.text).join(' ')
+                )
             }
-          }
-        const text = item.slice(0,item.length-2)
+        }
+        const text = item.slice(0, item.length - 2)
         console.log(text)
         useEffect(() => {
             if (close) {
@@ -51,7 +51,7 @@ export default function CV1({ data, print }) {
                     [text]: getTextArrayFromRich(convertToRaw(editorState.getCurrentContent()))
                 })
             })
-           
+
         }
         return (
             <>
@@ -76,7 +76,7 @@ export default function CV1({ data, print }) {
                 </Box>
             </>
         )
-    }  
+    }
     const CustomChip = styled(Chip)(({ theme }) => ({
         "&": {
             background: theme.palette.warning.light,
@@ -87,19 +87,19 @@ export default function CV1({ data, print }) {
             '& .MuiChip-icon': {
                 color: 'white'
             },
-    
+
         },
     }));
-    const RichContent = function ({ show ,toggle, item, data, config }) {
+    const RichContent = function ({ show, toggle, item, data, config }) {
         return (
             <>
                 {show ?
                     <RichEditor
                         item={item}
                         setOpen={toggle}
-                        setData = {config}
-                        data = {data}
-                        /> :
+                        setData={config}
+                        data={data}
+                    /> :
                     <RichTextDisplay data={JSON.parse(data[item])} />}
             </>
         )
@@ -110,13 +110,14 @@ export default function CV1({ data, print }) {
     const [cvData, setCVDATA] = useState(data)
     // state quan ly show rich edit
     const [showEduEdit, setShowEduEdit] = useState()
-    const [showActivitiesEdit, setShowActivitiesEdit] = useState()
+    const [showSkillsEdit, setShowSkillsEdit] = useState()
     const [showCertificationsEdit, setShowCertificationsEdit] = useState()
     const [showExperienceEdit, setShowExperienceEdit] = useState()
     const [showObjectiveEdit, setShowObjectiveEdit] = useState()
     // state quan ly popup
     const [showPopup, setShowPopup] = useState(false)
 
+    console.log("------------------??>?>>>>>")
     console.log(cvData)
 
     const handlePrint = useReactToPrint({
@@ -183,14 +184,14 @@ export default function CV1({ data, print }) {
                                 border: '1px dashed red'
                             }
                         }}
-                        onClick= {()=>{
+                        onClick={() => {
                             setShowObjectiveEdit(true)
                         }}
                     >
-                        <RichContent show={showObjectiveEdit} toggle = {setShowObjectiveEdit} data={cvData} config={setCVDATA} item="objectiveCv" />
+                        <RichContent show={showObjectiveEdit} toggle={setShowObjectiveEdit} data={cvData} config={setCVDATA} item="objectiveCv" />
                     </Box>
 
-                    <CustomChip icon={<FlagIcon />} label="Hoạt động" />
+                    <CustomChip icon={<FlagIcon />} label="Kỹ năng" />
                     <Box
                         alignSelf="flex-start"
                         sx={{
@@ -202,11 +203,11 @@ export default function CV1({ data, print }) {
                                 border: '1px dashed red'
                             }
                         }}
-                        onClick= {()=>{
-                            setShowActivitiesEdit(true)
+                        onClick={() => {
+                            setShowSkillsEdit(true)
                         }}
                     >
-                        <RichContent show={showActivitiesEdit} toggle = {setShowActivitiesEdit} data={cvData} config={setCVDATA} item="activitiesCv" />
+                        <RichContent show={setShowSkillsEdit} toggle={setShowSkillsEdit} data={cvData} config={setCVDATA} item="skillCv" />
                     </Box>
                     <CustomChip icon={<WorkspacePremiumIcon color="success" />} label="Chứng chỉ" />
                     <Box
@@ -219,11 +220,11 @@ export default function CV1({ data, print }) {
                             '&:hover': {
                                 border: '1px dashed red'
                             }
-                        }} onClick= {()=>{
+                        }} onClick={() => {
                             setShowCertificationsEdit(true)
                         }}
                     >
-                        <RichContent show={showCertificationsEdit} toggle = {setShowCertificationsEdit} data={cvData} config={setCVDATA} item="certificationsCv" />
+                        <RichContent show={showCertificationsEdit} toggle={setShowCertificationsEdit} data={cvData} config={setCVDATA} item="certificationsCv" />
                     </Box>
                 </Grid>
                 {/* left */}
@@ -252,7 +253,7 @@ export default function CV1({ data, print }) {
                             ml: '30px',
                             mt: 3
                         }}
-                        onClick={()=>{
+                        onClick={() => {
                             setShowPopup(true)
                         }}
                     >
@@ -349,11 +350,11 @@ export default function CV1({ data, print }) {
                                     border: '1px dashed red'
                                 }
                             }}
-                            onClick= {()=>{
+                            onClick={() => {
                                 setShowExperienceEdit(true)
                             }}
                         >
-                            <RichContent show={showExperienceEdit} toggle = {setShowExperienceEdit} data={cvData} config={setCVDATA} item="experienceCv" />
+                            <RichContent show={showExperienceEdit} toggle={setShowExperienceEdit} data={cvData} config={setCVDATA} item="experienceCv" />
                         </Box>
                     </Box>
                 </Grid>
@@ -373,6 +374,9 @@ export default function CV1({ data, print }) {
                 handlePrint()
             }
         }} >IN</Button>
+        <Button sx={{marginLeft: "300px"}} onClick={() => {
+            console.log(cvData)
+        }} >SAVE</Button>
         {/* <EditDialog open={open} title={title} item={item} setOpen={setOpen} isRich={isRich} /> */}
     </>)
 }

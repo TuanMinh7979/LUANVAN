@@ -30,6 +30,8 @@ export default function ManageCV() {
                 >
                     <Typography variant="h4" color="initial">Hướng dẫn viết CV hiệu quả</Typography>
             </Grid>
+
+            
         </Grid>
     </>)
 }

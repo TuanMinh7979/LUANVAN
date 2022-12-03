@@ -5,31 +5,28 @@ const { Schema } = mongoose;
 
 const ResumeSchema = new Schema(
   {
-    name: String,
-    title: String,
-    dob: String,
-    gender: String,
-    phone: String,
-    avatar: String,
-    email: String,
-    fullAddress: String,
-    // 
-  
-    objective: String,
-    education: String,
-    experience: String,
+
+
+    aboutMeCV: String,
     activities: String,
-    skills: String,
-    certifications: String,
-    //block
-    //for cv
-   
-    objectiveCv: String,
-    educationCv: String,
-    experienceCv: String,
     activitiesCv: String,
-    skillsCv: String,
+    address: String,
+    avatar: String,
+    certifications: String,
     certificationsCv: String,
+    dob: String,
+    educationCv: String,
+    email: String,
+    experience: String,
+    experienceCv: String,
+    fullAddress: String,
+    gender: String,
+    name: String,
+    objective: String,
+    objectiveCv: String,
+    phone: String,
+    skills: String,
+    title: String,
 
   },
 
