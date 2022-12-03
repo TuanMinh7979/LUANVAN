@@ -1,9 +1,7 @@
 import { Box, Button, Chip, createTheme, Dialog, DialogContent, DialogTitle, Grid, styled, Typography } from "@mui/material";
-import { minHeight, width } from "@mui/system";
 import { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import background from '../../assets/FFF8F5.webp'
-import fakedata from '../../assets/test.json'
 import RichText, { RichTextDisplay } from "../RichText";
 import SchoolIcon from '@mui/icons-material/School';
 import FlagIcon from '@mui/icons-material/Flag';
@@ -18,127 +16,114 @@ import MailIcon from '@mui/icons-material/Mail';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { convertToRaw, EditorState } from "draft-js";
-import EditIcon from '@mui/icons-material/Edit';
-// function EditDialog({ open, setOpen, title, item, isRich }) {
-//     const [editorState, setEditorState] = useState(() =>
-//         EditorState.createEmpty()
-//     );
-//     function updateData() {
-//         console.log(convertToRaw(editorState.getCurrentContent()))
-//     }
-//     return (<>
-//         <Dialog
-//             open={open}
-//             onClose={() => { setOpen(false) }}
-//             fullWidth
-//             maxWidth="md"
-//         >
-//             <DialogTitle><Chip size="medium" icon={<EditIcon />} color="success" label={`Chỉnh sửa ${title}`} /></DialogTitle>
-//             <DialogContent
-//             >
-//                 {isRich && <RichText editorState={editorState} setEditorState={setEditorState} />}
-//                 <Button sx={{ mt: 1 }} onClick={updateData}>Cập nhật</Button>
-//             </DialogContent>
-//         </Dialog>
-//     </>)
-// }
-function RichEditor({ editorState, setEditorState, item, data, setData, setOpen }) {
-    const [close, setClose] = useState()
-    useEffect(()=>{
-        if(close){
-            setOpen(false)
-        }
-    })
-    function handleClose() {
-        setClose(true)
-    }
-    function updateData() {
-        setClose(true)
-        setTimeout(()=>{
-            setData({
-                ...data,
-                [item]: convertToRaw(editorState.getCurrentContent())
-            })
-        }) 
-        setTimeout(()=>{
-            setEditorState(()=>EditorState.createEmpty())
-        })
-    }
-    return (
-        <>
-            <RichText editorState={editorState} setEditorState={setEditorState} />
-            <Box sx={{ m: 1 }}>
-                <Button
-                    onClick={handleClose}
-                    color="warning"
-                    variant="outlined"
-                    sx={{
-                        mr:1
-                    }}
-                >
-                    Đóng
-                </Button>
-                <Button
-                    variant="outlined"
-                    onClick={updateData}
-                >
-                    Cập nhật
-                </Button>
-            </Box>
-        </>
-    )
-}
+import ContactEditPopUp from "../ContactEditPopUp";
+
 export default function CV1({ data, print }) {
-    const ref = useRef()
-    const [open, setOpen] = useState()
-    const [data1, setData1] = useState({
-        name: "anh"
-    })
-    const [title, setTitle] = useState()
-    const [item, setItem] = useState()
-    const [isRich, setIsRich] = useState()
-    const [showItem, setShowItem] = useState(false)
-    const [editorState, setEditorState] = useState(() =>
+
+    function RichEditor({  item, data, setData, setOpen }) {
+        const [editorState, setEditorState] = useState(() =>
         EditorState.createEmpty()
     )
-    const handlePrint = useReactToPrint({
-        content: () => ref.current,
-        documentTitle: 'test',
-        onAfterPrint: () => console.log("QA print")
-    })
-
+        const [close, setClose] = useState()
+        const getTextArrayFromRich = function (rawdata) {
+            if (rawdata.blocks.length > 0) {
+              return (
+                rawdata.blocks.map((item) => item.text).join(' ')
+              )
+            }
+          }
+        const text = item.slice(0,item.length-2)
+        console.log(text)
+        useEffect(() => {
+            if (close) {
+                setOpen(false)
+            }
+        })
+        function handleClose() {
+            setClose(true)
+        }
+        function updateData() {
+            setClose(true)
+            setTimeout(() => {
+                setData({
+                    ...data,
+                    [item]: JSON.stringify(convertToRaw(editorState.getCurrentContent())),
+                    [text]: getTextArrayFromRich(convertToRaw(editorState.getCurrentContent()))
+                })
+            })
+           
+        }
+        return (
+            <>
+                <RichText editorState={editorState} setEditorState={setEditorState} />
+                <Box sx={{ m: 1 }}>
+                    <Button
+                        onClick={handleClose}
+                        color="warning"
+                        variant="outlined"
+                        sx={{
+                            mr: 1
+                        }}
+                    >
+                        Đóng
+                    </Button>
+                    <Button
+                        variant="outlined"
+                        onClick={updateData}
+                    >
+                        Cập nhật
+                    </Button>
+                </Box>
+            </>
+        )
+    }  
     const CustomChip = styled(Chip)(({ theme }) => ({
         "&": {
             background: theme.palette.warning.light,
             color: 'white',
             fontSize: '20px',
             fontWeight: '600',
-            maxWidth: '50%',
             padding: '12px',
             '& .MuiChip-icon': {
                 color: 'white'
             },
-
+    
         },
     }));
-    useEffect(()=>{
-        console.log(data1)
-    },[data1])
-    const RichContent = function ({item}) {
+    const RichContent = function ({ show ,toggle, item, data, config }) {
         return (
             <>
-                {open ?
+                {show ?
                     <RichEditor
                         item={item}
-                        setData={setData1}
-                        data={data1}
-                        editorState={editorState}
-                        setOpen={setOpen}
-                        setEditorState={setEditorState} /> :
-                    <RichTextDisplay data={fakedata} />}
+                        setOpen={toggle}
+                        setData = {config}
+                        data = {data}
+                        /> :
+                    <RichTextDisplay data={JSON.parse(data[item])} />}
             </>
         )
     }
+
+    const ref = useRef()
+    // state data de post
+    const [cvData, setCVDATA] = useState(data)
+    // state quan ly show rich edit
+    const [showEduEdit, setShowEduEdit] = useState()
+    const [showActivitiesEdit, setShowActivitiesEdit] = useState()
+    const [showCertificationsEdit, setShowCertificationsEdit] = useState()
+    const [showExperienceEdit, setShowExperienceEdit] = useState()
+    const [showObjectiveEdit, setShowObjectiveEdit] = useState()
+    // state quan ly popup
+    const [showPopup, setShowPopup] = useState(false)
+
+    console.log(cvData)
+
+    const handlePrint = useReactToPrint({
+        content: () => ref.current,
+        documentTitle: 'test',
+        onAfterPrint: () => console.log("QA print")
+    })
     return (<>
         <Box
             ref={ref}
@@ -180,10 +165,10 @@ export default function CV1({ data, print }) {
                         }}
                         onClick={() => {
                             // OpenEditDialog('Học vấn', 'Học vấn',true)
-                            setOpen(true)
+                            setShowEduEdit(true)
                         }}
                     >
-                        <RichContent item="Studies" />
+                        <RichContent show={showEduEdit} toggle={setShowEduEdit} data={cvData} config={setCVDATA} item="educationCv" />
                     </Box>
 
                     <CustomChip icon={<CrisisAlertIcon color="success" />} label="Mục tiêu nghề nghiệp" />
@@ -193,12 +178,16 @@ export default function CV1({ data, print }) {
                             mb: 2,
                             px: 2,
                             mt: 1,
+                            width: '90%',
                             '&:hover': {
                                 border: '1px dashed red'
                             }
                         }}
+                        onClick= {()=>{
+                            setShowObjectiveEdit(true)
+                        }}
                     >
-                        <RichTextDisplay data={fakedata} />
+                        <RichContent show={showObjectiveEdit} toggle = {setShowObjectiveEdit} data={cvData} config={setCVDATA} item="objectiveCv" />
                     </Box>
 
                     <CustomChip icon={<FlagIcon />} label="Hoạt động" />
@@ -208,12 +197,16 @@ export default function CV1({ data, print }) {
                             mb: 2,
                             px: 2,
                             mt: 1,
+                            width: "90%",
                             '&:hover': {
                                 border: '1px dashed red'
                             }
                         }}
+                        onClick= {()=>{
+                            setShowActivitiesEdit(true)
+                        }}
                     >
-                        <RichTextDisplay data={fakedata} />
+                        <RichContent show={showActivitiesEdit} toggle = {setShowActivitiesEdit} data={cvData} config={setCVDATA} item="activitiesCv" />
                     </Box>
                     <CustomChip icon={<WorkspacePremiumIcon color="success" />} label="Chứng chỉ" />
                     <Box
@@ -222,12 +215,15 @@ export default function CV1({ data, print }) {
                             mb: 2,
                             px: 2,
                             mt: 1,
+                            width: "90%",
                             '&:hover': {
                                 border: '1px dashed red'
                             }
+                        }} onClick= {()=>{
+                            setShowCertificationsEdit(true)
                         }}
                     >
-                        <RichTextDisplay data={fakedata} />
+                        <RichContent show={showCertificationsEdit} toggle = {setShowCertificationsEdit} data={cvData} config={setCVDATA} item="certificationsCv" />
                     </Box>
                 </Grid>
                 {/* left */}
@@ -246,7 +242,7 @@ export default function CV1({ data, print }) {
                             width: '80%',
                             display: 'flex',
                             flexDirection: 'column',
-                            '& > h4:hover,h6:hover, p:hover': {
+                            '&:hover': {
                                 border: '1px dashed red'
                             },
                             ' p': {
@@ -255,6 +251,9 @@ export default function CV1({ data, print }) {
                             ,
                             ml: '30px',
                             mt: 3
+                        }}
+                        onClick={()=>{
+                            setShowPopup(true)
                         }}
                     >
                         <Image
@@ -271,10 +270,10 @@ export default function CV1({ data, print }) {
                             }}
                         />
                         <Typography variant="h4" fontWeight={550}>
-                            Nguyễn Quốc Anh
+                            {cvData.name}
                         </Typography>
                         <Typography sx={{ mb: 4 }} variant="h6" fontWeight={300} color="initial">
-                            Nhân viên tài chính
+                            {cvData.title}
                         </Typography>
                         <Typography variant="h5" fontSize={20} fontWeight={500} color="initial">
                             THÔNG TIN
@@ -288,7 +287,7 @@ export default function CV1({ data, print }) {
                             }}
                         >
                             <CalendarMonthIcon fontSize="small" sx={{ mr: 1 }} />
-                            <Typography variant="body1" color="initial">2/11/2000</Typography>
+                            <Typography variant="body1" color="initial">{cvData.dob}</Typography>
                         </Box>
                         <Box
                             sx={{
@@ -298,7 +297,7 @@ export default function CV1({ data, print }) {
                             }}
                         >
                             <PhoneIcon fontSize="small" sx={{ mr: 1 }} />
-                            <Typography variant="body1" color="initial">0834617610</Typography>
+                            <Typography variant="body1" color="initial">{cvData.phone}</Typography>
                         </Box>
                         <Box
                             sx={{
@@ -308,7 +307,7 @@ export default function CV1({ data, print }) {
                             }}
                         >
                             <MailIcon fontSize="small" sx={{ mr: 1 }} />
-                            <Typography variant="body1" color="initial">anhcmcm@gmail.com</Typography>
+                            <Typography variant="body1" color="initial">{cvData.email}</Typography>
                         </Box>
                         <Box
                             sx={{
@@ -328,7 +327,7 @@ export default function CV1({ data, print }) {
                             }}
                         >
                             <LocationOnIcon fontSize="small" sx={{ mr: 1 }} />
-                            <Typography variant="body1" color="initial">Số 7 đường Ngô Tất Tố, Khu Dân Cư 91B, Phường An Khánh, Quận Ninh Kiều, Thành Phố Cần THơ</Typography>
+                            <Typography variant="body1" color="initial">{cvData.fulladdress}</Typography>
                         </Box>
                     </Box>
                     <Box
@@ -340,7 +339,7 @@ export default function CV1({ data, print }) {
                             ml: '30px'
                         }}
                     >
-                        <CustomChip alignSelf="flex-end" icon={<MoreHorizIcon color="success" />} label="Kỹ năng" />
+                        <CustomChip alignSelf="flex-end" icon={<MoreHorizIcon color="success" />} label="Kinh nghiệm" />
                         <Box
                             sx={{
                                 mb: 2,
@@ -350,8 +349,11 @@ export default function CV1({ data, print }) {
                                     border: '1px dashed red'
                                 }
                             }}
+                            onClick= {()=>{
+                                setShowExperienceEdit(true)
+                            }}
                         >
-                            <RichTextDisplay data={fakedata} />
+                            <RichContent show={showExperienceEdit} toggle = {setShowExperienceEdit} data={cvData} config={setCVDATA} item="experienceCv" />
                         </Box>
                     </Box>
                 </Grid>
@@ -363,9 +365,9 @@ export default function CV1({ data, print }) {
                     position: 'relative',
                     top: "100%",
                     left: "70%"
-                }}
-            >©2022 ViecLamNhanh</Typography>
+                }}>©2022 ViecLamNhanh</Typography>
         </Box>
+        <ContactEditPopUp data={cvData} setData={setCVDATA} show={showPopup} setShow={setShowPopup} />
         <Button onClick={() => {
             if (print) {
                 handlePrint()
