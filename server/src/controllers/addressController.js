@@ -1,13 +1,13 @@
 
 import Address from "../models/Address.js";
 import { createError } from "../utils/errorUtil.js";
-//
 
-//category for job nha
+
+
 export const getAllAddress = async (req, res, next) => {
   try {
-    const address = await Address.find();
-    res.status(200).json(categories);
+    const allAddress = await Address.find();
+    res.status(200).json(allAddress);
   } catch (err) {
     next(err);
   }

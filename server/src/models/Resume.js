@@ -1,34 +1,36 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const ContactInfoSchema = mongoose.Schema({
-  name: String,
-  title: String,
-  dob: String,
-  gender: String,
-  phone: String,
-  address: String,
-  avatar: String,
-  email: String,
-  website: String,
-});
+
 
 const ResumeSchema = new Schema(
   {
-    contact: ContactInfoSchema,
+    name: String,
+    title: String,
+    dob: String,
+    gender: String,
+    phone: String,
+    avatar: String,
+    email: String,
+    fullAddress: String,
+    // 
     interest: String,
     objective: String,
     education: String,
     experience: String,
     activities: String,
-    awards: String,
     skills: String,
     certifications: String,
+    //block
+    //for cv
+    interestCv: String,
+    objectiveCv: String,
+    educationCv: String,
+    experienceCv: String,
+    activitiesCv: String,
+    skillsCv: String,
+    certificationsCv: String,
 
-
-    
-    skillsText: String,
-    certificationsText: String
   },
 
   //createAt and updateAt

@@ -11,10 +11,9 @@ import companyRoute from "./src/routes/company.js";
 
 import candidateRoute from "./src/routes/candidate.js";
 import resumeRoute from "./src/routes/resume.js";
-
+import addressRoute from "./src/routes/address.js"
 import otherRoute from "./src/routes/otherRoute.js";
 import cookieParser from "cookie-parser";
-
 import cors from "cors";
 const app = express();
 
@@ -48,6 +47,7 @@ app.use("/api/jobpost", jobPostRoute);
 
 //candidate update profile
 app.use("/api/candidate", candidateRoute);
+app.use("/api/address", addressRoute);
 
 app.use("/api/other", otherRoute);
 

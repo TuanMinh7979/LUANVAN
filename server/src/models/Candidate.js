@@ -1,26 +1,23 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 const ProfileSchema = mongoose.Schema({
-  //for cv
-  //for searching
 
+  //for searching
+  //full text search
   interest: String,
   objective: String,
   education: String,
   experience: String,
   activities: String,
-  awards: String,
   skills: String,
   certifications: String,
   //block
   //for cv
-
   interestCv: String,
   objectiveCv: String,
   educationCv: String,
   experienceCv: String,
   activitiesCv: String,
-  awardsCv: String,
   skillsCv: String,
   certificationsCv: String,
 
