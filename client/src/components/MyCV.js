@@ -34,7 +34,7 @@ export default function MyCV({ user }) {
                 <Grid
                     item
                     xs={6}>
-                    <CV1 data={data.cv} loggedUserId={loggedUserId} print={true} />
+                    <CV1 data={data.cv}  print={true} />
                 </Grid>
                 <Grid
                     xs={4}

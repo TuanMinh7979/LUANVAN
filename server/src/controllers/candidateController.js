@@ -3,7 +3,7 @@ import Candidate from "../models/Candidate.js";
 import User from "../models/User.js"
 import Resume from "../models/Resume.js";
 import { getDecodedTokenData } from "../utils/TokenUtils.js";
-
+import { filterSkipField } from "../utils/commonUtil.js";
 export const updateCandidateProfile = async (req, res, next) => {
 
   const { title,
@@ -100,15 +100,14 @@ export const createResume = async (req, res, next) => {
     if (!candidate || candidate == undefined) {
       return next(createError(404, "Ứng viên không tồn tại trong hệ thống"))
     }
-
     const newResume = new Resume({ ...req.body, candidateId: candidate.id });
 
     await newResume.save();
-    res.status(200).json({ status: 200, message: "Tạo cv thành công" });
+    res.status(200).send("Tạo cv thành công");
   } catch (e) {
     console.log(e)
     next(e)
-    // next(createError(400, "Tạo cv thất bại"));
+
   }
 };
 export const getMyCV = async (req, res, next) => {

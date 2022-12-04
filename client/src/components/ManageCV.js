@@ -2,10 +2,11 @@ import { Grid, Typography } from "@mui/material";
 import CV1 from "./CV/CV1";
 import defaultCvData from '../assets/defaultCvData.json'
 import { useSelector } from "react-redux";
+import {Button} from "@mui/material";
 export default function ManageCV({ user }) {
 
-  
-    console.log(JSON.parse(defaultCvData.aboutMeCV))
+    const loggedUserId = user.user._id
+
     return (<>
         <Grid
             container
@@ -18,7 +19,7 @@ export default function ManageCV({ user }) {
             <Grid
                 item
                 xs={6}>
-                <CV1 data={defaultCvData} loggedUserId={user.user._id} print={true} />
+                <CV1 data={defaultCvData}  print={true} />
             </Grid>
             <Grid
                 xs={4}
@@ -35,5 +36,18 @@ export default function ManageCV({ user }) {
 
 
         </Grid>
+        <Button sx={{ marginLeft: "300px" }} onClick={async () => {
+            console.log(cvData)
+
+            const res = await axios.post(`/candidate/${loggedUserId}/resume`, cvData)
+            console.log("___________)()()()(")
+            console.log(res)
+            if (res.data.status && res.data.status != 200) {
+                toast.warning("Tạo cv thất bại")
+            } else {
+                console.log(res)
+                toast.success("Tạo cv thành công")
+            }
+        }} >SAVE</Button>
     </>)
 }

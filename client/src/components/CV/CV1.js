@@ -20,7 +20,7 @@ import ContactEditPopUp from "../ContactEditPopUp";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
-export default function CV1({ loggedUserId, data, print }) {
+export default function CV1({ data, print }) {
 
 
 
@@ -377,17 +377,7 @@ export default function CV1({ loggedUserId, data, print }) {
                 handlePrint()
             }
         }} >IN</Button>
-        <Button sx={{ marginLeft: "300px" }} onClick={async () => {
-            console.log(cvData)
 
-            const res = await axios.post(`/candidate/${loggedUserId}/resume`, cvData)
-            if (res.data.status && res.data.status != 200) {
-                toast.success("Tạo cv thành công")
-            } else {
-                console.log(res)
-                toast.warning("Tạo cv thất bại")
-            }
-        }} >SAVE</Button>
         {/* <EditDialog open={open} title={title} item={item} setOpen={setOpen} isRich={isRich} /> */}
     </>)
 }
