@@ -16,7 +16,7 @@ const ResumeSchema = new Schema(
     email: String,
     experience: String,
     experienceCv: String,
-    fullAddress: String,
+    fulladdress: String,
     gender: String,
     name: String,
     objective: String,

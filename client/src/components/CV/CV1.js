@@ -17,10 +17,9 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { convertToRaw, EditorState } from "draft-js";
 import ContactEditPopUp from "../ContactEditPopUp";
-import axios from "axios";
-import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
-export default function CV1({ data, print }) {
+
+
+export default function CV1({ data, print ,setCVDATA}) {
 
 
 
@@ -112,7 +111,7 @@ export default function CV1({ data, print }) {
 
     const ref = useRef()
     // state data de post
-    const [cvData, setCVDATA] = useState(data)
+    // const [data, setCVDATA] = useState(data)
     // state quan ly show rich edit
     const [showEduEdit, setShowEduEdit] = useState()
     const [showSkillsEdit, setShowSkillsEdit] = useState()
@@ -121,7 +120,7 @@ export default function CV1({ data, print }) {
     const [showObjectiveEdit, setShowObjectiveEdit] = useState()
     // state quan ly popup
     const [showPopup, setShowPopup] = useState(false)
-    console.log(cvData)
+
 
     const handlePrint = useReactToPrint({
         content: () => ref.current,
@@ -172,7 +171,7 @@ export default function CV1({ data, print }) {
                             setShowEduEdit(true)
                         }}
                     >
-                        <RichContent show={showEduEdit} toggle={setShowEduEdit} data={cvData} config={setCVDATA} item="educationCv" />
+                        <RichContent show={showEduEdit} toggle={setShowEduEdit} data={data} config={setCVDATA} item="educationCv" />
                     </Box>
 
                     <CustomChip icon={<CrisisAlertIcon color="success" />} label="Mục tiêu nghề nghiệp" />
@@ -191,7 +190,7 @@ export default function CV1({ data, print }) {
                             setShowObjectiveEdit(true)
                         }}
                     >
-                        <RichContent show={showObjectiveEdit} toggle={setShowObjectiveEdit} data={cvData} config={setCVDATA} item="objectiveCv" />
+                        <RichContent show={showObjectiveEdit} toggle={setShowObjectiveEdit} data={data} config={setCVDATA} item="objectiveCv" />
                     </Box>
 
                     <CustomChip icon={<FlagIcon />} label="Kỹ năng" />
@@ -210,7 +209,7 @@ export default function CV1({ data, print }) {
                             setShowSkillsEdit(true)
                         }}
                     >
-                        <RichContent show={showSkillsEdit} toggle={setShowSkillsEdit} data={cvData} config={setCVDATA} item="skillsCv" />
+                        <RichContent show={showSkillsEdit} toggle={setShowSkillsEdit} data={data} config={setCVDATA} item="skillsCv" />
                     </Box>
                     <CustomChip icon={<WorkspacePremiumIcon color="success" />} label="Chứng chỉ" />
                     <Box
@@ -227,7 +226,7 @@ export default function CV1({ data, print }) {
                             setShowCertificationsEdit(true)
                         }}
                     >
-                        <RichContent show={showCertificationsEdit} toggle={setShowCertificationsEdit} data={cvData} config={setCVDATA} item="certificationsCv" />
+                        <RichContent show={showCertificationsEdit} toggle={setShowCertificationsEdit} data={data} config={setCVDATA} item="certificationsCv" />
                     </Box>
                 </Grid>
                 {/* left */}
@@ -274,10 +273,10 @@ export default function CV1({ data, print }) {
                             }}
                         />
                         <Typography variant="h4" fontWeight={550}>
-                            {cvData.name}
+                            {data.name}
                         </Typography>
                         <Typography sx={{ mb: 4 }} variant="h6" fontWeight={300} color="initial">
-                            {cvData.title}
+                            {data.title}
                         </Typography>
                         <Typography variant="h5" fontSize={20} fontWeight={500} color="initial">
                             THÔNG TIN
@@ -291,7 +290,7 @@ export default function CV1({ data, print }) {
                             }}
                         >
                             <CalendarMonthIcon fontSize="small" sx={{ mr: 1 }} />
-                            <Typography variant="body1" color="initial">{cvData.dob}</Typography>
+                            <Typography variant="body1" color="initial">{data.dob}</Typography>
                         </Box>
                         <Box
                             sx={{
@@ -301,7 +300,7 @@ export default function CV1({ data, print }) {
                             }}
                         >
                             <PhoneIcon fontSize="small" sx={{ mr: 1 }} />
-                            <Typography variant="body1" color="initial">{cvData.phone}</Typography>
+                            <Typography variant="body1" color="initial">{data.phone}</Typography>
                         </Box>
                         <Box
                             sx={{
@@ -311,7 +310,7 @@ export default function CV1({ data, print }) {
                             }}
                         >
                             <MailIcon fontSize="small" sx={{ mr: 1 }} />
-                            <Typography variant="body1" color="initial">{cvData.email}</Typography>
+                            <Typography variant="body1" color="initial">{data.email}</Typography>
                         </Box>
                         <Box
                             sx={{
@@ -331,7 +330,7 @@ export default function CV1({ data, print }) {
                             }}
                         >
                             <LocationOnIcon fontSize="small" sx={{ mr: 1 }} />
-                            <Typography variant="body1" color="initial">{cvData.fulladdress}</Typography>
+                            <Typography variant="body1" color="initial">{data.fulladdress}</Typography>
                         </Box>
                     </Box>
                     <Box
@@ -357,7 +356,7 @@ export default function CV1({ data, print }) {
                                 setShowExperienceEdit(true)
                             }}
                         >
-                            <RichContent show={showExperienceEdit} toggle={setShowExperienceEdit} data={cvData} config={setCVDATA} item="experienceCv" />
+                            <RichContent show={showExperienceEdit} toggle={setShowExperienceEdit} data={data} config={setCVDATA} item="experienceCv" />
                         </Box>
                     </Box>
                 </Grid>
@@ -371,7 +370,7 @@ export default function CV1({ data, print }) {
                     left: "70%"
                 }}>©2022 ViecLamNhanh</Typography>
         </Box>
-        <ContactEditPopUp data={cvData} setData={setCVDATA} show={showPopup} setShow={setShowPopup} />
+        <ContactEditPopUp data={data} setData={setCVDATA} show={showPopup} setShow={setShowPopup} />
         <Button onClick={() => {
             if (print) {
                 handlePrint()
