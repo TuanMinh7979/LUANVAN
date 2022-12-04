@@ -210,7 +210,7 @@ function JobPost({ user }) {
   const [salaryType, setSalaryType] = useState(false);
   const [currency, setCurrency] = useState();
   // Ham nay de lay text tu richtext
-  getTextArrayFromRich = function (rawdata) {
+  const getTextArrayFromRich = function (rawdata) {
     if (rawdata.blocks.length > 0) {
       return (
         rawdata.blocks.map((item) => item.text)
