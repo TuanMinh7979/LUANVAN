@@ -91,6 +91,8 @@ export default function CV1({ data, print }) {
         },
     }));
     const RichContent = function ({ show, toggle, item, data, config }) {
+        console.log("_____________>>>")
+        console.log(show, toggle, item, data, config)
         return (
             <>
                 {show ?
@@ -116,8 +118,6 @@ export default function CV1({ data, print }) {
     const [showObjectiveEdit, setShowObjectiveEdit] = useState()
     // state quan ly popup
     const [showPopup, setShowPopup] = useState(false)
-
-    console.log("------------------??>?>>>>>")
     console.log(cvData)
 
     const handlePrint = useReactToPrint({
@@ -207,7 +207,7 @@ export default function CV1({ data, print }) {
                             setShowSkillsEdit(true)
                         }}
                     >
-                        <RichContent show={setShowSkillsEdit} toggle={setShowSkillsEdit} data={cvData} config={setCVDATA} item="skillCv" />
+                        <RichContent show={showSkillsEdit} toggle={setShowSkillsEdit} data={cvData} config={setCVDATA} item="skillsCv" />
                     </Box>
                     <CustomChip icon={<WorkspacePremiumIcon color="success" />} label="Chứng chỉ" />
                     <Box

@@ -18,6 +18,6 @@
     "experience": "She asked the question even though she didn't really want to hear the answer. It was a no-win situation since she already knew. If he told the truth, she'd get confirmation of her worst fears. If he lied, she'd know that he wasn't who she thought he was which would be almost as bad. Yet she asked the question anyway and waited for his answer.",
     "fullAddress": "ấp Tân An, xã Tân Đức, Huyện Đầm Dơi, Tỉnh Cà Mau",
     "title": "Web Developer",
-    "skillsCV": "HTML, CSS, JS",
-    "skills":""
+    "skillsCv": "{\"blocks\":[{\"key\":\"tfp0\",\"text\":\"She asked the question even though she didn't really want to hear the answer. It was a no-win situation since she already knew. If he told the truth, she'd get confirmation of her worst fears. If he lied, she'd know that he wasn't who she thought he was which would be almost as bad. Yet she asked the question anyway and waited for his answer.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":194,\"length\":150,\"style\":\"ITALIC\"}],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "skills": ""
 }
