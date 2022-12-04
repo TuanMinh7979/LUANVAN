@@ -11,6 +11,7 @@ import Image from "mui-image";
 import logo from "../assets/logo.png"
 import businessLogo from '../assets/logo_business.png'
 import AccountMenu from "./AccountMenu";
+
 import { useState } from "react";
 
 
@@ -18,7 +19,7 @@ import { useState } from "react";
 export default function Header({ forHr }) {
     const user = useSelector((state) => state.user)
     const [open, setOpen] = useState(false)
-    const handleOpen = () =>{setOpen(true), console.log("OK open")}
+    const handleOpen = () => { setOpen(true), console.log("OK open") }
     const navigate = useNavigate()
     const theme = createTheme({
         palette: {
@@ -32,9 +33,11 @@ export default function Header({ forHr }) {
             }
         }
     })
+
+
     // default toolbar, dont open it !!!
     const defaultToolBar = <Toolbar>
-         
+
         <Image
             onClick={() => {
                 navigateTo("/")
@@ -48,7 +51,7 @@ export default function Header({ forHr }) {
         />
         <>
             <Typography onClick={() => {
-              
+
                 navigateTo("/jobs")
 
             }} variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer" }}>
@@ -57,9 +60,12 @@ export default function Header({ forHr }) {
             <Typography onClick={handleOpen} variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer" }}>
                 Quản lý CV của bạn
             </Typography>
+
             <Typography variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer", flexGrow: 1 }}>
                 Chỉnh sửa hồ sơ
             </Typography>
+
+
         </>
         <>
             {!user.isLogin && <>

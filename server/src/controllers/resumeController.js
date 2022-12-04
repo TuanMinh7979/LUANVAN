@@ -12,12 +12,3 @@ export const getAllResume = async (req, res, next) => {
   }
 };
 
-export const createResume = async (req, res, next) => {
-  try {
-    const newResume = new Resume(req.body);
-    await newResume.save();
-    res.status(200).send("Resume created successfully");
-  } catch (e) {
-    next(e);
-  }
-};
