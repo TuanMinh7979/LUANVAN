@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import RichText from "./RichText";
 import axios from 'axios'
 import { maxHeight, maxWidth } from "@mui/system";
-
+import env from "../assets/env.json"
 import useFetch from "../hooks/useFetch";
 export default function Charts({ user }) {
     const navigate = useNavigate()
@@ -70,7 +70,7 @@ export default function Charts({ user }) {
                                 <TableRow>
                                     <TableCell
                                         onClick={() => {
-                                            navigateTo("/jobdetail/6384cbe50fed53e7bcedda8d")
+                                            navigateTo(`/jobdetail/${item.id}`)
                                         }}
                                     >{item.title}</TableCell>
                                     <TableCell>{item.createAt}</TableCell>
@@ -85,7 +85,7 @@ export default function Charts({ user }) {
                                             variant="text"
                                             color="success"
                                             onClick={() => {
-                                                navigateTo("../searchcandidate/")
+                                                navigateTo(`../searchcandidate/${item._id}`)
                                             }}
                                         >Tìm ứng viên</Button>
                                     </TableCell>

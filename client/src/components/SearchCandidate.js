@@ -9,6 +9,8 @@ import PhoneIphoneOutlinedIcon from '@mui/icons-material/PhoneIphoneOutlined';
 import fakedate from "../assets/fakedata.json"
 import env from '../assets/env.json'
 import { RichTextDisplay } from "./RichText";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -50,7 +52,7 @@ function SearchController() {
         skills: false,
         education: false,
         keyword: '',
-        address: '',   
+        address: '',
     })
     function handleCheck(e, item) {
         setSearchParams({
@@ -68,7 +70,7 @@ function SearchController() {
                 gap: 2,
                 alignItems: "center",
                 background: "#fff",
-                pb:3
+                pb: 3
             }}
         >
             <Grid
@@ -124,7 +126,7 @@ function SearchController() {
                 <FormGroup>
                     <Input
                         size="small"
-                        onBlur={(e)=>{
+                        onBlur={(e) => {
                             setSearchParams({
                                 ...searchParams,
                                 keyword: e.target.value
@@ -132,14 +134,14 @@ function SearchController() {
                         }}
                     />
                 </FormGroup>
-                <Button 
-                    variant="outlined" 
-                    color="primary" 
+                <Button
+                    variant="outlined"
+                    color="primary"
                     sx={{ mt: 3 }}
-                    onClick = {()=>{
+                    onClick={() => {
                         console.log(searchParams)
                     }}
-                    >
+                >
                     Tìm kiếm
                 </Button>
             </Grid>
@@ -293,7 +295,7 @@ function CandidateCard({ data }) {
         </Grid>
     )
 }
-function Result() {
+function Result({ data }) {
     return (
         <Box
             sx={{
@@ -324,6 +326,26 @@ function Result() {
 }
 
 export default function SearchCandidate({ user, env }) {
+    const location = useLocation();
+    const strArr = location.pathname.split("/");
+
+    const jobPostId = strArr[strArr.length - 1]
+    console.log(jobPostId)
+    //cv list
+    const [rsData, setRsData] = useState([])
+
+    //cv list
+    const fetchByListId = () => {
+
+    }
+    const getSugListData = async () => {
+        console.log(">>>>>>>")
+        const sugListIdData = await axios.get(`http://localhost:8000/getSugCvForJob/${jobPostId}`)
+        console.log(">>>>>>>")
+        console.log(sugListIdData);
+        const sugListDbData = await axios.post('/ai/resumebyids/', { sugListIdData })
+        console.log(sugListDbData)
+    }
     const [tabValue, setTabValue] = useState(0);
     const handleChange = (event, newValue) => {
         setTabValue(newValue);
@@ -366,24 +388,26 @@ export default function SearchCandidate({ user, env }) {
                     <Tabs value={tabValue} onChange={handleChange} aria-label="feature tabs">
                         <Tab label="Tìm ứng viên" {...a11yProps(0)} />
                         <Tab label="Ứng viên đã ứng tuyển" {...a11yProps(1)} />
-                        <Tab label="Ứng viên được đề xuất bằng AI" {...a11yProps(2)} />
+                        <Tab onClick={() => getSugListData()} label="Ứng viên được đề xuất bằng AI" {...a11yProps(2)} />
                     </Tabs>
                 </Box>
-                <TabPanel 
-                    value={tabValue} 
+                <TabPanel
+                    value={tabValue}
                     index={0}
                     sx={{
                         background: "#f1f2f7"
                     }}
-                    >
+                >
                     <SearchController env={env} />
                     <Result />
                 </TabPanel>
                 <TabPanel value={tabValue} index={1}>
-                    <Result />
+                    abc
+                    <Result data={rsData} />
                 </TabPanel>
                 <TabPanel value={tabValue} index={2}>
-                    <Result />
+                    def
+                    <Result data={rsData} />
                 </TabPanel>
             </Box>
             {/* REsult */}

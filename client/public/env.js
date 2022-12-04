@@ -238,6 +238,7 @@ window.env = {
   "REACT_APP_SAMPLE_IMAGE_01": "https://www.topcv.vn/v4/image/tool-cv.png",
   "REACT_APP_SEXS": "Nam, Nữ, Không yêu cầu",
   "REACT_APP_WRONG_EMAIL": "Vui lòng nhập đúng email",
+  "recommendApi": "http://localhost:8000/",
   "SESSIONNAME": "Console",
   "SystemDrive": "C:",
   "SystemRoot": "C:\\WINDOWS",

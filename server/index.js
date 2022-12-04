@@ -14,6 +14,7 @@ import recRoute from "./src/routes/rec.js"
 import resumeRoute from "./src/routes/resume.js";
 import addressRoute from "./src/routes/address.js"
 import otherRoute from "./src/routes/otherRoute.js";
+import recommendRoute from "./src/routes/recommend.js"
 import cookieParser from "cookie-parser";
 import cors from "cors";
 const app = express();
@@ -50,6 +51,9 @@ app.use("/api/jobpost", jobPostRoute);
 app.use("/api/candidate", candidateRoute);
 app.use("/api/rec", recRoute);
 app.use("/api/address", addressRoute);
+
+
+app.use("/api/recommend", recommendRoute);
 
 app.use("/api/other", otherRoute);
 
