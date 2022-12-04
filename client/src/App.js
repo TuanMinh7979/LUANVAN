@@ -19,6 +19,7 @@ import Profile from "./components/Profile";
 import ManageCV from "./components/ManageCV";
 
 import { ToastContainer } from "react-toastify";
+import MyCV from "./components/MyCV";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -93,6 +94,16 @@ function App() {
                 <>
                   <Header />
                   <ManageCV user={user} />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="mycv"
+              element={
+                <>
+                  <Header />
+                  <MyCV user={user} />
                   <Footer />
                 </>
               }

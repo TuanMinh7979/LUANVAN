@@ -20,9 +20,9 @@ import ContactEditPopUp from "../ContactEditPopUp";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
-export default function CV1({ data, print }) {
+export default function CV1({ loggedUserId, data, print }) {
 
-    const user = useSelector(state => state.user)
+
 
     function RichEditor({ item, data, setData, setOpen }) {
         const [editorState, setEditorState] = useState(() =>
@@ -321,7 +321,7 @@ export default function CV1({ data, print }) {
                             }}
                         >
                             <FacebookIcon fontSize="small" sx={{ mr: 1 }} />
-                            <Typography variant="body1" color="initial">facebook.com/quocanhnecon</Typography>
+                            <Typography variant="body1" color="initial">facebook.com/ungvien</Typography>
                         </Box>
                         <Box
                             sx={{
@@ -380,8 +380,8 @@ export default function CV1({ data, print }) {
         <Button sx={{ marginLeft: "300px" }} onClick={async () => {
             console.log(cvData)
 
-            const res = await axios.post(`/candidate/${user.user._id}/resume`, cvData)
-            if (res.data.status == 200) {
+            const res = await axios.post(`/candidate/${loggedUserId}/resume`, cvData)
+            if (res.data.status && res.data.status != 200) {
                 toast.success("Tạo cv thành công")
             } else {
                 console.log(res)

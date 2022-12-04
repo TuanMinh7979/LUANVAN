@@ -62,12 +62,6 @@ export const updateCandidateProfile = async (req, res, next) => {
     fullAddress,
     profile
   }
-
-
-
-
-
-  console.log("_______________________?????")
   console.log(updateData)
   let loggedUserId = ""
   if (req.user) {
@@ -101,12 +95,12 @@ export const updateCandidateProfile = async (req, res, next) => {
 export const createResume = async (req, res, next) => {
   try {
     let loggedUserId = req.user.id
-    console.log("____________", loggedUserId)
+
     const candidate = await Candidate.findOne({ userId: loggedUserId })
     if (!candidate || candidate == undefined) {
-      return next(createError(400, "Ứng viên không tồn tại trong hệ thống"))
+      return next(createError(404, "Ứng viên không tồn tại trong hệ thống"))
     }
-    console.log("<<<<<<<<<<", candidate.id)
+
     const newResume = new Resume({ ...req.body, candidateId: candidate.id });
 
     await newResume.save();
@@ -117,3 +111,29 @@ export const createResume = async (req, res, next) => {
     // next(createError(400, "Tạo cv thất bại"));
   }
 };
+export const getMyCV = async (req, res, next) => {
+  try {
+    let loggedUserId = req.params.id
+
+    const candidate = await Candidate.findOne({ userId: loggedUserId })
+    if (!candidate || candidate == undefined) {
+      return next(createError(404, "Ứng viên không tồn tại trong hệ thống"))
+    }
+
+    console.log(">>>>>>>>>>???????????????<<<<<<<<")
+    const cv = await Resume.findOne({ candidateId: candidate.id });
+    console.log(cv)
+    if (!cv || cv == undefined) {
+      return next(createError(404, "Cv không tồn tại trong hệ thống"))
+    }
+
+
+    res.status(200).json({ cv });
+  } catch (e) {
+    console.log(e)
+    next(e)
+    // next(createError(400, "Tạo cv thất bại"));
+  }
+};
+
+

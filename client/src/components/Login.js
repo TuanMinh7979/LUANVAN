@@ -41,7 +41,7 @@ export default function Login() {
             data: data
         }).then((res) => {
             console.log(res);
-            if (res.data.status === 400) {
+            if (res.data.status && res.data.status != 200) {
                 setResponse({
                     showArlert: true,
                     message: res.data.message
