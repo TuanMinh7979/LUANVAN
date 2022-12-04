@@ -1,7 +1,9 @@
 import { createError } from "../utils/errorUtil.js";
 import Candidate from "../models/Candidate.js";
 import User from "../models/User.js"
+import Resume from "../models/Resume.js";
 import { getDecodedTokenData } from "../utils/TokenUtils.js";
+
 export const updateCandidateProfile = async (req, res, next) => {
 
   const { title,
@@ -77,7 +79,7 @@ export const updateCandidateProfile = async (req, res, next) => {
     loggedUserId = decodeTokenData.id;
   }
 
-  let loggedUser = User.findById(loggedUserId)
+
   console.log(loggedUserId)
   try {
     const updatedCandidate = await Candidate.findOneAndUpdate(
@@ -93,5 +95,25 @@ export const updateCandidateProfile = async (req, res, next) => {
     return res.status(200).json({ ...updatedCandidate._doc });
   } catch (e) {
     next(e);
+  }
+};
+
+export const createResume = async (req, res, next) => {
+  try {
+    let loggedUserId = req.user.id
+    console.log("____________", loggedUserId)
+    const candidate = await Candidate.findOne({ userId: loggedUserId })
+    if (!candidate || candidate == undefined) {
+      return next(createError(400, "Ứng viên không tồn tại trong hệ thống"))
+    }
+    console.log("<<<<<<<<<<", candidate.id)
+    const newResume = new Resume({ ...req.body, candidateId: candidate.id });
+
+    await newResume.save();
+    res.status(200).json({ status: 200, message: "Tạo cv thành công" });
+  } catch (e) {
+    console.log(e)
+    next(e)
+    // next(createError(400, "Tạo cv thất bại"));
   }
 };

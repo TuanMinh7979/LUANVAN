@@ -28,6 +28,13 @@ const ResumeSchema = new Schema(
     skills: String,
     title: String,
 
+
+    candidateId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "Candidate",
+      required: true
+    },
+
   },
 
   //createAt and updateAt

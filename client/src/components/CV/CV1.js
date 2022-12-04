@@ -17,8 +17,12 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { convertToRaw, EditorState } from "draft-js";
 import ContactEditPopUp from "../ContactEditPopUp";
-
+import axios from "axios";
+import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 export default function CV1({ data, print }) {
+
+    const user = useSelector(state => state.user)
 
     function RichEditor({ item, data, setData, setOpen }) {
         const [editorState, setEditorState] = useState(() =>
@@ -91,8 +95,7 @@ export default function CV1({ data, print }) {
         },
     }));
     const RichContent = function ({ show, toggle, item, data, config }) {
-        console.log("_____________>>>")
-        console.log(show, toggle, item, data, config)
+
         return (
             <>
                 {show ?
@@ -374,8 +377,16 @@ export default function CV1({ data, print }) {
                 handlePrint()
             }
         }} >IN</Button>
-        <Button sx={{marginLeft: "300px"}} onClick={() => {
+        <Button sx={{ marginLeft: "300px" }} onClick={async () => {
             console.log(cvData)
+
+            const res = await axios.post(`/candidate/${user.user._id}/resume`, cvData)
+            if (res.data.status == 200) {
+                toast.success("Tạo cv thành công")
+            } else {
+                console.log(res)
+                toast.warning("Tạo cv thất bại")
+            }
         }} >SAVE</Button>
         {/* <EditDialog open={open} title={title} item={item} setOpen={setOpen} isRich={isRich} /> */}
     </>)
