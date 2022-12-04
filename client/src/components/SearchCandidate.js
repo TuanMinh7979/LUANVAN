@@ -339,12 +339,13 @@ export default function SearchCandidate({ user, env }) {
 
     }
     const getSugListData = async () => {
-        console.log(">>>>>>>")
-        const sugListIdData = await axios.get(`http://localhost:8000/getSugCvForJob/${jobPostId}`)
-        console.log(">>>>>>>")
-        console.log(sugListIdData);
-        const sugListDbData = await axios.post('/ai/resumebyids/', { sugListIdData })
-        console.log(sugListDbData)
+       
+        const sugListIdFetch = await axios.get(`http://localhost:8000/getSugCvForJob/${jobPostId}`)
+        console.log(">>>>>>>>>>>>......")
+        const suglistIdData = sugListIdFetch.data.sugList;
+        console.log(suglistIdData)
+        const sugListDbData = await axios.post('http://localhost:8800/api/recommend/getJobByListId', { suglistIdData })
+        console.log(";;;", sugListDbData)
     }
     const [tabValue, setTabValue] = useState(0);
     const handleChange = (event, newValue) => {
