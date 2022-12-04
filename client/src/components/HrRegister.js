@@ -17,7 +17,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import Image from "mui-image";
 import logo from "../assets/logo_business_white.png";
 import banner from '../assets/banner_business.png'
-import env from "react-dotenv";
+import env from '../assets/env.json'
 export default function HrRegister() {
     const [response, setResponse] = useState(false);
     const imageLink = env.SAMPLE_IMAGE_01;

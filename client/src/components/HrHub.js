@@ -30,7 +30,7 @@ import { Editor, EditorState, convertToRaw } from "draft-js";
 import { useSelector } from "react-redux";
 import { styled, alpha, createTheme } from "@mui/material/styles";
 import "draft-js/dist/Draft.css";
-import env from "react-dotenv";
+import env from '../assets/env.json'
 import { useEffect, useState } from "react";
 import RichText from "./RichText";
 import axios from "axios";
@@ -703,7 +703,7 @@ export default function HrHub() {
             <Route path="/editcompany" element={<Company user={user} />} />
             <Route path="/charts" element={<Charts user={user} />} />
             <Route path="/jobdetail" element={<JobDetail  />} />
-            <Route path="/searchcandidate/:id" element={<SearchCandidate user={user} env={env}  />} />
+            <Route path="/searchcandidate/:id" element={<SearchCandidate user={user}  />} />
           </Routes>
         </Grid>
       </Grid>

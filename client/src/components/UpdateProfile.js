@@ -4,7 +4,7 @@ import CrisisAlertIcon from '@mui/icons-material/CrisisAlert';
 import { Editor, EditorState, convertToRaw } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import PersonIcon from '@mui/icons-material/Person';
-import env from 'react-dotenv'
+import env from '../assets/env.json'
 import logoImage from '../assets/camera_icon.png'
 import Image from "mui-image";
 import { useEffect, useRef, useState } from "react";

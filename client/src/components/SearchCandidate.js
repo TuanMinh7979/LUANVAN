@@ -7,6 +7,7 @@ import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import PhoneIphoneOutlinedIcon from '@mui/icons-material/PhoneIphoneOutlined';
 import fakedate from "../assets/fakedata.json"
+import env from '../assets/env.json'
 import { RichTextDisplay } from "./RichText";
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -41,7 +42,7 @@ function a11yProps(index) {
     };
 }
 // axios tim o day
-function SearchController({ env}) {
+function SearchController() {
     const [searchParams, setSearchParams] = useState({
         title: false,
         experience: false,

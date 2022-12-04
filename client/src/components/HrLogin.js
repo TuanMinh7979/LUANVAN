@@ -19,7 +19,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Image from "mui-image";
 import logo from "../assets/logo_business_white.png";
 import banner from '../assets/banner_business.png'
-import env from "react-dotenv";
+import env from '../assets/env.json'
 export default function HrLogin() {
 
     const dispatch = useDispatch();

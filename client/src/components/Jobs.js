@@ -1,5 +1,5 @@
 import { Box, Container, Input, OutlinedInput, Typography, FormControl, InputLabel, Select, MenuItem, TextField, Button, InputAdornment } from "@mui/material"
-import env from 'react-dotenv'
+import env from '../assets/env.json'
 import WorkIcon from '@mui/icons-material/Work';
 import PlaceIcon from '@mui/icons-material/Place';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
@@ -10,6 +10,7 @@ import JobList from "./JobList";
 import banner from '../assets/banner.png'
 import { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
+import RecommentJobs from "./RecommentJobs";
 export default function Jobs() {
     const { data, loading, error } = useFetch("/jobpost");
     const MenuProps = {
@@ -191,12 +192,13 @@ export default function Jobs() {
                 </Box>
                 {/* Joblist */}
             </Container>
-            <Box sx={{ mt: 3 }}>
+            <Box sx={{ my: 3 }}>
                 {loading
                     ? "loading"
                     : <JobList jobs={data} />
                 }
             </Box>
+            <RecommentJobs />
         </Container>
     </>)
 }

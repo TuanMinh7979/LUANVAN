@@ -17,10 +17,10 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import EmailIcon from "@mui/icons-material/Email";
 import Image from "mui-image";
 import logo from "../assets/logo_banner.png";
-import env from "react-dotenv";
+import env from '../assets/env.json'
 export default function Register() {
     const [response, setResponse] = useState(false);
-    const imageLink = env.SAMPLE_IMAGE_01;
+    const imageLink = env.REACT_APP_SAMPLE_IMAGE_01;
     const username = useRef();
     const email = useRef();
     const password = useRef();

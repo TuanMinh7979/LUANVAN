@@ -4,9 +4,10 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import FeatureCard from "./FeatureCard";
 import JobList from "./JobList";
-import env from 'react-dotenv'
-import { style } from "@mui/system";
+import env from '../assets/env.json'
+import hrimg from "../assets/hr.png"
 import useFetch from "../hooks/useFetch";
+import RecommentJobs from "./RecommentJobs";
 
 function Home() {
     const [displayFilterBox, setDisplayFilterBox] = useState("none")
@@ -217,11 +218,12 @@ function Home() {
                     <FeatureCard
                         maxHeight="262px"
                         maxWidth="42%"
-                        title="Tạo CV online ấn tượng"
-                        subTitle="ViecLamNhanh hiện có 50+ mẫu CV chuyên nghiệp, độc đáo phù hợp với mọi ngành nghề"
-                        imageLink="https://www.topcv.vn/v4/image/welcome/mau_cv.png?v=1.0.0"
-                        buttonTitle="Tạo CV ngay" />
+                        title="Tìm ứng viên qua hệ thông AI thông minh"
+                        subTitle="Tạo ứng viên phù hợp với tin tuyển dụng của bạn ngay"
+                        imageLink={hrimg}
+                        buttonTitle="Tìm ứng viên" />
                 </Box>
+                <RecommentJobs />
                 {loading
                     ? "loading"
                     : <JobList jobs={data} />

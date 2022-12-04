@@ -16,14 +16,16 @@ import { RichTextDisplay } from "./RichText";
 import { useLocation } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import EditIcon from '@mui/icons-material/Edit';
+import RecommentJobs from "./RecommentJobs";
+import SimilarJob from "./SimilarJob";
 export default function JobDetail({ user }) {
     const location = useLocation();
     const id = location.pathname.split("/")[2];
     console.log(id)
     const { data, loading, error } = useFetch(`/jobpost/${id}`);
     const theme = createTheme()
-    function Apply(){
-        if(confirm("Bạn có muốn ứng tuyển công việc này")){
+    function Apply() {
+        if (confirm("Bạn có muốn ứng tuyển công việc này")) {
             // axios
         }
     }
@@ -98,10 +100,10 @@ export default function JobDetail({ user }) {
                             <Box
                             >
                                 {
-                                    user.user.role == "candidate"&&<Button onClick={Apply} startIcon={<SendIcon />} variant="contained" color="success">Ứng tuyển ngay</Button>
+                                    user.user.role == "candidate" && <Button onClick={Apply} startIcon={<SendIcon />} variant="contained" color="success">Ứng tuyển ngay</Button>
                                 }
                                 {
-                                    user.user.role == "rec"&&<Button startIcon={<EditIcon />} variant="contained" color="success">Chỉnh sửa tin tuyển dụng</Button>
+                                    user.user.role == "rec" && <Button startIcon={<EditIcon />} variant="contained" color="success">Chỉnh sửa tin tuyển dụng</Button>
                                 }
                             </Box>
                         </Stack>
@@ -388,9 +390,16 @@ export default function JobDetail({ user }) {
                                     <RichTextDisplay data={JSON.parse(data.benefit)} />
                                 </Box>
                             </Grid>
-
+                            <Grid
+                                item
+                                xs={12}
+                                sx={{
+                                    mt:3
+                                }}
+                            >
+                                <SimilarJob />
+                            </Grid>
                         </Grid>
-
                     </Container>
                 </Container >
         }

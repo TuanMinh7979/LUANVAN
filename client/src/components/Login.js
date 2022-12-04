@@ -18,14 +18,14 @@ import LockIcon from "@mui/icons-material/Lock";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Image from "mui-image";
 import logo from "../assets/logo_banner.png";
-import env from "react-dotenv";
+import env from '../assets/env.json'
 export default function Login() {
 
     const dispatch = useDispatch();
     let navigate = useNavigate()
     const user = useSelector(state => state.user)
     const [response, setResponse] = useState(false);
-    const imageLink = env.SAMPLE_IMAGE_01;
+    const imageLink = env.REACT_APP_SAMPLE_IMAGE_01;
     const username = useRef();
     const password = useRef();
     const [responseData, setResponseData] = useState()

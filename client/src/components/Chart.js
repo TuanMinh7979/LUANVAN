@@ -1,12 +1,7 @@
 import { Autocomplete, Box, Button, Grid, Table, Paper, TableCell, TableContainer, TableHead, TextField, Typography, TableRow } from "@mui/material";
-import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import { useNavigate, BrowserRouter, Route, Routes } from "react-router-dom";
-import PhotoCameraRoundedIcon from '@mui/icons-material/PhotoCameraRounded';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import { Editor, EditorState, convertToRaw } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import BarChartIcon from '@mui/icons-material/BarChart';
-import env from 'react-dotenv'
 import logoImage from '../assets/camera_icon.png'
 import Image from "mui-image";
 import { useEffect, useState } from "react";

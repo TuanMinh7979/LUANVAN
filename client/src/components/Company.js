@@ -6,7 +6,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import { Editor, EditorState, convertToRaw } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import ApartmentIcon from '@mui/icons-material/Apartment';
-import env from 'react-dotenv'
+import env from '../assets/env.json'
 import logoImage from '../assets/camera_icon.png'
 import Image from "mui-image";
 import { useEffect, useState } from "react";
