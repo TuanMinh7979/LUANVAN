@@ -226,16 +226,17 @@ function JobPost({ user }) {
     console.log("------")
     console.log(JSON.stringify(convertToRaw(benefit.getCurrentContent())))
 
-    // let descriptionText = getTextArrayFromRich(convertToRaw(description.getCurrentContent())).join("")
-    // let candidateRequiredText = getTextArrayFromRich(convertToRaw(candidateRequired.getCurrentContent())).join("")
-    // axios
-    //   .post("/jobpost", { ...data, descriptionText, candidateRequiredText })
-    //   .then((res) => {
 
-    //     console.log(res);
-    //   }).catch(err => {
-    //     console.log(err)
-    //   })
+    let descriptionText = getTextArrayFromRich(convertToRaw(description.getCurrentContent())).join("")
+    let candidateRequiredText = getTextArrayFromRich(convertToRaw(candidateRequired.getCurrentContent())).join("")
+    axios
+      .post("/jobpost", { ...data, descriptionText, candidateRequiredText })
+      .then((res) => {
+
+        console.log(res);
+      }).catch(err => {
+        console.log(err)
+      })
   };
   function navigateTo(location) {
     navigate(location);
@@ -702,8 +703,8 @@ export default function HrHub() {
             <Route path="/" element={<JobPost user={user} />}></Route>
             <Route path="/editcompany" element={<Company user={user} />} />
             <Route path="/charts" element={<Charts user={user} />} />
-            <Route path="/jobdetail" element={<JobDetail  />} />
-            <Route path="/searchcandidate/:id" element={<SearchCandidate user={user}  />} />
+            <Route path="/jobdetail" element={<JobDetail />} />
+            <Route path="/searchcandidate/:id" element={<SearchCandidate user={user} />} />
           </Routes>
         </Grid>
       </Grid>

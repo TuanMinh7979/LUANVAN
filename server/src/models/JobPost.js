@@ -31,8 +31,7 @@ const JobPostSchema = new Schema(
 
     salaryType: {
       type: String,
-      enum: ["Thoản thuận", "Cố định", "Trong khoảng"],
-      default: "USD",
+    
     },
 
     salaryMin: {

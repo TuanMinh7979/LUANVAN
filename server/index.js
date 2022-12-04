@@ -10,6 +10,7 @@ import jobPostRoute from "./src/routes/jobPost.js";
 import companyRoute from "./src/routes/company.js";
 
 import candidateRoute from "./src/routes/candidate.js";
+import recRoute from "./src/routes/rec.js"
 import resumeRoute from "./src/routes/resume.js";
 import addressRoute from "./src/routes/address.js"
 import otherRoute from "./src/routes/otherRoute.js";
@@ -47,6 +48,7 @@ app.use("/api/jobpost", jobPostRoute);
 
 //candidate update profile
 app.use("/api/candidate", candidateRoute);
+app.use("/api/rec", recRoute);
 app.use("/api/address", addressRoute);
 
 app.use("/api/other", otherRoute);
