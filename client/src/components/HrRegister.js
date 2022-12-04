@@ -74,15 +74,7 @@ export default function HrRegister() {
                 data: data
             }).then((res) => {
                 console.log(res.data);
-                // if (res.data.status === 404) {
-                //     setResponse({
-                //         showArlert: true,
-                //         message: res.data.message
-                //     })
-                // }
-                // else {
-                //     window.location.href = "./"
-                // }
+                
             });
         }
     };

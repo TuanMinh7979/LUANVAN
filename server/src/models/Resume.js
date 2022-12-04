@@ -5,9 +5,6 @@ const { Schema } = mongoose;
 
 const ResumeSchema = new Schema(
   {
-
-
-    aboutMeCV: String,
     activities: String,
     activitiesCv: String,
     address: String,
@@ -19,13 +16,14 @@ const ResumeSchema = new Schema(
     email: String,
     experience: String,
     experienceCv: String,
-    fullAddress: String,
+    fulladdress: String,
     gender: String,
     name: String,
     objective: String,
     objectiveCv: String,
     phone: String,
     skills: String,
+    skillsCv: String,
     title: String,
 
 

@@ -74,14 +74,14 @@ export default function Register() {
                 data: data
             });
             console.log(res.data)
-            if (res.data.status == 200) {
+            if (res.data.status && res.data.status != 200) {
+                res.status
+                toast.warning("Đăng ký thất bại!")
+            } else {
                 toast.success("Đăng ký tài khoản thành công!")
                 setTimeout(() => {
                     window.location.href = "/login"
                 }, 2000)
-
-            } else {
-                toast.warning("Đăng ký thất bại!")
             }
         }
 

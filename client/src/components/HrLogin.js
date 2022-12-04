@@ -42,7 +42,7 @@ export default function HrLogin() {
             data: data
         }).then((res) => {
             console.log(res);
-            if (res.data.status === 404) {
+            if (res.data.status && res.data.status != 200) {
                 setResponse({
                     showArlert: true,
                     message: res.data.message
