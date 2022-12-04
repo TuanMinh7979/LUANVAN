@@ -91,7 +91,6 @@ export const getJobPost = async (req, res, next) => {
 
 // { "$toObjectId": "$userId" }
 export const getAllJobPost = async (req, res, next) => {
-  console.log("------------->>>")
   try {
     let pipeLine = []
     if (Object.keys(req.query).length > 0) {
@@ -128,6 +127,15 @@ export const getAllJobPost = async (req, res, next) => {
     },)
     const a = await JobPost.aggregate(pipeLine);
     res.status(200).json(a);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const getAllFromQuery = async (req, res, next) => {
+  try {
+    const rs =await JobPost.find(req.query)
+    res.status(200).json(rs);
   } catch (err) {
     next(err);
   }

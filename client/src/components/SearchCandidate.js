@@ -54,15 +54,24 @@ function SearchController() {
         keyword: '',
         address: '',
     })
+
+
+
     function handleCheck(e, item) {
         setSearchParams({
             ...searchParams,
             [item]: e.target.checked
         })
+
+
     }
-    // useEffect(()=>{
-    //     console.log(searchParams)
-    // },[searchParams])
+
+    const sendSearchOption = async () => {
+        const res = await axios.post("http://localhost:8800/api/resume/getByCharacterInField", searchParams);
+        console.log(res)
+    }
+
+
     return (
         <Grid
             container
@@ -138,9 +147,7 @@ function SearchController() {
                     variant="outlined"
                     color="primary"
                     sx={{ mt: 3 }}
-                    onClick={() => {
-                        console.log(searchParams)
-                    }}
+                    onClick={() => sendSearchOption()}
                 >
                     Tìm kiếm
                 </Button>
@@ -177,7 +184,7 @@ function CandidateCard({ data }) {
             >
                 {/*name  */}
                 <Typography variant="h4" color="initial" fontWeight={500} sx={{ mb: 1 }}>
-                    Nguyễn Quốc Anh
+                    {data.name}
                 </Typography>
                 {/* title */}
                 <Box
@@ -187,7 +194,7 @@ function CandidateCard({ data }) {
                 >
                     <WorkOutlineOutlinedIcon fontSize="small" />
                     <Typography variant="body1" color="initial">
-                        WEB DEVELOPER
+                        {data.title}
                     </Typography>
                 </Box>
                 {/* address  */}
@@ -198,7 +205,7 @@ function CandidateCard({ data }) {
                 >
                     <PlaceOutlinedIcon fontSize="small" />
                     <Typography variant="body1" color="initial">
-                        Cần Thơ
+                        {data.fulladdress}
                     </Typography>
                 </Box>
                 {/* email */}
@@ -209,7 +216,7 @@ function CandidateCard({ data }) {
                 >
                     <EmailOutlinedIcon fontSize="small" />
                     <Typography variant="body1" color="initial">
-                        anhcmcm@gmail.com
+                        {data.email}
                     </Typography>
                 </Box>
                 {/* phone */}
@@ -220,7 +227,7 @@ function CandidateCard({ data }) {
                 >
                     <PhoneIphoneOutlinedIcon fontSize="small" />
                     <Typography variant="body1" color="initial">
-                        0834617610
+                        {data.phone}
                     </Typography>
                 </Box>
             </Grid>
@@ -296,32 +303,39 @@ function CandidateCard({ data }) {
     )
 }
 function Result({ data }) {
-    return (
-        <Box
-            sx={{
-                background: "#fff",
-                p: 2,
-            }}
-        >
+    console.log("FROM RESULT ", data);
+    return (<>
+        {!data || (data && data.length == 0) ? "Loading" :
             <Box
                 sx={{
-                    borderBottom: '1px solid rgba(0,0,0,0.1)',
-                    display: 'flex',
-                    alignItems: "center",
-                    pb: 2,
-                    mb: 2
-                }}>
-                <SearchIcon />
-                <Typography variant="h6" fontWeight={550} sx={{ ml: 1 }}>
-                    Tìm thấy <Typography variant="span" color="success">10</Typography> ứng viên phù hợp
-                </Typography>
+                    background: "#fff",
+                    p: 2,
+                }}
+            >
+                <Box
+                    sx={{
+                        borderBottom: '1px solid rgba(0,0,0,0.1)',
+                        display: 'flex',
+                        alignItems: "center",
+                        pb: 2,
+                        mb: 2
+                    }}>
+                    <SearchIcon />
+                    <Typography variant="h6" fontWeight={550} sx={{ ml: 1 }}>
+                        Tìm thấy <Typography variant="span" color="success">{data.length}</Typography> ứng viên phù hợp
+                    </Typography>
+                </Box>
+                {data.map(item => {
+
+                    return (<CandidateCard data={item} />)
+                })}
+
+
+
+
             </Box>
-            <CandidateCard data={fakedate} />
-            <CandidateCard data={fakedate} />
-            <CandidateCard data={fakedate} />
-            <CandidateCard data={fakedate} />
-            <CandidateCard data={fakedate} />
-        </Box>
+        }</>
+
     )
 }
 
@@ -330,22 +344,20 @@ export default function SearchCandidate({ user, env }) {
     const strArr = location.pathname.split("/");
 
     const jobPostId = strArr[strArr.length - 1]
-    console.log(jobPostId)
-    //cv list
-    const [rsData, setRsData] = useState([])
 
     //cv list
-    const fetchByListId = () => {
+    const [recommendData, setRecommendData] = useState([])
 
-    }
+    //cv list
+
     const getSugListData = async () => {
-       
+
         const sugListIdFetch = await axios.get(`http://localhost:8000/getSugCvForJob/${jobPostId}`)
-        console.log(">>>>>>>>>>>>......")
-        const suglistIdData = sugListIdFetch.data.sugList;
-        console.log(suglistIdData)
+        let suglistIdData = sugListIdFetch.data.sugList;
+        suglistIdData = suglistIdData.reverse()
         const sugListDbData = await axios.post('http://localhost:8800/api/recommend/getJobByListId', { suglistIdData })
-        console.log(";;;", sugListDbData)
+        console.log(sugListDbData.data)
+        setRecommendData(sugListDbData.data)
     }
     const [tabValue, setTabValue] = useState(0);
     const handleChange = (event, newValue) => {
@@ -403,12 +415,12 @@ export default function SearchCandidate({ user, env }) {
                     <Result />
                 </TabPanel>
                 <TabPanel value={tabValue} index={1}>
-                    abc
-                    <Result data={rsData} />
+
+                    <Result />
                 </TabPanel>
                 <TabPanel value={tabValue} index={2}>
-                    def
-                    <Result data={rsData} />
+
+                    <Result data={recommendData} />
                 </TabPanel>
             </Box>
             {/* REsult */}
