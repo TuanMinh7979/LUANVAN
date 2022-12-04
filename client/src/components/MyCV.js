@@ -28,28 +28,15 @@ export default function MyCV({ user }) {
                 sx={{
                     background: "#f1f2f7",
                     p: 3,
-                    columnGap: 4
+                    columnGap: 4,
+                    justifyContent: "center"
                 }}
             >
                 <Grid
                     item
                     xs={6}>
-                    <CV1 data={data.cv}  print={true} />
+                    <CV1 data={data.cv}   />
                 </Grid>
-                <Grid
-                    xs={4}
-                    item
-                    sx={{
-                        ml: 15,
-                        display: 'flex',
-                        flexDirection: "column",
-                        alignItems: "center"
-                    }}
-                >
-                    <Typography variant="h4" color="initial">Hướng dẫn viết CV hiệu quả</Typography>
-                </Grid>
-
-
             </Grid>
         }
     </>)

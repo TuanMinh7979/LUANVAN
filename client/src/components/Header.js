@@ -19,7 +19,6 @@ import { useState } from "react";
 export default function Header({ forHr }) {
     const user = useSelector((state) => state.user)
     const [open, setOpen] = useState(false)
-    const handleOpen = () => { setOpen(true), console.log("OK open") }
     const navigate = useNavigate()
     const theme = createTheme({
         palette: {
@@ -57,11 +56,11 @@ export default function Header({ forHr }) {
             }} variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer" }}>
                 Việc làm
             </Typography>
-            <Typography onClick={handleOpen} variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer" }}>
+            <Typography onClick={() => {navigateTo("/cvmanager")}} variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer" }}>
                 Quản lý CV của bạn
             </Typography>
 
-            <Typography variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer", flexGrow: 1 }}>
+            <Typography onClick={() => {navigateTo("/updateprofile")}} variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer", flexGrow: 1 }}>
                 Chỉnh sửa hồ sơ
             </Typography>
 

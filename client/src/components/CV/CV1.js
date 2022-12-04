@@ -19,7 +19,7 @@ import { convertToRaw, EditorState } from "draft-js";
 import ContactEditPopUp from "../ContactEditPopUp";
 
 
-export default function CV1({ data, print ,setCVDATA}) {
+export default function CV1({ editable ,data, setPrint, print ,setCVDATA}) {
 
 
 
@@ -61,7 +61,7 @@ export default function CV1({ data, print ,setCVDATA}) {
                 <RichText editorState={editorState} setEditorState={setEditorState} />
                 <Box sx={{ m: 1 }}>
                     <Button
-                        onClick={handleClose}
+                        onClick={editable && handleClose}
                         color="warning"
                         variant="outlined"
                         sx={{
@@ -72,7 +72,7 @@ export default function CV1({ data, print ,setCVDATA}) {
                     </Button>
                     <Button
                         variant="outlined"
-                        onClick={updateData}
+                        onClick={editable && updateData}
                     >
                         Cập nhật
                     </Button>
@@ -110,9 +110,6 @@ export default function CV1({ data, print ,setCVDATA}) {
     }
 
     const ref = useRef()
-    // state data de post
-    // const [data, setCVDATA] = useState(data)
-    // state quan ly show rich edit
     const [showEduEdit, setShowEduEdit] = useState()
     const [showSkillsEdit, setShowSkillsEdit] = useState()
     const [showCertificationsEdit, setShowCertificationsEdit] = useState()
@@ -127,13 +124,20 @@ export default function CV1({ data, print ,setCVDATA}) {
         documentTitle: 'test',
         onAfterPrint: () => console.log("QA print")
     })
+    useEffect(()=>{
+        if(print){
+            handlePrint()
+            setPrint(false)
+        }
+
+    },[print])
     return (<>
         <Box
             ref={ref}
             sx={{
                 width: '100%',
                 backgroundImage: `url(${background})`,
-                minHeight: '1069px',
+                minHeight: '1080px',
                 p: 4,
                 backgroundRepeat: 'repeat',
                 backgroundSize: 'cover',
@@ -150,7 +154,8 @@ export default function CV1({ data, print ,setCVDATA}) {
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
-                        alignItems: 'flex-end'
+                        alignItems: 'flex-end',
+                        minHeight: '1200px',
                     }}
 
                 >
@@ -162,13 +167,14 @@ export default function CV1({ data, print ,setCVDATA}) {
                             px: 2,
                             mt: 1,
                             width: '90%',
+                            minHeight: "20%",
                             '&:hover': {
                                 border: '1px dashed red'
                             }
                         }}
                         onClick={() => {
                             // OpenEditDialog('Học vấn', 'Học vấn',true)
-                            setShowEduEdit(true)
+                            editable && setShowEduEdit(true)
                         }}
                     >
                         <RichContent show={showEduEdit} toggle={setShowEduEdit} data={data} config={setCVDATA} item="educationCv" />
@@ -182,12 +188,13 @@ export default function CV1({ data, print ,setCVDATA}) {
                             px: 2,
                             mt: 1,
                             width: '90%',
+                            minHeight: "20%",
                             '&:hover': {
                                 border: '1px dashed red'
                             }
                         }}
                         onClick={() => {
-                            setShowObjectiveEdit(true)
+                            editable && setShowObjectiveEdit(true)
                         }}
                     >
                         <RichContent show={showObjectiveEdit} toggle={setShowObjectiveEdit} data={data} config={setCVDATA} item="objectiveCv" />
@@ -201,12 +208,13 @@ export default function CV1({ data, print ,setCVDATA}) {
                             px: 2,
                             mt: 1,
                             width: "90%",
+                            minHeight: "20%",
                             '&:hover': {
                                 border: '1px dashed red'
                             }
                         }}
                         onClick={() => {
-                            setShowSkillsEdit(true)
+                            editable && setShowSkillsEdit(true)
                         }}
                     >
                         <RichContent show={showSkillsEdit} toggle={setShowSkillsEdit} data={data} config={setCVDATA} item="skillsCv" />
@@ -219,11 +227,12 @@ export default function CV1({ data, print ,setCVDATA}) {
                             px: 2,
                             mt: 1,
                             width: "90%",
+                            minHeight: "20%",
                             '&:hover': {
                                 border: '1px dashed red'
                             }
                         }} onClick={() => {
-                            setShowCertificationsEdit(true)
+                            editable && setShowCertificationsEdit(true)
                         }}
                     >
                         <RichContent show={showCertificationsEdit} toggle={setShowCertificationsEdit} data={data} config={setCVDATA} item="certificationsCv" />
@@ -244,7 +253,8 @@ export default function CV1({ data, print ,setCVDATA}) {
                         sx={{
                             width: '80%',
                             display: 'flex',
-                            flexDirection: 'column',
+                            flexDirection
+                            : 'column',
                             '&:hover': {
                                 border: '1px dashed red'
                             },
@@ -256,7 +266,7 @@ export default function CV1({ data, print ,setCVDATA}) {
                             mt: 3
                         }}
                         onClick={() => {
-                            setShowPopup(true)
+                            editable && setShowPopup(true)
                         }}
                     >
                         <Image
@@ -348,12 +358,13 @@ export default function CV1({ data, print ,setCVDATA}) {
                                 mb: 2,
                                 px: 2,
                                 mt: 1,
+                                minHeight: "20%",
                                 '&:hover': {
                                     border: '1px dashed red'
                                 }
                             }}
                             onClick={() => {
-                                setShowExperienceEdit(true)
+                                editable && setShowExperienceEdit(true)
                             }}
                         >
                             <RichContent show={showExperienceEdit} toggle={setShowExperienceEdit} data={data} config={setCVDATA} item="experienceCv" />
@@ -371,12 +382,6 @@ export default function CV1({ data, print ,setCVDATA}) {
                 }}>©2022 ViecLamNhanh</Typography>
         </Box>
         <ContactEditPopUp data={data} setData={setCVDATA} show={showPopup} setShow={setShowPopup} />
-        <Button onClick={() => {
-            if (print) {
-                handlePrint()
-            }
-        }} >IN</Button>
-
         {/* <EditDialog open={open} title={title} item={item} setOpen={setOpen} isRich={isRich} /> */}
     </>)
 }
