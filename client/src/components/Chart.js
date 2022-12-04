@@ -15,9 +15,9 @@ import axios from 'axios'
 import { maxHeight, maxWidth } from "@mui/system";
 export default function Charts({ user }) {
     const navigate = useNavigate()
-   
- 
- 
+
+
+
     const [data, setData] = useState({
         name: '',
         type: '',
@@ -81,18 +81,30 @@ export default function Charts({ user }) {
                             <TableCell>Lượt xem</TableCell>
                             <TableCell>Đã ứng tuyển</TableCell>
                             <TableCell>Trạng thái</TableCell>
+                            <TableCell></TableCell>
                         </TableHead>
-                        <TableRow
-                            onClick ={()=>{
-                                navigateTo("/jobdetail/6384cbe50fed53e7bcedda8d")
-                            }}
-                        >
-                            <TableCell>Chuyên viên quan hệ khách hàng tại Cần Thơ thu nhập từ 10 triệu</TableCell>
+                        <TableRow>
+                            <TableCell
+                                onClick={() => {
+                                    navigateTo("/jobdetail/6384cbe50fed53e7bcedda8d")
+                                }}
+                            >Chuyên viên quan hệ khách hàng tại Cần Thơ thu nhập từ 10 triệu</TableCell>
                             <TableCell>20/11/2022</TableCell>
                             <TableCell>1/1/2023</TableCell>
                             <TableCell>70 lượt xem</TableCell>
                             <TableCell>10 ứng viên</TableCell>
-                            <TableCell>Đã đăng</TableCell>
+                            <TableCell>
+                                <Button variant="text" color="success">Đã đăng</Button>
+                            </TableCell>
+                            <TableCell>
+                                <Button
+                                    variant="text"
+                                    color="success"
+                                    onClick={() => {
+                                        navigateTo("../searchcandidate/123123")
+                                    }}
+                                >Tìm ứng viên</Button>
+                            </TableCell>
                         </TableRow>
                     </Table>
                 </TableContainer>

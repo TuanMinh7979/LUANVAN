@@ -1,4 +1,4 @@
-import { Container, Box, TextField, FormControl, InputAdornment, InputLabel, Select, MenuItem, Button, Stack, Typography, createTheme, Grid } from "@mui/material";
+import { Container, Box, TextField, FormControl, InputAdornment, InputLabel, Select, MenuItem, Button, Stack, Typography, createTheme, Grid, CircularProgress } from "@mui/material";
 import WorkIcon from '@mui/icons-material/Work';
 import Image from 'mui-image'
 import logo from '../assets/companylogo_sample.png'
@@ -15,35 +15,25 @@ import StarIcon from '@mui/icons-material/Star';
 import { RichTextDisplay } from "./RichText";
 import { useLocation } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
-
-export default function JobDetail() {
+import EditIcon from '@mui/icons-material/Edit';
+export default function JobDetail({ user }) {
     const location = useLocation();
     const id = location.pathname.split("/")[2];
     console.log(id)
     const { data, loading, error } = useFetch(`/jobpost/${id}`);
-
-
-
     const theme = createTheme()
-    const MenuProps = {
-        PaperProps: {
-            style: {
-                maxHeight: 200
-            }
+    function Apply(){
+        if(confirm("Bạn có muốn ứng tuyển công việc này")){
+            // axios
         }
-    };
-    const [searchParams, setSearchParams] = useState({
-        job: '',
-        location: '',
-        level: '',
-        gross: ''
-    })
-    const navigate = useNavigate()
+    }
     return (
 
         <>{
             loading ?
-                "Loading" :
+                <Container>
+                    <CircularProgress color="success" />
+                </Container> :
                 <Container
                     disableGutters
                     maxWidth
@@ -107,7 +97,12 @@ export default function JobDetail() {
                             </Box>
                             <Box
                             >
-                                <Button startIcon={<SendIcon />} variant="contained" color="success">Ứng tuyển ngay</Button>
+                                {
+                                    user.user.role == "candidate"&&<Button onClick={Apply} startIcon={<SendIcon />} variant="contained" color="success">Ứng tuyển ngay</Button>
+                                }
+                                {
+                                    user.user.role == "rec"&&<Button startIcon={<EditIcon />} variant="contained" color="success">Chỉnh sửa tin tuyển dụng</Button>
+                                }
                             </Box>
                         </Stack>
                         <Grid

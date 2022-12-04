@@ -62,7 +62,7 @@ function App() {
               element={
                 <>
                   <Header />
-                  <JobDetail />
+                  <JobDetail user={user} />
                   <Footer />
                 </>
               }

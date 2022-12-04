@@ -38,6 +38,7 @@ import Company from "./Company";
 import Charts from "./Chart";
 import { jobCats } from "../store/selectData.js";
 import JobDetail from "./JobDetail"
+import SearchCandidate from "./SearchCandidate";
 const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
   "&:hover": {
     color: theme.palette.success.light,
@@ -135,6 +136,9 @@ export function HrSideBar({ uploadJob, editCompany, viewChart, news }) {
         <CustomMenuItem
           sx={{
             color: activeItem == 3 ? theme.palette.success.main : "",
+          }}
+          onClick={() => {
+            navigateTo("./searchcandidate");
           }}
         >
           <ListItemIcon sx={{ py: 2 }}>
@@ -699,6 +703,7 @@ export default function HrHub() {
             <Route path="/editcompany" element={<Company user={user} />} />
             <Route path="/charts" element={<Charts user={user} />} />
             <Route path="/jobdetail" element={<JobDetail  />} />
+            <Route path="/searchcandidate/:id" element={<SearchCandidate user={user} env={env}  />} />
           </Routes>
         </Grid>
       </Grid>
