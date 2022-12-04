@@ -35,7 +35,7 @@ export default function MyCV({ user }) {
                 <Grid
                     item
                     xs={6}>
-                    <CV1 data={data.cv}   />
+                    <CV1 editable={false} data={data.cv}   />
                 </Grid>
             </Grid>
         }

@@ -9,7 +9,7 @@ import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import CrisisAlertIcon from '@mui/icons-material/CrisisAlert';
 import Image from "mui-image";
-import camera from '../../assets/companylogo_sample.png'
+import camera from '../../assets/camera_icon.png'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PhoneIcon from '@mui/icons-material/Phone';
 import MailIcon from '@mui/icons-material/Mail';
@@ -131,6 +131,10 @@ export default function CV1({ editable ,data, setPrint, print ,setCVDATA}) {
         }
 
     },[print])
+    useEffect(()=>{
+        console.log(data)
+
+    },[data])
     return (<>
         <Box
             ref={ref}
@@ -270,7 +274,7 @@ export default function CV1({ editable ,data, setPrint, print ,setCVDATA}) {
                         }}
                     >
                         <Image
-                            src={camera}
+                            src={data.avatar||camera}
                             width="160px"
                             height="160px"
                             fit="scale-down"

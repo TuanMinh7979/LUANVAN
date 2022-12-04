@@ -33,7 +33,7 @@ export default function ManageCV({ user }) {
             <Grid
                 item
                 xs={6}>
-                <CV1 editable={false} data={cvData} print={print} setPrint={setPrint} setCVDATA={setCVDATA} />
+                <CV1 editable={true} data={cvData} print={print} setPrint={setPrint} setCVDATA={setCVDATA} />
             </Grid>
             <Grid
                 xs={4}
