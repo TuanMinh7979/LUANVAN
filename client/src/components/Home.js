@@ -8,10 +8,43 @@ import env from '../assets/env.json'
 import hrimg from "../assets/hr.png"
 import useFetch from "../hooks/useFetch";
 import RecommentJobs from "./RecommentJobs";
+import { useEffect } from "react";
+import axios from "axios";
 
 function Home() {
     const [displayFilterBox, setDisplayFilterBox] = useState("none")
     const user = useSelector(state => state.user)
+    const [jobRecs, setJobRecs] = useState([])
+    const [cvId, setCvId] = useState("")
+    console.log(user);
+    useEffect(() => {
+        if (user.isLogin) {
+
+            async function getData() {
+
+                let rs = await axios.get(`/candidate/${user.user._id}/resume`);
+
+                return rs;
+            }
+            getData().then(async (res) => {
+
+                setCvId(res.data.cv._id)
+                const sugListIdFetch = await axios.get(`http://localhost:8000/getSugJobForCv/${res.data.cv._id}`)
+
+                console.log(sugListIdFetch)
+                let suglistIdData = sugListIdFetch.data.sugList;
+                suglistIdData = suglistIdData.reverse()
+                const sugListDbData = await axios.post('http://localhost:8800/api/recommend/getJobByListId', { suglistIdData })
+                console.log("lllllllllllllllllllll", sugListDbData)
+                setJobRecs(sugListDbData.data)
+            });
+        } else {
+
+            console.log("user chua login")
+        }
+
+    }, [])
+
 
     const { data, loading, error } = useFetch("http://localhost:8800/api/jobpost");
     console.log(data)
@@ -223,7 +256,8 @@ function Home() {
                         imageLink={hrimg}
                         buttonTitle="Tìm ứng viên" />
                 </Box>
-                <RecommentJobs />
+                {jobRecs && jobRecs.length && <RecommentJobs data={jobRecs} />}
+
                 {loading
                     ? "loading"
                     : <JobList jobs={data} />

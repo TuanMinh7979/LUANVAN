@@ -17,7 +17,7 @@ export const updateUser = async (req, res, next) => {
 
     //khong cho cap nhat role
     let updatedUser;
-    console.log(req.params.id)
+
     if (Object.keys(generalUser).length > 0) {
       updatedUser = await User.findByIdAndUpdate(
         req.params.id,

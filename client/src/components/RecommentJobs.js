@@ -40,7 +40,7 @@ const fakejob = {
     }
 }
 
-export default function RecommentJobs() {
+export default function RecommentJobs({ data }) {
     return (<>
         <Container
             maxWidth
@@ -70,18 +70,14 @@ export default function RecommentJobs() {
                         container
                         item
                         xs={12}>
-                        <Grid item xs={3}>
-                            <JobCard job={fakejob} />
-                        </Grid>
-                        <Grid item xs={3}>
-                            <JobCard job={fakejob} />
-                        </Grid>
-                        <Grid item xs={3}>
-                            <JobCard job={fakejob} />
-                        </Grid>
-                        <Grid item xs={3}>
-                            <JobCard job={fakejob} />
-                        </Grid>
+                        {data.map(item => {
+
+                            return (<Grid item xs={3}>
+                                <JobCard job={item} />
+                            </Grid>)
+                        })}
+
+
                     </Grid>
                 </Grid>
             </Paper>

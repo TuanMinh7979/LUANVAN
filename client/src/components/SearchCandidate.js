@@ -1,4 +1,4 @@
-import { Grid, Paper, Typography, Box, Tab, Tabs, FormGroup, FormControlLabel, Checkbox, Autocomplete, TextField, Button, Input } from "@mui/material";
+import { Grid, Paper, Typography, Box, Tab, Tabs, FormGroup, FormControlLabel, Checkbox, Autocomplete, TextField, Button, Input, CircularProgress } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react'
@@ -44,7 +44,7 @@ function a11yProps(index) {
     };
 }
 // axios tim o day
-function SearchController() {
+function SearchController({ setSearchCbData }) {
     const [searchParams, setSearchParams] = useState({
         title: false,
         experience: false,
@@ -68,7 +68,7 @@ function SearchController() {
 
     const sendSearchOption = async () => {
         const res = await axios.post("http://localhost:8800/api/resume/getByCharacterInField", searchParams);
-        console.log(res)
+        setSearchCbData(res.data)
     }
 
 
@@ -282,7 +282,7 @@ function CandidateCard({ data }) {
                         sx={{
                             width: "100%"
                         }}>
-                        <RichTextDisplay data={JSON.parse(data.activitiesCv)} />
+                        <RichTextDisplay data={JSON.parse(data.skillsCv)} />
                     </Box>
                 </Grid>
                 {/* Hoc van */}
@@ -305,7 +305,7 @@ function CandidateCard({ data }) {
 function Result({ data }) {
     console.log("FROM RESULT ", data);
     return (<>
-        {!data || (data && data.length == 0) ? "Loading" :
+        {!data || (data && data.length == 0) ?  <CircularProgress color="success" /> :
             <Box
                 sx={{
                     background: "#fff",
@@ -347,6 +347,8 @@ export default function SearchCandidate({ user, env }) {
 
     //cv list
     const [recommendData, setRecommendData] = useState([])
+    const [searchCbData, setSearchCbData] = useState([])
+
 
     //cv list
 
@@ -355,7 +357,7 @@ export default function SearchCandidate({ user, env }) {
         const sugListIdFetch = await axios.get(`http://localhost:8000/getSugCvForJob/${jobPostId}`)
         let suglistIdData = sugListIdFetch.data.sugList;
         suglistIdData = suglistIdData.reverse()
-        const sugListDbData = await axios.post('http://localhost:8800/api/recommend/getJobByListId', { suglistIdData })
+        const sugListDbData = await axios.post('http://localhost:8800/api/recommend/getCvByListId', { suglistIdData })
         console.log(sugListDbData.data)
         setRecommendData(sugListDbData.data)
     }
@@ -411,8 +413,8 @@ export default function SearchCandidate({ user, env }) {
                         background: "#f1f2f7"
                     }}
                 >
-                    <SearchController env={env} />
-                    <Result />
+                    <SearchController setSearchCbData={setSearchCbData} env={env} />
+                    <Result data={searchCbData} />
                 </TabPanel>
                 <TabPanel value={tabValue} index={1}>
 

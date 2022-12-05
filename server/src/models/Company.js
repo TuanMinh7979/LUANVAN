@@ -20,8 +20,8 @@ const CompanySchema = new Schema(
     introduce: {
       type: String
     },
-    linkToLogo:{
-
+    linkToLogo: {
+      type: String
     },
     members: {
       type: String

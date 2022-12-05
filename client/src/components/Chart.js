@@ -70,7 +70,7 @@ export default function Charts({ user }) {
                                 <TableRow>
                                     <TableCell
                                         onClick={() => {
-                                            navigateTo(`/jobdetail/${item.id}`)
+                                            navigateTo(`/jobdetail/${item._id}`)
                                         }}
                                     >{item.title}</TableCell>
                                     <TableCell>{item.createAt}</TableCell>

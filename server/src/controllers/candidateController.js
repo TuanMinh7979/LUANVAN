@@ -62,7 +62,7 @@ export const updateCandidateProfile = async (req, res, next) => {
     fullAddress,
     profile
   }
-  console.log(updateData)
+
   let loggedUserId = ""
   if (req.user) {
 
@@ -74,7 +74,7 @@ export const updateCandidateProfile = async (req, res, next) => {
   }
 
 
-  console.log(loggedUserId)
+ 
   try {
     const updatedCandidate = await Candidate.findOneAndUpdate(
       { userId: loggedUserId },
@@ -119,9 +119,9 @@ export const getMyCV = async (req, res, next) => {
       return next(createError(404, "Ứng viên không tồn tại trong hệ thống"))
     }
 
-    console.log(">>>>>>>>>>???????????????<<<<<<<<")
+    
     const cv = await Resume.findOne({ candidateId: candidate.id });
-    console.log(cv)
+
     if (!cv || cv == undefined) {
       return next(createError(404, "Cv không tồn tại trong hệ thống"))
     }
@@ -129,8 +129,7 @@ export const getMyCV = async (req, res, next) => {
 
     res.status(200).json({ cv });
   } catch (e) {
-    console.log(e)
-    next(e)
+      next(e)
     // next(createError(400, "Tạo cv thất bại"));
   }
 };

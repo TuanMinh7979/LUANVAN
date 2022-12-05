@@ -21,7 +21,7 @@ export const getByCharacterInField = async (req, res, next) => {
 
     searchParam = filterSkipField(searchParam, "keyword", "address", "activities", "education")
 
-    console.log(req.body)
+
 
     for (let k in searchParam) {
       if (searchParam[k]) {
@@ -29,7 +29,7 @@ export const getByCharacterInField = async (req, res, next) => {
       }
     }
 
-    console.log(findArray)
+  
     const data = await Resume.find({ $or: findArray })
     res.status(200).json(data);
   } catch (err) {

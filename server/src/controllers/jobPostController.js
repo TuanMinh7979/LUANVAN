@@ -7,7 +7,7 @@ import Rec from "../models/Rec.js";
 import Company from "../models/Company.js";
 export const createJobPost = async (req, res, next) => {
 
-  console.log(req.body)
+
   try {
 
     let companyId = ""
@@ -78,7 +78,7 @@ export const getJobPost = async (req, res, next) => {
 
     if (jobPost === null)
       return next(createError(404, "Khong tim thay jobPost"));
-    console.log(jobPost)
+
     res.status(200).json({ ...jobPost._doc, company: company });
   } catch (err) {
     next(err);
@@ -95,6 +95,7 @@ export const getAllJobPost = async (req, res, next) => {
     let pipeLine = []
     if (Object.keys(req.query).length > 0) {
       let matchQuery = getMatch(req.query, ["amount"]);
+      console.log("..........................,,,,,)()()()(", matchQuery)
       if (Object.keys(matchQuery).length > 0) {
         pipeLine.push({ $match: matchQuery })
       }

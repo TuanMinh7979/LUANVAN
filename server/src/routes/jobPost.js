@@ -21,7 +21,7 @@ router.delete("/:id", deleteJobPost);
 
 router.get("/:id", getJobPost);
 
-router.get("/", getAllFromQuery);
+router.get("/", getAllJobPost);
 
 
 
