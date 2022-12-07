@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import RecommentJobs from "./RecommentJobs";
 export default function Jobs() {
+    const user = useSelector((state) => state.user);
     const { data, loading, error } = useFetch("/jobpost");
     const MenuProps = {
         PaperProps: {
@@ -198,7 +199,8 @@ export default function Jobs() {
                     : <JobList jobs={data} />
                 }
             </Box>
-            <RecommentJobs />
+            {user && user.user.detail && user.user.detail.activeCvId && <RecommentJobs resumeId={user.user.detail.activeCvId} />}
+
         </Container>
     </>)
 }

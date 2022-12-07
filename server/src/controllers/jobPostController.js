@@ -85,17 +85,13 @@ export const getJobPost = async (req, res, next) => {
   }
 };
 
-
-
-
-
 // { "$toObjectId": "$userId" }
 export const getAllJobPost = async (req, res, next) => {
   try {
     let pipeLine = []
     if (Object.keys(req.query).length > 0) {
       let matchQuery = getMatch(req.query, ["amount"]);
-      console.log("..........................,,,,,)()()()(", matchQuery)
+     
       if (Object.keys(matchQuery).length > 0) {
         pipeLine.push({ $match: matchQuery })
       }

@@ -60,6 +60,7 @@ const CandidateSchema = new Schema(
 
     //
     saveJobs: [{ type: mongoose.Schema.ObjectId, ref: "JobPost" }],
+    
     //one to one
     userId: {
       type: mongoose.Schema.ObjectId,
