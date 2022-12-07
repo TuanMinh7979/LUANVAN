@@ -26,7 +26,7 @@ const fakejob = {
     "updatedAt": "2022-11-28T14:10:36.386Z",
     "__v": 0,
     "salaryMin": 10000000,
-    "company": {
+    "companyId": {
         "_id": "638478255f4dd5b0392e54e3",
         "location": "TP HCM",
         "phone": "0999999999",

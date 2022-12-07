@@ -29,7 +29,7 @@ const ResumeSchema = new Schema(
 
     candidateId: {
       type: mongoose.Schema.ObjectId,
-      ref: "Candidate",
+      ref: "candidates",
       required: true
     },
 

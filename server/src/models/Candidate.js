@@ -59,12 +59,12 @@ const CandidateSchema = new Schema(
 
 
     //
-    saveJobs: [{ type: mongoose.Schema.ObjectId, ref: "JobPost" }],
+    saveJobs: [{ type: mongoose.Schema.ObjectId, ref: "jobposts" }],
     
     //one to one
     userId: {
       type: mongoose.Schema.ObjectId,
-      ref: "User",
+      ref: "users",
       required: true,
       index: true
     },

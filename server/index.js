@@ -10,11 +10,12 @@ import jobPostRoute from "./src/routes/jobPost.js";
 import companyRoute from "./src/routes/company.js";
 
 import candidateRoute from "./src/routes/candidate.js";
-import recRoute from "./src/routes/rec.js"
+import recRoute from "./src/routes/rec.js";
 import resumeRoute from "./src/routes/resume.js";
-import addressRoute from "./src/routes/address.js"
+import addressRoute from "./src/routes/address.js";
 import otherRoute from "./src/routes/otherRoute.js";
-import recommendRoute from "./src/routes/recommend.js"
+import recommendRoute from "./src/routes/recommend.js";
+import contactRoute from "./src/routes/contact.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 const app = express();
@@ -38,7 +39,6 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
-
 app.use("/api/auth", authRoute);
 app.use("/api/resume", resumeRoute);
 app.use("/api/user", userRoute);
@@ -51,7 +51,7 @@ app.use("/api/jobpost", jobPostRoute);
 app.use("/api/candidate", candidateRoute);
 app.use("/api/rec", recRoute);
 app.use("/api/address", addressRoute);
-
+app.use("/api/contact", contactRoute);
 
 app.use("/api/recommend", recommendRoute);
 

@@ -46,7 +46,7 @@ export default function JobCard(props) {
             <Grid container sx={{ width: "20%" }}>
               <Grid xs="12">
                 <Image
-                  src={job.company.linkToLogo
+                  src={job.companyId.linkToLogo
                   }
                   sx={{
                     borderRadius: '100%',
@@ -68,7 +68,7 @@ export default function JobCard(props) {
                 {job.title}
               </Typography>
               <Typography fontWeight="300" fontSize="20px" variant="h5">
-                {job.company.name}
+                {job.companyId.name}
               </Typography>
             </Box>
           </Box>

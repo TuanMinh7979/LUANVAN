@@ -9,5 +9,5 @@ const AddressSchema = new Schema(
   { timestamps: true }
   //createAt and updateAt
 );
-const Address = mongoose.model("address", AddressSchema);
+const Address = mongoose.model("addresses", AddressSchema);
 export default Address;

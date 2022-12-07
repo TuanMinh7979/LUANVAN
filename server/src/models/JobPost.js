@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import Address from "./Address.js";
 const { Schema } = mongoose;
 
 const JobPostSchema = new Schema(
@@ -59,17 +60,17 @@ const JobPostSchema = new Schema(
 
     categoryId: {
       type: mongoose.Schema.ObjectId,
-      ref: "Category",
+      ref: "jobcategories",
       required: true,
     },
     companyId: {
       type: mongoose.Schema.ObjectId,
-      ref: "Company",
+      ref: "companies",
       required: true,
     },
     recId: {
-      type: mongoose.Schema.ObjectId,
-      ref: "Rec",
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "recs",
       required: true,
     },
 
@@ -85,6 +86,8 @@ const JobPostSchema = new Schema(
       type: Number,
       default: 0
     }
+    ,
+  
 
   },
 

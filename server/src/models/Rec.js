@@ -13,19 +13,18 @@ const RecSchema = new Schema(
     avatar: { type: String },
     saveCvs: [{
       type: mongoose.Schema.ObjectId,
-      ref: "Resume"
+      ref: "resumes"
     }],
-    //luc moi tao thi chua can name
-    //name se cap nhat sau
+
     companyId: {
       type: mongoose.Schema.ObjectId,
-      ref: "Company",
+      ref: "companies",
 
     },
 
     userId: {
       type: mongoose.Schema.ObjectId,
-      ref: "User",
+      ref: "users",
       required: true,
       index: true
     },
