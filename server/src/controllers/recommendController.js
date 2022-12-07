@@ -34,7 +34,7 @@ export const getJobByListId = async (req, res, next) => {
       }
     }
 
-    console.log(rs)
+   
     res.status(200).json(rs);
   } catch (err) {
     next(err);

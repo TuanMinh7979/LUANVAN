@@ -3,11 +3,11 @@ const { Schema } = mongoose;
 
 const ContactSchema = new Schema(
   {
-    jobId: { type: mongoose.Schema.ObjectId, ref: "jobposts", required: true },
+    jobPostId: { type: mongoose.Schema.ObjectId, ref: "jobposts", required: true },
     resumeId: {
       type: mongoose.Schema.ObjectId,
       ref: "resumes",
-      required: true,
+    
     },
     candidateId: {
       type: mongoose.Schema.ObjectId,

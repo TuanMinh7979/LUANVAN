@@ -2,7 +2,7 @@ import express from "express";
 import jwt from "jsonwebtoken";
 const { verify } = jwt;
 
-import { updateCandidateProfile, createResume, getMyCV } from "../controllers/candidateController.js";
+import { updateCandidateProfile, createResume, getMyCV, applyJob } from "../controllers/candidateController.js";
 import { checkAdmin, checkToken, checkUser } from "../utils/checkToken.js";
 
 const router = express.Router();
@@ -13,4 +13,5 @@ router.use(checkToken);
 router.put("/:id/profile", checkUser, updateCandidateProfile);
 router.post("/:id/resume", checkUser, createResume);
 router.get("/:id/resume", checkUser, getMyCV);
+router.post("/:id/applyjob", checkUser, applyJob);
 export default router;

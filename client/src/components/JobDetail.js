@@ -37,7 +37,7 @@ import axios from "axios";
 export default function JobDetail({ user }) {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  console.log(id);
+
   const { data, loading, error } = useFetch(`/jobpost/${id}`);
   const theme = createTheme();
   const ApplyJob = async () => {
@@ -45,14 +45,18 @@ export default function JobDetail({ user }) {
       const contact = {
         jobId: id,
       };
-      const res = await axios.post("/contact/", contact);
+      const res = await axios.post(`/${user.user._id}/applyjob`, contact);
+      console.log(res);
     }
   };
   return (
     <>
-      {loading === true ? (
-        <Container>
-          <CircularProgress color="success" />
+      {loading ? (
+        <Container >
+          <CircularProgress sx={{
+            marginLeft : "300px", 
+          }}
+           color="success" />
         </Container>
       ) : (
         <Container

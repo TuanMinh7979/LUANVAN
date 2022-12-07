@@ -1,10 +1,12 @@
 import express from "express";
-import { createAContact, getAllContact } from "../controllers/contactController.js";
+import { checkToken, checkUser, checkAdmin } from "../utils/checkToken.js";
+import {
+  
+  getAllContact,
+} from "../controllers/contactController.js";
 const router = express.Router();
-
+router.use(checkToken);
+router.use(checkAdmin);
 router.get("/", getAllContact);
-router.post("/", createAContact);
-
-
 
 export default router;
