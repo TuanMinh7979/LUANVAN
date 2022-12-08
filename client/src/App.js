@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import * as React from "react";
-
+import "./App.css";
 import Home from "./components/Home";
 import Header from "./components/Header.js";
 import Login from "./components/Login";
@@ -19,6 +19,7 @@ import Profile from "./components/Profile";
 import ManageCV from "./components/ManageCV";
 
 import { ToastContainer } from "react-toastify";
+import { CircularProgress } from "@mui/material";
 import MyCV from "./components/MyCV";
 
 function App() {
@@ -108,7 +109,7 @@ function App() {
                 </>
               }
             />
-    
+
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="hrlogin" element={<HrLogin />} />
@@ -119,7 +120,11 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+ 
+
+
       <ToastContainer
+        color="success"
         position="bottom-right"
         autoClose={5000}
         hideProgressBar={false}

@@ -223,6 +223,8 @@ function JobPost({ user }) {
   }
 
   const sendPostData = function () {
+
+    
     console.log("------")
     console.log(JSON.stringify(convertToRaw(benefit.getCurrentContent())))
 
