@@ -42,6 +42,7 @@ export const register = async (req, res, next) => {
 
     res.status(200).json("Tạo tài khoản thành công");
   } catch (err) {
+    console.log(err)
     next(createError(400, "Tạo tài khoản thất bại"));
   }
 };

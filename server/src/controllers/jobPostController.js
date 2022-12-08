@@ -1,3 +1,5 @@
+import dotenv from "dotenv";
+dotenv.config();
 import { createError } from "../utils/errorUtil.js";
 import JobPost from "../models/JobPost.js";
 import QueryTool from "../utils/queryTool.js";
@@ -5,12 +7,10 @@ import { getDecodedTokenData } from "../utils/TokenUtils.js";
 import { getMatch, getSort, getPagination } from "../utils/agreUtil.js";
 import Rec from "../models/Rec.js";
 import Company from "../models/Company.js";
+import axios from "axios";
+
 export const createJobPost = async (req, res, next) => {
-
-
   try {
-
-    let companyId = ""
     let recUserId = ""
     if (req.user) {
       //use in app
@@ -34,6 +34,11 @@ export const createJobPost = async (req, res, next) => {
 
 
     await newJobPost.save();
+
+    console.log("create a job post success")
+    let url = `${process.env.DJANGOSERVER}/updateJobsFile`
+    const rs = await axios.get(url)
+    console.log("update db success...")
     res.status(200).send("Tạo jobpost thành công!");
   } catch (e) {
     next(e);
@@ -91,7 +96,7 @@ export const getAllJobPost = async (req, res, next) => {
     let pipeLine = []
     if (Object.keys(req.query).length > 0) {
       let matchQuery = getMatch(req.query, ["amount"]);
-     
+
       if (Object.keys(matchQuery).length > 0) {
         pipeLine.push({ $match: matchQuery })
       }
@@ -131,7 +136,7 @@ export const getAllJobPost = async (req, res, next) => {
 
 export const getAllFromQuery = async (req, res, next) => {
   try {
-    const rs =await JobPost.find(req.query)
+    const rs = await JobPost.find(req.query)
     res.status(200).json(rs);
   } catch (err) {
     next(err);

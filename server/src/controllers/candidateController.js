@@ -4,6 +4,10 @@ import User from "../models/User.js"
 import Resume from "../models/Resume.js";
 import { getDecodedTokenData } from "../utils/TokenUtils.js";
 import { filterSkipField } from "../utils/commonUtil.js";
+
+import dotenv from "dotenv";
+dotenv.config();
+import axios from "axios";
 export const updateCandidateProfile = async (req, res, next) => {
 
   const { title,
@@ -74,7 +78,7 @@ export const updateCandidateProfile = async (req, res, next) => {
   }
 
 
- 
+
   try {
     const updatedCandidate = await Candidate.findOneAndUpdate(
       { userId: loggedUserId },
@@ -101,8 +105,11 @@ export const createResume = async (req, res, next) => {
       return next(createError(404, "Ứng viên không tồn tại trong hệ thống"))
     }
     const newResume = new Resume({ ...req.body, candidateId: candidate.id });
-
     await newResume.save();
+
+    let url = `${process.env.DJANGOSERVER}/updateCvsFile`
+    const rs = await axios.get(url)
+    console.log("update db success...")
     res.status(200).send("Tạo cv thành công");
   } catch (e) {
     console.log(e)
@@ -119,7 +126,7 @@ export const getMyCV = async (req, res, next) => {
       return next(createError(404, "Ứng viên không tồn tại trong hệ thống"))
     }
 
-    
+
     const cv = await Resume.findOne({ candidateId: candidate.id });
 
     if (!cv || cv == undefined) {
@@ -129,7 +136,7 @@ export const getMyCV = async (req, res, next) => {
 
     res.status(200).json({ cv });
   } catch (e) {
-      next(e)
+    next(e)
     // next(createError(400, "Tạo cv thất bại"));
   }
 };
