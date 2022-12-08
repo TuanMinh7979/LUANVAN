@@ -54,11 +54,13 @@ export default function JobDetail({ user }) {
       {loading ? (
         <Container >
           <CircularProgress sx={{
-            marginLeft : "300px", 
+            display: "block",
+            margin: "auto"
           }}
-           color="success" />
+            color="success" />
         </Container>
       ) : (
+
         <Container
           disableGutters
           maxWidth
@@ -465,7 +467,7 @@ export default function JobDetail({ user }) {
                   mt: 3,
                 }}
               >
-                <SimilarJob />
+                <SimilarJob jobPostId={data._id} />
               </Grid>
             </Grid>
           </Container>

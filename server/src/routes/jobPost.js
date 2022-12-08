@@ -7,7 +7,6 @@ import {
   updateJobPost,
   deleteJobPost,
   getJobPost,
-  getAllJobPost1,
   getAllFromQuery
 } from "../controllers/jobPostController.js";
 

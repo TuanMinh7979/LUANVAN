@@ -7,7 +7,7 @@ export default function RecommentJobs({ resumeId }) {
 
   useEffect(() => {
     async function getData() {
-     
+
       const sugListIdFetch = await axios.get(
         `http://localhost:8000/getSugJobForCv/${resumeId}`
       );
@@ -19,7 +19,8 @@ export default function RecommentJobs({ resumeId }) {
         "http://localhost:8800/api/recommend/getJobByListId",
         { suglistIdData }
       );
-    
+
+      console.log(sugListDbData.data)
       setJobRecs(sugListDbData.data);
     }
     getData();

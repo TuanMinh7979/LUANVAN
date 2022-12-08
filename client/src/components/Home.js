@@ -274,6 +274,7 @@ function Home() {
         </Box>
         {user && user.user.detail && user.user.detail.activeCvId && <RecommentJobs resumeId={user.user.detail.activeCvId} />}
 
+
         {loading ? "loading" : <JobList jobs={data} />}
       </Box>
     </>

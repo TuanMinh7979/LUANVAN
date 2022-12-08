@@ -111,13 +111,13 @@ export const getAllJobPost = async (req, res, next) => {
         from: "companies",
         localField: "companyId",
         foreignField: "_id",
-        as: "company",
+        as: "companyId",
       },
     },)
     pipeLine.push({
 
       "$unwind": {
-        "path": "$company",
+        "path": "$companyId",
         "preserveNullAndEmptyArrays": true
       }
       ,
@@ -138,23 +138,4 @@ export const getAllFromQuery = async (req, res, next) => {
   }
 };
 
-export const getAllJobPost1 = async (req, res, next) => {
-  try {
-    let rs;
 
-    if (Object.keys(req.query).length >= 0) {
-      const queryTool = new QueryTool(JobPost.find(), req.query)
-        .filter()
-        .sort()
-        .paginate();
-
-      rs = await queryTool.query;
-    } else {
-      rs = await JobPost.find();
-    }
-
-    res.status(200).json(rs);
-  } catch (err) {
-    next(err);
-  }
-};
