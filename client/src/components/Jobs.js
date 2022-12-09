@@ -29,6 +29,7 @@ import { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import RecommentJobs from "./RecommentJobs";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 import {
   getCatIdFromName,
@@ -43,11 +44,16 @@ import {
   getWorkExpIdFromTitle,
   getAddressTitleList,
   getAddressIdFromTitle,
+  getSalaryFilterTitleList,
+  getSalaryFilterQueryFromTitle,
+
 }
   from "./other/SelectDataUtils";
+
+import { salaryFilterSelect } from "../clientData/selectData";
 export default function Jobs() {
   const user = useSelector((state) => state.user);
-  const { data, loading, error } = useFetch("/jobpost");
+  const { data, setData, loading, error } = useFetch("/jobpost");
   const MenuProps = {
     PaperProps: {
       style: {
@@ -56,34 +62,70 @@ export default function Jobs() {
     },
   };
 
-  let filterApiArray = []
-  let filterApiUrl = "/jobpost?"
-  const buildFilterApi = () => {
 
-    const jobCatSelVal = document.getElementById("jobCategorySel").innerText
-    const locationSelVal = document.getElementById("locationSel").innerText
-    const rankSelVal = document.getElementById("rankSel").innerText
+  const buildFilterApi = async () => {
+    let filterApiArray = []
+    let filterApiUrl = "/jobpost?"
 
-    if (jobCatSelVal) {
-      filterApiArray.push()
+    const titleText = document.getElementById("titleInp").value
+
+    const jobCatTitle = document.getElementById("jobCategorySel").innerText
+    const locationTitle = document.getElementById("locationSel").innerText
+    const rankTitle = document.getElementById("rankSel").innerText
+    const salaryFilterTitle = document.getElementById("salaryFilterSel").innerText
+
+    let jobCatSelId, locationSelId, rankSelId, salaryFilterQuery;
+
+    if (jobCatTitle && jobCatTitle !== "All" && jobCatTitle.length > 1) {
+
+      jobCatSelId = getCatIdFromName(jobCatTitle)
     }
-    if (locationSelVal) {
+    if (locationTitle && locationTitle !== "All" && locationTitle.length > 1) {
 
+      locationSelId = getAddressIdFromTitle(locationTitle)
     }
-    if (rankSelVal) {
-
+    if (rankTitle && rankTitle !== "All" && rankTitle.length > 1) {
+      rankSelId = getRankIdFromTitle(rankTitle)
     }
-  }
-  const changeJobCategory = (titleInp) => {
+    if (salaryFilterTitle && salaryFilterTitle !== "All" && salaryFilterTitle.length > 1) {
+      salaryFilterQuery = getSalaryFilterQueryFromTitle(salaryFilterTitle)
+    }
 
 
+    if (titleText) {
+      console.log("---", titleText)
+      filterApiArray.push(`title=${titleText}&`)
+    }
+    if (jobCatSelId) {
+      filterApiArray.push(`categoryId=${jobCatSelId}&`)
+    }
+    if (locationSelId) {
+      filterApiArray.push(`locationId=${locationSelId}&`)
+    }
+    if (rankSelId) {
+      filterApiArray.push(`rankId=${rankSelId}&`)
+    }
+    if (salaryFilterQuery) {
+      filterApiArray.push(`${salaryFilterQuery}&`)
+    }
+
+    let queryUrl = ""
+    if (filterApiArray.length > 0) {
+      console.log(filterApiArray)
+      console.log("----------")
+      queryUrl = filterApiArray.join("")
+    }
+
+    if (queryUrl.endsWith("&")) {
+      queryUrl = queryUrl.substring(0, queryUrl.length - 1)
+    }
+
+    filterApiUrl += queryUrl
+    console.log(filterApiUrl)
+    const res = await axios.get("http://localhost:8800/api" + filterApiUrl);
+    setData(res.data)
   }
-  const changeLocation = (titleInp) => {
-    const locationId = getAddressIdFromTitle(titleInp)
-  }
-  const changeRank = (titleInp) => {
-    const rankId = getRankIdFromTitle(titleInp)
-  }
+
 
 
   return (
@@ -99,6 +141,7 @@ export default function Jobs() {
           }}
         >
           <TextField
+            id="titleInp"
             size="small"
             color="success"
             placeholder="Tên công việc, vị trí muốn ứng tuyển"
@@ -123,8 +166,11 @@ export default function Jobs() {
               }
               label="Ngành nghề"
               MenuProps={MenuProps}
-              onChange={(e) => changeJobCategory(e.target.value)}
+
             >
+              <MenuItem value="All" key="jobCategoryAllKey" >
+                All
+              </MenuItem>
               {getCatNameList().map((item, key) => (
                 <MenuItem value={item} key={key}>
                   {item}
@@ -151,6 +197,9 @@ export default function Jobs() {
               label="Địa điểm công ty"
               MenuProps={MenuProps}
             >
+              <MenuItem value="All" key="locationAllKey" >
+                All
+              </MenuItem>
               {getAddressTitleList().map((item, key) => (
                 <MenuItem value={item} key={key}>
                   {item}
@@ -175,6 +224,9 @@ export default function Jobs() {
                 </InputAdornment>
               }
             >
+              <MenuItem value="All" key="rankAllKey" >
+                All
+              </MenuItem>
               {getRankTitleList().map((item, key) => (
                 <MenuItem value={item} key={key}>
                   {item}
@@ -190,6 +242,7 @@ export default function Jobs() {
           >
             <InputLabel id="demo-simple-select-label">Mức lương</InputLabel>
             <Select
+              id="salaryFilterSel"
               label="Mức lương"
               MenuProps={MenuProps}
               startAdornment={
@@ -198,7 +251,10 @@ export default function Jobs() {
                 </InputAdornment>
               }
             >
-              {env.REACT_APP_GROSS.split(", ").map((item, key) => (
+              <MenuItem value="All" key="salaryFilterKey" >
+                All
+              </MenuItem>
+              {getSalaryFilterTitleList().map((item, key) => (
                 <MenuItem value={item} key={key}>
                   {item}
                 </MenuItem>

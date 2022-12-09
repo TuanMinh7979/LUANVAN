@@ -24,6 +24,7 @@ export const getByCharacterInField = async (req, res, next) => {
         findArray.push({ [k]: new RegExp(searchKw, 'i') })
       }
     }
+    console.log(findArray)
     const data = await Resume.find({ $or: findArray })
     res.status(200).json(data);
   } catch (err) {

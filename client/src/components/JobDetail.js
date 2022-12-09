@@ -63,13 +63,13 @@ export default function JobDetail({ user }) {
   let salaryChip = ""
   if (data.salaryMin == 0 && data.salaryMax == 0) salaryChip = "Thỏa thuận"
   if (data.salaryMin == data.salaryMax && data.salaryMin > 0) salaryChip = `${data.salaryMin / 1000000} Tr`
-  if (data.salaryMin > 0 && data.salaryMax > 0 && data.salaryMin < data.salaryMax) {
+  if (data.salaryMin > 0 && data.salaryMax < 999999999 && data.salaryMin < data.salaryMax) {
     salaryChip = `${data.salaryMin / 1000000} Tr  -  ${data.salaryMax / 1000000} Tr`
   }
   if (data.salaryMin == 0 && data.salaryMax > 0) {
     salaryChip = `Upto ${data.salaryMax / 1000000} Tr`
   }
-  if (data.salaryMax == 0 && data.salaryMin > 0) {
+  if (data.salaryMax == 999999999 && data.salaryMin > 0) {
     salaryChip = `From ${data.salaryMin / 1000000} Tr`
   }
   return (

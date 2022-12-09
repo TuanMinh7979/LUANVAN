@@ -166,3 +166,35 @@ export const addresss = [
     title: "Cà Mau"
   },
 ]
+
+
+
+//salary jobs filter
+export const salaryFilterSelect = [
+
+  {
+    _id: 1,
+
+    title: "Đến 7 triệu",
+    query: "salaryMax[lte]=7000000&salaryMax[ne]=0&"
+  },
+
+  {
+    _id: 2,
+
+    title: "Từ 7 triệu đến 15 triệu",
+    query: "salaryMin[gte]=7000000&salaryMax[lte]=15000000&"
+  },
+
+  {
+    _id: 3,
+    title: "Từ 15 triệu",
+    query: "salaryMax[gte]=15000000&"
+  },
+  {
+    _id: 4,
+    title: "Thoả thuận",
+    query: "salaryMin[eq]=0&salaryMax[eq]=0&"
+  }
+
+]

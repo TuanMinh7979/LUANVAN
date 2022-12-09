@@ -8,6 +8,7 @@ import { getMatch, getSort, getPagination } from "../utils/agreUtil.js";
 import Rec from "../models/Rec.js";
 import Company from "../models/Company.js";
 import axios from "axios";
+import { filterSkipField } from "../utils/commonUtil.js";
 
 export const createJobPost = async (req, res, next) => {
   try {
@@ -88,53 +89,57 @@ export const getJobPost = async (req, res, next) => {
   }
 };
 
-// { "$toObjectId": "$userId" }
-export const getAllJobPost = async (req, res, next) => {
+
+// export const getAllJobPost = async (req, res, next) => {
+//   console.log(req.query)
+//   try {
+//     let pipeLine = []
+//     if (Object.keys(req.query).length > 0) {
+//       let matchQuery = getMatch(req.query, "amount", "salaryMin");
+
+//       if (Object.keys(matchQuery).length > 0) {
+//         pipeLine.push({ $match: matchQuery })
+//       }
+
+//       if (req.query.sort) {
+//         const sortStage = getSort(req.query.sort);
+//         pipeLine.push(sortStage)
+//       }
+//       if (req.query.page) {
+//         const paginationStage = getPagination(req.query.page, req.query.limit);
+//         pipeLine.push(...paginationStage)
+//       }
+//     }
+
+//     pipeLine.push({
+//       $lookup: {
+//         from: "companies",
+//         localField: "companyId",
+//         foreignField: "_id",
+//         as: "companyId",
+//       },
+//     },)
+//     pipeLine.push({
+
+//       "$unwind": {
+//         "path": "$companyId",
+//         "preserveNullAndEmptyArrays": true
+//       }
+//       ,
+//     },)
+//     console.log(pipeLine)
+//     const a = await JobPost.aggregate(pipeLine);
+//     res.status(200).json(a);
+//   } catch (err) {
+//     next(err);
+//   }
+// };
+
+
+
+export const getAllJobPost1 = async (req, res, next) => {
   try {
-    let pipeLine = []
-    if (Object.keys(req.query).length > 0) {
-      let matchQuery = getMatch(req.query, "amount", "salaryMin");
-
-      if (Object.keys(matchQuery).length > 0) {
-        pipeLine.push({ $match: matchQuery })
-      }
-
-      if (req.query.sort) {
-        const sortStage = getSort(req.query.sort);
-        pipeLine.push(sortStage)
-      }
-      if (req.query.page) {
-        const paginationStage = getPagination(req.query.page, req.query.limit);
-        pipeLine.push(...paginationStage)
-      }
-    }
-
-    pipeLine.push({
-      $lookup: {
-        from: "companies",
-        localField: "companyId",
-        foreignField: "_id",
-        as: "companyId",
-      },
-    },)
-    pipeLine.push({
-
-      "$unwind": {
-        "path": "$companyId",
-        "preserveNullAndEmptyArrays": true
-      }
-      ,
-    },)
-    const a = await JobPost.aggregate(pipeLine);
-    res.status(200).json(a);
-  } catch (err) {
-    next(err);
-  }
-};
-
-export const getAllFromQuery = async (req, res, next) => {
-  try {
-    const rs = await JobPost.find(req.query)
+    const rs = await JobPost.find(req.query).populate("companyId")
     res.status(200).json(rs);
   } catch (err) {
     next(err);
@@ -142,3 +147,27 @@ export const getAllFromQuery = async (req, res, next) => {
 };
 
 
+
+export const getAllJobPost = async (req, res, next) => {
+  try {
+    let rs;
+    let queryLen = Object.keys(req.query).length
+    let titleQuery = ""
+    if (req.query && req.query.title) {
+      titleQuery = req.query.title
+      req.query = filterSkipField(req.query, "title")
+    }
+    if (queryLen > 0) {
+      console.log(req.query)
+      const queryTool = new QueryTool(JobPost.find({ title: { $regex: new RegExp(titleQuery), $options: 'i' } }).populate("companyId"), req.query)
+        .filter()
+      rs = await queryTool.query;
+    } else {
+      rs = await JobPost.find().populate("companyId");
+    }
+
+    res.status(200).json(rs);
+  } catch (err) {
+    next(err);
+  }
+};

@@ -38,15 +38,15 @@ export default function JobCard(props) {
 
   let salaryChip = ""
   if (job.salaryMin == 0 && job.salaryMax == 0) salaryChip = "Thỏa thuận"
-  if (job.salaryMin == job.salaryMax && job.salaryMin > 0) salaryChip = `${job.salaryMin/1000000} Tr`
-  if (job.salaryMin > 0 && job.salaryMax > 0 && job.salaryMin < job.salaryMax) {
-    salaryChip = `${job.salaryMin/1000000} Tr  -  ${job.salaryMax/1000000} Tr`
+  if (job.salaryMin == job.salaryMax && job.salaryMin > 0) salaryChip = `${job.salaryMin / 1000000} Tr`
+  if (job.salaryMin > 0 && job.salaryMax < 999999999 && job.salaryMin < job.salaryMax) {
+    salaryChip = `${job.salaryMin / 1000000} Tr  -  ${job.salaryMax / 1000000} Tr`
   }
   if (job.salaryMin == 0 && job.salaryMax > 0) {
-    salaryChip = `Upto ${job.salaryMax/1000000} Tr`
+    salaryChip = `Upto ${job.salaryMax / 1000000} Tr`
   }
-  if (job.salaryMax == 0 && job.salaryMin > 0) {
-    salaryChip = `From ${job.salaryMin/1000000} Tr`
+  if (job.salaryMax == 999999999 && job.salaryMin > 0) {
+    salaryChip = `From ${job.salaryMin / 1000000} Tr`
   }
 
   return (

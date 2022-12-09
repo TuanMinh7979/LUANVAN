@@ -1,4 +1,4 @@
-import { jobCats, salaryTypes, ranks, workTypes, workExps, addresss } from "../../clientData/selectData.js";
+import { jobCats, salaryTypes, ranks, workTypes, workExps, addresss, salaryFilterSelect } from "../../clientData/selectData.js";
 ///jobcat
 export const getCatNameList = () => {
     return jobCats.map((item) => item.name);
@@ -56,12 +56,17 @@ export const getWorkExpIdFromTitle = (title) => {
 export const getAddressTitleList = () => {
     return addresss.map((item) => item.title);
 }
+
+
+
 export const getAddressIdFromTitle = (title) => {
     title = title.trim();
     let address = addresss.filter((item) => item.title == title)[0];
 
     return address._id;
 }
+
+
 //worktypes
 
 
@@ -82,10 +87,8 @@ export const getWorkTypeTitleFromId = (idInp) => {
     return workType.title;
 }
 export const getRankTitleFromId = (idInp) => {
-
     idInp = idInp.trim();
     let rank = ranks.filter((item) => item._id === idInp)[0];
-    console.log(".....", rank)
     return rank.title;
 }
 export const getSalaryTypeTitleFromId = (idInp) => {
@@ -97,4 +100,18 @@ export const getJobCategoryTitleFromId = (idInp) => {
     idInp = idInp.trim();
     let jobCateogory = jobCats.filter((item) => item._id == idInp)[0];
     return jobCateogory.title;
+}
+
+
+
+
+
+//for jobs page
+export const getSalaryFilterTitleList = () => {
+    return salaryFilterSelect.map((item) => item.title);
+}
+export const getSalaryFilterQueryFromTitle = (title) => {
+    title = title.trim();
+    let salaryFilter = salaryFilterSelect.filter((item) => item.title == title)[0];
+    return salaryFilter.query;
 }

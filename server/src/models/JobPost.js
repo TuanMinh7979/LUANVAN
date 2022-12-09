@@ -50,7 +50,7 @@ const JobPostSchema = new Schema(
       type: Number, default: 0
     },
     salaryMax: {
-      type: Number, default: 0
+      type: Number, default: 999999999
     },
     fullAddress: {
       type: String,

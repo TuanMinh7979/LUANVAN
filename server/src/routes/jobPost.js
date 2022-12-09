@@ -7,7 +7,7 @@ import {
   updateJobPost,
   deleteJobPost,
   getJobPost,
-  getAllFromQuery
+ 
 } from "../controllers/jobPostController.js";
 
 const router = express.Router();
