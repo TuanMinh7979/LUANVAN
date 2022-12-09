@@ -49,7 +49,6 @@ export default function JobDetail({ user }) {
   const id = location.pathname.split("/")[2];
 
   const { data, loading, error } = useFetch(`/jobpost/${id}`);
-  console.log(data)
   const theme = createTheme();
   const ApplyJob = async () => {
     if (confirm("Bạn có muốn ứng tuyển công việc này")) {
@@ -60,6 +59,19 @@ export default function JobDetail({ user }) {
       console.log(res);
     }
   };
+
+  let salaryChip = ""
+  if (data.salaryMin == 0 && data.salaryMax == 0) salaryChip = "Thỏa thuận"
+  if (data.salaryMin == data.salaryMax && data.salaryMin > 0) salaryChip = `${data.salaryMin / 1000000} Tr`
+  if (data.salaryMin > 0 && data.salaryMax > 0 && data.salaryMin < data.salaryMax) {
+    salaryChip = `${data.salaryMin / 1000000} Tr  -  ${data.salaryMax / 1000000} Tr`
+  }
+  if (data.salaryMin == 0 && data.salaryMax > 0) {
+    salaryChip = `Upto ${data.salaryMax / 1000000} Tr`
+  }
+  if (data.salaryMax == 0 && data.salaryMin > 0) {
+    salaryChip = `From ${data.salaryMin / 1000000} Tr`
+  }
   return (
     <>
       {loading ? (
@@ -103,7 +115,7 @@ export default function JobDetail({ user }) {
             >
               <Box>
                 <Image
-                  src={data.company.linkToLogo}
+                  src={data.companyId.linkToLogo}
                   sx={{
                     borderRadius: "100%",
                     border: "1px solid gray",
@@ -130,7 +142,7 @@ export default function JobDetail({ user }) {
                   {data.title}
                 </Typography>
                 <Typography variant="h6" color="initial">
-                  {data.company.name}
+                  {data.companyId.name}
                 </Typography>
                 <Stack
                   direction="row"
@@ -237,21 +249,8 @@ export default function JobDetail({ user }) {
                       <br></br>
                       <Typography variant="p">
 
-                        {data.salaryMin == data.salaryMax && data.salaryMin != 0 && (
-                          <>{data.salaryMax}</>
-                        )}
+                        {salaryChip}
 
-                        {data.salaryMin && data.salaryMax && (
-                          <>
-                            {data.salaryMin}-{data.salaryMax}
-                          </>
-                        )}
-                        {data.salaryMin == 0 && data.salaryMax && (
-                          <>Upto {data.salaryMax}</>
-                        )}
-                        {data.salaryMin && data.salaryMax == 0 && (
-                          <>From {data.salaryMax}</>
-                        )}
                       </Typography>
                     </Box>
                   </Grid>
