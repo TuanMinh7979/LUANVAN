@@ -32,13 +32,13 @@ export const createJobPost = async (req, res, next) => {
 
     }
 
-   
+
 
     await newJobPost.save();
     let url = `${process.env.DJANGOSERVER}/updateJobsFile`
     const rs = await axios.get(url)
     console.log("update db success...")
-    
+
     res.status(200).send("Tạo jobpost thành công!");
   } catch (e) {
     next(e);
@@ -78,7 +78,7 @@ export const getJobPost = async (req, res, next) => {
 
   try {
     const jobPost = await JobPost.findById(req.params.id).populate("companyId");
-  
+
     if (jobPost === null)
       return next(createError(404, "Khong tim thay jobPost"));
 
@@ -93,7 +93,7 @@ export const getAllJobPost = async (req, res, next) => {
   try {
     let pipeLine = []
     if (Object.keys(req.query).length > 0) {
-      let matchQuery = getMatch(req.query, ["amount"]);
+      let matchQuery = getMatch(req.query, "amount", "salaryMin");
 
       if (Object.keys(matchQuery).length > 0) {
         pipeLine.push({ $match: matchQuery })

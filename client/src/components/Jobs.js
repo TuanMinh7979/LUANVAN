@@ -30,6 +30,21 @@ import useFetch from "../hooks/useFetch";
 import RecommentJobs from "./RecommentJobs";
 import { useSelector } from "react-redux";
 
+import {
+  getCatIdFromName,
+  getCatNameList,
+  getSalaryTypeTitleList,
+  getSalaryTypeIdFromTitle,
+  getRankTitleList,
+  getRankIdFromTitle,
+  getWorkTypeTitleList,
+  getWorkTypeIdFromTitle,
+  getWorkExpTitleList,
+  getWorkExpIdFromTitle,
+  getAddressTitleList,
+  getAddressIdFromTitle,
+}
+  from "./other/SelectDataUtils";
 export default function Jobs() {
   const user = useSelector((state) => state.user);
   const { data, loading, error } = useFetch("/jobpost");
@@ -41,19 +56,36 @@ export default function Jobs() {
     },
   };
 
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
-  function getParams() {
-    return {
-      job: searchParams.get("job"),
-      location: searchParams.get("location"),
-      level: searchParams.get("level"),
-      gross: searchParams.get("gross"),
-    };
+  let filterApiArray = []
+  let filterApiUrl = "/jobpost?"
+  const buildFilterApi = () => {
+
+    const jobCatSelVal = document.getElementById("jobCategorySel").innerText
+    const locationSelVal = document.getElementById("locationSel").innerText
+    const rankSelVal = document.getElementById("rankSel").innerText
+
+    if (jobCatSelVal) {
+      filterApiArray.push()
+    }
+    if (locationSelVal) {
+
+    }
+    if (rankSelVal) {
+
+    }
   }
-  useEffect(() => {
-    console.log(getParams());
-  }, []);
+  const changeJobCategory = (titleInp) => {
+
+
+  }
+  const changeLocation = (titleInp) => {
+    const locationId = getAddressIdFromTitle(titleInp)
+  }
+  const changeRank = (titleInp) => {
+    const rankId = getRankIdFromTitle(titleInp)
+  }
+
+
   return (
     <>
       <Container>
@@ -83,6 +115,7 @@ export default function Jobs() {
           >
             <InputLabel id="demo-simple-select-label">Ngành nghề</InputLabel>
             <Select
+              id="jobCategorySel"
               startAdornment={
                 <InputAdornment position="start">
                   <WorkIcon color="success" fontSize="small" />
@@ -90,8 +123,9 @@ export default function Jobs() {
               }
               label="Ngành nghề"
               MenuProps={MenuProps}
+              onChange={(e) => changeJobCategory(e.target.value)}
             >
-              {env.REACT_APP_JOBS.split(", ").map((item, key) => (
+              {getCatNameList().map((item, key) => (
                 <MenuItem value={item} key={key}>
                   {item}
                 </MenuItem>
@@ -108,6 +142,7 @@ export default function Jobs() {
               Địa điểm công ty
             </InputLabel>
             <Select
+              id="locationSel"
               startAdornment={
                 <InputAdornment position="start">
                   <PlaceIcon color="success" fontSize="small" />
@@ -116,7 +151,7 @@ export default function Jobs() {
               label="Địa điểm công ty"
               MenuProps={MenuProps}
             >
-              {env.REACT_APP_LOCATION.split(", ").map((item, key) => (
+              {getAddressTitleList().map((item, key) => (
                 <MenuItem value={item} key={key}>
                   {item}
                 </MenuItem>
@@ -131,6 +166,7 @@ export default function Jobs() {
           >
             <InputLabel id="demo-simple-select-label">Cấp bậc</InputLabel>
             <Select
+              id="rankSel"
               label="Cấp bậc"
               MenuProps={MenuProps}
               startAdornment={
@@ -139,7 +175,7 @@ export default function Jobs() {
                 </InputAdornment>
               }
             >
-              {env.REACT_APP_LEVEL.split(", ").map((item, key) => (
+              {getRankTitleList().map((item, key) => (
                 <MenuItem value={item} key={key}>
                   {item}
                 </MenuItem>
@@ -175,10 +211,10 @@ export default function Jobs() {
               variant="contained"
               color="success"
               onClick={() => {
-                navigate({
-                  pathname: "/jobs",
-                  search: `?${createSearchParams(data)}`,
-                });
+
+
+                buildFilterApi()
+
               }}
             >
               Tìm việc ngay

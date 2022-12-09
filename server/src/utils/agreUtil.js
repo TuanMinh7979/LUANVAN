@@ -12,9 +12,12 @@ export const getMatch = (queryString, ...numberFields) => {
   );
 
   let a = JSON.parse(queryStr);
+
   if (numberFields) {
+
     for (let numField of numberFields) {
       if (a[numField]) {
+
         if (a[numField]['$gt'] && !isNaN(a[numField]['$gt'])) {
           a[numField]['$gt'] = parseFloat(a[numField]['$gt']);
         }
@@ -33,6 +36,10 @@ export const getMatch = (queryString, ...numberFields) => {
         if (a[numField]['$eq'] && !isNaN(a[numField]['$eq'])) {
           a[numField]['$eq'] = parseFloat(a[numField]['$eq']);
         }
+        if (!isNaN(a[numField])) {
+          a[numField] = parseFloat(a[numField])
+        }
+
       }
 
     }
@@ -40,6 +47,7 @@ export const getMatch = (queryString, ...numberFields) => {
   }
 
 
+  console.log(a)
   return a;
 };
 
