@@ -12,6 +12,15 @@ import { useNavigate, createSearchParams } from "react-router-dom";
 import Image from "mui-image";
 import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+
+import {
+  getAddressTitleFromId,
+  getWorkExpTitleFromId,
+  getWorkTypeTitleFromId,
+  getRankTitleFromId,
+  getSalaryTypeTitleFromId,
+  getJobCategoryTitleFromId
+} from "./other/SelectDataUtils";
 export default function JobCard(props) {
 
   const { job } = props
@@ -74,7 +83,7 @@ export default function JobCard(props) {
           </Box>
           <Box sx={{ display: "flex", padding: "10px", minWidth: "50%" }}>
             <Chip color="success" label="5 triệu" sx={{ mr: 1 }} />
-            <Chip color="success" label={job.location} />
+            <Chip color="success" label={getAddressTitleFromId(job.locationId)} />
           </Box>
         </CardActionArea>
       </Card>

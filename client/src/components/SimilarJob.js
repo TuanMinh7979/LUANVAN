@@ -13,15 +13,16 @@ export default function SimilarJob({ jobPostId }) {
                 `http://localhost:8000/getSimilarJob/${jobPostId}`
             );
 
-            console.log(sugListIdFetch);
+
             let suglistIdData = sugListIdFetch.data.sugList;
+            console.log(",,,", suglistIdData)
             suglistIdData = suglistIdData.reverse();
             const sugListDbData = await axios.post(
                 "http://localhost:8800/api/recommend/getJobByListId",
                 { suglistIdData }
             );
 
-            console.log(sugListDbData.data)
+
             setJobRecs(sugListDbData.data);
         }
         getData();

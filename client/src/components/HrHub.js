@@ -36,9 +36,25 @@ import RichText from "./RichText";
 import axios from "axios";
 import Company from "./Company";
 import Charts from "./Chart";
-import { jobCats } from "../store/selectData.js";
+
+import { toast } from "react-toastify";
 import JobDetail from "./JobDetail"
 import SearchCandidate from "./SearchCandidate";
+import {
+  getCatIdFromName,
+  getCatNameList,
+  getSalaryTypeTitleList,
+  getSalaryTypeIdFromTitle,
+  getRankTitleList,
+  getRankIdFromTitle,
+  getWorkTypeTitleList,
+  getWorkTypeIdFromTitle,
+  getWorkExpTitleList,
+  getWorkExpIdFromTitle,
+  getAddressTitleList,
+  getAddressIdFromTitle,
+}
+  from "./other/SelectDataUtils";
 const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
   "&:hover": {
     color: theme.palette.success.light,
@@ -156,17 +172,7 @@ export function HrSideBar({ uploadJob, editCompany, viewChart, news }) {
   );
 }
 
-///
-function getCatNameList() {
-  return jobCats.map((item) => item.name);
-}
-function getCatIdFromName(catName) {
-  catName = catName.trim();
-  let selectedCat = jobCats.filter((item) => item.name == catName)[0];
 
-  return selectedCat._id;
-}
-///
 function JobPost({ user }) {
   const navigate = useNavigate();
   const [description, setDescription] = useState(() =>
@@ -180,15 +186,15 @@ function JobPost({ user }) {
     title: "",
 
     categoryId: "",
-    location: "",
+    locationId: "",
     amount: 0,
-    jobType: "",
+    workTypeId: "",
     endDate: "",
     gender: "",
-    rank: "",
-    exp: "",
+    rankId: "",
+    workExpId: "",
     currency: "",
-    salaryType: "",
+    salaryTypeId: "",
 
     salaryMax: 0,
     salaryMin: 0,
@@ -222,23 +228,20 @@ function JobPost({ user }) {
     }
   }
 
-  const sendPostData = function () {
-
-    
-    console.log("------")
+  const sendPostData = async function () {
     console.log(JSON.stringify(convertToRaw(benefit.getCurrentContent())))
+    let descriptionText = getTextArrayFromRich(convertToRaw(description.getCurrentContent())).join(" ")
+    let candidateRequiredText = getTextArrayFromRich(convertToRaw(candidateRequired.getCurrentContent())).join(" ")
+    console.log({ ...data, descriptionText, candidateRequiredText })
+    const res = await axios
+      .post("/jobpost", { ...data, descriptionText, candidateRequiredText });
+    if (res.data && res.data.status && res.data.status !== 200) {
+      console.log(res)
+      toast.warning("Tạo job post thất bại")
+    } else {
+      toast.success("Tạo job post thành công");
+    }
 
-
-    let descriptionText = getTextArrayFromRich(convertToRaw(description.getCurrentContent())).join("")
-    let candidateRequiredText = getTextArrayFromRich(convertToRaw(candidateRequired.getCurrentContent())).join("")
-    axios
-      .post("/jobpost", { ...data, descriptionText, candidateRequiredText })
-      .then((res) => {
-
-        console.log(res);
-      }).catch(err => {
-        console.log(err)
-      })
   };
   function navigateTo(location) {
     navigate(location);
@@ -294,7 +297,7 @@ function JobPost({ user }) {
           </Grid>
           <Grid item xs={6}>
             <Typography variant="p" fontWeight={500}>
-              Loại công việc
+              Ngành nghề
             </Typography>
             <Autocomplete
               freeSolo
@@ -328,7 +331,7 @@ function JobPost({ user }) {
             <Autocomplete
               size="small"
               sx={{ mt: 1 }}
-              options={env.REACT_APP_LOCATION.split(", ")}
+              options={getAddressTitleList()}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -338,7 +341,7 @@ function JobPost({ user }) {
               onInputChange={(e, value) => {
                 setData({
                   ...data,
-                  location: value,
+                  locationId: getAddressIdFromTitle(value),
                 });
               }}
             />
@@ -381,27 +384,27 @@ function JobPost({ user }) {
               />
             </Grid>
             <Grid item xs={3}>
-              <Typography variant="p">Loại công việc</Typography>
+              <Typography variant="p">Hình thức làm việc</Typography>
               <Autocomplete
                 size="small"
                 sx={{ mt: 1 }}
-                options={env.REACT_APP_JOBTYPES.split(", ")}
+                options={getWorkTypeTitleList()}
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    placeholder="-- Chọn loại công việc --"
+                    placeholder="-- Chọn hình thức làm việc --"
                   />
                 )}
                 onInputChange={(e, value) => {
                   setData({
                     ...data,
-                    jobType: value,
+                    workTypeId: getWorkTypeIdFromTitle(value),
                   });
                 }}
                 onBlur={(e) => {
                   setData({
                     ...data,
-                    jobType: e.target.value,
+                    workTypeId: getWorkTypeIdFromTitle(value),
                   });
                 }}
               />
@@ -447,20 +450,20 @@ function JobPost({ user }) {
                 freeSolo
                 size="small"
                 sx={{ mt: 1 }}
-                options={env.REACT_APP_LEVEL.split(", ")}
+                options={getRankTitleList()}
                 renderInput={(params) => (
                   <TextField {...params} placeholder="Giám đốc kinh doanh" />
                 )}
                 onInputChange={(e, value) => {
                   setData({
                     ...data,
-                    rank: value,
+                    rankId: getRankIdFromTitle(value),
                   });
                 }}
                 onBlur={(e) => {
                   setData({
                     ...data,
-                    rank: e.target.value,
+                    rankId: getRankIdFromTitle(e.target.value),
                   });
                 }}
               />
@@ -471,20 +474,20 @@ function JobPost({ user }) {
                 freeSolo
                 size="small"
                 sx={{ mt: 1 }}
-                options={env.REACT_APP_EXP.split(", ")}
+                options={getWorkExpTitleList()}
                 renderInput={(params) => (
-                  <TextField {...params} placeholder="Chưa có kinh nghiệm" />
+                  <TextField {...params} placeholder="Kinh nghiệm làm việc" />
                 )}
                 onInputChange={(e, value) => {
                   setData({
                     ...data,
-                    exp: value,
+                    workExpId: getWorkExpIdFromTitle(value),
                   });
                 }}
                 onBlur={(e) => {
                   setData({
                     ...data,
-                    exp: e.target.value,
+                    workExpId: getWorkExpIdFromTitle(e.target.value),
                   });
                 }}
               />
@@ -517,12 +520,12 @@ function JobPost({ user }) {
               <Autocomplete
                 size="small"
                 sx={{ mt: 1 }}
-                options={env.REACT_APP_GROSSTYPES.split(", ")}
+                options={getSalaryTypeTitleList()}
                 onInputChange={(e, value) => {
                   setSalaryType(value);
                   setData({
                     ...data,
-                    salaryType: value,
+                    salaryTypeId: getSalaryTypeIdFromTitle(value),
                   });
                 }}
                 renderInput={(params) => (
@@ -669,6 +672,7 @@ function JobPost({ user }) {
             size="small"
             variant="contained"
             onClick={() => {
+
 
               sendPostData();
             }}

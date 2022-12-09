@@ -6,19 +6,29 @@ const JobPostSchema = new Schema(
   {
     title: { type: String },
 
-    location: { type: String },
+    locationId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "addresss",
+      required: true
+    },
     amount: { type: Number },
-    jobType: {
-      type: String,
+    workTypeId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "worktypes",
+      required: true
     },
 
     acceptDate: { type: Date },
     endDate: { type: Date },
-    exp: {
-      type: String,
+    workExpId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "workexps",
+      required: true
     },
-    rank: {
-      type: String,
+    rankId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "ranks",
+      required: true
     },
     gender: {
       type: String,
@@ -30,9 +40,10 @@ const JobPostSchema = new Schema(
       default: "USD",
     },
 
-    salaryType: {
-      type: String,
-    
+    salaryTypeId: {
+      type: mongoose.Schema.ObjectId,
+      ref: "salarytypes",
+      required: true
     },
 
     salaryMin: {
@@ -55,9 +66,6 @@ const JobPostSchema = new Schema(
     benefit: {
       type: String,
     },
-
-
-
     categoryId: {
       type: mongoose.Schema.ObjectId,
       ref: "jobcategories",
@@ -87,7 +95,7 @@ const JobPostSchema = new Schema(
       default: 0
     }
     ,
-  
+
 
   },
 

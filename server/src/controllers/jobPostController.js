@@ -32,13 +32,13 @@ export const createJobPost = async (req, res, next) => {
 
     }
 
+   
 
     await newJobPost.save();
-
-    console.log("create a job post success")
     let url = `${process.env.DJANGOSERVER}/updateJobsFile`
     const rs = await axios.get(url)
     console.log("update db success...")
+    
     res.status(200).send("Tạo jobpost thành công!");
   } catch (e) {
     next(e);

@@ -16,6 +16,7 @@ import addressRoute from "./src/routes/address.js";
 import otherRoute from "./src/routes/otherRoute.js";
 import recommendRoute from "./src/routes/recommend.js";
 import contactRoute from "./src/routes/contact.js";
+import codeModelsRoute from "./src/routes/codeModels.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 const app = express();
@@ -52,9 +53,9 @@ app.use("/api/candidate", candidateRoute);
 app.use("/api/rec", recRoute);
 app.use("/api/address", addressRoute);
 app.use("/api/contact", contactRoute);
+app.use("/api/code", codeModelsRoute);
 
 app.use("/api/recommend", recommendRoute);
-
 app.use("/api/other", otherRoute);
 
 app.use((err, req, res, next) => {

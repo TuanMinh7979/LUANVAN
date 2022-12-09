@@ -4,7 +4,8 @@ const { Schema } = mongoose;
 
 const AddressSchema = new Schema(
   {
-    name: String,
+    title: String,
+   
   },
   { timestamps: true }
   //createAt and updateAt

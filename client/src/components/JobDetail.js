@@ -34,11 +34,22 @@ import EditIcon from "@mui/icons-material/Edit";
 import RecommentJobs from "./RecommentJobs";
 import SimilarJob from "./SimilarJob";
 import axios from "axios";
+
+import {
+  getAddressTitleFromId,
+  getWorkExpTitleFromId,
+  getWorkTypeTitleFromId,
+  getRankTitleFromId,
+  getSalaryTypeTitleFromId,
+  getJobCategoryTitleFromId
+}
+  from "./other/SelectDataUtils";
 export default function JobDetail({ user }) {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
 
   const { data, loading, error } = useFetch(`/jobpost/${id}`);
+  console.log(data)
   const theme = createTheme();
   const ApplyJob = async () => {
     if (confirm("Bạn có muốn ứng tuyển công việc này")) {
@@ -225,11 +236,11 @@ export default function JobDetail({ user }) {
                       </Typography>
                       <br></br>
                       <Typography variant="p">
-                        {/* luong co dinh */}
-                        {data.salaryMin == data.salaryMax && (
+
+                        {data.salaryMin == data.salaryMax && data.salaryMin != 0 && (
                           <>{data.salaryMax}</>
                         )}
-                        {/* luong trong khoang */}
+
                         {data.salaryMin && data.salaryMax && (
                           <>
                             {data.salaryMin}-{data.salaryMax}
@@ -275,7 +286,7 @@ export default function JobDetail({ user }) {
                         Cấp bậc
                       </Typography>
                       <br></br>
-                      <Typography variant="p">{data.rank}</Typography>
+                      <Typography variant="p">{getRankTitleFromId(data.rankId)}</Typography>
                     </Box>
                   </Grid>
                   <Grid
@@ -292,7 +303,7 @@ export default function JobDetail({ user }) {
                         Hình thức làm việc
                       </Typography>
                       <br></br>
-                      <Typography variant="p">{data.jobType}</Typography>
+                      <Typography variant="p">{getWorkTypeTitleFromId(data.workTypeId)}</Typography>
                     </Box>
                   </Grid>
                   <Grid
@@ -326,7 +337,7 @@ export default function JobDetail({ user }) {
                         Kinh nghiệm
                       </Typography>
                       <br></br>
-                      <Typography variant="p">{data.exp}</Typography>
+                      <Typography variant="p">{getWorkExpTitleFromId(data.workExpId)}</Typography>
                     </Box>
                   </Grid>
                 </Grid>
@@ -361,7 +372,7 @@ export default function JobDetail({ user }) {
                     mt: 2,
                   }}
                 >
-                  {data.location}
+                  {getAddressTitleFromId(data.locationId)}
                 </Typography>
               </Grid>
               <Grid
