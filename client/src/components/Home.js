@@ -22,6 +22,7 @@ import useFetch from "../hooks/useFetch";
 import RecommentJobs from "./RecommentJobs";
 import { useEffect } from "react";
 import axios from "axios";
+import Loading from "./Loading";
 
 function Home() {
   const [displayFilterBox, setDisplayFilterBox] = useState("none");
@@ -275,7 +276,7 @@ function Home() {
         {user && user.user.detail && user.user.detail.activeCvId && <RecommentJobs resumeId={user.user.detail.activeCvId} />}
 
 
-        {loading ? "loading" : <JobList jobs={data} />}
+        {loading ? <Loading /> : <JobList jobs={data} />}
       </Box>
     </>
   );

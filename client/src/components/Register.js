@@ -36,19 +36,19 @@ export default function Register() {
         ) {
             setResponse({
                 showArlert: true,
-                message: env.NOTNULL_MESSAGE
+                message: env.REACT_APP_NOTNULL_MESSAGE
             });
             return false;
         } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(email.current.value)) {
             setResponse({
                 showArlert: true,
-                message: env.WRONG_EMAIL
+                message: env.REACT_APP_WRONG_EMAIL
             });
             return false;
         } else if (retypepassword.current.value !== password.current.value) {
             setResponse({
                 showArlert: true,
-                message: env.PASSWORD_NOT_MATCH
+                message: env.REACT_APP_PASSWORD_NOT_MATCH
             });
             return false;
         }

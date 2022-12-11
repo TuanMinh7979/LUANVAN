@@ -45,6 +45,7 @@ import {
   getJobCategoryTitleFromId
 }
   from "./other/SelectDataUtils";
+import Loading from "./Loading";
 export default function JobDetail({ user }) {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
@@ -80,15 +81,7 @@ export default function JobDetail({ user }) {
   }
   return (
     <>
-      {loading ? (
-        <Container >
-          <CircularProgress sx={{
-            display: "block",
-            margin: "auto"
-          }}
-            color="success" />
-        </Container>
-      ) : (
+      {loading ? <Loading /> : (
 
         <Container
           disableGutters

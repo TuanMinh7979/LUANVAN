@@ -20,6 +20,8 @@ import Image from "mui-image";
 import logo from "../assets/logo_business_white.png";
 import banner from '../assets/banner_business.png'
 import env from '../assets/env.json'
+import { toast } from "react-toastify";
+import LoginSchema from "../validate/loginValidate";
 export default function HrLogin() {
 
     const dispatch = useDispatch();
@@ -36,24 +38,28 @@ export default function HrLogin() {
             username: username.current.value,
             password: password.current.value
         };
-        axios({
-            method: "post",
-            url: "auth/login",
-            data: data
-        }).then((res) => {
-            console.log(res);
-            if (res.data.status && res.data.status != 200) {
-                setResponse({
-                    showArlert: true,
-                    message: res.data.message
-                });
-            } else {
-                sessionStorage.setItem("user",JSON.stringify(res.data.data))
-                const action = setUserLogin(res.data.data, true)
-                dispatch(action)
-            }
+        // isvalidate
+        LoginSchema.validate(data).then((data) => {
+            axios({
+                method: "post",
+                url: "auth/login",
+                data: data
+            }).then((res) => {
+                console.log(res);
+                if (res.data.status && res.data.status != 200) {
+                    toast.error("Sai tên đăng nhập hoặc mật khẩu")
+                } else {
+                    sessionStorage.setItem("user", JSON.stringify(res.data.data))
+                    const action = setUserLogin(res.data.data, true)
+                    dispatch(action)
+                }
 
-        });
+            });
+        })
+        // isnt validate
+        LoginSchema.validate(data,{abortEarly: false}).catch((err)=>{
+            toast.error(err.errors.join(", "))
+        })
     };
     if (user.isLogin && user.user.role == 'rec') {
         navigate('/hrhub')
@@ -96,7 +102,7 @@ export default function HrLogin() {
                                     fontSize: "24px"
                                 }}
                             >
-                Chào mừng bạn trở lại,
+                                Chào mừng bạn trở lại,
                             </Typography>
                             <Typography
                                 variant="p"
@@ -105,8 +111,8 @@ export default function HrLogin() {
                                     fontSize: "16px"
                                 }}
                             >
-                Hồ sơ và thông báo tuyển dụng của bạn góp phần làm hệ thống của
-                chúng ta thêm phổ biến, hãy chung tay xây dựng nhé
+                                Hồ sơ và thông báo tuyển dụng của bạn góp phần làm hệ thống của
+                                chúng ta thêm phổ biến, hãy chung tay xây dựng nhé
                             </Typography>
                         </Box>
                         {response.showArlert && (
@@ -121,7 +127,7 @@ export default function HrLogin() {
                                     variant=""
                                     sx={{ fontSize: "13px" }}
                                 >
-                  Username
+                                    Username
                                 </InputLabel>
                                 <OutlinedInput
                                     fullWidth
@@ -144,7 +150,7 @@ export default function HrLogin() {
                                     variant=""
                                     sx={{ fontSize: "13px" }}
                                 >
-                  Mật khẩu
+                                    Mật khẩu
                                 </InputLabel>
                                 <OutlinedInput
                                     fullWidth
@@ -169,18 +175,18 @@ export default function HrLogin() {
                                     color="success"
                                     fullWidth
                                 >
-                  Đăng nhập
+                                    Đăng nhập
                                 </Button>
                             </Box>
                             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                                 <Typography variant="p">
-                  Bạn chưa có tài khoản{" "}
+                                    Bạn chưa có tài khoản{" "}
                                     <Link
                                         href="/hrsignup"
                                         underline="none"
                                         sx={{ color: "#4caf50", fontWeight: "650" }}
                                     >
-                    Đăng ký ngay
+                                        Đăng ký ngay
                                     </Link>
                                 </Typography>
                                 <Typography variant="p">
@@ -189,7 +195,7 @@ export default function HrLogin() {
                                         underline="none"
                                         sx={{ color: "#4caf50", fontWeight: "650" }}
                                     >
-                    Quên mật khẩu
+                                        Quên mật khẩu
                                     </Link>
                                 </Typography>
                             </Box>
@@ -224,15 +230,15 @@ export default function HrLogin() {
                             }}
                         >
                             <Typography variant="h5" fontWeight={500}>
-                Công cụ viết CV miễn phí
+                                Công cụ viết CV miễn phí
                             </Typography>
                             <Typography
                                 variant="p"
                                 sx={{ width: "70%", textAlign: "center" }}
                             >
-                Nhiều mẫu CV đẹp, phù hợp nhu cầu ứng tuyển các vị trí khác
-                nhau. Dễ dàng chỉnh sửa thông tin, tạo CV online nhanh chóng
-                trong vòng 5 phút.
+                                Nhiều mẫu CV đẹp, phù hợp nhu cầu ứng tuyển các vị trí khác
+                                nhau. Dễ dàng chỉnh sửa thông tin, tạo CV online nhanh chóng
+                                trong vòng 5 phút.
                             </Typography>
                         </Box>
                     </Box>

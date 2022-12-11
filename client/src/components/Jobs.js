@@ -51,6 +51,7 @@ import {
   from "./other/SelectDataUtils";
 
 import { salaryFilterSelect } from "../clientData/selectData";
+import Loading from "./Loading";
 export default function Jobs() {
   const user = useSelector((state) => state.user);
   const { data, setData, loading, error } = useFetch("/jobpost");
@@ -313,7 +314,7 @@ export default function Jobs() {
           {/* Joblist */}
         </Container>
         <Box sx={{ my: 3 }}>
-          {loading ? "loading" : <JobList jobs={data} />}
+          {loading ? <Loading /> : <JobList jobs={data} />}
         </Box>
         {user && user.user.detail && user.user.detail.activeCvId && (
           <RecommentJobs resumeId={user.user.detail.activeCvId} />

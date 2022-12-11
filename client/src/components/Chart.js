@@ -10,6 +10,7 @@ import axios from 'axios'
 import { maxHeight, maxWidth } from "@mui/system";
 import env from "../assets/env.json"
 import useFetch from "../hooks/useFetch";
+import Loading from "./Loading";
 export default function Charts({ user }) {
     const navigate = useNavigate()
 
@@ -65,7 +66,7 @@ export default function Charts({ user }) {
                             <TableCell>Trạng thái</TableCell>
                             <TableCell></TableCell>
                         </TableHead>
-                        {!jobsFetch || (jobsFetch && jobsFetch.loading) ? "Loading" : jobsFetch.data.map(item => {
+                        {!jobsFetch || (jobsFetch && jobsFetch.loading) ? <Loading /> : jobsFetch.data.map(item => {
                             return (
                                 <TableRow>
                                     <TableCell
