@@ -34,6 +34,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import RecommentJobs from "./RecommentJobs";
 import SimilarJob from "./SimilarJob";
 import axios from "axios";
+import { toast } from "react-toastify"
 
 import {
   getAddressTitleFromId,
@@ -55,8 +56,13 @@ export default function JobDetail({ user }) {
       const contact = {
         jobId: id,
       };
-      const res = await axios.post(`/${user.user._id}/applyjob`, contact);
-      console.log(res);
+      const res = await axios.post(`http://localhost:8800/api/candidate/${user.user._id}/applyjob`, contact);
+      if (res.data && res.data.status && res.data.status !== 200) {
+        toast.warning("Ứng tuyển thất bại")
+      } else {
+        toast.success("Ứng tuyển thành công")
+      }
+
     }
   };
 

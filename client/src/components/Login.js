@@ -48,15 +48,15 @@ export default function Login() {
       } else {
         sessionStorage.setItem("user", JSON.stringify(res.data.data));
         const action = setUserLogin(res.data.data, true);
-        console.log("<<<<<  USER AFTER LOGIN >>>>>>")
-        console.log(res.data.data)
         dispatch(action);
-        
+
       }
     });
   };
   if (user.isLogin && user.user.role == "candidate") {
     navigate("/");
+  } else if (user.isLogin && user.user.role == "admin") {
+    navigate("/admin");
   }
   return (
     <>

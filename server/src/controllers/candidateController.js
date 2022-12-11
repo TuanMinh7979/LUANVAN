@@ -1,10 +1,11 @@
 import { createError } from "../utils/errorUtil.js";
 import Candidate from "../models/Candidate.js";
+import Contact from "../models/contact.js";
 import User from "../models/User.js"
 import Resume from "../models/Resume.js";
 import { getDecodedTokenData } from "../utils/TokenUtils.js";
 import { filterSkipField } from "../utils/commonUtil.js";
-
+import JobPost from "../models/JobPost.js";
 import dotenv from "dotenv";
 dotenv.config();
 import axios from "axios";
@@ -145,12 +146,14 @@ export const getMyCV = async (req, res, next) => {
 
 export const applyJob = async (req, res, next) => {
   //create a contact
+  console.log("Vao day ung tuyen")
   try {
     //req: jobId, recId, resumeId, hrId
     const { jobId } = req.body;
+    
     const loggedUser = req.user;
 
-    console.log(loggedUser)
+
     const job = await JobPost.findById(jobId);
 
     const candidate = await Candidate.findOne({ userId: loggedUser.id });
@@ -158,14 +161,14 @@ export const applyJob = async (req, res, next) => {
     const resume = await Resume.findOne({ candidateId: candidate.id });
     let contact;
     if (resume) {
-      contact = await User.create({
+      contact = await Contact.create({
         jobPostId: jobId,
         recId: job.recId,
         candidateId: candidate._id,
         resumeId: resume._id,
       });
     } else {
-      contact = await User.create({
+      contact = await Contact.create({
         jobPostId: jobId,
         recId: job.recId,
         candidateId: candidate._id,

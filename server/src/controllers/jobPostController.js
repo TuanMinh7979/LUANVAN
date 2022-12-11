@@ -158,7 +158,6 @@ export const getAllJobPost = async (req, res, next) => {
       req.query = filterSkipField(req.query, "title")
     }
     if (queryLen > 0) {
-      console.log(req.query)
       const queryTool = new QueryTool(JobPost.find({ title: { $regex: new RegExp(titleQuery), $options: 'i' } }).populate("companyId"), req.query)
         .filter()
       rs = await queryTool.query;

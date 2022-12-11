@@ -20,7 +20,15 @@ import ManageCV from "./components/ManageCV";
 
 import { ToastContainer } from "react-toastify";
 import { CircularProgress } from "@mui/material";
+
+
+import ProtectedRoute from "./page/ProtectedRoute";
 import MyCV from "./components/MyCV";
+
+import Stats from "./components/admincomponents/Stats";
+import JobMn from "./components/admincomponents/JobMn";
+import RecMn from "./components/admincomponents/RecMn";
+import CandidateMn from "./components/admincomponents/CandidateMn";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -118,9 +126,26 @@ function App() {
 
             <Route path="test" element={<RichText />} />
           </Route>
+
+
+
+          <Route
+            path='/admin'
+            element={
+              <ProtectedRoute>
+                {/* <SharedLayout /> */}
+                <>abc this is sidebar</>
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Stats />} />
+            <Route path='jobmn' element={< JobMn />} />
+            <Route path='recmn' element={<RecMn />} />
+            <Route path='candidatemn' element={<CandidateMn />} />
+          </Route>
         </Routes>
       </BrowserRouter>
- 
+
 
 
       <ToastContainer
