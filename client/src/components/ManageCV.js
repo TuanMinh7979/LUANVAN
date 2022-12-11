@@ -1,5 +1,6 @@
-import { Box, Grid, Typography,CircularProgress } from "@mui/material";
+import { Box, Grid, Typography, CircularProgress } from "@mui/material";
 import CV1 from "./CV/CV1";
+import CV2 from "./CV/CV2";
 import defaultCvData from '../assets/defaultCvData.json'
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
@@ -7,7 +8,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import { toast } from "react-toastify";
-
+import CVCard from "./CV/CVCard";
+import cv1image from "./CV/cv1image.png"
+import cv2image from "./CV/cv2image.png"
 
 export default function ManageCV({ user }) {
     const navigate = useNavigate()
@@ -17,6 +20,7 @@ export default function ManageCV({ user }) {
     const [print, setPrint] = useState(false)
     const loggedUserId = user.user._id
     const [cvData, setCVDATA] = useState(defaultCvData)
+    const [currentCV, setCurrentCV] = useState("CV1")
     useEffect(() => {
         if (user.user.role != "candidate") {
             navigateTo("/login")
@@ -34,7 +38,8 @@ export default function ManageCV({ user }) {
             <Grid
                 item
                 xs={6}>
-                <CV1 editable={true} data={cvData} print={print} setPrint={setPrint} setCVDATA={setCVDATA} />
+                {currentCV == "CV1" && <CV1 editable={true} data={cvData} print={print} setPrint={setPrint} setCVDATA={setCVDATA} />}
+                {currentCV == "CV2" && <CV2 editable={true} data={cvData} print={print} setPrint={setPrint} setCVDATA={setCVDATA} />}
             </Grid>
             <Grid
                 xs={4}
@@ -108,11 +113,11 @@ export default function ManageCV({ user }) {
                     item
                     xs={12}>
                     <Button sx={{ mr: 2 }} variant="contained" color="success" onClick={async () => {
-                      
-                       
-                    
+
+
+
                         const res = await axios.post(`/candidate/${loggedUserId}/resume`, cvData)
-                       
+
                         if (res.data.status && res.data.status != 200) {
                             toast.warning("Tạo cv thất bại")
                         } else {
@@ -124,6 +129,43 @@ export default function ManageCV({ user }) {
                         setPrint(true)
                         console.log(`12`)
                     }} >IN CV</Button>
+                </Grid>
+                <Grid
+                    item
+                    xs={12}
+                    container
+                    sx={{
+                        mt: 3,
+                        rowGap: 3,
+                        columnGap: 2,
+                    }}
+                >
+                    <Grid
+                        item
+                        xs={12}
+                    >
+                        <Typography variant="h4" color="initial">Chọn mẫu CV bạn thích</Typography>
+                    </Grid>
+                    <Grid
+                        item
+                        xs={3}
+                        onClick={() => setCurrentCV("CV1")}
+                    >
+                        <CVCard title="Chuyên nghiệp" image={cv1image} />
+                    </Grid>
+                    <Grid
+                        item
+                        xs={3}
+                        onClick={() => setCurrentCV("CV2")}
+                    >
+                        <CVCard title="Sang trọng" image={cv2image} />
+                    </Grid>
+                    <Grid
+                        item
+                        xs={3}
+                    >
+                        <CVCard title="Chuyên nghiệp 1" color="orange" />
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>

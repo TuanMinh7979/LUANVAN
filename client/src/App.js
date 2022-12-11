@@ -29,6 +29,7 @@ import Stats from "./components/admincomponents/Stats";
 import JobMn from "./components/admincomponents/JobMn";
 import RecMn from "./components/admincomponents/RecMn";
 import CandidateMn from "./components/admincomponents/CandidateMn";
+import CVCard from "./components/CV/CVCard";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -124,7 +125,7 @@ function App() {
             <Route path="hrsignup" element={<HrRegister />} />
 
 
-            <Route path="test" element={<RichText />} />
+            <Route path="test" element={<CVCard />} />
           </Route>
 
 
