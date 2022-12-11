@@ -149,6 +149,9 @@ export default function CV1({ editable ,data, setPrint, print ,setCVDATA}) {
         >
             <Grid
                 container
+                sx={{
+                    height: "100%"
+                }}
             >
                 {/* right path */}
                 <Grid
@@ -159,7 +162,7 @@ export default function CV1({ editable ,data, setPrint, print ,setCVDATA}) {
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'flex-end',
-                        minHeight: '1400px',
+                        minHeight: '1480px',
                     }}
 
                 >
