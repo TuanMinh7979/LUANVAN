@@ -52,18 +52,23 @@ export default function JobDetail({ user }) {
   const { data, loading, error } = useFetch(`/jobpost/${id}`);
   const theme = createTheme();
   const ApplyJob = async () => {
+    let sendApply = 0
     if (confirm("Bạn có muốn ứng tuyển công việc này")) {
+      sendApply = 1;
+
       const contact = {
         jobId: id,
       };
-      const res = await axios.post(`http://localhost:8800/api/candidate/${user.user._id}/applyjob`, contact);
-      if (res.data && res.data.status && res.data.status !== 200) {
+
+      const res = await axios.post(`/candidate/${user.user._id}/applyjob`, contact);
+      if (res.data.status && res.data.status !== 200) {
         toast.warning("Ứng tuyển thất bại")
       } else {
         toast.success("Ứng tuyển thành công")
       }
-
     }
+
+
   };
 
   let salaryChip = ""

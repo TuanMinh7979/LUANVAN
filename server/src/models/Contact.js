@@ -15,7 +15,7 @@ const ContactSchema = new Schema(
     },
     recId: { type: mongoose.Schema.ObjectId, ref: "recs", required: true },
 
-    status: {
+    process: {
       type: String,
       enum: ["consider", "interview", "offer", "accept", "refuse"],
       default: "consider",

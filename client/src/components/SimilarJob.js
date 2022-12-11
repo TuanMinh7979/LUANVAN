@@ -15,7 +15,6 @@ export default function SimilarJob({ jobPostId }) {
 
 
             let suglistIdData = sugListIdFetch.data.sugList;
-            console.log(",,,", suglistIdData)
             suglistIdData = suglistIdData.reverse();
             const sugListDbData = await axios.post(
                 "http://localhost:8800/api/recommend/getJobByListId",

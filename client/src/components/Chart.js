@@ -12,14 +12,7 @@ import env from "../assets/env.json"
 import useFetch from "../hooks/useFetch";
 export default function Charts({ user }) {
     const navigate = useNavigate()
-
-
     const jobsFetch = useFetch(`/rec/${user.user._id}/jobs`);
-
-
-
-
-
     function navigateTo(location) {
         navigate(location)
     }
@@ -64,6 +57,7 @@ export default function Charts({ user }) {
                             <TableCell>Đã ứng tuyển</TableCell>
                             <TableCell>Trạng thái</TableCell>
                             <TableCell></TableCell>
+                            <TableCell></TableCell>
                         </TableHead>
                         {!jobsFetch || (jobsFetch && jobsFetch.loading) ? "Loading" : jobsFetch.data.map(item => {
                             return (
@@ -88,6 +82,19 @@ export default function Charts({ user }) {
                                                 navigateTo(`../searchcandidate/${item._id}`)
                                             }}
                                         >Tìm ứng viên</Button>
+                                    </TableCell>
+                                    <TableCell>
+                                        <Button
+                                            variant="text"
+                                            color="success"
+
+                                        >Chỉnh sửa</Button>
+
+                                        <Button
+                                            variant="text"
+                                            color="success"
+
+                                        >Gỡ bỏ</Button>
                                     </TableCell>
                                 </TableRow>
                             )

@@ -150,7 +150,7 @@ export const applyJob = async (req, res, next) => {
   try {
     //req: jobId, recId, resumeId, hrId
     const { jobId } = req.body;
-    
+
     const loggedUser = req.user;
 
 
