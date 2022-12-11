@@ -18,6 +18,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import Image from "mui-image";
 import logo from "../assets/logo_banner.png";
 import env from '../assets/env.json'
+import { useNavigate } from "react-router-dom";
 export default function Register() {
     const [response, setResponse] = useState(false);
     const imageLink = env.REACT_APP_SAMPLE_IMAGE_01;
@@ -25,7 +26,7 @@ export default function Register() {
     const email = useRef();
     const password = useRef();
     const retypepassword = useRef();
-
+    const navigate = useNavigate()
     const validate = () => {
         if (
             username.current.value == "" ||
@@ -248,6 +249,15 @@ export default function Register() {
                                 >
                                     Đăng ký
                                 </Button>
+                                <Button
+									sx={{mt:1}}
+									onClick={()=>navigate("/")}
+									variant="contained"
+									color="error"
+									fullWidth
+								>
+									Thoát
+								</Button>
                             </Box>
                             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                                 <Typography variant="p">

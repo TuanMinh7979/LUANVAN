@@ -177,6 +177,15 @@ export default function HrLogin() {
                                 >
                                     Đăng nhập
                                 </Button>
+                                <Button
+									sx={{mt:1}}
+									onClick={()=>navigate("/")}
+									variant="contained"
+									color="error"
+									fullWidth
+								>
+									Thoát
+								</Button>
                             </Box>
                             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                                 <Typography variant="p">
