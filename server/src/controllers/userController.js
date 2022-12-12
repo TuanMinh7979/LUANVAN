@@ -8,7 +8,7 @@ import { filterSkipField } from "../utils/commonUtil.js";
 
 //check user before=> req.param.id = req.user.id
 export const updateUser = async (req, res, next) => {
-  console.log("--------------------", req.params)
+
   req.body = filterSkipField(req.body, "roleInp", "passwordInp", "profile");
   try {
     const {

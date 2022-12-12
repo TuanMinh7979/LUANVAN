@@ -113,7 +113,7 @@ export default function Jobs() {
     let queryUrl = ""
     if (filterApiArray.length > 0) {
       console.log(filterApiArray)
-      console.log("----------")
+  
       queryUrl = filterApiArray.join("")
     }
 

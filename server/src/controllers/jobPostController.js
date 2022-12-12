@@ -165,6 +165,7 @@ export const getAllJobPost = async (req, res, next) => {
       rs = await JobPost.find().populate("companyId");
     }
 
+    console.log(rs.length)
     res.status(200).json(rs);
   } catch (err) {
     next(err);
