@@ -8,7 +8,6 @@ export const userSlice = createSlice({
     },
     reducers:{
         setUserLogin: (state, action) => {
-            console.log(action.payload)
             state.user = action.payload
             state.isLogin = true
         },
@@ -16,9 +15,13 @@ export const userSlice = createSlice({
             state.user = "Người dùng"
             state.isLogin = false
             sessionStorage.clear()
+        },
+        setUserInfo:(state, action)=>{
+            state.user = action.payload
+            state.isLogin = true
         }
     }
 })
 
-export const { setUserLogin, setUserLogout } = userSlice.actions
+export const { setUserLogin, setUserLogout, setUserInfo } = userSlice.actions
 export default userSlice.reducer;

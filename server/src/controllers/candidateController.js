@@ -100,19 +100,34 @@ export const updateCandidateProfile = async (req, res, next) => {
 export const createResume = async (req, res, next) => {
   try {
     let loggedUserId = req.user.id
-
-    const candidate = await Candidate.findOne({ userId: loggedUserId })
-    if (!candidate || candidate == undefined) {
+    const loggedUser = await User.findOne({ userId: req.user.id })
+    if (!loggedUser || loggedUser == undefined) {
       return next(createError(404, "Ứng viên không tồn tại trong hệ thống"))
     }
-    console.log("__________",req.body)
-    const newResume = new Resume({ ...req.body, candidateId: candidate.id });
-    await newResume.save();
-
+    const candidate = await Candidate.findOne({ userId: loggedUserId })
+    const oldResume = await Resume.findOne({ candidateId: candidate._id })
+    let savedResume;
+    if (oldResume) {
+      //updated old Cv
+      console.log("UPDATE CV NOW......", req.body)
+      savedResume = await Resume.findOneAndUpdate( { candidateId: candidate._id }, { $set: { ...req.body } }, { new: true });
+    } else {
+      //create new Cv
+      let resumeToSave = new Resume({ ...req.body, candidateId: candidate._id });
+      savedResume = await resumeToSave.save();
+    }
     let url = `${process.env.DJANGOSERVER}/updateCvsFile`
     const rs = await axios.get(url)
     console.log("update db success...")
-    res.status(200).send("Tạo cv thành công");
+
+    const candidateDetail = {
+      ...candidate._doc,
+      activeCvId: savedResume._id,
+    };
+    console.log("-------------------......////////")
+    console.log(savedResume)
+    console.log({ ...loggedUser._doc, detail: candidateDetail })
+    res.status(200).json({ ...loggedUser._doc, detail: candidateDetail });
   } catch (e) {
     console.log(e)
     next(e)

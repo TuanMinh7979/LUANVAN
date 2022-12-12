@@ -57,11 +57,7 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
 
         }
 
-        useEffect(() => {
 
-            if (editable) setCVDATA({ ...data, cvTemplate })
-
-        }, [])
         return (
             <>
                 <RichText editorState={editorState} setEditorState={setEditorState} />
@@ -86,6 +82,12 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
             </>
         )
     }
+
+    useEffect(() => {
+
+        if (editable) setCVDATA({ ...data, cvTemplate })
+
+    }, [])
     const CustomChip = styled(Chip)(({ theme }) => ({
         "&": {
             background: "rgba(0,0,0,0)",
@@ -234,7 +236,7 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
                                         mb: 1,
                                         width: "100%",
                                         flexWrap: "wrap"
-                                        
+
                                     }}
                                 >
                                     <CalendarMonthIcon fontSize="small" sx={{ mr: 1 }} />
