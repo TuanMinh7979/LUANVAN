@@ -152,7 +152,7 @@ export const getAllJobPost = async (req, res, next) => {
     let rs;
     let queryLen = Object.keys(req.query).length;
     let titleQuery = "";
-    let filterQuery = "";
+  
     if (req.query && req.query.title) {
       titleQuery = req.query.title;
       req.query = filterSkipField(req.query, "title");
