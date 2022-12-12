@@ -123,7 +123,6 @@ export default function Jobs() {
       queryUrl = filterApiArray.join("");
     }
 
-
     if (queryUrl.endsWith("&")) {
       queryUrl = queryUrl.substring(0, queryUrl.length - 1);
     }
@@ -135,7 +134,7 @@ export default function Jobs() {
   };
 
   const changePage = (e, value) => {
-    buildFilterApi(value)
+    buildFilterApi(value);
   };
 
   return (
@@ -323,8 +322,8 @@ export default function Jobs() {
             <Loading />
           ) : (
             <>
-              <JobList jobsPage={data.jobsPage} />
               <Paper elevation={4} sx={{ p: 3 }}>
+                <JobList jobsPage={data.jobsPage} />
                 <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
                   <Pagination
                     onChange={changePage}

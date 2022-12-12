@@ -24,7 +24,7 @@ import { maxHeight, maxWidth } from "@mui/system";
 import env from "../assets/env.json";
 import useFetch from "../hooks/useFetch";
 import Loading from "./Loading";
-import {Modal} from "@mui/material";
+import { Modal } from "@mui/material";
 export default function Charts({ user }) {
   const navigate = useNavigate();
 
@@ -38,10 +38,13 @@ export default function Charts({ user }) {
       navigateTo("/hrlogin");
     }
   });
+  const hdlSuaBaiDang = (jobPostId) => {
+    navigateTo(`../editjobpost/${jobPostId}`);
+  };
 
-  //modal request delete post
-  const [openDeleteBox, setOpenDeleteBox] = useState(false);
-  const hdlOpenDeleteBox = () => setOpenDeleteBox(!openDeleteBox);
+  const hdlGoBaiDang = (jobPostId) => {
+    console.log("gui yeu cau den admin");
+  };
 
   return (
     <>
@@ -80,6 +83,7 @@ export default function Charts({ user }) {
           <TableContainer component={Paper}>
             <Table>
               <TableHead>
+                <TableCell></TableCell>
                 <TableCell>Tên tin tuyển dụng</TableCell>
                 <TableCell>Ngày đăng</TableCell>
                 <TableCell>Ngày hết hạn</TableCell>
@@ -94,7 +98,7 @@ export default function Charts({ user }) {
               ) : (
                 jobsFetch.data.map((item) => {
                   return (
-                    <TableRow>
+                    <TableRow key={item._id}>
                       <TableCell
                         onClick={() => {
                           navigateTo(`/jobdetail/${item._id}`);
@@ -123,8 +127,8 @@ export default function Charts({ user }) {
                         </Button>
                       </TableCell>
                       <TableCell>
-                        <Button>Sửa</Button>
-                        <Button onClick={() => hdlOpenDeleteBox()}>
+                        <Button onClick={() => hdlSuaBaiDang(item._id)}>Sửa</Button>
+                        <Button onClick={() => hdlGoBaiDang(item._id)}>
                           Gỡ bài đăng
                         </Button>
                       </TableCell>
@@ -136,22 +140,6 @@ export default function Charts({ user }) {
           </TableContainer>
         </Grid>
       </Grid>
-
-      <Modal
-        open={openDeleteBox}
-        onClose={hdlOpenDeleteBox}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
-      </Modal>
     </>
   );
 }
