@@ -15,6 +15,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 import WorkIcon from "@mui/icons-material/Work";
+import CancelIcon from '@mui/icons-material/Cancel';
 import Image from "mui-image";
 import logo from "../assets/companylogo_sample.png";
 import { useState } from "react";
@@ -35,7 +36,6 @@ import RecommentJobs from "./RecommentJobs";
 import SimilarJob from "./SimilarJob";
 import axios from "axios";
 import { toast } from "react-toastify"
-
 import {
   getAddressTitleFromId,
   getWorkExpTitleFromId,
@@ -43,10 +43,13 @@ import {
   getRankTitleFromId,
   getSalaryTypeTitleFromId,
   getJobCategoryTitleFromId
-}
-  from "./other/SelectDataUtils";
+} from "./other/SelectDataUtils";
 import Loading from "./Loading";
+
+
 export default function JobDetail({ user }) {
+
+  const [isApplied, setIsApplied] = useState(false)
   const location = useLocation();
   const id = location.pathname.split("/")[2];
 
@@ -56,7 +59,6 @@ export default function JobDetail({ user }) {
     let sendApply = 0
     if (confirm("Bạn có muốn ứng tuyển công việc này")) {
       sendApply = 1;
-
       const contact = {
         jobId: id,
       };
@@ -66,6 +68,7 @@ export default function JobDetail({ user }) {
         toast.warning("Ứng tuyển thất bại")
       } else {
         toast.success("Ứng tuyển thành công")
+        setIsApplied(true)
       }
     }
 
@@ -161,14 +164,22 @@ export default function JobDetail({ user }) {
               </Box>
               <Box>
                 {user.user.role == "candidate" && (
-                  <Button
+                  !isApplied?<Button
                     onClick={() => ApplyJob()}
                     startIcon={<SendIcon />}
                     variant="contained"
                     color="success"
                   >
                     Ứng tuyển ngay
-                  </Button>
+                  </Button>:
+                   <Button
+                   onClick={() => ApplyJob()}
+                   startIcon={<CancelIcon />}
+                   variant="contained"
+                   color="warning"
+                 >
+                   Hủy ứng tuyển
+                 </Button>
                 )}
                 {user.user.role == "rec" && (
                   <Button
