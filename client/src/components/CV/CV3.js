@@ -57,11 +57,6 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
 
         }
 
-        useEffect(() => {
-
-            if (editable) setCVDATA({ ...data, cvTemplate })
-
-        }, [])
         return (
             <>
                 <RichText editorState={editorState} setEditorState={setEditorState} />
@@ -141,6 +136,11 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
         console.log(data)
 
     }, [data])
+    useEffect(() => {
+
+        if (editable) setCVDATA({ ...data, cvTemplate })
+
+    }, [])
     return (<>
         <Box
             ref={ref}

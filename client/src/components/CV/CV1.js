@@ -135,6 +135,11 @@ export default function CV1({ editable, data, setPrint, print, setCVDATA }) {
         console.log(data)
 
     }, [data])
+    useEffect(() => {
+
+        if (editable) setCVDATA({ ...data, cvTemplate })
+
+    }, [])
     return (<>
         <Box
             ref={ref}

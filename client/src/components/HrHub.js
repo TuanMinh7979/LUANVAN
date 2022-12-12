@@ -62,6 +62,7 @@ import {
   getSalaryTypeTitleFromId,
   getRankTitleFromId,
 } from "./other/SelectDataUtils";
+import CandidateCVs from "../CandidateCVs";
 
 const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
   "&:hover": {
@@ -162,7 +163,7 @@ export function HrSideBar({ uploadJob, editCompany, viewChart, news }) {
             color: activeItem == 3 ? theme.palette.success.main : "",
           }}
           onClick={() => {
-            navigateTo("./searchcandidate");
+            navigateTo("./candidatecvs");
           }}
         >
           <ListItemIcon sx={{ py: 2 }}>
@@ -173,7 +174,7 @@ export function HrSideBar({ uploadJob, editCompany, viewChart, news }) {
               }}
             />
           </ListItemIcon>
-          <ListItemText>Tin tuyển dụng</ListItemText>
+          <ListItemText>Quản lý CV ứng viên</ListItemText>
         </CustomMenuItem>
       </MenuList>
     </Box>
@@ -1247,6 +1248,7 @@ export default function HrHub() {
               path="/searchcandidate/:id"
               element={<SearchCandidate user={user} />}
             />
+            <Route path="/candidatecvs" element={<CandidateCVs user={user}/>}></Route>
           </Routes>
         </Grid>
       </Grid>
