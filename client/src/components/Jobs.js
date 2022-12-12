@@ -22,9 +22,9 @@ import BadgeIcon from "@mui/icons-material/Badge";
 import Image from "mui-image";
 
 import {
-  useNavigate,
-  createSearchParams,
-  useSearchParams,
+	useNavigate,
+	createSearchParams,
+	useSearchParams,
 } from "react-router-dom";
 import JobList from "./JobList";
 import banner from "../assets/banner.png";
@@ -54,15 +54,15 @@ import {
 import { salaryFilterSelect } from "../clientData/selectData";
 import Loading from "./Loading";
 export default function Jobs() {
-  const user = useSelector((state) => state.user);
-  const { data, setData, loading, error } = useFetch("/jobpost");
-  const MenuProps = {
-    PaperProps: {
-      style: {
-        maxHeight: 200,
-      },
-    },
-  };
+	const user = useSelector((state) => state.user);
+	const { data, setData, loading, error } = useFetch("/jobpost");
+	const MenuProps = {
+		PaperProps: {
+			style: {
+				maxHeight: 200,
+			},
+		},
+	};
 
   console.log("DATA CLINET", data, error);
 
@@ -78,7 +78,7 @@ export default function Jobs() {
     const salaryFilterTitle =
       document.getElementById("salaryFilterSel").innerText;
 
-    let jobCatSelId, locationSelId, rankSelId, salaryFilterQuery;
+		let jobCatSelId, locationSelId, rankSelId, salaryFilterQuery;
 
     if (jobCatTitle && jobCatTitle !== "All" && jobCatTitle.length > 1) {
       jobCatSelId = getCatIdFromName(jobCatTitle);

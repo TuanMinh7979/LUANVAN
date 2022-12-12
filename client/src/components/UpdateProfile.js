@@ -15,6 +15,8 @@ import FlagIcon from '@mui/icons-material/Flag';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import WorkIcon from '@mui/icons-material/Work';
+import profileSchema from "../validate/profileValidate";
+import { toast } from "react-toastify";
 export default function UpdateProfile({ user }) {
     const imageRef = useRef()
     const navigate = useNavigate()
@@ -35,8 +37,8 @@ export default function UpdateProfile({ user }) {
         EditorState.createEmpty()
     );
     const [experience, setExperience] = useState(() =>
-    EditorState.createEmpty()
-);
+        EditorState.createEmpty()
+    );
     const [data, setData] = useState({
         name: '',
         dob: '',
@@ -45,8 +47,8 @@ export default function UpdateProfile({ user }) {
         phone: '',
         avatar: avatar,
         address: '',
-        fullAddress:'',
-        skills:'',
+        fullAddress: '',
+        skills: '',
         educationCv: JSON.stringify(convertToRaw(education.getCurrentContent())),
         objectiveCv: JSON.stringify(convertToRaw(target.getCurrentContent())),
         activitiesCv: JSON.stringify(convertToRaw(activity.getCurrentContent())),
@@ -56,17 +58,18 @@ export default function UpdateProfile({ user }) {
     })
     const getTextArrayFromRich = function (rawdata) {
         if (rawdata.blocks.length > 0) {
-          return (
-            rawdata.blocks.map((item) => item.text)
-          )
+            return (
+                rawdata.blocks.map((item) => item.text)
+            )
         }
-      }
+    }
     const upDateProfileData = function () {
-        console.log(data)
-        axios.put(`/candidate/${user.user._id}/profile`, data)
-            .then((res) => {
-                console.log(res)
-            })
+        profileSchema.validate(data).then((data) => {
+            axios.put(`/candidate/${user.user._id}/profile`, data)
+                .then((res) => {
+                    res.status==200?toast.success("Cập nhật hồ sơ thành công"):toast.error("Cập nhật hồ sơ thất bại")
+                })
+        })
     }
 
     function navigateTo(location) {
@@ -91,7 +94,7 @@ export default function UpdateProfile({ user }) {
             education: getTextArrayFromRich(convertToRaw(education.getCurrentContent())).join(' '),
 
         })
-    },[education,target,activity,certificate,experience,aboutMe])
+    }, [education, target, activity, certificate, experience, aboutMe])
     return (<>
         <Grid
             sx={{
