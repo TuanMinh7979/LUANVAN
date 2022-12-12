@@ -224,7 +224,9 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
                                         display: 'flex',
                                         alignItems: 'center',
                                         mb: 1,
-                                        width: "40%"
+                                        width: "100%",
+                                        flexWrap: "wrap"
+                                        
                                     }}
                                 >
                                     <CalendarMonthIcon fontSize="small" sx={{ mr: 1 }} />
@@ -235,7 +237,8 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
                                         display: 'flex',
                                         alignItems: 'center',
                                         mb: 1,
-                                        width: "40%"
+                                        width: "100%",
+                                        overflow: "hidden"
                                     }}
                                 >
                                     <PhoneIcon fontSize="small" sx={{ mr: 1 }} />
@@ -246,7 +249,8 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
                                         display: 'flex',
                                         alignItems: 'center',
                                         mb: 1,
-                                        width: "40%"
+                                        width: "100%",
+                                        overflow: "hidden"
                                     }}
                                 >
                                     <MailIcon fontSize="small" sx={{ mr: 1 }} />
@@ -257,7 +261,8 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
                                         display: 'flex',
                                         alignItems: 'center',
                                         mb: 1,
-                                        width: "40%"
+                                        width: "100%",
+                                        overflow: "hidden"
                                     }}
                                 >
                                     <FacebookIcon fontSize="small" sx={{ mr: 1 }} />
@@ -268,7 +273,7 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
                                         display: 'flex',
                                         alignItems: 'center',
                                         mb: 1,
-                                        width: "40%"
+                                        width: "100%"
                                     }}
                                 >
                                     <LocationOnIcon fontSize="small" sx={{ mr: 1 }} />
