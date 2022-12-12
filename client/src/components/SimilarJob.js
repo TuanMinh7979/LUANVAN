@@ -54,10 +54,14 @@ export default function SimilarJob({ jobPostId }) {
                     <Grid
                         container
                         item
-                        xs={12}>
+                        xs={12}
+                        sx={{
+                            rowGap: 2
+                        }}
+                        >
                         {jobRecs.map((item) => {
                             return (
-                                <Grid item xs={3}>
+                                <Grid item xs={4}>
                                     <JobCard job={item} />
                                 </Grid>
                             );
