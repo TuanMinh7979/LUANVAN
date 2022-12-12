@@ -329,7 +329,7 @@ export default function Jobs() {
                   <Pagination
                     onChange={changePage}
                     color="success"
-                    count={Math.floor(data.jobsCnt / 12)}
+                    count={data.pageCnt}
                   />
                 </Box>
               </Paper>

@@ -177,7 +177,9 @@ export const getAllJobPost = async (req, res, next) => {
       cnt = await JobPost.find().count();
       rs = await JobPost.find().populate("companyId").limit(12);
     }
-    res.status(200).json({ jobsPage: rs, jobsCnt: cnt });
+    let pageCnt = Math.floor(cnt / 12);
+    if (pageCnt % 12 != 0) pageCnt += 1;
+    res.status(200).json({ jobsPage: rs, pageCnt: pageCnt });
   } catch (err) {
     next(err);
   }
@@ -186,7 +188,7 @@ export const getAllJobPost = async (req, res, next) => {
 export const showAllJobPost = async (req, res, next) => {
   try {
     const allJobs = await JobPost.find().populate("companyId");
-    console.log(allJobs.length)
+    console.log(allJobs.length);
     res.status(200).json({ jobsPage: allJobs });
   } catch (err) {
     next(err);

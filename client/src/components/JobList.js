@@ -35,7 +35,7 @@ console.log("FROM JOBSPAGE", jobsPage)
           sx={{ width: "100%", mt: 1, justifyContent: "center" }}
           rowGap={2}
         >
-          {jobsPage.length &&
+          {jobsPage.length > 0 &&
             jobsPage.map((item) => {
               return (
                 <Grid xs={3}>
