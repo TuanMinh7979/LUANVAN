@@ -27,10 +27,9 @@ import Loading from "./Loading";
 function Home() {
   const [displayFilterBox, setDisplayFilterBox] = useState("none");
   const user = useSelector((state) => state.user);
-  const { data, loading, error } = useFetch(
-    "http://localhost:8800/api/jobpost"
-  );
-  console.log(data);
+  const { data, loading, error } = useFetch("/jobpost/showAllJobPost");
+
+  console.log(data,error)
   const MenuProps = {
     PaperProps: {
       style: {
@@ -273,10 +272,11 @@ function Home() {
             buttonTitle="Tìm ứng viên"
           />
         </Box>
-        {user && user.user.detail && user.user.detail.activeCvId && <RecommentJobs resumeId={user.user.detail.activeCvId} />}
+        {user && user.user.detail && user.user.detail.activeCvId && (
+          <RecommentJobs resumeId={user.user.detail.activeCvId} />
+        )}
 
-
-        {loading ? <Loading /> : <JobList jobs={data} />}
+        {loading ? <Loading /> : <JobList jobsPage={data.jobsPage} />}
       </Box>
     </>
   );

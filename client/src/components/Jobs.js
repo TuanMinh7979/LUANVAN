@@ -11,6 +11,8 @@ import {
   TextField,
   Button,
   InputAdornment,
+  Paper,
+  Pagination,
 } from "@mui/material";
 import env from "../assets/env.json";
 import WorkIcon from "@mui/icons-material/Work";
@@ -18,6 +20,7 @@ import PlaceIcon from "@mui/icons-material/Place";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import BadgeIcon from "@mui/icons-material/Badge";
 import Image from "mui-image";
+
 import {
   useNavigate,
   createSearchParams,
@@ -46,9 +49,7 @@ import {
   getAddressIdFromTitle,
   getSalaryFilterTitleList,
   getSalaryFilterQueryFromTitle,
-
-}
-  from "./other/SelectDataUtils";
+} from "./other/SelectDataUtils";
 
 import { salaryFilterSelect } from "../clientData/selectData";
 import Loading from "./Loading";
@@ -63,71 +64,74 @@ export default function Jobs() {
     },
   };
 
+  console.log("DATA CLINET", data, error);
 
   const buildFilterApi = async () => {
-    let filterApiArray = []
-    let filterApiUrl = "/jobpost?"
+    let filterApiArray = [];
+    let filterApiUrl = "/jobpost?";
 
-    const titleText = document.getElementById("titleInp").value
+    const titleText = document.getElementById("titleInp").value;
 
-    const jobCatTitle = document.getElementById("jobCategorySel").innerText
-    const locationTitle = document.getElementById("locationSel").innerText
-    const rankTitle = document.getElementById("rankSel").innerText
-    const salaryFilterTitle = document.getElementById("salaryFilterSel").innerText
+    const jobCatTitle = document.getElementById("jobCategorySel").innerText;
+    const locationTitle = document.getElementById("locationSel").innerText;
+    const rankTitle = document.getElementById("rankSel").innerText;
+    const salaryFilterTitle =
+      document.getElementById("salaryFilterSel").innerText;
 
     let jobCatSelId, locationSelId, rankSelId, salaryFilterQuery;
 
     if (jobCatTitle && jobCatTitle !== "All" && jobCatTitle.length > 1) {
-
-      jobCatSelId = getCatIdFromName(jobCatTitle)
+      jobCatSelId = getCatIdFromName(jobCatTitle);
     }
     if (locationTitle && locationTitle !== "All" && locationTitle.length > 1) {
-
-      locationSelId = getAddressIdFromTitle(locationTitle)
+      locationSelId = getAddressIdFromTitle(locationTitle);
     }
     if (rankTitle && rankTitle !== "All" && rankTitle.length > 1) {
-      rankSelId = getRankIdFromTitle(rankTitle)
+      rankSelId = getRankIdFromTitle(rankTitle);
     }
-    if (salaryFilterTitle && salaryFilterTitle !== "All" && salaryFilterTitle.length > 1) {
-      salaryFilterQuery = getSalaryFilterQueryFromTitle(salaryFilterTitle)
+    if (
+      salaryFilterTitle &&
+      salaryFilterTitle !== "All" &&
+      salaryFilterTitle.length > 1
+    ) {
+      salaryFilterQuery = getSalaryFilterQueryFromTitle(salaryFilterTitle);
     }
-
 
     if (titleText) {
-      console.log("---", titleText)
-      filterApiArray.push(`title=${titleText}&`)
+      console.log("---", titleText);
+      filterApiArray.push(`title=${titleText}&`);
     }
     if (jobCatSelId) {
-      filterApiArray.push(`categoryId=${jobCatSelId}&`)
+      filterApiArray.push(`categoryId=${jobCatSelId}&`);
     }
     if (locationSelId) {
-      filterApiArray.push(`locationId=${locationSelId}&`)
+      filterApiArray.push(`locationId=${locationSelId}&`);
     }
     if (rankSelId) {
-      filterApiArray.push(`rankId=${rankSelId}&`)
+      filterApiArray.push(`rankId=${rankSelId}&`);
     }
     if (salaryFilterQuery) {
-      filterApiArray.push(`${salaryFilterQuery}&`)
+      filterApiArray.push(`${salaryFilterQuery}&`);
     }
 
-    let queryUrl = ""
+    let queryUrl = "";
     if (filterApiArray.length > 0) {
-      console.log(filterApiArray)
-  
-      queryUrl = filterApiArray.join("")
+      queryUrl = filterApiArray.join("");
     }
 
     if (queryUrl.endsWith("&")) {
-      queryUrl = queryUrl.substring(0, queryUrl.length - 1)
+      queryUrl = queryUrl.substring(0, queryUrl.length - 1);
     }
 
-    filterApiUrl += queryUrl
-    console.log(filterApiUrl)
+    filterApiUrl += queryUrl;
+    console.log(filterApiUrl);
     const res = await axios.get("http://localhost:8800/api" + filterApiUrl);
-    setData(res.data)
-  }
+    setData(res.data);
+  };
 
-
+  const changePage = (e, value) => {
+    console.log(value - 1);
+  };
 
   return (
     <>
@@ -167,9 +171,8 @@ export default function Jobs() {
               }
               label="Ngành nghề"
               MenuProps={MenuProps}
-
             >
-              <MenuItem value="All" key="jobCategoryAllKey" >
+              <MenuItem value="All" key="jobCategoryAllKey">
                 All
               </MenuItem>
               {getCatNameList().map((item, key) => (
@@ -198,7 +201,7 @@ export default function Jobs() {
               label="Địa điểm công ty"
               MenuProps={MenuProps}
             >
-              <MenuItem value="All" key="locationAllKey" >
+              <MenuItem value="All" key="locationAllKey">
                 All
               </MenuItem>
               {getAddressTitleList().map((item, key) => (
@@ -225,7 +228,7 @@ export default function Jobs() {
                 </InputAdornment>
               }
             >
-              <MenuItem value="All" key="rankAllKey" >
+              <MenuItem value="All" key="rankAllKey">
                 All
               </MenuItem>
               {getRankTitleList().map((item, key) => (
@@ -252,7 +255,7 @@ export default function Jobs() {
                 </InputAdornment>
               }
             >
-              <MenuItem value="All" key="salaryFilterKey" >
+              <MenuItem value="All" key="salaryFilterKey">
                 All
               </MenuItem>
               {getSalaryFilterTitleList().map((item, key) => (
@@ -268,10 +271,7 @@ export default function Jobs() {
               variant="contained"
               color="success"
               onClick={() => {
-
-
-                buildFilterApi()
-
+                buildFilterApi();
               }}
             >
               Tìm việc ngay
@@ -314,7 +314,22 @@ export default function Jobs() {
           {/* Joblist */}
         </Container>
         <Box sx={{ my: 3 }}>
-          {loading ? <Loading /> : <JobList jobs={data} />}
+          {loading ? (
+            <Loading />
+          ) : (
+            <>
+              <JobList jobsPage={data.jobsPage} />
+              <Paper elevation={4} sx={{ p: 3 }}>
+                <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+                  <Pagination
+                    onChange={changePage}
+                    color="success"
+                    count={data.jobsCnt / 12}
+                  />
+                </Box>
+              </Paper>
+            </>
+          )}
         </Box>
         {user && user.user.detail && user.user.detail.activeCvId && (
           <RecommentJobs resumeId={user.user.detail.activeCvId} />

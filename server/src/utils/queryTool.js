@@ -15,7 +15,6 @@ class QueryTool {
       (match) => `$${match}`
     );
 
-    
     this.query.find(JSON.parse(queryStr));
     if (this.queryString.fields) {
       const fields = this.queryString.fields.split(",").join(" ");
@@ -23,6 +22,8 @@ class QueryTool {
     } else {
       this.query = this.query.select("-__v");
     }
+
+    
     return this;
   }
 
@@ -35,7 +36,7 @@ class QueryTool {
 
   paginate() {
     const page = this.queryString.page * 1 || 1;
-    const limitNum = this.queryString.limit * 1 || 10;
+    const limitNum = this.queryString.limit * 1 || 12;
     const skipNum = (page - 1) * limitNum;
 
     this.query = this.query.skip(skipNum).limit(limitNum);

@@ -12,33 +12,38 @@ import { filterSkipField } from "../utils/commonUtil.js";
 
 export const createJobPost = async (req, res, next) => {
   try {
-    let recUserId = ""
+    let recUserId = "";
     if (req.user) {
       //use in app
       recUserId = req.user.id;
     } else {
       //use in postman
-      const decodeTokenData = getDecodedTokenData(req)
+      const decodeTokenData = getDecodedTokenData(req);
       recUserId = decodeTokenData.id;
     }
 
-    let rec = await Rec.findOne({ userId: recUserId })
+    let rec = await Rec.findOne({ userId: recUserId });
     let newJobPost;
     if (req.body.fullAddress) {
-      newJobPost = new JobPost({ ...req.body, recId: rec.id, companyId: rec.companyId });
-
+      newJobPost = new JobPost({
+        ...req.body,
+        recId: rec.id,
+        companyId: rec.companyId,
+      });
     } else {
       let company = await Company.findById(rec.companyId);
-      newJobPost = new JobPost({ ...req.body, recId: rec.id, companyId: rec.companyId, fullAddress: company.location });
-
+      newJobPost = new JobPost({
+        ...req.body,
+        recId: rec.id,
+        companyId: rec.companyId,
+        fullAddress: company.location,
+      });
     }
 
-
-
     await newJobPost.save();
-    let url = `${process.env.DJANGOSERVER}/updateJobsFile`
-    const rs = await axios.get(url)
-    console.log("update db success...")
+    let url = `${process.env.DJANGOSERVER}/updateJobsFile`;
+    const rs = await axios.get(url);
+    console.log("update db success...");
 
     res.status(200).send("Tạo jobpost thành công!");
   } catch (e) {
@@ -76,7 +81,6 @@ export const deleteJobPost = async (req, res, next) => {
 };
 
 export const getJobPost = async (req, res, next) => {
-
   try {
     const jobPost = await JobPost.findById(req.params.id).populate("companyId");
 
@@ -88,7 +92,6 @@ export const getJobPost = async (req, res, next) => {
     next(err);
   }
 };
-
 
 // export const getAllJobPost = async (req, res, next) => {
 //   console.log(req.query)
@@ -135,38 +138,56 @@ export const getJobPost = async (req, res, next) => {
 //   }
 // };
 
-
-
 export const getAllJobPost1 = async (req, res, next) => {
   try {
-    const rs = await JobPost.find(req.query).populate("companyId")
+    const rs = await JobPost.find(req.query).populate("companyId");
     res.status(200).json(rs);
   } catch (err) {
     next(err);
   }
 };
 
-
-
 export const getAllJobPost = async (req, res, next) => {
   try {
     let rs;
-    let queryLen = Object.keys(req.query).length
-    let titleQuery = ""
+    let queryLen = Object.keys(req.query).length;
+    let titleQuery = "";
+    let filterQuery = "";
     if (req.query && req.query.title) {
-      titleQuery = req.query.title
-      req.query = filterSkipField(req.query, "title")
+      titleQuery = req.query.title;
+      req.query = filterSkipField(req.query, "title");
     }
+    let cnt;
     if (queryLen > 0) {
-      const queryTool = new QueryTool(JobPost.find({ title: { $regex: new RegExp(titleQuery), $options: 'i' } }).populate("companyId"), req.query)
-        .filter()
-      rs = await queryTool.query;
-    } else {
-      rs = await JobPost.find().populate("companyId");
-    }
+      const queryTool = new QueryTool(
+        JobPost.find({
+          title: { $regex: new RegExp(titleQuery), $options: "i" },
+        }).populate("companyId"),
+        req.query
+      ).filter();
 
-    console.log(rs.length)
-    res.status(200).json(rs);
+      const page = req.query.page * 1 || 1;
+      const limitNum = req.query.limit * 1 || 12;
+      const skipNum = (page - 1) * limitNum;
+
+      let frs = await queryTool.query;
+      cnt = frs.length;
+      rs = frs.slice(skipNum, skipNum + limitNum);
+    } else {
+      cnt = await JobPost.find().count();
+      rs = await JobPost.find().populate("companyId").limit(12);
+    }
+    res.status(200).json({ jobsPage: rs, jobsCnt: cnt });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const showAllJobPost = async (req, res, next) => {
+  try {
+    const allJobs = await JobPost.find().populate("companyId");
+    console.log(allJobs.length)
+    res.status(200).json({ jobsPage: allJobs });
   } catch (err) {
     next(err);
   }
