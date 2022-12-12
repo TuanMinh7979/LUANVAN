@@ -14,8 +14,12 @@ import cv1image from "./CV/cv1image.png"
 import cv2image from "./CV/cv2image.png"
 import cv3image from "./CV/cv3image.png"
 import cvSchema from "../validate/cvValidate";
+import { useDispatch } from "react-redux";
+import { setUserInfo } from "../store/userSlice";
 
 export default function ManageCV({ user }) {
+
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const navigateTo = function (location) {
         navigate(location)
@@ -118,12 +122,14 @@ export default function ManageCV({ user }) {
                     xs={12}>
                     <Button sx={{ mr: 2 }} variant="contained" color="success" onClick={() => {
                         cvSchema.validate(cvData).then(async (cvData) => {
-                            console.log("..........", cvData)
                             const res = await axios.post(`/candidate/${loggedUserId}/resume`, cvData)
                             if (res.data.status && res.data.status != 200) {
                                 toast.warning("Tạo cv thất bại")
+
                             } else {
-                                console.log(res)
+                                console.log(res.data)
+                                const action = setUserInfo(res.data)
+                                dispatch(action)
                                 toast.success("Tạo cv thành công")
                             }
                         })
