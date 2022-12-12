@@ -1,23 +1,22 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 const ProfileSchema = mongoose.Schema({
-  //table for this
-  //FOR PROFILE AND SEARCHING
-  skills: String,
 
+  //FOR PROFILE 
   aboutMe: String,
 
   objective: String,
   education: String,
   experience: String,
+  skills: String,
   activities: String,
   certifications: String,
-
 
   //FOR CV
   objectiveCv: String,
   educationCv: String,
   experienceCv: String,
+  skillsCv: String,
   activitiesCv: String,
   certificationsCv: String,
 
@@ -26,7 +25,9 @@ const ProfileSchema = mongoose.Schema({
 
 
 const CandidateSchema = new Schema(
-  //tim theo jobtitle ,kinh nghiem
+  //cap nhat thong tin candidate chinh la capnhatprofile
+  //voi mot so truong la contact, mot so truong thuoc ve profile
+  //rieng dia chi thi se luu duoi dang khoa ngoai toi bang address
   {
     title: String,
     //contact info
@@ -38,14 +39,9 @@ const CandidateSchema = new Schema(
     },
     email: String,
     phone: String,
-    // addressId: {
-    //   type: mongoose.Schema.ObjectId,
-    //   ref: "Address",
-
-    // },
     addressId: {
-      type: String
-
+      type: mongoose.Schema.ObjectId,
+      ref: "addresss"
     },
     fullAddress: String,
 
@@ -57,10 +53,8 @@ const CandidateSchema = new Schema(
       type: ProfileSchema
     },
 
-
-    //
     saveJobs: [{ type: mongoose.Schema.ObjectId, ref: "jobposts" }],
-    
+
     //one to one
     userId: {
       type: mongoose.Schema.ObjectId,

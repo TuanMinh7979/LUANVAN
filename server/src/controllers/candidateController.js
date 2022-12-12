@@ -9,9 +9,13 @@ import JobPost from "../models/JobPost.js";
 import dotenv from "dotenv";
 dotenv.config();
 import axios from "axios";
+import { uploadImage } from "../utils/uploadUtil.js";
 export const updateCandidateProfile = async (req, res, next) => {
 
-  const { title,
+  //for candidate
+  const { avatar } = req.body
+  const {
+    title,
     name,
     dob,
     gender,
@@ -20,77 +24,90 @@ export const updateCandidateProfile = async (req, res, next) => {
     addressId,
     fullAddress
   } = req.body;
-
+  //for candidate.profile
   const {
-    skills,
     aboutMe,
+
+    skills,
     objective,
     education,
     experience,
     activities,
-
     certifications,
-
 
     objectiveCv,
     educationCv,
     experienceCv,
+    skillsCv,
     activitiesCv,
-
     certificationsCv
 
   } = req.body
 
 
   const profile = {
-    skills,
+
     aboutMe,
+
     objective,
     education,
     experience,
+    skills,
     activities,
     certifications,
+
     objectiveCv,
     educationCv,
     experienceCv,
+    skillsCv,
     activitiesCv,
     certificationsCv
   }
-  let updateData = {
+  let candidateData = {
     title,
     name,
     dob,
     gender,
     email,
     phone,
-    addressId: "1",
+    addressId,
     fullAddress,
     profile
   }
 
   let loggedUserId = ""
   if (req.user) {
-
     loggedUserId = req.user.id;
   } else {
-
     const decodeTokenData = getDecodedTokenData(req)
     loggedUserId = decodeTokenData.id;
   }
 
-
-
   try {
+
+    let avatarLink = ""
+    if (gender == "Nam") {
+      avatarLink = "https://res.cloudinary.com/djnekmzdf/image/upload/v1670878877/ifo/maledefault_fechep.jpg"
+    } else {
+      avatarLink = "https://res.cloudinary.com/djnekmzdf/image/upload/v1670878938/ifo/74182470-default-female-avatar-profile-picture-icon-grey-woman-photo-placeholder-vector-illustration_iu7kdj.webp"
+    }
+    if (avatar) {
+      const upRs = await uploadImage(avatar, "ifo999");
+      avatarLink = upRs.secure_url;
+    }
+
     const updatedCandidate = await Candidate.findOneAndUpdate(
       { userId: loggedUserId },
       {
-        $set: updateData,
+        $set: { ...candidateData, avatar: avatarLink },
       },
       { new: true }
-      //return updated model
+
     );
-    if (updatedCandidate === null)
+    if (!updatedCandidate) {
       return next(createError(404, "Không tìm thấy ứng viên"));
+    }
+
     return res.status(200).json({ ...updatedCandidate._doc });
   } catch (e) {
     next(e);
@@ -109,8 +126,8 @@ export const createResume = async (req, res, next) => {
     let savedResume;
     if (oldResume) {
       //updated old Cv
-      console.log("UPDATE CV NOW......", req.body)
-      savedResume = await Resume.findOneAndUpdate( { candidateId: candidate._id }, { $set: { ...req.body } }, { new: true });
+
+      savedResume = await Resume.findOneAndUpdate({ candidateId: candidate._id }, { $set: { ...req.body } }, { new: true });
     } else {
       //create new Cv
       let resumeToSave = new Resume({ ...req.body, candidateId: candidate._id });
@@ -124,7 +141,7 @@ export const createResume = async (req, res, next) => {
       ...candidate._doc,
       activeCvId: savedResume._id,
     };
-    console.log("-------------------......////////")
+
     console.log(savedResume)
     console.log({ ...loggedUser._doc, detail: candidateDetail })
     res.status(200).json({ ...loggedUser._doc, detail: candidateDetail });

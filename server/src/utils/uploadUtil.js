@@ -5,7 +5,6 @@ export const uploadImage = async (imageStr, preset) => {
     let rs = await cloudinary.uploader.upload(imageStr, {
       upload_preset: preset,
     });
-    console.log("_________________RS", rs);
     return rs;
   } catch (err) {
     console.log(err);

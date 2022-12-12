@@ -3,9 +3,7 @@ import { createError } from "../utils/errorUtil.js";
 import { uploadImage } from "../utils/uploadUtil.js";
 import { filterSkipField } from "../utils/commonUtil.js";
 import Company from "../models/Company.js";
-//
 
-//category for job nha
 export const getAllCompany = async (req, res, next) => {
     try {
         const companies = await Company.find();
@@ -21,12 +19,12 @@ export const createCompany = async (req, res, next) => {
         let notLogoFCom = filterSkipField(req.body, "logo");
 
         const upRs = await uploadImage(logoBase64, "com999");
-        const logo = upRs.secure_url;
+        const linkToLogo = upRs.secure_url;
 
 
-        const newCompany = new Company({ ...notLogoFCom, logo });
+        const newCompany = new Company({ ...notLogoFCom, linkToLogo });
         await newCompany.save();
-        res.status(200).send("Company created successfully");
+        res.status(200).send("Tạo công ty thành công!");
     } catch (e) {
         next(e);
     }

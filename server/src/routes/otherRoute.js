@@ -6,7 +6,6 @@ import { uploadImage } from "../utils/uploadUtil.js";
 
 const router = express.Router();
 
-//check xem secret token co thuoc ung dung nay hay khong
 router.post("/updateimg", async (req, res, next) => {
   try {
     //await a new promise

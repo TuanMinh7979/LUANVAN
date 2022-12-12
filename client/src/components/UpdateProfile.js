@@ -17,13 +17,27 @@ import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfi
 import WorkIcon from '@mui/icons-material/Work';
 import profileSchema from "../validate/profileValidate";
 import { toast } from "react-toastify";
+
+import {
+
+    getAddressTitleList,
+    getAddressIdFromTitle,
+    getAddressTitleFromId,
+
+} from "./other/SelectDataUtils";
+
+
 export default function UpdateProfile({ user }) {
     const imageRef = useRef()
     const navigate = useNavigate()
     const [avatar, setAvatar] = useState(logoImage)
+    const [skills, setSkills] = useState(() =>
+        EditorState.createEmpty()
+    );
     const [education, setEducation] = useState(() =>
         EditorState.createEmpty()
     );
+
     const [target, setTarget] = useState(() =>
         EditorState.createEmpty()
     );
@@ -40,6 +54,7 @@ export default function UpdateProfile({ user }) {
         EditorState.createEmpty()
     );
     const [data, setData] = useState({
+        //candidate
         name: '',
         dob: '',
         gender: '',
@@ -48,7 +63,10 @@ export default function UpdateProfile({ user }) {
         avatar: avatar,
         address: '',
         fullAddress: '',
-        skills: '',
+
+        //profile
+
+        skillsCv: '',
         educationCv: JSON.stringify(convertToRaw(education.getCurrentContent())),
         objectiveCv: JSON.stringify(convertToRaw(target.getCurrentContent())),
         activitiesCv: JSON.stringify(convertToRaw(activity.getCurrentContent())),
@@ -64,10 +82,28 @@ export default function UpdateProfile({ user }) {
         }
     }
     const upDateProfileData = function () {
+
+        //some field for searching 
+        let rs = {
+            ...data,
+            objective: getTextArrayFromRich(convertToRaw(target.getCurrentContent())).join(' '),
+            activities: getTextArrayFromRich(convertToRaw(activity.getCurrentContent())).join(' '),
+            certifications: getTextArrayFromRich(convertToRaw(certificate.getCurrentContent())).join(' '),
+            experience: getTextArrayFromRich(convertToRaw(experience.getCurrentContent())).join(' '),
+            education: getTextArrayFromRich(convertToRaw(education.getCurrentContent())).join(' '),
+        }
+        console.log(rs)
         profileSchema.validate(data).then((data) => {
             axios.put(`/candidate/${user.user._id}/profile`, data)
                 .then((res) => {
-                    res.status==200?toast.success("Cập nhật hồ sơ thành công"):toast.error("Cập nhật hồ sơ thất bại")
+                    console.log("---")
+                    console.log(res)
+                    if (res.data.status && res.data.status != 200) {
+                        toast.error("Cập nhật hồ sơ thất bại")
+                    }
+                    else {
+                        toast.success("Cập nhật hồ sơ thành công")
+                    }
                 })
         })
     }
@@ -87,11 +123,7 @@ export default function UpdateProfile({ user }) {
             certificationsCv: JSON.stringify(convertToRaw(certificate.getCurrentContent())),
             aboutMe: JSON.stringify(convertToRaw(aboutMe.getCurrentContent())),
             experienceCv: JSON.stringify(convertToRaw(experience.getCurrentContent())),
-            objective: getTextArrayFromRich(convertToRaw(target.getCurrentContent())).join(' '),
-            activities: getTextArrayFromRich(convertToRaw(activity.getCurrentContent())).join(' '),
-            certifications: getTextArrayFromRich(convertToRaw(certificate.getCurrentContent())).join(' '),
-            experience: getTextArrayFromRich(convertToRaw(experience.getCurrentContent())).join(' '),
-            education: getTextArrayFromRich(convertToRaw(education.getCurrentContent())).join(' '),
+
 
         })
     }, [education, target, activity, certificate, experience, aboutMe])
@@ -347,42 +379,23 @@ export default function UpdateProfile({ user }) {
                                     }}
                                 />
                             </Grid>
-                            <Grid item
-                                xs={4}
-                            >
-                                <Typography variant="p" fontWeight={500} >
-                                    Kỹ năng
-                                </Typography>
-                                <OutlinedInput
-                                    color="success"
-                                    fullWidth
-                                    size="small"
-                                    sx={{ mt: 1 }}
-                                    placeholder="JavaScripts, HTML, CSS"
-                                    onChange={(e) => {
-                                        setData({
-                                            ...data,
-                                            skills: e.target.value
-                                        })
-                                    }}
-                                />
-                            </Grid>
+
                             <Grid item
                                 xs={3}
                             >
                                 <Typography variant="p" fontWeight={500} >
-                                    Địa chỉ tìm việc
+                                    Địa chỉ làm việc mong muốn
                                 </Typography>
                                 <Autocomplete
                                     freeSolo
                                     size="small"
                                     sx={{ mt: 1 }}
                                     color="success"
-                                    options={env.REACT_APP_LOCATION.split(", ")}
+                                    options={getAddressTitleList()}
                                     onInputChange={(e, value) => {
                                         setData({
                                             ...data,
-                                            address: value
+                                            address: getAddressIdFromTitle(value)
                                         })
                                     }}
                                     renderInput={(params) => <TextField color="success" {...params} />}
@@ -403,6 +416,10 @@ export default function UpdateProfile({ user }) {
                     <Grid item xs={12} sx={{ mb: 2 }}>
                         <Chip icon={<WorkIcon />} label="Kinh nghiệm làm việc" color="success" />
                         <RichText editorState={experience} setEditorState={setExperience} />
+                    </Grid>
+                    <Grid item xs={12} sx={{ mb: 2 }}>
+                        <Chip icon={<WorkIcon />} label="Kỹ năng" color="success" />
+                        <RichText editorState={skills} setEditorState={setSkills} />
                     </Grid>
                     <Grid item xs={12} sx={{ mb: 2 }}>
                         <Chip icon={<CrisisAlertIcon />} label="Mục tiêu nghề nghiệp" color="success" />
