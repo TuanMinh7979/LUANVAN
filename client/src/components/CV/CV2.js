@@ -19,9 +19,9 @@ import { convertToRaw, EditorState } from "draft-js";
 import ContactEditPopUp from "../ContactEditPopUp";
 
 
-export default function CV2({ editable ,data, setPrint, print ,setCVDATA}) {
+export default function CV2({ editable, data, setPrint, print, setCVDATA }) {
 
-
+    const cvTemplate = "CV2"
 
     function RichEditor({ item, data, setData, setOpen }) {
         const [editorState, setEditorState] = useState(() =>
@@ -124,17 +124,23 @@ export default function CV2({ editable ,data, setPrint, print ,setCVDATA}) {
         documentTitle: 'test',
         onAfterPrint: () => console.log("QA print")
     })
-    useEffect(()=>{
-        if(print){
+    useEffect(() => {
+        if (print) {
             handlePrint()
             setPrint(false)
         }
 
-    },[print])
-    useEffect(()=>{
+    }, [print])
+    useEffect(() => {
         console.log(data)
 
-    },[data])
+    }, [data])
+
+    useEffect(() => {
+
+        if (editable) setCVDATA({ ...data, cvTemplate })
+
+    }, [])
     return (<>
         <Box
             ref={ref}
@@ -168,7 +174,7 @@ export default function CV2({ editable ,data, setPrint, print ,setCVDATA}) {
                             width: '80%',
                             display: 'flex',
                             flexDirection: 'column',
-                            p:4,
+                            p: 4,
                             '&:hover': {
                                 border: '1px dashed red'
                             },
@@ -181,7 +187,7 @@ export default function CV2({ editable ,data, setPrint, print ,setCVDATA}) {
                         }}
                     >
                         <Image
-                            src={data.avatar||camera}
+                            src={data.avatar || camera}
                             width="160px"
                             height="160px"
                             fit="scale-down"
@@ -288,7 +294,7 @@ export default function CV2({ editable ,data, setPrint, print ,setCVDATA}) {
                     container
                     xs={6}
                     sx={{
-                        p:3,
+                        p: 3,
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'flex-start',

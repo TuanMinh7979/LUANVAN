@@ -105,6 +105,7 @@ export const createResume = async (req, res, next) => {
     if (!candidate || candidate == undefined) {
       return next(createError(404, "Ứng viên không tồn tại trong hệ thống"))
     }
+    console.log("__________",req.body)
     const newResume = new Resume({ ...req.body, candidateId: candidate.id });
     await newResume.save();
 

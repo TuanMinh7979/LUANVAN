@@ -32,6 +32,10 @@ const ResumeSchema = new Schema(
       ref: "candidates",
       required: true
     },
+    cvTemplate: {
+      type: String,
+      default: "CV1"
+    }
 
   },
 

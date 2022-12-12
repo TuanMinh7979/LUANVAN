@@ -19,9 +19,9 @@ import { convertToRaw, EditorState } from "draft-js";
 import ContactEditPopUp from "../ContactEditPopUp";
 
 
-export default function CV1({ editable ,data, setPrint, print ,setCVDATA}) {
+export default function CV1({ editable, data, setPrint, print, setCVDATA }) {
 
-
+    const cvTemplate = "CV1"
 
     function RichEditor({ item, data, setData, setOpen }) {
         const [editorState, setEditorState] = useState(() =>
@@ -124,17 +124,17 @@ export default function CV1({ editable ,data, setPrint, print ,setCVDATA}) {
         documentTitle: 'test',
         onAfterPrint: () => console.log("QA print")
     })
-    useEffect(()=>{
-        if(print){
+    useEffect(() => {
+        if (print) {
             handlePrint()
             setPrint(false)
         }
 
-    },[print])
-    useEffect(()=>{
+    }, [print])
+    useEffect(() => {
         console.log(data)
 
-    },[data])
+    }, [data])
     return (<>
         <Box
             ref={ref}
@@ -261,7 +261,7 @@ export default function CV1({ editable ,data, setPrint, print ,setCVDATA}) {
                             width: '80%',
                             display: 'flex',
                             flexDirection
-                            : 'column',
+                                : 'column',
                             '&:hover': {
                                 border: '1px dashed red'
                             },
@@ -277,7 +277,7 @@ export default function CV1({ editable ,data, setPrint, print ,setCVDATA}) {
                         }}
                     >
                         <Image
-                            src={data.avatar||camera}
+                            src={data.avatar || camera}
                             width="160px"
                             height="160px"
                             fit="scale-down"
