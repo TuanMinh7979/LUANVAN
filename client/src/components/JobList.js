@@ -30,17 +30,20 @@ function JobList({ jobs }) {
   console.log(jobs.length);
 
   const [allData, setAllData] = useState(
-    sliceIntoChunks(jobs, 2)
+    sliceIntoChunks(jobs, jobs.length / 3)
   );
+  const [curPage, setCurPage] = useState(0);
   const [pagetinationData, setPageTinationData] = useState(allData[0]);
 
   useEffect(() => {
-    setAllData(sliceIntoChunks(jobs, 2));
-    setPageTinationData(allData[0]);
-  }, [jobs]);
+    setAllData(sliceIntoChunks(jobs, jobs.length / 3));
+    setPageTinationData(allData[curPage]);
+  }, [jobs ]);
 
   function changePage(e, value) {
-    setPageTinationData(allData[value - 1]);
+    setCurPage(value-1);
+    console.log("--------", curPage);
+    setPageTinationData(allData[curPage]);
   }
   return (
     <>
@@ -61,7 +64,7 @@ function JobList({ jobs }) {
             sx={{ width: "100%", mt: 1, justifyContent: "center" }}
             rowGap={2}
           >
-            {pagetinationData.map((item) => {
+            {pagetinationData.length && pagetinationData.map((item) => {
               return (
                 <Grid xs={3}>
                   <JobCard job={item} />
