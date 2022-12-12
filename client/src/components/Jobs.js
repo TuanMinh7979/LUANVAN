@@ -110,12 +110,12 @@ export default function Jobs() {
 			filterApiArray.push(`${salaryFilterQuery}&`)
 		}
 
-		let queryUrl = ""
-		if (filterApiArray.length > 0) {
-			console.log(filterApiArray)
-			console.log("----------")
-			queryUrl = filterApiArray.join("")
-		}
+    let queryUrl = ""
+    if (filterApiArray.length > 0) {
+      console.log(filterApiArray)
+  
+      queryUrl = filterApiArray.join("")
+    }
 
 		if (queryUrl.endsWith("&")) {
 			queryUrl = queryUrl.substring(0, queryUrl.length - 1)
