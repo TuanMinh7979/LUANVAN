@@ -51,11 +51,12 @@ export default function RecommentJobs({ resumeId }) {
 								fontWeight="600"
 								gutterBottom
 								sx={{ ml: 3 }}
+								
 							>
 								Việc làm phù hợp với bạn
 							</Typography>
 						</Grid>
-						<Grid container item xs={12}>
+						<Grid container item xs={12} sx={{rowGap: 2}}>
 							{jobRecs.map((item) => {
 								return (
 									<Grid item xs={3}>
