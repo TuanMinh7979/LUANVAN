@@ -18,6 +18,7 @@ import Image from "mui-image";
 import logo from "../assets/logo_business_white.png";
 import banner from '../assets/banner_business.png'
 import env from '../assets/env.json'
+import { useNavigate } from "react-router-dom";
 export default function HrRegister() {
     const [response, setResponse] = useState(false);
     const imageLink = env.SAMPLE_IMAGE_01;
@@ -25,7 +26,7 @@ export default function HrRegister() {
     const email = useRef();
     const password = useRef();
     const retypepassword = useRef();
-
+    const navigate = useNavigate()
     const validate = () => {
         if (
             username.current.value == "" ||
@@ -36,19 +37,19 @@ export default function HrRegister() {
         ) {
             setResponse({
                 showArlert: true,
-                message: env.NOTNULL_MESSAGE
+                message: env.REACT_APP_NOTNULL_MESSAGE
             });
             return false;
         } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(email.current.value)) {
             setResponse({
                 showArlert: true,
-                message: env.WRONG_EMAIL
+                message: env.REACT_APP_WRONG_EMAIL
             });
             return false;
         } else if (retypepassword.current.value !== password.current.value) {
             setResponse({
                 showArlert: true,
-                message: env.PASSWORD_NOT_MATCH
+                message: env.REACT_APP_PASSWORD_NOT_MATCH
             });
             return false;
         }
@@ -89,7 +90,7 @@ export default function HrRegister() {
                 }}
             >
                 {/* Signup control */}
-                <Grid xs={4}>
+                <Grid xs={5}>
                     <Box
                         sx={{
                             width: "75%",
@@ -239,6 +240,15 @@ export default function HrRegister() {
                                 >
 									Đăng ký
                                 </Button>
+                                <Button
+									sx={{mt:2}}
+									onClick={()=>navigate("/")}
+									variant="contained"
+									color="error"
+									fullWidth
+								>
+									Thoát
+								</Button>
                             </Box>
                             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                                 <Typography variant="p">

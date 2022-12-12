@@ -1,9 +1,10 @@
-import { Grid, Typography } from "@mui/material";
+import { Divider, Grid, Typography } from "@mui/material";
 import CV1 from "./CV/CV1";
 import useFetch from "../hooks/useFetch";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Loading from "./Loading";
 export default function MyCV({ user }) {
 
     const loggedUserId = user.user._id
@@ -22,7 +23,7 @@ export default function MyCV({ user }) {
     // )
 
     return (<>
-        {loading ? "Loading" :
+        {loading ? <Loading /> :
             <Grid
                 container
                 sx={{
@@ -35,7 +36,7 @@ export default function MyCV({ user }) {
                 <Grid
                     item
                     xs={6}>
-                    <CV1 editable={false} data={data.cv}   />
+                    <CV1 editable={false} data={data.cv} />
                 </Grid>
             </Grid>
         }

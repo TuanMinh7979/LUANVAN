@@ -45,6 +45,7 @@ import {
   getJobCategoryTitleFromId
 }
   from "./other/SelectDataUtils";
+import Loading from "./Loading";
 export default function JobDetail({ user }) {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
@@ -73,27 +74,19 @@ export default function JobDetail({ user }) {
 
   let salaryChip = ""
   if (data.salaryMin == 0 && data.salaryMax == 0) salaryChip = "Thỏa thuận"
-  if (data.salaryMin == data.salaryMax && data.salaryMin > 0) salaryChip = `${data.salaryMin / 1000000} Tr`
+  if (data.salaryMin == data.salaryMax && data.salaryMin > 0) salaryChip = `${data.salaryMin / 1000000} Triẹu`
   if (data.salaryMin > 0 && data.salaryMax < 999999999 && data.salaryMin < data.salaryMax) {
-    salaryChip = `${data.salaryMin / 1000000} Tr  -  ${data.salaryMax / 1000000} Tr`
+    salaryChip = `${data.salaryMin / 1000000} Triệu  -  ${data.salaryMax / 1000000} Triệu`
   }
   if (data.salaryMin == 0 && data.salaryMax > 0) {
-    salaryChip = `Upto ${data.salaryMax / 1000000} Tr`
+    salaryChip = `Đến ${data.salaryMax / 1000000} Triệu`
   }
   if (data.salaryMax == 999999999 && data.salaryMin > 0) {
-    salaryChip = `From ${data.salaryMin / 1000000} Tr`
+    salaryChip = `Từ ${data.salaryMin / 1000000} Triệu`
   }
   return (
     <>
-      {loading ? (
-        <Container >
-          <CircularProgress sx={{
-            display: "block",
-            margin: "auto"
-          }}
-            color="success" />
-        </Container>
-      ) : (
+      {loading ? <Loading /> : (
 
         <Container
           disableGutters
@@ -162,7 +155,7 @@ export default function JobDetail({ user }) {
                 >
                   <AccessTimeIcon fontSize="small" />
                   <Typography variant="body1">
-                    Hạn nộp hồ sơ: {data.endDate}
+                    Hạn nộp hồ sơ: {new Date(data.endDate).toLocaleDateString()}
                   </Typography>
                 </Stack>
               </Box>

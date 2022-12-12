@@ -3,7 +3,7 @@ import { useRef, useState } from "react"
 import logoImage from '../assets/camera_icon.png'
 import EditIcon from '@mui/icons-material/Edit';
 import Image from "mui-image";
-import { display } from "@mui/system";
+
 
 
 export default function ContactEditPopUp({ show, setShow, data, setData }) {
@@ -203,7 +203,7 @@ export default function ContactEditPopUp({ show, setShow, data, setData }) {
                                 onBlur={(e) => {
                                     setTempData({
                                         ...tempData,
-                                        fulladdress: e.target.value
+                                        address: e.target.value
                                     })
                                 }}
                             />

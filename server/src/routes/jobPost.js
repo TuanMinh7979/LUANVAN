@@ -7,6 +7,7 @@ import {
   updateJobPost,
   deleteJobPost,
   getJobPost,
+  showAllJobPost
  
 } from "../controllers/jobPostController.js";
 
@@ -14,13 +15,18 @@ const router = express.Router();
 
 router.post("/", createJobPost);
 
+router.get("/showAllJobPost", showAllJobPost);
+
 router.put("/:id", updateJobPost);
 
 router.delete("/:id", deleteJobPost);
 
 router.get("/:id", getJobPost);
 
+
+
 router.get("/", getAllJobPost);
+
 
 
 
