@@ -21,6 +21,8 @@ import ContactEditPopUp from "../ContactEditPopUp";
 
 export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
 
+    const cvTemplate = "CV3"
+
     function RichEditor({ item, data, setData, setOpen }) {
         const [editorState, setEditorState] = useState(() =>
             EditorState.createEmpty()
@@ -54,6 +56,12 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
             })
 
         }
+
+        useEffect(() => {
+
+            if (editable) setCVDATA({ ...data, cvTemplate })
+
+        }, [])
         return (
             <>
                 <RichText editorState={editorState} setEditorState={setEditorState} />
@@ -178,7 +186,7 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
                                 color: 'rgba(0,0,0,0.7)'
                             },
                             mt: 3,
-                            ml:2,
+                            ml: 2,
                             ' h4, h6': {
                                 color: '#0a84ff'
                             },
@@ -316,7 +324,7 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
                     sx={{
                         display: 'flex',
                         width: "100%",
-                        gap:4
+                        gap: 4
                     }}
 
                 >
@@ -326,11 +334,11 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
                         sx={{
                             borderRadius: "25px",
                             background: "#fff",
-                            p:2,
+                            p: 2,
                             boxShadow: "1px 1px 5px 1px #00000014"
-                        }}  
+                        }}
                     >
-                        <CustomChip  icon={<SchoolIcon />} label="Học vấn" />
+                        <CustomChip icon={<SchoolIcon />} label="Học vấn" />
                         <Box
                             alignSelf="flex-start"
                             sx={{
@@ -357,9 +365,9 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
                         sx={{
                             borderRadius: "25px",
                             background: "#fff",
-                            p:2,
+                            p: 2,
                             boxShadow: "1px 1px 5px 1px #00000014"
-                        }}  
+                        }}
                     >
                         <CustomChip icon={<CrisisAlertIcon color="success" />} label="Mục tiêu nghề nghiệp" />
                         <Box
@@ -387,9 +395,9 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
                         sx={{
                             borderRadius: "25px",
                             background: "#fff",
-                            p:2,
+                            p: 2,
                             boxShadow: "1px 1px 5px 1px #00000014"
-                        }}  
+                        }}
                     >
                         <CustomChip icon={<FlagIcon />} label="Kỹ năng" />
                         <Box
@@ -417,9 +425,9 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
                         sx={{
                             borderRadius: "25px",
                             background: "#fff",
-                            p:2,
+                            p: 2,
                             boxShadow: "1px 1px 5px 1px #00000014"
-                        }}  
+                        }}
                     >
                         <CustomChip icon={<WorkspacePremiumIcon color="success" />} label="Chứng chỉ" />
                         <Box
@@ -449,7 +457,7 @@ export default function CV3({ editable, data, setPrint, print, setCVDATA }) {
                     position: 'relative',
                     top: "100%",
                     left: "70%",
-                    mt:"30px"
+                    mt: "30px"
                 }}>©2022 ViecLamNhanh</Typography>
         </Box>
         <ContactEditPopUp data={data} setData={setCVDATA} show={showPopup} setShow={setShowPopup} />

@@ -118,6 +118,7 @@ export default function ManageCV({ user }) {
                     xs={12}>
                     <Button sx={{ mr: 2 }} variant="contained" color="success" onClick={() => {
                         cvSchema.validate(cvData).then(async (cvData) => {
+                            console.log("..........", cvData)
                             const res = await axios.post(`/candidate/${loggedUserId}/resume`, cvData)
                             if (res.data.status && res.data.status != 200) {
                                 toast.warning("Tạo cv thất bại")
@@ -167,7 +168,7 @@ export default function ManageCV({ user }) {
                         xs={3}
                         onClick={() => setCurrentCV("CV3")}
                     >
-                        <CVCard title="Chuyên nghiệp 1"  image={cv3image} />
+                        <CVCard title="Chuyên nghiệp 1" image={cv3image} />
                     </Grid>
                 </Grid>
             </Grid>
