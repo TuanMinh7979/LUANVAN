@@ -389,6 +389,7 @@ export default function CV1({ editable ,data, setPrint, print ,setCVDATA}) {
                 }}>©2022 ViecLamNhanh</Typography>
         </Box>
         <ContactEditPopUp data={data} setData={setCVDATA} show={showPopup} setShow={setShowPopup} />
+        <ContactEditPopUp data={data} setData={setCVDATA} show={showPopup} setShow={setShowPopup} />
         {/* <EditDialog open={open} title={title} item={item} setOpen={setOpen} isRich={isRich} /> */}
     </>)
 }

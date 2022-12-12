@@ -1,6 +1,7 @@
 import { Box, Grid, Typography, CircularProgress } from "@mui/material";
 import CV1 from "./CV/CV1";
 import CV2 from "./CV/CV2";
+import CV3 from "./CV/CV3"
 import defaultCvData from '../assets/defaultCvData.json'
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
@@ -11,6 +12,7 @@ import { toast } from "react-toastify";
 import CVCard from "./CV/CVCard";
 import cv1image from "./CV/cv1image.png"
 import cv2image from "./CV/cv2image.png"
+import cv3image from "./CV/cv3image.png"
 import cvSchema from "../validate/cvValidate";
 
 export default function ManageCV({ user }) {
@@ -41,6 +43,7 @@ export default function ManageCV({ user }) {
                 xs={6}>
                 {currentCV == "CV1" && <CV1 editable={true} data={cvData} print={print} setPrint={setPrint} setCVDATA={setCVDATA} />}
                 {currentCV == "CV2" && <CV2 editable={true} data={cvData} print={print} setPrint={setPrint} setCVDATA={setCVDATA} />}
+                {currentCV == "CV3" && <CV3 editable={true} data={cvData} print={print} setPrint={setPrint} setCVDATA={setCVDATA} />}
             </Grid>
             <Grid
                 xs={4}
@@ -162,8 +165,9 @@ export default function ManageCV({ user }) {
                     <Grid
                         item
                         xs={3}
+                        onClick={() => setCurrentCV("CV3")}
                     >
-                        <CVCard title="Chuyên nghiệp 1" color="orange" />
+                        <CVCard title="Chuyên nghiệp 1"  image={cv3image} />
                     </Grid>
                 </Grid>
             </Grid>
