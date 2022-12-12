@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import CVCard from "./CV/CVCard";
 import cv1image from "./CV/cv1image.png"
 import cv2image from "./CV/cv2image.png"
+import cvSchema from "../validate/cvValidate";
 
 export default function ManageCV({ user }) {
     const navigate = useNavigate()
@@ -112,18 +113,16 @@ export default function ManageCV({ user }) {
                 <Grid
                     item
                     xs={12}>
-                    <Button sx={{ mr: 2 }} variant="contained" color="success" onClick={async () => {
-
-
-
-                        const res = await axios.post(`/candidate/${loggedUserId}/resume`, cvData)
-
-                        if (res.data.status && res.data.status != 200) {
-                            toast.warning("Tạo cv thất bại")
-                        } else {
-                            console.log(res)
-                            toast.success("Tạo cv thành công")
-                        }
+                    <Button sx={{ mr: 2 }} variant="contained" color="success" onClick={() => {
+                        cvSchema.validate(cvData).then(async (cvData) => {
+                            const res = await axios.post(`/candidate/${loggedUserId}/resume`, cvData)
+                            if (res.data.status && res.data.status != 200) {
+                                toast.warning("Tạo cv thất bại")
+                            } else {
+                                console.log(res)
+                                toast.success("Tạo cv thành công")
+                            }
+                        })
                     }} >Lưu CV</Button>
                     <Button variant="contained" color="success" onClick={() => {
                         setPrint(true)
