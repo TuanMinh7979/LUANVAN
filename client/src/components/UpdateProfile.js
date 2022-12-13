@@ -102,12 +102,10 @@ export default function UpdateProfile({ user }) {
       ).join(" "),
     };
     console.log(rs);
-    profileSchema.validate(userData).then((validatedData) => {
+    profileSchema.validate(rs).then((validatedData) => {
       axios
         .put(`/candidate/${user.user._id}/profile`, validatedData)
         .then((res) => {
-          console.log("---");
-          console.log(res);
           if (res.data.status && res.data.status != 200) {
             toast.error("Cập nhật hồ sơ thất bại");
           } else {
@@ -415,7 +413,7 @@ export default function UpdateProfile({ user }) {
                     onInputChange={(e, value) => {
                       setUserData({
                         ...userData,
-                        address: getAddressIdFromTitle(value),
+                        addressId: getAddressIdFromTitle(value),
                       });
                     }}
                     renderInput={(params) => (

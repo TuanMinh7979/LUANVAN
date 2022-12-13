@@ -5,15 +5,11 @@ import Candidate from "../models/Candidate.js";
 import Rec from "../models/Rec.js";
 import { filterSkipField } from "../utils/commonUtil.js";
 
-
 //check user before=> req.param.id = req.user.id
 export const updateUser = async (req, res, next) => {
-
   req.body = filterSkipField(req.body, "roleInp", "passwordInp", "profile");
   try {
-    const {
-      detail, ...generalUser
-    } = req.body;
+    const { detail, ...generalUser } = req.body;
 
     //khong cho cap nhat role
     let updatedUser;
@@ -27,9 +23,8 @@ export const updateUser = async (req, res, next) => {
         { new: true }
       );
     } else {
-      updatedUser = await User.findById(req.params.id)
+      updatedUser = await User.findById(req.params.id);
     }
-
 
     if (updatedUser === null)
       return next(createError(404, "Không tìm thấy user rồi"));
@@ -103,14 +98,18 @@ export const getUser = async (req, res, next) => {
     let userDetail = {};
     try {
       if (user.role === "candidate") {
-        userDetail = await Candidate.findOne({ userId: user._id });
+        let candidate = await Candidate.findOne({ userId: user._id });
+   
+        let candidateProfile = candidate.profile;
+         userDetail = { ...candidate._doc, ...candidateProfile };
       } else if (user.role === "rec") {
         userDetail = await Rec.findOne({ userId: user._id });
       }
     } catch (e) {
+      console.log(e);
       next(e);
     }
-
+ 
     res.status(200).json({ ...user._doc, ...userDetail._doc });
   } catch (err) {
     next(err);

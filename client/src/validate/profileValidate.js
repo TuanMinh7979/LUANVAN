@@ -10,7 +10,7 @@ const profileSchema = yup.object().shape({
 	email: yup.string().required().matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,()=>showErr(env.REACT_APP_WRONG_EMAIL)),
 	phone: yup.string().required(()=>showErr(env.REACT_APP_PHONE_REQUIRED)).matches(/[0-9]+/g,()=>showErr(env.REACT_APP_WRONG_PHONE)),
 	// avatar: avatar,
-	address: yup.string().required(()=>showErr(env.REACT_APP_JOBADDRESS_REQUIRED)),
+	addressId: yup.string().required(()=>showErr(env.REACT_APP_JOBADDRESS_REQUIRED)),
 	title: yup.string().required(()=>showErr(env.REACT_APP_JOB_REQUIRED))
 	// fullAddress: '',
 	// skills: '',

@@ -127,7 +127,7 @@ export default function Profile({ user }) {
 						}}
 					>
 						<Typography variant="h6" fontWeight={550} >Học vấn</Typography>
-						<RichTextDisplay data={JSON.parse(data.profile.educationCv)}></RichTextDisplay>
+						<RichTextDisplay data={JSON.parse(data.educationCv)}></RichTextDisplay>
 					</Grid>
 					{/* Muc tieu nghe nghiep */}
 					<Grid
@@ -141,7 +141,7 @@ export default function Profile({ user }) {
 						}}
 					>
 						<Typography variant="h6" fontWeight={550} >Mục tiêu nghề nghiệp</Typography>
-						<RichTextDisplay data={JSON.parse(data.profile.objectiveCv)}></RichTextDisplay>
+						<RichTextDisplay data={JSON.parse(data.objectiveCv)}></RichTextDisplay>
 					</Grid>
 					{/* Hoat dong */}
 					<Grid
@@ -155,7 +155,7 @@ export default function Profile({ user }) {
 						}}
 					>
 						<Typography variant="h6" fontWeight={550} >Hoạt động</Typography>
-						<RichTextDisplay data={JSON.parse(data.profile.activitiesCv)}></RichTextDisplay>
+						<RichTextDisplay data={JSON.parse(data.activitiesCv)}></RichTextDisplay>
 					</Grid>
 					{/* Chung chi */}
 					<Grid
@@ -169,7 +169,7 @@ export default function Profile({ user }) {
 						}}
 					>
 						<Typography variant="h6" fontWeight={550} >Chứng chỉ</Typography>
-						<RichTextDisplay data={JSON.parse(data.profile.certificationsCv)}></RichTextDisplay>
+						<RichTextDisplay data={JSON.parse(data.certificationsCv)}></RichTextDisplay>
 					</Grid>
 				</Grid>
 			}

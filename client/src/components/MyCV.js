@@ -13,16 +13,6 @@ export default function MyCV({ user }) {
 
     const { data, loading, error } = useFetch(`/candidate/${loggedUserId}/resume`);
     console.log(data)
-    // useEffect(() => {
-    //     async function getData() {
-    //         let rs = await axios.get(`/candidate/${loggedUserId}/resume`);
-    //         return rs;
-    //     }
-    //     getData().then((res) => {
-    //         console.log(res)
-    //     });
-    // }, []
-    // )
 
     return (<>
         {loading ? <Loading /> :

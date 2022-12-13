@@ -7,11 +7,7 @@ const ResumeSchema = new Schema(
   {
     activities: String,
     activitiesCv: String,
-    address: {
-      type: mongoose.Schema.ObjectId,
-      ref: "addresss",
-      
-    },
+    address: String,
     avatar: String,
     certifications: String,
     certificationsCv: String,
