@@ -85,9 +85,9 @@ export default function Profile({ user }) {
 								>
 									<Grid xs={3}>
 										<Image
-											src={logo}
-											width="160px"
-											height="160px"
+											src={data.avatar}
+											width="250px"
+											height="250px"
 											duration={0}
 											fit="scale-down"
 											sx={{
@@ -159,6 +159,7 @@ export default function Profile({ user }) {
 									<Image
 										src={schoolImg}
 										duration={0}
+										alt={"Loading 99%"}
 									>
 									</Image>
 								</Grid>
