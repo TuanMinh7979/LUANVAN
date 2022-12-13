@@ -423,7 +423,7 @@ export default function UpdateProfile({ user }) {
                 >
                     <Grid item xs={12} sx={{ mb: 2 }}>
                         <Chip icon={<SchoolIcon />} label="Học vấn" color="success" />
-                        <RichText editorState={data.profile.educationCv} setEditorState={setEducation} />
+                        <RichText editorState={education} setEditorState={setEducation} />
                     </Grid>
                     <Grid item xs={12} sx={{ mb: 2 }}>
                         <Chip icon={<WorkIcon />} label="Kinh nghiệm làm việc" color="success" />

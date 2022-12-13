@@ -9,7 +9,11 @@ import SchoolIcon from '@mui/icons-material/School';
 import { useReactToPrint } from 'react-to-print'
 import { RichTextDisplay } from "./RichText"
 import fakedata from '../assets/test.json'
+import useFetch from "../hooks/useFetch";
 export default function Profile({ user }) {
+
+  const { data, loading, error } = useFetch(`/user/${user.user._id}`);
+  console.log(data)
   const ref = useRef()
   const theme = createTheme()
   const handlePrint = useReactToPrint({
