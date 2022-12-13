@@ -67,44 +67,25 @@ export const login = async (req, res, next) => {
 
     let resUser = user._doc;
     if (user.role == "rec") {
-      const recDetail = await Rec.findOne({ userId: user.id.toString() });
-      resUser = { ...resUser, ...recDetail };
+      const recDetail = await Rec.findOne({ userId: user._id }).select({
+        _id: 0
+      });
+      resUser = { ...resUser, ...recDetail._doc };
     } else if (user.role == "candidate") {
-      let candidateDetail;
+
       let candidate = await Candidate.findOne({ userId: user._id }).select({
         _id: 0,
       });
-      
-      let candidateProfile = candidate.profile;
-      if (candidateProfile) {
-        candidate = filterSkipField(candidate._doc, "profile");
-        candidateProfile = filterSkipField(candidateProfile._doc, "_id");
-        candidateDetail = { ...candidate, ...candidateProfile };
-      }
-
-      const activeCvId = await Resume.findOne({
-        candidateId: candidate._id,
-      }).select("_id");
-
-      if (activeCvId) {
-        candidateDetail = {
-          ...candidateDetail._doc,
-          activeCvId: activeCvId._id,
-        };
-      }
-      //DAY LA KHUON MAU DE TRA VE THONG TIN DE LUU VAO REDUX
-      resUser = { ...resUser, ...candidateDetail };
+      resUser = { ...resUser, ...candidate._doc };
     }
 
     delete resUser.password;
-
+    console.log("___+++", resUser)
     res
       .status(200)
       .cookie("access_token", token, {
         httpOnly: true,
-      })
-
-      .json({ ...resUser });
+      }).json(resUser);
   } catch (err) {
     console.log(err)
     return next(createError(400, "Đăng nhập thất bại"));

@@ -1,12 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
+
+
 export const userSlice = createSlice({
     name: 'user',
-    initialState:{
-        user: JSON.parse(sessionStorage.getItem('user'))==null?"Người dùng":JSON.parse(sessionStorage.getItem('user')),
-        isLogin: sessionStorage.getItem('user')?true:false
+    initialState: {
+        user: JSON.parse(sessionStorage.getItem('user')) == null ? "Người dùng" : JSON.parse(sessionStorage.getItem('user')),
+        isLogin: sessionStorage.getItem('user') ? true : false
     },
-    reducers:{
+    reducers: {
         setUserLogin: (state, action) => {
             state.user = action.payload
             state.isLogin = true
@@ -16,12 +19,36 @@ export const userSlice = createSlice({
             state.isLogin = false
             sessionStorage.clear()
         },
-        setUserInfo:(state, action)=>{
-            state.user = action.payload
-            state.isLogin = true
-        }
+
+        //for candidate
+        setActivatedCvId: (state, action) => {
+            let cpState = { ...state.user };
+            cpState.activatedCvId = action.payload;
+            state.user = { ...cpState }
+            //
+            sessionStorage.setItem("user", JSON.stringify(state.user));
+        },
+        setProfile: (state, action) => {
+            let cpState = { ...state.user };
+            cpState.profile = action.payload;
+            state.user = { ...cpState }
+            //
+            sessionStorage.setItem("user", JSON.stringify(state.user));
+        },
+
+        setApplyJobs: (state, action) => {
+            let cpState = { ...state.user };
+            cpState.applyJobs = action.payload;
+            state.user = { ...cpState }
+            //
+            sessionStorage.setItem("user", JSON.stringify(state.user));
+        },
+
+        //for candidate
+
+
     }
 })
 
-export const { setUserLogin, setUserLogout, setUserInfo } = userSlice.actions
+export const { setUserLogin, setUserLogout, setActivatedCvId, setProfile, setApplyJobs } = userSlice.actions
 export default userSlice.reducer;

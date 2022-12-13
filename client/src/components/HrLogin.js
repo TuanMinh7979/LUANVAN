@@ -49,9 +49,10 @@ export default function HrLogin() {
                 if (res.data.status && res.data.status != 200) {
                     toast.error("Sai tên đăng nhập hoặc mật khẩu")
                 } else {
-                    sessionStorage.setItem("user", JSON.stringify(res.data.data))
-                    const action = setUserLogin(res.data.data, true)
-                    dispatch(action)
+                
+                    res = res.data;
+					sessionStorage.setItem("user", JSON.stringify(res));
+					dispatch(setUserLogin(res, true));
                 }
 
             });

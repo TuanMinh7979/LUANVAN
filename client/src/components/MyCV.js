@@ -12,7 +12,7 @@ export default function MyCV({ user }) {
     const loggedUserId = user.user._id
 
     const { data, loading, error } = useFetch(`/candidate/${loggedUserId}/resume`);
-    console.log(data)
+    
 
     return (<>
         {loading ? <Loading /> :

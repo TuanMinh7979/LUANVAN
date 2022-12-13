@@ -52,10 +52,13 @@ const CandidateSchema = new Schema(
     profile: {
       type: ProfileSchema
     },
-
-    saveJobs: [{ type: mongoose.Schema.ObjectId, ref: "jobposts" }],
+    activatedCvId: {
+      type: String,
+      default: ""
+    },
     applyJobs: [{ type: mongoose.Schema.ObjectId, ref: "jobposts" }],
 
+    saveJobs: [{ type: mongoose.Schema.ObjectId, ref: "jobposts" }],
     //one to one
     userId: {
       type: mongoose.Schema.ObjectId,

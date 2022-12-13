@@ -44,12 +44,12 @@ import {
   getSalaryTypeTitleFromId,
   getJobCategoryTitleFromId,
 } from "./other/SelectDataUtils";
-import { setUserInfo } from "../store/userSlice";
+import { setActivedCvId, setApplyJobs } from "../store/userSlice";
 import Loading from "./Loading";
 import { useDispatch } from "react-redux";
 
 export default function JobDetail({ user }) {
-  console.log(user)
+
   const dispatch = useDispatch();
 
   const [isApplied, setIsApplied] = useState(false);
@@ -71,11 +71,11 @@ export default function JobDetail({ user }) {
         contact
       );
       if (res.data.status && res.data.status !== 200) {
-        
+
         toast.warning("Ứng tuyển thất bại");
       } else {
-        console.log("--------------><><><><><>", res.data);
-        const action = setUserInfo(res.data);
+    
+        const action = setApplyJobs("newid");
         dispatch(action);
         toast.success("Ứng tuyển thành công");
       }
@@ -91,9 +91,8 @@ export default function JobDetail({ user }) {
     data.salaryMax < 999999999 &&
     data.salaryMin < data.salaryMax
   ) {
-    salaryChip = `${data.salaryMin / 1000000} Triệu  -  ${
-      data.salaryMax / 1000000
-    } Triệu`;
+    salaryChip = `${data.salaryMin / 1000000} Triệu  -  ${data.salaryMax / 1000000
+      } Triệu`;
   }
   if (data.salaryMin == 0 && data.salaryMax > 0) {
     salaryChip = `Đến ${data.salaryMax / 1000000} Triệu`;

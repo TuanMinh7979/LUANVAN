@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserLogin } from "../store/userSlice";
+import { setUserLogin, setActivatedCvId, setProfile, setApplyJobs } from "../store/userSlice";
 import { useNavigate } from "react-router-dom";
 import {
 	Grid,
@@ -21,6 +21,7 @@ import logo from "../assets/logo_banner.png";
 import env from "../assets/env.json";
 import LoginSchema from "../validate/loginValidate";
 import { toast } from "react-toastify";
+import { isAllOf } from "@reduxjs/toolkit";
 export default function Login() {
 	const dispatch = useDispatch();
 	let navigate = useNavigate();
@@ -43,15 +44,15 @@ export default function Login() {
 				url: "auth/login",
 				data: data,
 			}).then((res) => {
-				console.log(res);
+				console.log(res)
 				if (res.data.status && res.data.status != 200) {
-					console.log(res)
+
 					toast.error(res.data.message)
 				} else {
-					sessionStorage.setItem("user", JSON.stringify(res.data));
-					const action = setUserLogin(res.data, true);
-					dispatch(action);
 
+					res = res.data;
+					sessionStorage.setItem("user", JSON.stringify(res));
+					dispatch(setUserLogin(res, true));
 				}
 			});
 		})
@@ -61,6 +62,7 @@ export default function Login() {
 			console.log(err);
 		})
 	};
+
 	if (user.isLogin && user.user.role == "candidate") {
 		navigate("/");
 	} else if (user.isLogin && user.user.role == "admin") {

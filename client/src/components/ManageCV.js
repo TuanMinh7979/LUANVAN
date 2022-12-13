@@ -15,7 +15,7 @@ import cv2image from "./CV/cv2image.png";
 import cv3image from "./CV/cv3image.png";
 import cvSchema from "../validate/cvValidate";
 import { useDispatch } from "react-redux";
-import { setUserInfo } from "../store/userSlice";
+import { setActivatedCvId, setProfile } from "../store/userSlice";
 import useFetch from "../hooks/useFetch";
 import Loading from "./Loading";
 
@@ -28,11 +28,11 @@ export default function ManageCV({ user }) {
     navigate(location);
   };
   const [print, setPrint] = useState(false);
-  
-  const loggedUserId = user.user._id;
-  console.log("---------------------lOGGED USER REACT", loggedUserId)
 
-  
+  const loggedUserId = user.user._id;
+
+
+
   const [defaultCv, setDefaultCv] = useState(defaultCvData);
   const [currentCV, setCurrentCV] = useState("CV1");
   useEffect(() => {
@@ -207,10 +207,10 @@ export default function ManageCV({ user }) {
                         );
                         if (res.data.status && res.data.status != 200) {
                           toast.warning("Tạo cv thất bại");
-                          console.log("-------------ERR", res);
+                          
                         } else {
                           console.log(res.data);
-                          const action = setUserInfo(res.data);
+                          const action = setActivedCvId("newId", true)
                           dispatch(action);
                           toast.success("Tạo cv thành công");
                         }
@@ -418,8 +418,8 @@ export default function ManageCV({ user }) {
                         if (res.data.status && res.data.status != 200) {
                           toast.warning("Tạo cv thất bại");
                         } else {
-                          console.log("-------------+++++", res.data);
-                          const action = setUserInfo(res.data);
+                          console.log("-------------+++++++++++===============", res.data);
+                          const action = setActivedCvId("newID nha", true);
                           dispatch(action);
                           toast.success("Tạo cv thành công");
                         }

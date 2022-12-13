@@ -105,17 +105,16 @@ export const updateCandidateProfile = async (req, res, next) => {
 export const createResume = async (req, res, next) => {
   try {
     let loggedUserId = req.user.id;
-    console.log(".......................LOGIN USER ID", req.user.id)
-    const loggedUser = await User.findOne({ userId: req.user.id });
+
+    const loggedUser = await User.findById(req.user.id);
     if (!loggedUser || loggedUser == undefined) {
       return next(createError(404, "Ứng viên không tồn tại trong hệ thống"));
     }
     let candidate = await Candidate.findOne({ userId: loggedUserId })
-    console.log("CANDIDATE HERE", candidate)
+
     const oldResume = await Resume.findOne({ candidateId: candidate._id });
     let savedResume;
     if (oldResume) {
-      //updated old Cv
 
       savedResume = await Resume.findOneAndUpdate(
         { candidateId: candidate._id },
@@ -131,29 +130,14 @@ export const createResume = async (req, res, next) => {
       savedResume = await resumeToSave.save();
     }
     let url = `${process.env.DJANGOSERVER}/updateCvsFile`;
-    const rs = await axios.get(url);
+    const djg = await axios.get(url);
     console.log("update db success...");
 
-    //
+    //---
+    let acti=savedResume._id;
 
-    let candidateProfile = candidate.profile;
-    let candidateDetail = {}
-    if (candidateProfile) {
-      candidate = filterSkipField(candidate._doc, "profile", "_id")
-      candidateProfile = filterSkipField(candidateProfile._doc, "_id")
-      // no longer candidate._doc
-      candidateDetail = { ...candidate, ...candidateProfile };
-    } else {
-      candidateDetail = { ...candidate };
-    }
-    //
-    candidateDetail = {
-      ...candidateDetail,
-      activeCvId: savedResume._id,
-    };
-
-    //DAY LA KHUON MAU DE TRA VE THONG TIN DE LUU VAO REDUX
-    res.status(200).json({ ...loggedUser._doc, ...candidateDetail });
+    let rs = {...loggedUser, ...candidate}
+    res.status(200).json({ ...loggedUser._doc, ...canDetail });
   } catch (e) {
     console.log(e);
     next(e);
