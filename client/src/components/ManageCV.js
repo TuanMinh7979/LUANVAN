@@ -15,7 +15,7 @@ import cv2image from "./CV/cv2image.png";
 import cv3image from "./CV/cv3image.png";
 import cvSchema from "../validate/cvValidate";
 import { useDispatch } from "react-redux";
-import { setActivatedCvId, setProfile } from "../store/userSlice";
+import { setActivatedCvId } from "../store/userSlice";
 import useFetch from "../hooks/useFetch";
 import Loading from "./Loading";
 
@@ -207,10 +207,10 @@ export default function ManageCV({ user }) {
                         );
                         if (res.data.status && res.data.status != 200) {
                           toast.warning("Tạo cv thất bại");
-                          
+
                         } else {
                           console.log(res.data);
-                          const action = setActivedCvId("newId", true)
+                          const action = setActivatedCvId(res.data.savedResumeId, true)
                           dispatch(action);
                           toast.success("Tạo cv thành công");
                         }
@@ -418,8 +418,8 @@ export default function ManageCV({ user }) {
                         if (res.data.status && res.data.status != 200) {
                           toast.warning("Tạo cv thất bại");
                         } else {
-                          console.log("-------------+++++++++++===============", res.data);
-                          const action = setActivedCvId("newID nha", true);
+                          let savedResumeId = res.data.savedResumeId
+                          const action = setActivatedCvId(savedResumeId, true);
                           dispatch(action);
                           toast.success("Tạo cv thành công");
                         }

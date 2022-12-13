@@ -80,7 +80,7 @@ export const login = async (req, res, next) => {
     }
 
     delete resUser.password;
-    console.log("___+++", resUser)
+ 
     res
       .status(200)
       .cookie("access_token", token, {

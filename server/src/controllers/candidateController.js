@@ -106,10 +106,6 @@ export const createResume = async (req, res, next) => {
   try {
     let loggedUserId = req.user.id;
 
-    const loggedUser = await User.findById(req.user.id);
-    if (!loggedUser || loggedUser == undefined) {
-      return next(createError(404, "Ứng viên không tồn tại trong hệ thống"));
-    }
     let candidate = await Candidate.findOne({ userId: loggedUserId })
 
     const oldResume = await Resume.findOne({ candidateId: candidate._id });
@@ -122,7 +118,7 @@ export const createResume = async (req, res, next) => {
         { new: true }
       );
     } else {
-      //create new Cv
+
       let resumeToSave = new Resume({
         ...req.body,
         candidateId: candidate._id,
@@ -132,12 +128,14 @@ export const createResume = async (req, res, next) => {
     let url = `${process.env.DJANGOSERVER}/updateCvsFile`;
     const djg = await axios.get(url);
     console.log("update db success...");
-
     //---
-    let acti=savedResume._id;
 
-    let rs = {...loggedUser, ...candidate}
-    res.status(200).json({ ...loggedUser._doc, ...canDetail });
+    candidate.activatedCvId = savedResume._id;
+    candidate.save()
+
+
+
+    res.status(200).json({ savedResumeId: savedResume._id});
   } catch (e) {
     console.log(e);
     next(e);

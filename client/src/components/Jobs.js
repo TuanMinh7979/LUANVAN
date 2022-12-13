@@ -383,8 +383,8 @@ export default function Jobs() {
 						</Box>
 					</Paper>}
 				</Box>
-				{user && user.user.detail && user.user.detail.activeCvId && (
-					<RecommentJobs resumeId={user.user.detail.activeCvId} />
+				{user && user.user.activatedCvId && (
+					<RecommentJobs resumeId={user.user.activatedCvId} />
 				)}
 			</Container>
 		</>
