@@ -60,6 +60,7 @@ export default function Jobs() {
   const navigate = useNavigate()
   const user = useSelector((state) => state.user);
   const [data, setData] = useState()
+  const [reload, setReload] = useState()
   const MenuProps = {
     PaperProps: {
       style: {
@@ -147,7 +148,7 @@ export default function Jobs() {
   useEffect(() => {
     buildFilterApi()
     setSearchParams({})
-  }, [])
+  }, [reload])
   return (
     <>
       <Container>
@@ -328,7 +329,7 @@ export default function Jobs() {
                   pathname:"/jobs",
                   search: `?${createSearchParams(temp)}`,
                 })
-                navigate(0)
+                setReload(!reload)
               }}
             >
               Tìm việc ngay
