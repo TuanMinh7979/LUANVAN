@@ -81,6 +81,7 @@ export const login = async (req, res, next) => {
           activeCvId: activeCvId._id,
         };
       }
+      //DAY LA KHUON MAU DE TRA VE THONG TIN DE LUU VAO REDUX 
       resUser = { ...resUser, detail: candidateDetail };
     }
 

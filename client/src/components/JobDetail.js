@@ -15,7 +15,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 import WorkIcon from "@mui/icons-material/Work";
-import CancelIcon from '@mui/icons-material/Cancel';
+import CancelIcon from "@mui/icons-material/Cancel";
 import Image from "mui-image";
 import logo from "../assets/companylogo_sample.png";
 import { useState } from "react";
@@ -35,62 +35,85 @@ import EditIcon from "@mui/icons-material/Edit";
 import RecommentJobs from "./RecommentJobs";
 import SimilarJob from "./SimilarJob";
 import axios from "axios";
-import { toast } from "react-toastify"
+import { toast } from "react-toastify";
 import {
   getAddressTitleFromId,
   getWorkExpTitleFromId,
   getWorkTypeTitleFromId,
   getRankTitleFromId,
   getSalaryTypeTitleFromId,
-  getJobCategoryTitleFromId
+  getJobCategoryTitleFromId,
 } from "./other/SelectDataUtils";
+import { setUserInfo } from "../store/userSlice";
 import Loading from "./Loading";
-
+import { useDispatch } from "react-redux";
 
 export default function JobDetail({ user }) {
+  console.log(user)
+  const dispatch = useDispatch();
+  if (
+    user.user &&
+    user.user.role== "candidate" &&
+    user.user.detail.applyJobs
+  ) {
+    console.log(user.user.detail.array);
 
-  const [isApplied, setIsApplied] = useState(false)
+    // const found = arr1.some(r=> arr2.includes(r))
+  }
+  const [isApplied, setIsApplied] = useState(false);
   const location = useLocation();
   const id = location.pathname.split("/")[2];
 
   const { data, loading, error } = useFetch(`/jobpost/${id}`);
   const theme = createTheme();
   const ApplyJob = async () => {
-    let sendApply = 0
+    let sendApply = 0;
     if (confirm("Bạn có muốn ứng tuyển công việc này")) {
       sendApply = 1;
       const contact = {
         jobId: id,
       };
 
-      const res = await axios.post(`/candidate/${user.user._id}/applyjob`, contact);
+      const res = await axios.post(
+        `/candidate/${user.user._id}/applyjob`,
+        contact
+      );
       if (res.data.status && res.data.status !== 200) {
-        toast.warning("Ứng tuyển thất bại")
+        
+        toast.warning("Ứng tuyển thất bại");
       } else {
-        toast.success("Ứng tuyển thành công")
-        setIsApplied(true)
+        console.log("--------------><><><><><>", res.data);
+        const action = setUserInfo(res.data);
+        dispatch(action);
+        toast.success("Ứng tuyển thành công");
       }
     }
-
-
   };
 
-  let salaryChip = ""
-  if (data.salaryMin == 0 && data.salaryMax == 0) salaryChip = "Thỏa thuận"
-  if (data.salaryMin == data.salaryMax && data.salaryMin > 0) salaryChip = `${data.salaryMin / 1000000} Triẹu`
-  if (data.salaryMin > 0 && data.salaryMax < 999999999 && data.salaryMin < data.salaryMax) {
-    salaryChip = `${data.salaryMin / 1000000} Triệu  -  ${data.salaryMax / 1000000} Triệu`
+  let salaryChip = "";
+  if (data.salaryMin == 0 && data.salaryMax == 0) salaryChip = "Thỏa thuận";
+  if (data.salaryMin == data.salaryMax && data.salaryMin > 0)
+    salaryChip = `${data.salaryMin / 1000000} Triẹu`;
+  if (
+    data.salaryMin > 0 &&
+    data.salaryMax < 999999999 &&
+    data.salaryMin < data.salaryMax
+  ) {
+    salaryChip = `${data.salaryMin / 1000000} Triệu  -  ${
+      data.salaryMax / 1000000
+    } Triệu`;
   }
   if (data.salaryMin == 0 && data.salaryMax > 0) {
-    salaryChip = `Đến ${data.salaryMax / 1000000} Triệu`
+    salaryChip = `Đến ${data.salaryMax / 1000000} Triệu`;
   }
   if (data.salaryMax == 999999999 && data.salaryMin > 0) {
-    salaryChip = `Từ ${data.salaryMin / 1000000} Triệu`
+    salaryChip = `Từ ${data.salaryMin / 1000000} Triệu`;
   }
   return (
     <>
-      {loading ? <Loading /> : (
-
+      {loading ? (
+        <Loading />
+      ) : (
         <Container
           disableGutters
           maxWidth
@@ -163,24 +186,26 @@ export default function JobDetail({ user }) {
                 </Stack>
               </Box>
               <Box>
-                {user.user.role == "candidate" && (
-                  !isApplied?<Button
-                    onClick={() => ApplyJob()}
-                    startIcon={<SendIcon />}
-                    variant="contained"
-                    color="success"
-                  >
-                    Ứng tuyển ngay
-                  </Button>:
-                   <Button
-                   onClick={() => ApplyJob()}
-                   startIcon={<CancelIcon />}
-                   variant="contained"
-                   color="warning"
-                 >
-                   Hủy ứng tuyển
-                 </Button>
-                )}
+                {user.user.role == "candidate" &&
+                  (!isApplied ? (
+                    <Button
+                      onClick={() => ApplyJob()}
+                      startIcon={<SendIcon />}
+                      variant="contained"
+                      color="success"
+                    >
+                      Ứng tuyển ngay
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={() => ApplyJob()}
+                      startIcon={<CancelIcon />}
+                      variant="contained"
+                      color="warning"
+                    >
+                      Hủy ứng tuyển
+                    </Button>
+                  ))}
                 {user.user.role == "rec" && (
                   <Button
                     startIcon={<EditIcon />}
@@ -262,11 +287,7 @@ export default function JobDetail({ user }) {
                         Mức lương
                       </Typography>
                       <br></br>
-                      <Typography variant="p">
-
-                        {salaryChip}
-
-                      </Typography>
+                      <Typography variant="p">{salaryChip}</Typography>
                     </Box>
                   </Grid>
                   <Grid
@@ -300,7 +321,9 @@ export default function JobDetail({ user }) {
                         Cấp bậc
                       </Typography>
                       <br></br>
-                      <Typography variant="p">{getRankTitleFromId(data.rankId)}</Typography>
+                      <Typography variant="p">
+                        {getRankTitleFromId(data.rankId)}
+                      </Typography>
                     </Box>
                   </Grid>
                   <Grid
@@ -317,7 +340,9 @@ export default function JobDetail({ user }) {
                         Hình thức làm việc
                       </Typography>
                       <br></br>
-                      <Typography variant="p">{getWorkTypeTitleFromId(data.workTypeId)}</Typography>
+                      <Typography variant="p">
+                        {getWorkTypeTitleFromId(data.workTypeId)}
+                      </Typography>
                     </Box>
                   </Grid>
                   <Grid
@@ -351,7 +376,9 @@ export default function JobDetail({ user }) {
                         Kinh nghiệm
                       </Typography>
                       <br></br>
-                      <Typography variant="p">{getWorkExpTitleFromId(data.workExpId)}</Typography>
+                      <Typography variant="p">
+                        {getWorkExpTitleFromId(data.workExpId)}
+                      </Typography>
                     </Box>
                   </Grid>
                 </Grid>

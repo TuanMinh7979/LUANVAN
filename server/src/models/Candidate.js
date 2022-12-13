@@ -54,6 +54,7 @@ const CandidateSchema = new Schema(
     },
 
     saveJobs: [{ type: mongoose.Schema.ObjectId, ref: "jobposts" }],
+    applyJobs: [{ type: mongoose.Schema.ObjectId, ref: "jobposts" }],
 
     //one to one
     userId: {

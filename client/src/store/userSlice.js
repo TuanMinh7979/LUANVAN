@@ -17,6 +17,7 @@ export const userSlice = createSlice({
             sessionStorage.clear()
         },
         setUserInfo:(state, action)=>{
+            console.log("FROM SLICE.....>>>", action.payload)
             state.user = action.payload
             state.isLogin = true
         }
