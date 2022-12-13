@@ -95,7 +95,7 @@ export const updateCandidateProfile = async (req, res, next) => {
     if (!updatedCandidate) {
       return next(createError(404, "Không tìm thấy ứng viên"));
     }
-
+    Candidate.findOne
     return res.status(200).json({ ...updatedCandidate._doc });
   } catch (e) {
     next(e);
@@ -105,11 +105,13 @@ export const updateCandidateProfile = async (req, res, next) => {
 export const createResume = async (req, res, next) => {
   try {
     let loggedUserId = req.user.id;
+    console.log(".......................LOGIN USER ID", req.user.id)
     const loggedUser = await User.findOne({ userId: req.user.id });
     if (!loggedUser || loggedUser == undefined) {
       return next(createError(404, "Ứng viên không tồn tại trong hệ thống"));
     }
-    const candidate = await Candidate.findOne({ userId: loggedUserId });
+    let candidate = await Candidate.findOne({ userId: loggedUserId })
+    console.log("CANDIDATE HERE", candidate)
     const oldResume = await Resume.findOne({ candidateId: candidate._id });
     let savedResume;
     if (oldResume) {
@@ -132,13 +134,26 @@ export const createResume = async (req, res, next) => {
     const rs = await axios.get(url);
     console.log("update db success...");
 
-    const candidateDetail = {
-      ...candidate._doc,
+    //
+
+    let candidateProfile = candidate.profile;
+    let candidateDetail = {}
+    if (candidateProfile) {
+      candidate = filterSkipField(candidate._doc, "profile", "_id")
+      candidateProfile = filterSkipField(candidateProfile._doc, "_id")
+      // no longer candidate._doc
+      candidateDetail = { ...candidate, ...candidateProfile };
+    } else {
+      candidateDetail = { ...candidate };
+    }
+    //
+    candidateDetail = {
+      ...candidateDetail,
       activeCvId: savedResume._id,
     };
 
     //DAY LA KHUON MAU DE TRA VE THONG TIN DE LUU VAO REDUX
-    res.status(200).json({ ...loggedUser._doc, detail: candidateDetail });
+    res.status(200).json({ ...loggedUser._doc, ...candidateDetail });
   } catch (e) {
     console.log(e);
     next(e);
@@ -199,10 +214,12 @@ export const applyJob = async (req, res, next) => {
       });
     }
 
+    //
     let candidateProfile = candidate.profile;
     let userDetail = {}
     if (candidateProfile) {
       candidate = filterSkipField(candidate._doc, "profile")
+      //no longer candidate._doc
       userDetail = { ...candidate, ...candidateProfile._doc };
     } else {
       userDetail = { ...candidate };

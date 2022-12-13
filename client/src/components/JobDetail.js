@@ -51,15 +51,7 @@ import { useDispatch } from "react-redux";
 export default function JobDetail({ user }) {
   console.log(user)
   const dispatch = useDispatch();
-  if (
-    user.user &&
-    user.user.role== "candidate" &&
-    user.user.detail.applyJobs
-  ) {
-    console.log(user.user.detail.array);
 
-    // const found = arr1.some(r=> arr2.includes(r))
-  }
   const [isApplied, setIsApplied] = useState(false);
   const location = useLocation();
   const id = location.pathname.split("/")[2];

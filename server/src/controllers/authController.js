@@ -74,12 +74,14 @@ export const login = async (req, res, next) => {
       let candidate = await Candidate.findOne({ userId: user._id }).select({
         _id: 0,
       });
+      
       let candidateProfile = candidate.profile;
       if (candidateProfile) {
         candidate = filterSkipField(candidate._doc, "profile");
         candidateProfile = filterSkipField(candidateProfile._doc, "_id");
         candidateDetail = { ...candidate, ...candidateProfile };
       }
+
       const activeCvId = await Resume.findOne({
         candidateId: candidate._id,
       }).select("_id");

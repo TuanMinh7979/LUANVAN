@@ -32,7 +32,10 @@ import CandidateMn from "./components/admincomponents/CandidateMn";
 import CVCard from "./components/CV/CVCard";
 
 function App() {
+  // sessionStorage.clear();
   const user = useSelector((state) => state.user);
+  console.log("--------------------->>>>>>)()()))(")
+  console.log(user)
   return (
     <>
       <BrowserRouter>

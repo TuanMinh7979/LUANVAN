@@ -28,7 +28,11 @@ export default function ManageCV({ user }) {
     navigate(location);
   };
   const [print, setPrint] = useState(false);
+  
   const loggedUserId = user.user._id;
+  console.log("---------------------lOGGED USER REACT", loggedUserId)
+
+  
   const [defaultCv, setDefaultCv] = useState(defaultCvData);
   const [currentCV, setCurrentCV] = useState("CV1");
   useEffect(() => {
@@ -36,7 +40,7 @@ export default function ManageCV({ user }) {
       navigateTo("/login");
     }
   });
-  console.log("------------", data);
+
   return (
     <>
       {loading ? (

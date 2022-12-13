@@ -36,7 +36,7 @@ export default function CV1({ editable, data, setPrint, print, setCVDATA }) {
             }
         }
         const text = item.slice(0, item.length - 2)
-        console.log(text)
+
         useEffect(() => {
             if (close) {
                 setOpen(false)
@@ -132,7 +132,7 @@ export default function CV1({ editable, data, setPrint, print, setCVDATA }) {
 
     }, [print])
     useEffect(() => {
-        console.log(data)
+       
 
     }, [data])
     useEffect(() => {
