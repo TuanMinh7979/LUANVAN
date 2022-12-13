@@ -54,7 +54,7 @@ export default function ManageCV({ user }) {
             {currentCV == "CV1" && (
               <CV1
                 editable={true}
-                data={data.profile}
+                data={cvData}
                 print={print}
                 setPrint={setPrint}
                 setCVDATA={setCVDATA}
@@ -63,7 +63,7 @@ export default function ManageCV({ user }) {
             {currentCV == "CV2" && (
               <CV2
                 editable={true}
-                data={data.profile}
+                data={cvData}
                 print={print}
                 setPrint={setPrint}
                 setCVDATA={setCVDATA}
@@ -72,7 +72,7 @@ export default function ManageCV({ user }) {
             {currentCV == "CV3" && (
               <CV3
                 editable={true}
-                data={data.profile}
+                data={cvData}
                 print={print}
                 setPrint={setPrint}
                 setCVDATA={setCVDATA}
