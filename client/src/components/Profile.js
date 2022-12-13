@@ -14,6 +14,7 @@ import Loading from "./Loading";
 
 import { Navigate } from "react-router-dom";
 export default function Profile({ user }) {
+ 
   const ref = useRef();
   const theme = createTheme();
   const handlePrint = useReactToPrint({
@@ -31,14 +32,14 @@ export default function Profile({ user }) {
       navigateTo("/");
     }
   });
-
+  console.log("------------", data);
   return (
     <>
       {loading ? (
         <Loading />
       ) : (
         <>
-          {user && user.user.profile ? (
+          {data && data.aboutMe ? (
             <Grid
               container
               sx={{
