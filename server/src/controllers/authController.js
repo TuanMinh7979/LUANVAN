@@ -71,11 +71,14 @@ export const login = async (req, res, next) => {
       resUser = { ...resUser, ...recDetail };
     } else if (user.role == "candidate") {
       let candidateDetail;
-      let candidate = await Candidate.findOne({ userId: user._id });
+      let candidate = await Candidate.findOne({ userId: user._id }).select({
+        _id: 0,
+      });
       let candidateProfile = candidate.profile;
       if (candidateProfile) {
         candidate = filterSkipField(candidate._doc, "profile");
-        candidateDetail = { ...candidate, ...candidateProfile._doc };
+        candidateProfile = filterSkipField(candidateProfile._doc, "_id");
+        candidateDetail = { ...candidate, ...candidateProfile };
       }
       const activeCvId = await Resume.findOne({
         candidateId: candidateDetail._id,
