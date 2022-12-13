@@ -111,7 +111,7 @@ export const getUser = async (req, res, next) => {
       next(e);
     }
 
-    res.status(200).json({ ...user._doc, detail: userDetail._doc });
+    res.status(200).json({ ...user._doc, ...userDetail._doc });
   } catch (err) {
     next(err);
   }

@@ -17,7 +17,9 @@ import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfi
 import WorkIcon from '@mui/icons-material/Work';
 import profileSchema from "../validate/profileValidate";
 import { toast } from "react-toastify";
+import useFetch from "../hooks/useFetch";
 
+import Loading from "./Loading";
 import {
 
     getAddressTitleList,
@@ -28,6 +30,8 @@ import {
 
 
 export default function UpdateProfile({ user }) {
+    const { data, loading, error } = useFetch(`/user/${user.user._id}`);
+    console.log(data)
     const imageRef = useRef()
     const navigate = useNavigate()
     const [avatar, setAvatar] = useState(logoImage)
@@ -53,18 +57,17 @@ export default function UpdateProfile({ user }) {
     const [experience, setExperience] = useState(() =>
         EditorState.createEmpty()
     );
-    const [data, setData] = useState({
-        //candidate
-        name: '',
+    const [userData, setData] = useState({
+        candidate: '',
         dob: '',
         gender: '',
         email: '',
         phone: '',
-        avatar: avatar,
-        address: '',
+        avatar: '',
+        addressId: '',
         fullAddress: '',
 
-        //profile
+
 
         skillsCv: '',
         educationCv: JSON.stringify(convertToRaw(education.getCurrentContent())),
@@ -85,7 +88,7 @@ export default function UpdateProfile({ user }) {
 
         //some field for searching 
         let rs = {
-            ...data,
+            ...userData,
             objective: getTextArrayFromRich(convertToRaw(target.getCurrentContent())).join(' '),
             activities: getTextArrayFromRich(convertToRaw(activity.getCurrentContent())).join(' '),
             certifications: getTextArrayFromRich(convertToRaw(certificate.getCurrentContent())).join(' '),
@@ -93,8 +96,8 @@ export default function UpdateProfile({ user }) {
             education: getTextArrayFromRich(convertToRaw(education.getCurrentContent())).join(' '),
         }
         console.log(rs)
-        profileSchema.validate(data).then((data) => {
-            axios.put(`/candidate/${user.user._id}/profile`, data)
+        profileSchema.validate(userData).then((validatedData) => {
+            axios.put(`/candidate/${user.user._id}/profile`, validatedData)
                 .then((res) => {
                     console.log("---")
                     console.log(res)
@@ -127,7 +130,7 @@ export default function UpdateProfile({ user }) {
 
         })
     }, [education, target, activity, certificate, experience, aboutMe])
-    return (<>
+    return (<> {loading ? <Loading /> :
         <Grid
             sx={{
                 background: '#f1f2f6',
@@ -173,7 +176,7 @@ export default function UpdateProfile({ user }) {
                             item
                             xs={2} sx={{}}>
                             <Image
-                                src={avatar}
+                                src={data.avatar || ""}
                                 onClick={() => {
                                     imageRef.current.click()
                                 }}
@@ -201,7 +204,7 @@ export default function UpdateProfile({ user }) {
                                     fileReader.onloadend = () => {
                                         setAvatar(fileReader.result)
                                         setData({
-                                            ...data,
+                                            ...userData,
                                             avatar: fileReader.result
                                         })
                                     }
@@ -224,6 +227,7 @@ export default function UpdateProfile({ user }) {
                                     Họ và tên
                                 </Typography>
                                 <OutlinedInput
+                                    value={data.name}
                                     fullWidth
                                     color="success"
                                     size="small"
@@ -231,7 +235,7 @@ export default function UpdateProfile({ user }) {
                                     placeholder="Nguyễn Văn A"
                                     onBlur={(e) => {
                                         setData({
-                                            ...data,
+                                            ...userData,
                                             name: e.target.value
                                         })
                                     }}
@@ -244,6 +248,7 @@ export default function UpdateProfile({ user }) {
                                     Ngày sinh
                                 </Typography>
                                 <OutlinedInput
+                                    value={data.dob}
                                     color="success"
                                     fullWidth
                                     size="small"
@@ -251,7 +256,7 @@ export default function UpdateProfile({ user }) {
                                     type="date"
                                     onChange={(e) => {
                                         setData({
-                                            ...data,
+                                            ...userData,
                                             dob: e.target.value
                                         })
                                     }}
@@ -264,6 +269,8 @@ export default function UpdateProfile({ user }) {
                                     Giới tính
                                 </Typography>
                                 <Autocomplete
+
+                                    value={data.gender}
                                     freeSolo
                                     size="small"
                                     sx={{ mt: 1 }}
@@ -271,7 +278,7 @@ export default function UpdateProfile({ user }) {
                                     options={env.REACT_APP_SEXS.split(", ")}
                                     onInputChange={(e, value) => {
                                         setData({
-                                            ...data,
+                                            ...userData,
                                             gender: value
                                         })
                                     }}
@@ -285,6 +292,7 @@ export default function UpdateProfile({ user }) {
                                     Email
                                 </Typography>
                                 <OutlinedInput
+                                    value={data.email}
                                     fullWidth
                                     color="success"
                                     size="small"
@@ -292,7 +300,7 @@ export default function UpdateProfile({ user }) {
                                     placeholder="congphongkiemsi@gmail.com"
                                     onBlur={(e) => {
                                         setData({
-                                            ...data,
+                                            ...userData,
                                             email: e.target.value
                                         })
                                     }}
@@ -305,6 +313,7 @@ export default function UpdateProfile({ user }) {
                                     Số điện thoại
                                 </Typography>
                                 <OutlinedInput
+                                    value={data.phone}
                                     fullWidth
                                     color="success"
                                     size="small"
@@ -312,7 +321,7 @@ export default function UpdateProfile({ user }) {
                                     placeholder="0808123789"
                                     onBlur={(e) => {
                                         setData({
-                                            ...data,
+                                            ...userData,
                                             phone: e.target.value
                                         })
                                     }}
@@ -325,6 +334,7 @@ export default function UpdateProfile({ user }) {
                                     Địa chỉ
                                 </Typography>
                                 <OutlinedInput
+                                    value={data.fullAddress}
                                     fullWidth
                                     color="success"
                                     size="small"
@@ -332,7 +342,7 @@ export default function UpdateProfile({ user }) {
                                     placeholder="Ấp Tân An, Xã Tân An, Huyện Đầm Dơi, Tỉnh Cà Mau"
                                     onBlur={(e) => {
                                         setData({
-                                            ...data,
+                                            ...userData,
                                             fullAddress: e.target.value
                                         })
                                     }}
@@ -366,6 +376,7 @@ export default function UpdateProfile({ user }) {
                                     Công việc cần tìm
                                 </Typography>
                                 <OutlinedInput
+                                    value={data.title}
                                     fullWidth
                                     color="success"
                                     size="small"
@@ -373,7 +384,7 @@ export default function UpdateProfile({ user }) {
                                     placeholder="Web Developer"
                                     onBlur={(e) => {
                                         setData({
-                                            ...data,
+                                            ...userData,
                                             title: e.target.value
                                         })
                                     }}
@@ -387,6 +398,7 @@ export default function UpdateProfile({ user }) {
                                     Địa chỉ làm việc mong muốn
                                 </Typography>
                                 <Autocomplete
+                                    value={getAddressTitleFromId(data.addressId)}
                                     freeSolo
                                     size="small"
                                     sx={{ mt: 1 }}
@@ -394,7 +406,7 @@ export default function UpdateProfile({ user }) {
                                     options={getAddressTitleList()}
                                     onInputChange={(e, value) => {
                                         setData({
-                                            ...data,
+                                            ...userData,
                                             address: getAddressIdFromTitle(value)
                                         })
                                     }}
@@ -411,7 +423,7 @@ export default function UpdateProfile({ user }) {
                 >
                     <Grid item xs={12} sx={{ mb: 2 }}>
                         <Chip icon={<SchoolIcon />} label="Học vấn" color="success" />
-                        <RichText editorState={education} setEditorState={setEducation} />
+                        <RichText editorState={data.profile.educationCv} setEditorState={setEducation} />
                     </Grid>
                     <Grid item xs={12} sx={{ mb: 2 }}>
                         <Chip icon={<WorkIcon />} label="Kinh nghiệm làm việc" color="success" />
@@ -450,5 +462,6 @@ export default function UpdateProfile({ user }) {
 
             </Grid>
         </Grid>
+    }
     </>)
 }
