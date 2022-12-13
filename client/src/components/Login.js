@@ -47,8 +47,8 @@ export default function Login() {
 				if (res.data.status && res.data.status != 200) {
 					toast.error(res.data.message)
 				} else {
-					sessionStorage.setItem("user", JSON.stringify(res.data.data));
-					const action = setUserLogin(res.data.data, true);
+					sessionStorage.setItem("user", JSON.stringify(res.data));
+					const action = setUserLogin(res.data, true);
 					dispatch(action);
 
 				}

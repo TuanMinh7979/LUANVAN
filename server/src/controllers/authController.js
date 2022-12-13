@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import Candidate from "../models/Candidate.js";
 import Rec from "../models/Rec.js";
 import Resume from "../models/Resume.js";
-
+import { filterSkipField } from "../utils/commonUtil.js";
 export const register = async (req, res, next) => {
   try {
     const { usernameInp, passwordInp, roleInp, ...details } = req.body;
@@ -42,7 +42,7 @@ export const register = async (req, res, next) => {
 
     res.status(200).json("Tạo tài khoản thành công");
   } catch (err) {
-    console.log(err)
+    console.log(err);
     next(createError(400, "Tạo tài khoản thất bại"));
   }
 };
@@ -68,9 +68,15 @@ export const login = async (req, res, next) => {
     let resUser = user._doc;
     if (user.role == "rec") {
       const recDetail = await Rec.findOne({ userId: user.id.toString() });
-      resUser = { ...resUser, detail: recDetail };
+      resUser = { ...resUser, ...recDetail };
     } else if (user.role == "candidate") {
-      let candidateDetail = await Candidate.findOne({ userId: user._id });
+      let candidateDetail;
+      let candidate = await Candidate.findOne({ userId: user._id });
+      let candidateProfile = candidate.profile;
+      if (candidateProfile) {
+        candidate = filterSkipField(candidate._doc, "profile");
+        candidateDetail = { ...candidate, ...candidateProfile._doc };
+      }
       const activeCvId = await Resume.findOne({
         candidateId: candidateDetail._id,
       }).select("_id");
@@ -81,8 +87,8 @@ export const login = async (req, res, next) => {
           activeCvId: activeCvId._id,
         };
       }
-      //DAY LA KHUON MAU DE TRA VE THONG TIN DE LUU VAO REDUX 
-      resUser = { ...resUser, detail: candidateDetail };
+      //DAY LA KHUON MAU DE TRA VE THONG TIN DE LUU VAO REDUX
+      resUser = { ...resUser, ...candidateDetail };
     }
 
     delete resUser.password;
@@ -93,7 +99,7 @@ export const login = async (req, res, next) => {
         httpOnly: true,
       })
 
-      .json({ data: resUser });
+      .json({ ...resUser });
   } catch (err) {
     return next(createError(400, "Đăng nhập thất bại"));
   }
