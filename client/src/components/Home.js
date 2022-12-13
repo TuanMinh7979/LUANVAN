@@ -71,7 +71,7 @@ function Home() {
 								id="outlined-start-adornment"
 								color="success"
 								label="Nhập tên công việc, ngành nghề bạn muốn ứng tuyển"
-								onBlur={(e)=>setKeyWord(e.target.value)}
+								onBlur={(e) => setKeyWord(e.target.value)}
 								inputProps={{
 									startAdornment: (
 										<InputAdornment position="start">kg</InputAdornment>
@@ -85,11 +85,12 @@ function Home() {
 								}}
 								variant="contained"
 								color="success"
-								onClick={()=>{
+								onClick={() => {
 									navigate({
-										pathname:"/jobs",
-										search: `?job=${keyWord}`
+										pathname: "/jobs",
+										search: keyWord ? `?job=${keyWord}` : ""
 									})
+
 								}}
 							>
 								Tìm việc ngay

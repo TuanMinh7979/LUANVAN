@@ -21,7 +21,6 @@ import { useEffect, useState } from "react";
 
 function JobList({ jobsPage }) {
  
-console.log("FROM JOBSPAGE", jobsPage)
   return (
     <>
       <Container maxWidth>

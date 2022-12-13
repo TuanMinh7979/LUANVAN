@@ -79,8 +79,6 @@ export const getAddressIdFromTitle = (title) => {
 
 //get title from id
 export const getAddressTitleFromId = (idInp) => {
-
-    console.log("-------/////", idInp)
     let address = addresss.filter((item) => item._id == idInp)[0];
     return address.title;
 }

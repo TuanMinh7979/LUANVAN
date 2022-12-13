@@ -28,7 +28,7 @@ import {
 } from "react-router-dom";
 import JobList from "./JobList";
 import banner from "../assets/banner.png";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import RecommentJobs from "./RecommentJobs";
 import { useSelector } from "react-redux";
@@ -52,10 +52,14 @@ import {
 } from "./other/SelectDataUtils";
 
 import { salaryFilterSelect } from "../clientData/selectData";
+
+
+
 import Loading from "./Loading";
 export default function Jobs() {
+  const navigate = useNavigate()
   const user = useSelector((state) => state.user);
-  const { data, setData, loading, error } = useFetch("/jobpost");
+  const [data, setData] = useState()
   const MenuProps = {
     PaperProps: {
       style: {
@@ -63,22 +67,27 @@ export default function Jobs() {
       },
     },
   };
+  const [params] = useSearchParams()
 
-  console.log("DATA CLINET", data, error);
+  const [searchParams, setSearchParams] = useState({
+    job: params.get("job"),
+    jobType: params.get("jobType"),
+    location: params.get("location"),
+    rank: params.get("rank"),
+    gross: params.get("gross")
+  })
 
   const buildFilterApi = async (page) => {
     let filterApiArray = [];
     let filterApiUrl = "/jobpost?";
 
-    const titleText = document.getElementById("titleInp").value;
-    const jobCatTitle = document.getElementById("jobCategorySel").innerText;
-    const locationTitle = document.getElementById("locationSel").innerText;
-    const rankTitle = document.getElementById("rankSel").innerText;
-    const salaryFilterTitle =
-      document.getElementById("salaryFilterSel").innerText;
+    const titleText = searchParams.job
+    const jobCatTitle = searchParams.jobType
+    const locationTitle = searchParams.location
+    const rankTitle = searchParams.rank
+    const salaryFilterTitle = searchParams.gross
 
     let jobCatSelId, locationSelId, rankSelId, salaryFilterQuery;
-
     if (jobCatTitle && jobCatTitle !== "All" && jobCatTitle.length > 1) {
       jobCatSelId = getCatIdFromName(jobCatTitle);
     }
@@ -135,7 +144,10 @@ export default function Jobs() {
   const changePage = (e, value) => {
     buildFilterApi(value);
   };
-
+  useEffect(() => {
+    buildFilterApi()
+    setSearchParams({})
+  }, [])
   return (
     <>
       <Container>
@@ -152,6 +164,12 @@ export default function Jobs() {
             id="titleInp"
             size="small"
             color="success"
+            onBlur={(e) => {
+              setSearchParams({
+                ...searchParams,
+                job: e.target.value
+              })
+            }}
             placeholder="Tên công việc, vị trí muốn ứng tuyển"
             sx={{
               flexBasis: "20%",
@@ -174,6 +192,12 @@ export default function Jobs() {
               }
               label="Ngành nghề"
               MenuProps={MenuProps}
+              onChange={(e) => {
+                setSearchParams({
+                  ...searchParams,
+                  jobType: e.target.value
+                })
+              }}
             >
               <MenuItem value="All" key="jobCategoryAllKey">
                 All
@@ -203,6 +227,12 @@ export default function Jobs() {
               }
               label="Địa điểm công ty"
               MenuProps={MenuProps}
+              onChange={(e) => {
+                setSearchParams({
+                  ...searchParams,
+                  location: e.target.value
+                })
+              }}
             >
               <MenuItem value="All" key="locationAllKey">
                 All
@@ -230,6 +260,12 @@ export default function Jobs() {
                   <BadgeIcon color="success" fontSize="small" />
                 </InputAdornment>
               }
+              onChange={(e) => {
+                setSearchParams({
+                  ...searchParams,
+                  rank: e.target.value
+                })
+              }}
             >
               <MenuItem value="All" key="rankAllKey">
                 All
@@ -257,6 +293,12 @@ export default function Jobs() {
                   <AttachMoneyIcon color="success" fontSize="small" />
                 </InputAdornment>
               }
+              onChange={(e) => {
+                setSearchParams({
+                  ...searchParams,
+                  gross: e.target.value
+                })
+              }}
             >
               <MenuItem value="All" key="salaryFilterKey">
                 All
@@ -274,7 +316,19 @@ export default function Jobs() {
               variant="contained"
               color="success"
               onClick={() => {
-                buildFilterApi();
+                let temp = {
+                  
+                }
+                if(searchParams.job) temp={...temp,job:searchParams.job}
+                if(searchParams.jobType) temp={...temp,jobType:searchParams.jobType}
+                if(searchParams.location) temp={...temp,location:searchParams.location}
+                if(searchParams.rank) temp={...temp,rank:searchParams.rank}
+                if(searchParams.gross) temp={...temp,gross:searchParams.gross}
+                navigate({
+                  pathname:"/jobs",
+                  search: `?${createSearchParams(temp)}`,
+                })
+                navigate(0)
               }}
             >
               Tìm việc ngay
@@ -317,22 +371,16 @@ export default function Jobs() {
           {/* Joblist */}
         </Container>
         <Box sx={{ my: 3 }}>
-          {loading ? (
-            <Loading />
-          ) : (
-            <>
-              <Paper elevation={4} sx={{ p: 3 }}>
-                <JobList jobsPage={data.jobsPage} />
-                <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-                  <Pagination
-                    onChange={changePage}
-                    color="success"
-                    count={data.pageCnt}
-                  />
-                </Box>
-              </Paper>
-            </>
-          )}
+          {data && <Paper elevation={4} sx={{ p: 3 }}>
+            <JobList jobsPage={data.jobsPage} />
+            <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+              <Pagination
+                onChange={changePage}
+                color="success"
+                count={data.pageCnt}
+              />
+            </Box>
+          </Paper>}
         </Box>
         {user && user.user.detail && user.user.detail.activeCvId && (
           <RecommentJobs resumeId={user.user.detail.activeCvId} />
