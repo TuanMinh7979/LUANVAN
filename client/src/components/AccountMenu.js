@@ -12,6 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
 import PersonAdd from '@mui/icons-material/PersonAdd';
+import ArticleIcon from "@mui/icons-material/Article";
 import WorkIcon from '@mui/icons-material/Work';
 import Logout from '@mui/icons-material/Logout';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -119,6 +120,18 @@ export default function AccountMenu() {
                         <NoteAltIcon fontSize="small" />
                     </ListItemIcon>
                     Hồ sơ của bạn
+                </MenuItem>
+                <MenuItem>
+                    <ListItemIcon>
+                        <ArticleIcon fontSize="small" />
+                    </ListItemIcon>
+                    CV của bạn   
+                </MenuItem>
+                <MenuItem>
+                    <ListItemIcon>
+                        <WorkIcon fontSize="small" />
+                    </ListItemIcon>
+                    Công việc đã ứng tuyển   
                 </MenuItem>
                 <MenuItem onClick={()=>navigateTo("/hrlogin")}>
                     <ListItemIcon>

@@ -131,14 +131,12 @@ export default function UpdateProfile({ user }) {
       objectiveCv: JSON.stringify(convertToRaw(target.getCurrentContent())),
       activitiesCv: JSON.stringify(convertToRaw(activity.getCurrentContent())),
       certificationsCv: JSON.stringify(
-        convertToRaw(certificate.getCurrentContent())
-      ),
+      convertToRaw(certificate.getCurrentContent())),
       aboutMe: JSON.stringify(convertToRaw(aboutMe.getCurrentContent())),
-      experienceCv: JSON.stringify(
-        convertToRaw(experience.getCurrentContent())
-      ),
+      experienceCv: JSON.stringify(convertToRaw(experience.getCurrentContent())),
+      skillsCv: JSON.stringify(convertToRaw(skills.getCurrentContent()))
     });
-  }, [education, target, activity, certificate, experience, aboutMe]);
+  }, [education, target, activity, certificate, experience, aboutMe, skills]);
   return (
     <>
       <Grid
