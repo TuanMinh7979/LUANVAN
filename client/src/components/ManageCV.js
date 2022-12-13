@@ -20,6 +20,7 @@ import useFetch from "../hooks/useFetch";
 import Loading from "./Loading";
 
 export default function ManageCV({ user }) {
+  
   const { data, setData, loading, error } = useFetch(`/user/${user.user._id}`);
 
   const dispatch = useDispatch();
@@ -36,13 +37,14 @@ export default function ManageCV({ user }) {
       navigateTo("/login");
     }
   });
+  console.log("------------", data);
   return (
     <>
       {loading ? (
         <Loading />
       ) : (
         <>
-          {user && user.user.profile ? (
+          {data && data.aboutMe ? (
             <Grid
               container
               sx={{
