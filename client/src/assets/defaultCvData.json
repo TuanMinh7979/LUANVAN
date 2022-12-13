@@ -1,8 +1,8 @@
 {
-    "name": "Nguyễn Quốc Anh",
+    "name": "Nguyễn Văn A",
     "dob": "1999-01-01",
-    "gender": "Nam",
-    "email": "anhcmcm@gmail.com",
+    "gender": "Nam/Nữ",
+    "email": "nhanvien@gmail.com",
     "phone": "0999999999",
     "address": "Thành phố Hồ Chí Minh",
     "educationCv": "{\"blocks\":[{\"key\":\"6ii6c\",\"text\":\"Đại học Cần Thơ       2018-now\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":0,\"length\":30,\"style\":\"BOLD\"}],\"entityRanges\":[],\"data\":{}},{\"key\":\"1sr5i\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"7i0vd\",\"text\":\"Chuyên Ngành IT\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",

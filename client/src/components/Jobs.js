@@ -147,7 +147,7 @@ export default function Jobs() {
   };
   useEffect(() => {
     buildFilterApi()
-    setSearchParams({})
+    
   }, [reload])
   return (
     <>
