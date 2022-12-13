@@ -71,7 +71,6 @@ export default function Jobs() {
     let filterApiUrl = "/jobpost?";
 
     const titleText = document.getElementById("titleInp").value;
-
     const jobCatTitle = document.getElementById("jobCategorySel").innerText;
     const locationTitle = document.getElementById("locationSel").innerText;
     const rankTitle = document.getElementById("rankSel").innerText;
