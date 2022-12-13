@@ -45,6 +45,7 @@ export default function Login() {
 			}).then((res) => {
 				console.log(res);
 				if (res.data.status && res.data.status != 200) {
+					console.log(res)
 					toast.error(res.data.message)
 				} else {
 					sessionStorage.setItem("user", JSON.stringify(res.data));
@@ -55,7 +56,7 @@ export default function Login() {
 			});
 		})
 		// isnt validate
-		LoginSchema.validate(data,{abortEarly: false}).catch((err)=>{
+		LoginSchema.validate(data, { abortEarly: false }).catch((err) => {
 			toast.error(err.errors.join(", "))
 			console.log(err);
 		})
@@ -179,8 +180,8 @@ export default function Login() {
 									Đăng nhập
 								</Button>
 								<Button
-									sx={{mt:1}}
-									onClick={()=>navigate("/")}
+									sx={{ mt: 1 }}
+									onClick={() => navigate("/")}
 									variant="contained"
 									color="error"
 									fullWidth

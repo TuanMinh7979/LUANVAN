@@ -129,7 +129,6 @@ export const createResume = async (req, res, next) => {
       savedResume = await resumeToSave.save();
     }
     let url = `${process.env.DJANGOSERVER}/updateCvsFile`;
-    console.log("-----------==============",url)
     const rs = await axios.get(url);
     console.log("update db success...");
 
@@ -177,7 +176,7 @@ export const applyJob = async (req, res, next) => {
     const loggedUser = await User.findById(req.user.id);
     if (!loggedUser) return next(createError(400, "Không tìm thấy user"));
     const job = await JobPost.findById(jobId);
-    const candidate = await Candidate.findOneAndUpdate(
+    let candidate = await Candidate.findOneAndUpdate(
       { userId: loggedUser.id },
       { $push: { applyJobs: job._id } },
       { new: true }
@@ -199,8 +198,17 @@ export const applyJob = async (req, res, next) => {
         candidateId: candidate._id,
       });
     }
-    console.log({ ...loggedUser._doc, detail: candidate });
-    res.status(200).json({ ...loggedUser._doc, detail: candidate });
+
+    let candidateProfile = candidate.profile;
+    let userDetail = {}
+    if (candidateProfile) {
+      candidate = filterSkipField(candidate._doc, "profile")
+      userDetail = { ...candidate, ...candidateProfile._doc };
+    } else {
+      userDetail = { ...candidate };
+    }
+
+    res.status(200).json({ ...loggedUser._doc, ...userDetail });
   } catch (err) {
     next(err);
   }

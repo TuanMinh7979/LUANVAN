@@ -414,7 +414,7 @@ export default function ManageCV({ user }) {
                         if (res.data.status && res.data.status != 200) {
                           toast.warning("Tạo cv thất bại");
                         } else {
-                          console.log(res.data);
+                          console.log("-------------+++++", res.data);
                           const action = setUserInfo(res.data);
                           dispatch(action);
                           toast.success("Tạo cv thành công");

@@ -81,7 +81,7 @@ export const login = async (req, res, next) => {
         candidateDetail = { ...candidate, ...candidateProfile };
       }
       const activeCvId = await Resume.findOne({
-        candidateId: candidateDetail._id,
+        candidateId: candidate._id,
       }).select("_id");
 
       if (activeCvId) {
@@ -104,6 +104,7 @@ export const login = async (req, res, next) => {
 
       .json({ ...resUser });
   } catch (err) {
+    console.log(err)
     return next(createError(400, "Đăng nhập thất bại"));
   }
 };
