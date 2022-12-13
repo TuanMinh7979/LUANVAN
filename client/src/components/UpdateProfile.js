@@ -66,7 +66,7 @@ export default function UpdateProfile({ user }) {
     addressId: "",
     fullAddress: "",
 
-    skillsCv: "",
+    skillsCv: JSON.stringify(convertToRaw(skills.getCurrentContent())),
     educationCv: JSON.stringify(convertToRaw(education.getCurrentContent())),
     objectiveCv: JSON.stringify(convertToRaw(target.getCurrentContent())),
     activitiesCv: JSON.stringify(convertToRaw(activity.getCurrentContent())),
@@ -99,6 +99,9 @@ export default function UpdateProfile({ user }) {
       ).join(" "),
       education: getTextArrayFromRich(
         convertToRaw(education.getCurrentContent())
+      ).join(" "),
+      skills: getTextArrayFromRich(
+        convertToRaw(skills.getCurrentContent())
       ).join(" "),
     };
     console.log(rs);

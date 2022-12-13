@@ -22,7 +22,7 @@ import Loading from "./Loading";
 export default function ManageCV({ user }) {
   const { data, setData, loading, error } = useFetch(`/user/${user.user._id}`);
 
-  console.log(data)
+  console.log("DATA from server", data)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const navigateTo = function (location) {
@@ -30,7 +30,7 @@ export default function ManageCV({ user }) {
   };
   const [print, setPrint] = useState(false);
   const loggedUserId = user.user._id;
-  const [cvData, setCVDATA] = useState(defaultCvData)
+  // const [cvData, setCVDATA] = useState(defaultCvData)
   const [currentCV, setCurrentCV] = useState("CV1");
   useEffect(() => {
     if (user.user.role != "candidate") {
@@ -54,28 +54,28 @@ export default function ManageCV({ user }) {
             {currentCV == "CV1" && (
               <CV1
                 editable={true}
-                data={cvData}
+                data={data}
                 print={print}
                 setPrint={setPrint}
-                setCVDATA={setCVDATA}
+                setCVDATA={setData}
               />
             )}
             {currentCV == "CV2" && (
               <CV2
                 editable={true}
-                data={cvData}
+                data={data}
                 print={print}
                 setPrint={setPrint}
-                setCVDATA={setCVDATA}
+                setCVDATA={setData}
               />
             )}
             {currentCV == "CV3" && (
               <CV3
                 editable={true}
-                data={cvData}
+                data={data}
                 print={print}
                 setPrint={setPrint}
-                setCVDATA={setCVDATA}
+                setCVDATA={setData}
               />
             )}
           </Grid>
