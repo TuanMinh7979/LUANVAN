@@ -52,13 +52,13 @@ export default function JobDetail({ user }) {
 
   const dispatch = useDispatch();
 
-  const [isApplied, setIsApplied] = useState(false);
+
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-
+  const [isApplied, setIsApplied] = useState(user.user.applyJobs.includes(id));
   const { data, loading, error } = useFetch(`/jobpost/${id}`);
   const theme = createTheme();
-  const ApplyJob = async () => {
+  const applyJob = async () => {
     let sendApply = 0;
     if (confirm("Bạn có muốn ứng tuyển công việc này")) {
       sendApply = 1;
@@ -74,10 +74,37 @@ export default function JobDetail({ user }) {
 
         toast.warning("Ứng tuyển thất bại");
       } else {
-    
-        const action = setApplyJobs("newid");
+
+
+        const action = setApplyJobs(res.data.applyJobs);
         dispatch(action);
+        setIsApplied(true)
         toast.success("Ứng tuyển thành công");
+      }
+    }
+  };
+  const cancelApplyJob = async () => {
+    let sendApply = 0;
+    if (confirm("Bạn có muốn ứng tuyển công việc này")) {
+      sendApply = 1;
+      const contact = {
+        jobId: id,
+      };
+
+      const res = await axios.post(
+        `/candidate/${user.user._id}/cancelapplyjob`,
+        contact
+      );
+      if (res.data.status && res.data.status !== 200) {
+        console.log(res)
+        toast.warning("Hủy Ứng tuyển thất bại");
+      } else {
+
+
+        const action = setApplyJobs(res.data.applyJobs);
+        dispatch(action);
+        setIsApplied(false)
+        toast.success("Hủy ứng tuyển thành công");
       }
     }
   };
@@ -180,7 +207,7 @@ export default function JobDetail({ user }) {
                 {user.user.role == "candidate" &&
                   (!isApplied ? (
                     <Button
-                      onClick={() => ApplyJob()}
+                      onClick={() => applyJob()}
                       startIcon={<SendIcon />}
                       variant="contained"
                       color="success"
@@ -189,7 +216,7 @@ export default function JobDetail({ user }) {
                     </Button>
                   ) : (
                     <Button
-                      onClick={() => ApplyJob()}
+                      onClick={() => cancelApplyJob()}
                       startIcon={<CancelIcon />}
                       variant="contained"
                       color="warning"

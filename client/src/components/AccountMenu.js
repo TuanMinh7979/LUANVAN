@@ -26,8 +26,9 @@ export default function AccountMenu() {
     }
     const user = useSelector((state) => state.user.user)
     const dispatch = useDispatch()
-    const logOut = function() {
+    const logOut = function () {
         dispatch(setUserLogout())
+        navigate("/")
         console.log('logout')
     }
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -48,9 +49,9 @@ export default function AccountMenu() {
                     // onClick={handleClick}
                     size="small"
                     sx={{ ml: 4 }}
-                    // aria-controls={open ? 'account-menu' : undefined}
-                    // aria-haspopup="true"
-                    // aria-expanded={open ? 'true' : undefined}
+                // aria-controls={open ? 'account-menu' : undefined}
+                // aria-haspopup="true"
+                // aria-expanded={open ? 'true' : undefined}
                 >
                     <NotificationsIcon sx={{ width: 32, height: 32, color: 'white' }} ></NotificationsIcon>
                 </IconButton>
@@ -58,9 +59,9 @@ export default function AccountMenu() {
                     // onClick={handleClick}
                     size="small"
                     sx={{ ml: 4 }}
-                    // aria-controls={open ? 'account-menu' : undefined}
-                    // aria-haspopup="true"
-                    // aria-expanded={open ? 'true' : undefined}
+                // aria-controls={open ? 'account-menu' : undefined}
+                // aria-haspopup="true"
+                // aria-expanded={open ? 'true' : undefined}
                 >
                     <ChatBubbleIcon sx={{ width: 32, height: 32, color: "white" }} ></ChatBubbleIcon>
                 </IconButton>
@@ -113,9 +114,9 @@ export default function AccountMenu() {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
                 <MenuItem >
-                    <Avatar fontSize="small"  /> {user.username}
+                    <Avatar fontSize="small" /> {user.username}
                 </MenuItem>
-                <MenuItem onClick={()=>navigateTo("/myprofile")}>
+                <MenuItem onClick={() => navigateTo("/myprofile")}>
                     <ListItemIcon>
                         <NoteAltIcon fontSize="small" />
                     </ListItemIcon>
@@ -125,19 +126,19 @@ export default function AccountMenu() {
                     <ListItemIcon>
                         <ArticleIcon fontSize="small" />
                     </ListItemIcon>
-                    CV của bạn   
+                    CV của bạn
                 </MenuItem>
                 <MenuItem>
                     <ListItemIcon>
                         <WorkIcon fontSize="small" />
                     </ListItemIcon>
-                    Công việc đã ứng tuyển   
+                    Công việc đã ứng tuyển
                 </MenuItem>
-                <MenuItem onClick={()=>navigateTo("/hrlogin")}>
+                <MenuItem onClick={() => navigateTo("/hrlogin")}>
                     <ListItemIcon>
                         <WorkIcon fontSize="small" />
                     </ListItemIcon>
-                    ViecLamNhanh for Business   
+                    ViecLamNhanh for Business
                 </MenuItem>
                 {/* <MenuItem>
                     <ListItemIcon>
@@ -145,7 +146,7 @@ export default function AccountMenu() {
                     </ListItemIcon>
                     Settings
                 </MenuItem> */}
-                 <Divider />
+                <Divider />
                 <MenuItem onClick={logOut}>
                     <ListItemIcon>
                         <Logout fontSize="small" />

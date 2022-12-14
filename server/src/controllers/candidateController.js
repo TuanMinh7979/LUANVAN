@@ -1,6 +1,6 @@
 import { createError } from "../utils/errorUtil.js";
 import Candidate from "../models/Candidate.js";
-import Contact from "../models/contact.js";
+
 import User from "../models/User.js";
 import Resume from "../models/Resume.js";
 import { getDecodedTokenData } from "../utils/TokenUtils.js";
@@ -10,6 +10,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import axios from "axios";
 import { uploadImage } from "../utils/uploadUtil.js";
+import Contact from "../models/contact.js";
 export const updateCandidateProfile = async (req, res, next) => {
   //for candidate
   const { avatar } = req.body;
@@ -203,18 +204,32 @@ export const applyJob = async (req, res, next) => {
     }
 
     //
-    let candidateProfile = candidate.profile;
-    let userDetail = {}
-    if (candidateProfile) {
-      candidate = filterSkipField(candidate._doc, "profile")
-      //no longer candidate._doc
-      userDetail = { ...candidate, ...candidateProfile._doc };
-    } else {
-      userDetail = { ...candidate };
-    }
 
-    res.status(200).json({ ...loggedUser._doc, ...userDetail });
+
+    res.status(200).json({ applyJobs: [...candidate.applyJobs] });
   } catch (err) {
+    next(err);
+  }
+};
+export const cancelapplyjob = async (req, res, next) => {
+  //create a contact
+  try {
+    //req: jobId, recId, resumeId, hrId
+    const { jobId } = req.body;
+    console.log(req.user);
+    const loggedUser = await User.findById(req.user.id);
+    if (!loggedUser) return next(createError(400, "Không tìm thấy user"));
+
+    let candidate = await Candidate.findOneAndUpdate(
+      { userId: loggedUser.id },
+      { $pull: { applyJobs: jobId } },
+      { new: true }
+    );
+    //find and remove contact
+    await Contact.deleteOne({ candidateId: candidate._id, jobPostId: jobId._id })
+    res.status(200).json({ applyJobs: [...candidate.applyJobs] });
+  } catch (err) {
+    console.log(err)
     next(err);
   }
 };

@@ -83,7 +83,7 @@ export default function Charts({ user }) {
           <TableContainer component={Paper}>
             <Table>
               <TableHead>
-                <TableCell></TableCell>
+
                 <TableCell>Tên tin tuyển dụng</TableCell>
                 <TableCell>Ngày đăng</TableCell>
                 <TableCell>Ngày hết hạn</TableCell>
@@ -106,10 +106,10 @@ export default function Charts({ user }) {
                       >
                         {item.title}
                       </TableCell>
-                      <TableCell>{item.createAt}</TableCell>
+                      <TableCell>{item.createdAt}</TableCell>
                       <TableCell>{item.endDate}</TableCell>
                       <TableCell>70 lượt xem</TableCell>
-                      <TableCell>10 ứng viên</TableCell>
+                      <TableCell><Button>10 ứng viên</Button></TableCell>
                       <TableCell>
                         <Button variant="text" color="success">
                           Đã đăng
