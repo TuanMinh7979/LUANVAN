@@ -6,34 +6,27 @@ import Contact from "../models/contact.js";
 export const getJobs = async (req, res, next) => {
   try {
     const loggedUserId = req.user.id;
-    const hr = await JobPost.findOne({ userId: loggedUserId });
+    const hr = await Rec.findOne({ userId: loggedUserId });
+    console.log(hr);
     if (!hr)
       return next(createError(400, "Tài khoản nhà tuyển dụng không tồn tại"));
     const jobByHr = await JobPost.aggregate([
-      { $match: { recId: hr.id } },
-      // {
-      //   $lookup: {
-      //     from: "contacts",
-      //     localField: "_id",
-      //     foreignField: "jobPostId",
-      //     as: "contactList",
-      //   },
-      // },
-
-      // {
-      //   $group: {
-      //     _id: "$contactList",
-      //     numOfContact: { $sum: 1 },
-          
-      //   },
-      // },
+      { $match: { recId: hr._id } },
+      {
+        $lookup: {
+          from: "contacts",
+          localField: "_id",
+          foreignField: "jobPostId",
+          as: "contactList",
+        },
+      },
+      { $addFields: { contactCnt: { $size: "$contactList" } } },
     ]);
     res.status(200).json(jobByHr);
   } catch (e) {
     next(e);
   }
 };
-
 
 // { $match: { recId: hr._id } },
 // {
@@ -49,6 +42,6 @@ export const getJobs = async (req, res, next) => {
 //   $group: {
 //     _id: "$jobpostss",
 //     numOfJobs: { $sum: 1 },
-    
+
 //   },
 // },
