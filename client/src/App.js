@@ -32,6 +32,7 @@ import CandidateMn from "./components/admincomponents/CandidateMn";
 import CVCard from "./components/CV/CVCard";
 import AppliedJobs from "./components/AppliedJobs";
 import DashBoard from "./components/admincomponents/DashBoard";
+import ViewCV from "./components/ViewCV";
 
 function App() {
   // sessionStorage.clear();
@@ -128,6 +129,16 @@ function App() {
                 <>
                   <Header />
                   <MyCV user={user} />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
+              path="viewcv/:id"
+              element={
+                <>
+                  <Header />
+                  <ViewCV user={user} />
                   <Footer />
                 </>
               }

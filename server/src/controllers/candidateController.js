@@ -155,7 +155,7 @@ export const getMyCV = async (req, res, next) => {
   try {
     let loggedUserId = req.params.id;
     const candidate = await Candidate.findOne({ userId: loggedUserId });
-    if (!candidate ) {
+    if (!candidate) {
       return next(createError(404, "Ứng viên không tồn tại trong hệ thống"));
     }
 
@@ -259,3 +259,13 @@ export const getUserProfileCvData = async (req, res, next) => {
     next(e);
   }
 };
+
+export const getAll = async (req, res, next) => {
+  try {
+    const allCandidate = await Candidate.find();
+
+    res.status(200).json(allCandidate);
+  } catch (err) {
+    next(err);
+  }
+}

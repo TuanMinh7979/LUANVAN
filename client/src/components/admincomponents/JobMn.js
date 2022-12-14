@@ -62,7 +62,7 @@ export default function JobMn() {
                       </Select>
                     </TableCell>
                     <TableCell>
-                      <Button variant="text" color="error" onClick={()=>{
+                      <Button variant="text" color="error" onClick={() => {
                         deleteItem(index)
                       }}>
                         Xóa

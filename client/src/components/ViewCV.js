@@ -8,11 +8,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Loading from "./Loading";
 import { useNavigate } from "react-router-dom";
-export default function MyCV() {
+export default function ViewCV() {
     const navigate = useNavigate()
-    const id = location.pathname.split("/")[2]
-
-    const { data, loading, error } = useFetch(`/candidate/${id}/resume`);
+    const resumeId = location.pathname.split("/")[location.pathname.split("/").length - 1];
+    const { data, loading, error } = useFetch(`/resume/view/${resumeId}`);
     const [print, setPrint] = useState(false);
     console.log(data)
     return (<>
