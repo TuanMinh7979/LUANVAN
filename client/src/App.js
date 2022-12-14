@@ -73,6 +73,16 @@ function App() {
               }
             />
             <Route
+              path="admin/*"
+              element={
+                <>
+                  <Header  />
+                  <DashBoard />
+                  <Footer />
+                </>
+              }
+            />
+            <Route
               path="jobdetail/:id"
               element={
                 <>
@@ -141,14 +151,6 @@ function App() {
 
 
             <Route path="test" element={<CVCard />} />
-          </Route>
-
-
-
-          <Route
-            path='/admin/*'
-          >
-            <DashBoard />
           </Route>
         </Routes>
       </BrowserRouter>
