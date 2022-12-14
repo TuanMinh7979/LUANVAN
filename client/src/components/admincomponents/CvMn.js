@@ -3,11 +3,11 @@ import { Table, TableContainer, TableHead, TableBody, TableRow, TableCell, Typog
 import useFetch from '../../hooks/useFetch'
 import Loading from "../Loading"
 import { useEffect, useState } from 'react'
-export default function CandidateMn() {
+export default function CvMn() {
     const theme = createTheme()
     const status = ["Mới", "Đã duyệt"]
     const [toggle, setToggle] = useState(true)
-    const { data, setData, loading } = useFetch("/candidate/all")
+    const { data, setData, loading } = useFetch("/resume/all")
     const deleteItem = function (index) {
         data.splice(index, 1)
         let temp = data
@@ -34,10 +34,11 @@ export default function CandidateMn() {
                             >
                                 <TableRow sx={{ fontWeight: 600 }}>
                                     <TableCell><Typography variant="body2" fontWeight={600} sx={{ color: "white" }}>Tên Ứng viên</Typography></TableCell>
+                                    <TableCell><Typography variant="body2" fontWeight={600} sx={{ color: "white" }}>Chức danh</Typography></TableCell>
                                     <TableCell><Typography variant="body2" fontWeight={600} sx={{ color: "white" }}>Điện thoại</Typography></TableCell>
-                                    <TableCell><Typography variant="body2" fontWeight={600} sx={{ color: "white" }}>Chức Danh</Typography></TableCell>
+                                    <TableCell><Typography variant="body2" fontWeight={600} sx={{ color: "white" }}>Email</Typography></TableCell>
                                     <TableCell><Typography variant="body2" fontWeight={600} sx={{ color: "white", minWidth: "150px" }}>Địa chỉ</Typography></TableCell>
-                                    
+                                    <TableCell><Typography variant="body2" fontWeight={600} sx={{ color: "white" }}>Địa chỉ</Typography></TableCell>
                                     <TableCell></TableCell>
                                 </TableRow>
                             </TableHead>
@@ -45,9 +46,10 @@ export default function CandidateMn() {
                                 {data.map((value, index) => (
                                     <TableRow>
                                         <TableCell>{value.name}</TableCell>
-                                        <TableCell>{value.phone}</TableCell>
                                         <TableCell>{value.title}</TableCell>
-                                        <TableCell>{value.fullAddress}</TableCell>
+                                        <TableCell>{value.phone}</TableCell>
+                                        <TableCell>{value.email}</TableCell>
+                                        <TableCell>{value.address}</TableCell>
                                         <TableCell>
                                             <Button variant="text" color="error" onClick={() => {
                                                 deleteItem(index)
