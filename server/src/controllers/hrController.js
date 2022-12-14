@@ -50,13 +50,29 @@ export const getJobAppliedCandidates = async (req, res, next) => {
           as: "contactList",
         },
       },
+
       { $unwind: "$contactList" },
       {
         $match: {
           "contactList.jobPostId": ObjectId(req.params.jobPostId)
         }
 
-      }
+      },
+      {
+        $addFields: { resumeApplyId: "$contactList.resumeId" }
+      },
+
+      {
+        $lookup: {
+          from: "resumes",
+          localField: "resumeApplyId",
+          foreignField: "_id",
+          as: "applyCvData",
+        },
+      },
+      { $unwind: "$applyCvData" },
+
+      { $project: { applyCvData: 1 } }
     ]);
 
     res.status(200).json(candidates);
