@@ -72,7 +72,7 @@ export const getJobAppliedCandidates = async (req, res, next) => {
       },
       { $unwind: "$applyCvData" },
 
-      
+
     ]);
 
     res.status(200).json(candidates);
@@ -88,9 +88,9 @@ export const getAllAppliedCandidates = async (req, res, next) => {
 
   const ObjectId = mongoose.Types.ObjectId;
   try {
-    const loggedUserId = req.user.id;
-    const job = await JobPost.findById(req.params.jobPostId);
-    
+
+    const rec = await Rec.findOne({ userId: req.params.id });
+
 
     const candidates = await Candidate.aggregate([
 
@@ -106,7 +106,7 @@ export const getAllAppliedCandidates = async (req, res, next) => {
       { $unwind: "$contactList" },
       {
         $match: {
-          "contactList.recId": ObjectId(req.params.id)
+          "contactList.recId": rec._id
         }
 
       },
@@ -124,7 +124,7 @@ export const getAllAppliedCandidates = async (req, res, next) => {
       },
       { $unwind: "$applyCvData" },
 
-      
+
     ]);
 
     res.status(200).json(candidates);
@@ -132,3 +132,13 @@ export const getAllAppliedCandidates = async (req, res, next) => {
     next(e);
   }
 };
+
+
+export const getAll = async (req, res, next) => {
+  try {
+    const recs = await Rec.find();
+    res.status(200).json(recs);
+  } catch (err) {
+    next(err);
+  }
+}

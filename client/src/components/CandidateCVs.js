@@ -3,9 +3,11 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import ArticleIcon from "@mui/icons-material/Article";
 import useFetch from "../hooks/useFetch";
 import Loading from "./Loading";
-
+import { useSelector } from "react-redux";
 export default function CandidateCVs() {
     // có thể lưu status dạng int là 0, 1, 2, mặc định là 0, xuống đây dựa dô cái mảng cvstatus dưới này mà lấy
+
+    const user = useSelector((state) => state.user);
     const cvstatus = ["Chưa xem", "Không phù hợp", "Phù hợp"]
 
     function handleStatusChange(e, cvID) {
@@ -16,9 +18,11 @@ export default function CandidateCVs() {
         console.log("abc")
     }
 
-    const { data, setData, loading, error } = useFetch(`/resume/${id}/allappliedcandidates`);
+    const { data, setData, loading, error } = useFetch(`/rec/${user.user._id}/allappliedcandidates`);
+    
+    console.log(data, error)
     return (
-        <>loading ? <Loading />:
+        <>{loading ? <Loading /> :
             <Grid
                 width={"95%"}
                 container
@@ -99,7 +103,7 @@ export default function CandidateCVs() {
                         </Table>
                     </TableContainer>
                 </Grid>
-            </Grid>
+            </Grid>}
         </>
 
     )
