@@ -6,12 +6,14 @@ import { useEffect, useState } from 'react'
 export default function JobMn() {
   const theme = createTheme()
   const status = ["Mới", "Đã duyệt"]
-
+  const [toggle, setToggle] = useState(true)
   const { data, setData, loading } = useFetch("/jobpost/all")
-  const deleteItem = function (index) {
-    let tempdata = [...data]
-    tempdata.splice(index, 1)
-    setData([...tempdata])
+  const deleteItem = function(index){
+    data.splice(index,1)
+    let temp = data
+    setData(temp)
+    setToggle(!toggle)
+    console.log(data)
   }
   return (
     <>
@@ -21,10 +23,10 @@ export default function JobMn() {
           xs={12}
         >
           {loading ? <Loading /> : <TableContainer
-            sx={{ maxHeight: 500 }}
+            sx={{maxHeight: 700}}
             component={Paper}
           >
-            <Table>
+            <Table >
               <TableHead
                 sx={{
                   background: theme.palette.primary.dark,
