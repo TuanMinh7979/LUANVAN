@@ -62,7 +62,7 @@ import {
 	getSalaryTypeTitleFromId,
 	getRankTitleFromId,
 } from "./other/SelectDataUtils";
-import CandidateCVs from "../CandidateCVs";
+import CandidateCVs from "./CandidateCVs"
 
 const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
 	"&:hover": {

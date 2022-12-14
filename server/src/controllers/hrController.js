@@ -72,7 +72,59 @@ export const getJobAppliedCandidates = async (req, res, next) => {
       },
       { $unwind: "$applyCvData" },
 
-      { $project: { applyCvData: 1 } }
+      
+    ]);
+
+    res.status(200).json(candidates);
+  } catch (e) {
+    next(e);
+  }
+};
+
+
+
+
+export const getAllAppliedCandidates = async (req, res, next) => {
+
+  const ObjectId = mongoose.Types.ObjectId;
+  try {
+    const loggedUserId = req.user.id;
+    const job = await JobPost.findById(req.params.jobPostId);
+    
+
+    const candidates = await Candidate.aggregate([
+
+      {
+        $lookup: {
+          from: "contacts",
+          localField: "_id",
+          foreignField: "candidateId",
+          as: "contactList",
+        },
+      },
+
+      { $unwind: "$contactList" },
+      {
+        $match: {
+          "contactList.recId": ObjectId(req.params.id)
+        }
+
+      },
+      {
+        $addFields: { resumeApplyId: "$contactList.resumeId" }
+      },
+
+      {
+        $lookup: {
+          from: "resumes",
+          localField: "resumeApplyId",
+          foreignField: "_id",
+          as: "applyCvData",
+        },
+      },
+      { $unwind: "$applyCvData" },
+
+      
     ]);
 
     res.status(200).json(candidates);
