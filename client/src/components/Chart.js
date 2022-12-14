@@ -26,6 +26,10 @@ import useFetch from "../hooks/useFetch";
 import Loading from "./Loading";
 import { Modal } from "@mui/material";
 export default function Charts({ user }) {
+  const [openCandidatesModal, setOpenCandidatesModal] = useState(false);
+  const hdlOpenCandidatesModal = () => setOpenCandidatesModal(true);
+  const hdlCloseCandidatesModal = () => setOpenCandidatesModal(false);
+
   const navigate = useNavigate();
 
   const jobsFetch = useFetch(`/rec/${user.user._id}/jobs`);
@@ -83,7 +87,6 @@ export default function Charts({ user }) {
           <TableContainer component={Paper}>
             <Table>
               <TableHead>
-
                 <TableCell>Tên tin tuyển dụng</TableCell>
                 <TableCell>Ngày đăng</TableCell>
                 <TableCell>Ngày hết hạn</TableCell>
@@ -109,7 +112,11 @@ export default function Charts({ user }) {
                       <TableCell>{item.createdAt}</TableCell>
                       <TableCell>{item.endDate}</TableCell>
                       <TableCell>70 lượt xem</TableCell>
-                      <TableCell><Button>10 ứng viên</Button></TableCell>
+                      <TableCell>
+                        <Button onClick={hdlOpenCandidatesModal}>
+                          {item.contactCnt}
+                        </Button>
+                      </TableCell>
                       <TableCell>
                         <Button variant="text" color="success">
                           Đã đăng
@@ -127,7 +134,9 @@ export default function Charts({ user }) {
                         </Button>
                       </TableCell>
                       <TableCell>
-                        <Button onClick={() => hdlSuaBaiDang(item._id)}>Sửa</Button>
+                        <Button onClick={() => hdlSuaBaiDang(item._id)}>
+                          Sửa
+                        </Button>
                         <Button onClick={() => hdlGoBaiDang(item._id)}>
                           Gỡ bài đăng
                         </Button>
@@ -140,6 +149,37 @@ export default function Charts({ user }) {
           </TableContainer>
         </Grid>
       </Grid>
+
+      {/* MODAL SECTION */}
+
+      <Modal
+        open={openCandidatesModal}
+        onClose={hdlCloseCandidatesModal}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 400,
+            background: "white",
+            border: "2px solid #000",
+            boxShadow: 24,
+            p: 4,
+          }}
+        >
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+          </Typography>
+        </Box>
+      </Modal>
+      {/* MODAL SECTION */}
     </>
   );
 }

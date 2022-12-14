@@ -86,7 +86,7 @@ export const updateCandidateProfile = async (req, res, next) => {
       avatarLink = upRs.secure_url;
     }
 
-    const loggedUser = await User.findById(loggedUserId)
+    const loggedUser = await User.findById(loggedUserId);
 
     if (!loggedUser) {
       return next(createError(404, "Không tìm thấy ứng viên"));
@@ -101,10 +101,12 @@ export const updateCandidateProfile = async (req, res, next) => {
     );
     updatedCandidate = filterSkipField(updatedCandidate._doc, "_id");
 
-    console.log({ ...loggedUser._doc, ...updatedCandidate })
-    return res.status(200).json({ updatedData: { ...loggedUser._doc, ...updatedCandidate } });
+    console.log({ ...loggedUser._doc, ...updatedCandidate });
+    return res
+      .status(200)
+      .json({ updatedData: { ...loggedUser._doc, ...updatedCandidate } });
   } catch (e) {
-    console.log(e)
+    console.log(e);
     next(e);
   }
 };
@@ -113,19 +115,17 @@ export const createResume = async (req, res, next) => {
   try {
     let loggedUserId = req.user.id;
 
-    let candidate = await Candidate.findOne({ userId: loggedUserId })
+    let candidate = await Candidate.findOne({ userId: loggedUserId });
 
     const oldResume = await Resume.findOne({ candidateId: candidate._id });
     let savedResume;
     if (oldResume) {
-
       savedResume = await Resume.findOneAndUpdate(
         { candidateId: candidate._id },
         { $set: { ...req.body } },
         { new: true }
       );
     } else {
-
       let resumeToSave = new Resume({
         ...req.body,
         candidateId: candidate._id,
@@ -137,10 +137,13 @@ export const createResume = async (req, res, next) => {
     console.log("update db success...");
     //---
 
-    await Candidate.findOneAndUpdate({ _id: candidate._id }, {
-      $set: { activatedCvId: savedResume._id },
-    }, { new: true }
-    )
+    await Candidate.findOneAndUpdate(
+      { _id: candidate._id },
+      {
+        $set: { activatedCvId: savedResume._id },
+      },
+      { new: true }
+    );
 
     res.status(200).json({ savedResumeId: savedResume._id });
   } catch (e) {
@@ -205,7 +208,6 @@ export const applyJob = async (req, res, next) => {
 
     //
 
-
     res.status(200).json({ applyJobs: [...candidate.applyJobs] });
   } catch (err) {
     next(err);
@@ -226,10 +228,35 @@ export const cancelapplyjob = async (req, res, next) => {
       { new: true }
     );
     //find and remove contact
-    await Contact.deleteOne({ candidateId: candidate._id, jobPostId: jobId._id })
+    await Contact.deleteOne({
+      candidateId: candidate._id,
+      jobPostId: jobId._id,
+    });
     res.status(200).json({ applyJobs: [...candidate.applyJobs] });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     next(err);
+  }
+};
+
+export const getUserProfileCvData = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (user === null) return next(createError(404, "Khong tim thay User"));
+    let userDetail = {};
+    let candidate = await Candidate.findOne({ userId: user._id });
+    let candidateProfile = candidate.profile;
+
+    if (candidateProfile) {
+      candidate = filterSkipField(candidate._doc, "profile");
+      candidateProfile = filterSkipField(candidateProfile._doc, "_id");
+      userDetail = { ...candidate, ...candidateProfile };
+    } else {
+      userDetail = { ...candidate };
+    }
+    res.status(200).json({ ...user._doc, ...userDetail });
+  } catch (e) {
+    console.log(e);
+    next(e);
   }
 };

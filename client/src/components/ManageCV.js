@@ -20,7 +20,8 @@ import useFetch from "../hooks/useFetch";
 import Loading from "./Loading";
 
 export default function ManageCV({ user }) {
-  const { data, setData, loading, error } = useFetch(`/user/${user.user._id}`);
+  const { data, setData, loading, error } = useFetch(`candidate/${user.user._id}/getuserprofilecvdata`);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const navigateTo = function (location) {
@@ -35,7 +36,7 @@ export default function ManageCV({ user }) {
       navigateTo("/login");
     }
   });
-
+console.log(data)
   return (
     <>
       {loading ? (
