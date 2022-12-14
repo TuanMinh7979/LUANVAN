@@ -124,7 +124,7 @@ export default function AccountMenu() {
                             </ListItemIcon>
                             Hồ sơ của bạn
                         </MenuItem>
-                        <MenuItem>
+                        <MenuItem onClick={()=>navigateTo(`/cv/${user._id}`)}>
                             <ListItemIcon>
                                 <ArticleIcon fontSize="small" />
                             </ListItemIcon>

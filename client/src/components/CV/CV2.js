@@ -217,7 +217,7 @@ export default function CV2({ editable, data, setPrint, print, setCVDATA }) {
                             }}
                         >
                             <CalendarMonthIcon fontSize="small" sx={{ mr: 1 }} />
-                            <Typography variant="body1" color="initial">{data.dob}</Typography>
+                            <Typography variant="body1" color="initial">{new Date(data.dob).toLocaleDateString()}</Typography>
                         </Box>
                         <Box
                             sx={{

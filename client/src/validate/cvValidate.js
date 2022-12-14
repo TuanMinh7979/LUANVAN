@@ -9,7 +9,7 @@ const cvSchema = yup.object().shape({
   // gender: yup.string().required(()=>showErr(env.REACT_APP_GENDER_REQUIRED)),
 	email: yup.string().required().matches(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,()=>showErr(env.REACT_APP_WRONG_EMAIL)),
 	phone: yup.string().required(()=>showErr(env.REACT_APP_PHONE_REQUIRED)).matches(/[0-9]+/g,()=>showErr(env.REACT_APP_WRONG_PHONE)),
-  address: yup.string().required(()=>showErr(env.REACT_APP_JOBADDRESS_REQUIRED)),
+  fullAddress: yup.string().required(()=>showErr(env.REACT_APP_JOBADDRESS_REQUIRED)),
   title: yup.string().required(()=>showErr(env.REACT_APP_JOB_REQUIRED))
 })
 export default cvSchema

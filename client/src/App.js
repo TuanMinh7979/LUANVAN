@@ -31,6 +31,7 @@ import RecMn from "./components/admincomponents/RecMn";
 import CandidateMn from "./components/admincomponents/CandidateMn";
 import CVCard from "./components/CV/CVCard";
 import AppliedJobs from "./components/AppliedJobs";
+import DashBoard from "./components/admincomponents/DashBoard";
 
 function App() {
   // sessionStorage.clear();
@@ -102,7 +103,7 @@ function App() {
               }
             />
             <Route
-              path="cvmanager"
+              path="createcv"
               element={
                 <>
                   <Header />
@@ -112,7 +113,7 @@ function App() {
               }
             />
             <Route
-              path="mycv"
+              path="cv/:id"
               element={
                 <>
                   <Header />
@@ -145,18 +146,9 @@ function App() {
 
 
           <Route
-            path='/admin'
-            element={
-              <ProtectedRoute>
-                {/* <SharedLayout /> */}
-                <>abc this is sidebar</>
-              </ProtectedRoute>
-            }
+            path='/admin/*'
           >
-            <Route index element={<Stats />} />
-            <Route path='jobmn' element={< JobMn />} />
-            <Route path='recmn' element={<RecMn />} />
-            <Route path='candidatemn' element={<CandidateMn />} />
+            <DashBoard />
           </Route>
         </Routes>
       </BrowserRouter>

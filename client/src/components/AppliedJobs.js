@@ -74,7 +74,7 @@ export default function AppliedJobs({ user }) {
 			}}
 		>
 			<Grid
-				xs={8}
+				xs={10}
 				item
 				container
 				sx={{
@@ -96,7 +96,7 @@ export default function AppliedJobs({ user }) {
 			</Grid>
 			<Grid
 				item
-				xs={8}
+				xs={10}
 
 			>
 				<TableContainer

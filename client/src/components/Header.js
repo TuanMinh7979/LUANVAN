@@ -56,8 +56,8 @@ export default function Header({ forHr }) {
             }} variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer" }}>
                 Việc làm
             </Typography>
-            <Typography onClick={() => {navigateTo("/cvmanager")}} variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer" }}>
-                Quản lý CV của bạn
+            <Typography onClick={() => {navigateTo("/createcv")}} variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer" }}>
+                Tạo CV
             </Typography>
 
             <Typography onClick={() => {navigateTo("/updateprofile")}} variant="a" component="a" sx={{ mx: 4, fontWeight: 500, cursor: "pointer", flexGrow: 1 }}>
