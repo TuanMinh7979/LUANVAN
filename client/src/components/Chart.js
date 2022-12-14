@@ -53,7 +53,7 @@ export default function Charts({ user }) {
   const hdlGoBaiDang = (jobPostId) => {
     console.log("gui yeu cau den admin");
   };
-
+  console.log(jobsFetch)
   return (
     <>
       <Grid
@@ -116,7 +116,7 @@ export default function Charts({ user }) {
                       </TableCell>
                       <TableCell>{item.createdAt}</TableCell>
                       <TableCell>{item.endDate}</TableCell>
-                      <TableCell>70 lượt xem</TableCell>
+                      <TableCell>{item.viewCount} lượt xem</TableCell>
                       <TableCell>
                         <Button>
                           {item.contactCnt}
