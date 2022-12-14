@@ -101,26 +101,15 @@ export const getUser = async (req, res, next) => {
     let userDetail = {};
     try {
       if (user.role === "candidate") {
-        let candidate = await Candidate.findOne({ userId: user._id });
-        let candidateProfile = candidate.profile;
-
-        if (candidateProfile) {
-          candidate = filterSkipField(candidate._doc, "profile")
-          candidateProfile = filterSkipField(candidateProfile._doc, "_id")
-          userDetail = { ...candidate, ...candidateProfile };
-        } else {
-          userDetail = { ...candidate };
-        }
-
+        userDetail = await Candidate.findOne({ userId: user._id });
       } else if (user.role === "rec") {
         userDetail = await Rec.findOne({ userId: user._id });
       }
     } catch (e) {
-      console.log(e);
       next(e);
     }
 
-    res.status(200).json({ ...user._doc, ...userDetail });
+    res.status(200).json({ ...user._doc, detail: userDetail._doc });
   } catch (err) {
     next(err);
   }
