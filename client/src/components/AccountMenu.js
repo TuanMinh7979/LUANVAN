@@ -116,30 +116,34 @@ export default function AccountMenu() {
                 <MenuItem >
                     <Avatar fontSize="small" /> {user.username}
                 </MenuItem>
-                <MenuItem onClick={() => navigateTo("/myprofile")}>
-                    <ListItemIcon>
-                        <NoteAltIcon fontSize="small" />
-                    </ListItemIcon>
-                    Hồ sơ của bạn
-                </MenuItem>
-                <MenuItem>
-                    <ListItemIcon>
-                        <ArticleIcon fontSize="small" />
-                    </ListItemIcon>
-                    CV của bạn
-                </MenuItem>
-                <MenuItem>
-                    <ListItemIcon>
-                        <WorkIcon fontSize="small" />
-                    </ListItemIcon>
-                    Công việc đã ứng tuyển
-                </MenuItem>
-                <MenuItem onClick={() => navigateTo("/hrlogin")}>
-                    <ListItemIcon>
-                        <WorkIcon fontSize="small" />
-                    </ListItemIcon>
-                    ViecLamNhanh for Business
-                </MenuItem>
+                {user.role == "candidate" &&
+                    <>
+                        <MenuItem onClick={() => navigateTo("/myprofile")}>
+                            <ListItemIcon>
+                                <NoteAltIcon fontSize="small" />
+                            </ListItemIcon>
+                            Hồ sơ của bạn
+                        </MenuItem>
+                        <MenuItem>
+                            <ListItemIcon>
+                                <ArticleIcon fontSize="small" />
+                            </ListItemIcon>
+                            CV của bạn
+                        </MenuItem>
+                        <MenuItem  onClick={() => navigateTo("/appliedjobs")} >
+                            <ListItemIcon>
+                                <WorkIcon fontSize="small" />
+                            </ListItemIcon>
+                            Công việc đã ứng tuyển
+                        </MenuItem>
+                        <MenuItem onClick={() => navigateTo("/hrlogin")}>
+                            <ListItemIcon>
+                                <WorkIcon fontSize="small" />
+                            </ListItemIcon>
+                            ViecLamNhanh for Business
+                        </MenuItem>
+                    </>
+                }
                 {/* <MenuItem>
                     <ListItemIcon>
                         <Settings fontSize="small" />

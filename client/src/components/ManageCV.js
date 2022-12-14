@@ -28,13 +28,9 @@ export default function ManageCV({ user }) {
     navigate(location);
   };
   const [print, setPrint] = useState(false);
-
   const loggedUserId = user.user._id;
-
-
-
   const [defaultCv, setDefaultCv] = useState(defaultCvData);
-  const [currentCV, setCurrentCV] = useState("CV1");
+  const [currentCV, setCurrentCV] = useState("CV2");
   useEffect(() => {
     if (user.user.role != "candidate") {
       navigateTo("/login");
@@ -47,7 +43,7 @@ console.log(data)
         <Loading />
       ) : (
         <>
-          {data && data.aboutMe ? (
+          {data  ? (
             <Grid
               container
               sx={{

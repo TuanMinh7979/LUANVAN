@@ -352,7 +352,7 @@ export default function CV1({ editable, data, setPrint, print, setCVDATA }) {
                             }}
                         >
                             <LocationOnIcon fontSize="small" sx={{ mr: 1 }} />
-                            <Typography variant="body1" color="initial">{data.address}</Typography>
+                            <Typography variant="body1" color="initial">{data.fullAddress}</Typography>
                         </Box>
                     </Box>
                     <Box

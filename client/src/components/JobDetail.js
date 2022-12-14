@@ -33,6 +33,7 @@ import { useLocation } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import EditIcon from "@mui/icons-material/Edit";
 import RecommentJobs from "./RecommentJobs";
+import { useEffect } from "react";
 import SimilarJob from "./SimilarJob";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -55,11 +56,7 @@ export default function JobDetail({ user }) {
 
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  let isAppliedVal = false
-  if (user.user.applyJobs) {
-    isAppliedVal = user.user.applyJobs.includes(id)
-  }
-  const [isApplied, setIsApplied] = useState(isAppliedVal);
+  const [isApplied, setIsApplied] = useState();
   const { data, loading, error } = useFetch(`/jobpost/${id}`);
   const theme = createTheme();
   const applyJob = async () => {
@@ -89,7 +86,7 @@ export default function JobDetail({ user }) {
   };
   const cancelApplyJob = async () => {
     let sendApply = 0;
-    if (confirm("Bạn có muốn ứng tuyển công việc này")) {
+    if (confirm("Bạn có muốn hủy ứng tuyển công việc này")) {
       sendApply = 1;
       const contact = {
         jobId: id,
@@ -103,8 +100,6 @@ export default function JobDetail({ user }) {
         console.log(res)
         toast.warning("Hủy Ứng tuyển thất bại");
       } else {
-
-
         const action = setApplyJobs(res.data.applyJobs);
         dispatch(action);
         setIsApplied(false)
@@ -131,6 +126,12 @@ export default function JobDetail({ user }) {
   if (data.salaryMax == 999999999 && data.salaryMin > 0) {
     salaryChip = `Từ ${data.salaryMin / 1000000} Triệu`;
   }
+  useEffect(()=>{
+    if(user.isLogin){
+      setIsApplied(user.user.applyJobs.includes(id))
+    }
+  })
+  console.log(isApplied);
   return (
     <>
       {loading ? (
