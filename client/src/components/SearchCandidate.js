@@ -424,11 +424,14 @@ export default function SearchCandidate({ user, env }) {
 
 	const [appliedCvData, setAppliedCvData] = useState([]);
 
-	//cv list
-	const fetchAppliedCvData = async () => {
-		// const sugListIdFetch = await axios.get(
-		//   `/rec/${}/job/6385c7473c4d036a0cccee16/appliedcandidates`
-		// );
+  //cv list
+  const fetchAppliedCvData = async () => {
+    const appliedCvDataRes = await axios.get(
+      `/rec/${user.user._id}/job/${jobPostId}/appliedcandidates`
+    );
+
+    let appliedCvData = appliedCvDataRes.data.map(item => item.applyCvData)
+    setAppliedCvData(appliedCvData)
 
 	}
 	const getSugListData = async () => {

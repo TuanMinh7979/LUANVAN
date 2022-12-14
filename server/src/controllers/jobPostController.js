@@ -83,12 +83,14 @@ export const deleteJobPost = async (req, res, next) => {
 export const getJobPost = async (req, res, next) => {
   try {
     const jobPost = await JobPost.findById(req.params.id).populate("companyId");
+    await JobPost.findByIdAndUpdate(jobPost._id, { viewCount: jobPost.viewCount + 1 })
 
     if (jobPost === null)
       return next(createError(404, "Khong tim thay jobPost"));
 
     res.status(200).json({ ...jobPost._doc, companyId: jobPost.companyId });
   } catch (err) {
+    console.log(err)
     next(err);
   }
 };
@@ -152,7 +154,7 @@ export const getAllJobPost = async (req, res, next) => {
     let rs;
     let queryLen = Object.keys(req.query).length;
     let titleQuery = "";
-  
+
     if (req.query && req.query.title) {
       titleQuery = req.query.title;
       req.query = filterSkipField(req.query, "title");

@@ -36,14 +36,14 @@ export default function ManageCV({ user }) {
       navigateTo("/login");
     }
   });
-console.log(data)
+  console.log(data)
   return (
     <>
       {loading ? (
         <Loading />
       ) : (
         <>
-          {data  ? (
+          {data.aboutMe ? (
             <Grid
               container
               sx={{
