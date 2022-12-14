@@ -140,7 +140,7 @@ export const getJobPost = async (req, res, next) => {
 //   }
 // };
 
-export const getAllJobPost1 = async (req, res, next) => {
+export const getAll = async (req, res, next) => {
   try {
     const rs = await JobPost.find(req.query).populate("companyId");
     res.status(200).json(rs);
