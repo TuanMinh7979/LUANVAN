@@ -11,7 +11,11 @@ import {
   TextField,
   Typography,
   TableRow,
+  DialogTitle,
+
 } from "@mui/material";
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import { useNavigate, BrowserRouter, Route, Routes } from "react-router-dom";
 import "draft-js/dist/Draft.css";
 import BarChartIcon from "@mui/icons-material/BarChart";
@@ -84,22 +88,23 @@ export default function Charts({ user }) {
             alignItems: "center",
           }}
         >
-          <TableContainer component={Paper}>
-            <Table>
-              <TableHead>
-                <TableCell>Tên tin tuyển dụng</TableCell>
-                <TableCell>Ngày đăng</TableCell>
-                <TableCell>Ngày hết hạn</TableCell>
-                <TableCell>Lượt xem</TableCell>
-                <TableCell>Đã ứng tuyển</TableCell>
-                <TableCell>Trạng thái</TableCell>
-                <TableCell></TableCell>
-                <TableCell></TableCell>
-              </TableHead>
-              {!jobsFetch || (jobsFetch && jobsFetch.loading) ? (
-                <Loading />
-              ) : (
-                jobsFetch.data.map((item) => {
+          {!jobsFetch || (jobsFetch && jobsFetch.loading) ? (
+            <Loading />
+          ) : (
+            <TableContainer component={Paper}>
+              <Table>
+                <TableHead>
+                  <TableCell>Tên tin tuyển dụng</TableCell>
+                  <TableCell>Ngày đăng</TableCell>
+                  <TableCell>Ngày hết hạn</TableCell>
+                  <TableCell>Lượt xem</TableCell>
+                  <TableCell>Đã ứng tuyển</TableCell>
+                  <TableCell>Trạng thái</TableCell>
+                  <TableCell></TableCell>
+                  <TableCell></TableCell>
+                </TableHead>
+
+                {jobsFetch.data.map((item) => {
                   return (
                     <TableRow key={item._id}>
                       <TableCell
@@ -113,7 +118,7 @@ export default function Charts({ user }) {
                       <TableCell>{item.endDate}</TableCell>
                       <TableCell>70 lượt xem</TableCell>
                       <TableCell>
-                        <Button onClick={hdlOpenCandidatesModal}>
+                        <Button>
                           {item.contactCnt}
                         </Button>
                       </TableCell>
@@ -143,10 +148,11 @@ export default function Charts({ user }) {
                       </TableCell>
                     </TableRow>
                   );
-                })
-              )}
-            </Table>
-          </TableContainer>
+                })}
+
+              </Table>
+            </TableContainer>
+          )}
         </Grid>
       </Grid>
 
@@ -157,6 +163,7 @@ export default function Charts({ user }) {
         onClose={hdlCloseCandidatesModal}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+
       >
         <Box
           sx={{
@@ -171,12 +178,20 @@ export default function Charts({ user }) {
             p: 4,
           }}
         >
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <DialogTitle id="id">
+            <Box display="flex" alignItems="center" justifyContent="space-between">
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                TIÊU ĐỀ
+              </Typography>
+              <Box>
+                <IconButton onClick={hdlCloseCandidatesModal}>
+                  <CloseIcon />
+                </IconButton>
+              </Box>
+            </Box>
+          </DialogTitle>
+
+
         </Box>
       </Modal>
       {/* MODAL SECTION */}

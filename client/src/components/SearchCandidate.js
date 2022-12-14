@@ -207,6 +207,8 @@ function SearchController({ setSearchCbData }) {
     </Grid>
   );
 }
+
+
 // Card ung vien
 function CandidateCard({ data }) {
   const commonStyle = {
@@ -408,6 +410,7 @@ export default function SearchCandidate({ user, env }) {
   //cv list
   const [recommendData, setRecommendData] = useState([]);
   const [searchCbData, setSearchCbData] = useState([]);
+  const [appliedCvData, setAppliedCvData] = useState([]);
 
   //cv list
 
@@ -421,7 +424,7 @@ export default function SearchCandidate({ user, env }) {
       "http://localhost:8800/api/recommend/getCvByListId",
       { suglistIdData }
     );
-    console.log(sugListDbData.data);
+   
     setRecommendData(sugListDbData.data);
   };
   const [tabValue, setTabValue] = useState(0);

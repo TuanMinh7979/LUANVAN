@@ -55,7 +55,11 @@ export default function JobDetail({ user }) {
 
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  const [isApplied, setIsApplied] = useState(user.user.applyJobs.includes(id));
+  let isAppliedVal = false
+  if (user.user.applyJobs) {
+    isAppliedVal = user.user.applyJobs.includes(id)
+  }
+  const [isApplied, setIsApplied] = useState(isAppliedVal);
   const { data, loading, error } = useFetch(`/jobpost/${id}`);
   const theme = createTheme();
   const applyJob = async () => {
