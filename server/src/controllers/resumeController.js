@@ -32,3 +32,20 @@ export const getByCharacterInField = async (req, res, next) => {
   }
 };
 
+
+
+export const viewCv = async (req, res, next) => {
+  try {
+    let cvId = req.params.id;
+    const cv = await Resume.findById(cvId);
+    if (!cv) {
+      return next(createError(404, "Cv không tồn tại trong hệ thống"));
+    }
+    res.status(200).json({ cv });
+  } catch (e) {
+    next(e);
+
+  }
+};
+
+

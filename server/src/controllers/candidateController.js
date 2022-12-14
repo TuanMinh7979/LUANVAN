@@ -154,9 +154,8 @@ export const createResume = async (req, res, next) => {
 export const getMyCV = async (req, res, next) => {
   try {
     let loggedUserId = req.params.id;
-
     const candidate = await Candidate.findOne({ userId: loggedUserId });
-    if (!candidate || candidate == undefined) {
+    if (!candidate ) {
       return next(createError(404, "Ứng viên không tồn tại trong hệ thống"));
     }
 
