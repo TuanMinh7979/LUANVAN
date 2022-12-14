@@ -37,7 +37,8 @@ export const getJobAppliedCandidates = async (req, res, next) => {
   const ObjectId = mongoose.Types.ObjectId;
   try {
     const loggedUserId = req.user.id;
-    const job = await JobPost.findById(req.params.jobPostId);
+    // const job = await JobPost.findById(req.params.jobPostId);
+    //job._id in line 56 match
 
     const candidates = await Candidate.aggregate([
 

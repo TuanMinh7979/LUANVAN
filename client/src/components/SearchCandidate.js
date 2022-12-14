@@ -26,6 +26,8 @@ import env from "../assets/env.json";
 import { RichTextDisplay } from "./RichText";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
+import { useSelector } from "react-redux";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -410,10 +412,17 @@ export default function SearchCandidate({ user, env }) {
   //cv list
   const [recommendData, setRecommendData] = useState([]);
   const [searchCbData, setSearchCbData] = useState([]);
+
+
   const [appliedCvData, setAppliedCvData] = useState([]);
 
   //cv list
+  const fetchAppliedCvData = async () => {
+    // const sugListIdFetch = await axios.get(
+    //   `/rec/${}/job/6385c7473c4d036a0cccee16/appliedcandidates`
+    // );
 
+  }
   const getSugListData = async () => {
     const sugListIdFetch = await axios.get(
       `http://localhost:8000/getSugCvForJob/${jobPostId}`
@@ -424,7 +433,7 @@ export default function SearchCandidate({ user, env }) {
       "http://localhost:8800/api/recommend/getCvByListId",
       { suglistIdData }
     );
-   
+
     setRecommendData(sugListDbData.data);
   };
   const [tabValue, setTabValue] = useState(0);
@@ -471,7 +480,7 @@ export default function SearchCandidate({ user, env }) {
             aria-label="feature tabs"
           >
             <Tab label="Tìm ứng viên" {...a11yProps(0)} />
-            <Tab label="Ứng viên đã ứng tuyển" {...a11yProps(1)} />
+            <Tab label="Ứng viên đã ứng tuyển" {...a11yProps(1)} onClick={() => fetchAppliedCvData()} />
             <Tab
               onClick={() => getSugListData()}
               label="Ứng viên được đề xuất bằng AI"
@@ -492,7 +501,9 @@ export default function SearchCandidate({ user, env }) {
           )}
         </TabPanel>
         <TabPanel value={tabValue} index={1}>
-          {/* <Result /> */}
+          {appliedCvData && appliedCvData.length > 0 && (
+            <Result data={appliedCvData} />
+          )}
         </TabPanel>
         <TabPanel value={tabValue} index={2}>
           {recommendData && recommendData.length > 0 && (
