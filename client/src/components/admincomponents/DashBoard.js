@@ -1,9 +1,11 @@
 import { Box, Grid, MenuItem, MenuList, ListItemIcon, ListItemText, Paper } from '@mui/material/'
 import { styled, alpha, createTheme } from "@mui/material/styles";
 import ArticleIcon from '@mui/icons-material/Article';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import JobMn from './JobMn';
+import CandidateMn from './CandidateMn';
 function SideBar() {
+    const navigate = useNavigate()
     const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
         "&:hover": {
             color: theme.palette.success.light,
@@ -22,9 +24,11 @@ function SideBar() {
         >
             <MenuList>
                 <CustomMenuItem
-                // sx={{
-                //     color: activeItem == 0 ? theme.palette.success.main : "",
-                // }}
+                    // sx={{
+                    //     color: activeItem == 0 ? theme.palette.success.main : "",
+                    // }}
+
+                    onClick={() => navigate("./")}
 
                 >
                     <ListItemIcon sx={{ py: 2 }}>
@@ -33,10 +37,10 @@ function SideBar() {
                     <ListItemText>Quản lý tin tuyển dụng</ListItemText>
                 </CustomMenuItem>
                 <CustomMenuItem
-                // sx={{
-                //     color: activeItem == 0 ? theme.palette.success.main : "",
-                // }}
-
+                    // sx={{
+                    //     color: activeItem == 0 ? theme.palette.success.main : "",
+                    // }}
+                    onClick={() => navigate("./candidatemn")}
                 >
                     <ListItemIcon sx={{ py: 2 }}>
                         <ArticleIcon />
@@ -65,7 +69,7 @@ export default function DashBoard() {
             spacing={0}
             sx={{
                 background: "#f1f2f7",
-                gap:3
+                gap: 3
             }}
         >
             <Grid
@@ -78,11 +82,12 @@ export default function DashBoard() {
                 item
                 xs={9}
                 sx={{
-                    mt:4,
+                    mt: 4,
                 }}
-                >
+            >
                 <Routes>
-                    <Route path='/' element={<JobMn />  }></Route>
+                    <Route path='/' element={<JobMn />}></Route>
+                    <Route path='/candidatemn' element={<CandidateMn />}></Route>
                 </Routes>
             </Grid>
         </Grid>
