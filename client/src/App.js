@@ -30,6 +30,7 @@ import JobMn from "./components/admincomponents/JobMn";
 import RecMn from "./components/admincomponents/RecMn";
 import CandidateMn from "./components/admincomponents/CandidateMn";
 import CVCard from "./components/CV/CVCard";
+import AppliedJobs from "./components/AppliedJobs";
 
 function App() {
   // sessionStorage.clear();
@@ -116,6 +117,17 @@ function App() {
                 <>
                   <Header />
                   <MyCV user={user} />
+                  <Footer />
+                </>
+              }
+            />
+
+            <Route
+              path="appliedjobs"
+              element={
+                <>
+                  <Header />
+                  <AppliedJobs user={user} />
                   <Footer />
                 </>
               }
