@@ -136,10 +136,10 @@ export const createResume = async (req, res, next) => {
     console.log("update db success...");
     //---
 
-    candidate.activatedCvId = savedResume._id;
-    candidate.save()
-
-
+    await Candidate.findOneAndUpdate({ _id: candidate._id }, {
+      $set: { activatedCvId: savedResume._id },
+    }, { new: true }
+    )
 
     res.status(200).json({ savedResumeId: savedResume._id });
   } catch (e) {

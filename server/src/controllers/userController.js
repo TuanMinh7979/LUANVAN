@@ -106,7 +106,8 @@ export const getUser = async (req, res, next) => {
 
         if (candidateProfile) {
           candidate = filterSkipField(candidate._doc, "profile")
-          userDetail = { ...candidate, ...candidateProfile._doc };
+          candidateProfile = filterSkipField(candidateProfile._doc, "_id")
+          userDetail = { ...candidate, ...candidateProfile };
         } else {
           userDetail = { ...candidate };
         }

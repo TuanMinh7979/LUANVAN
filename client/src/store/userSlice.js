@@ -29,13 +29,7 @@ export const userSlice = createSlice({
             //
             sessionStorage.setItem("user", JSON.stringify(state.user));
         },
-        // setProfile: (state, action) => {
-        //     let cpState = { ...state.user };
-        //     cpState.profile = action.payload;
-        //     state.user = { ...cpState }
-        //     //
-        //     sessionStorage.setItem("user", JSON.stringify(state.user));
-        // },
+  
 
         setApplyJobs: (state, action) => {
             let cpState = { ...state.user };
