@@ -15,7 +15,7 @@ import {
   Chip,
   Paper,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { createSearchParams, useNavigate } from "react-router-dom";
 import CrisisAlertIcon from "@mui/icons-material/CrisisAlert";
 import { Editor, EditorState, convertToRaw } from "draft-js";
 import "draft-js/dist/Draft.css";
@@ -34,8 +34,10 @@ import WorkIcon from "@mui/icons-material/Work";
 import profileSchema from "../validate/profileValidate";
 import { toast } from "react-toastify";
 import useFetch from "../hooks/useFetch";
-
 import Loading from "./Loading";
+import { useDispatch } from "react-redux";
+import { setCandidateData } from "../store/userSlice";
+
 import {
   getAddressTitleList,
   getAddressIdFromTitle,
@@ -45,6 +47,7 @@ import {
 export default function UpdateProfile({ user }) {
   const imageRef = useRef();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [avatar, setAvatar] = useState(logoImage);
   const [skills, setSkills] = useState(() => EditorState.createEmpty());
   const [education, setEducation] = useState(() => EditorState.createEmpty());
@@ -104,14 +107,20 @@ export default function UpdateProfile({ user }) {
         convertToRaw(skills.getCurrentContent())
       ).join(" "),
     };
-    console.log(rs);
+
     profileSchema.validate(rs).then((validatedData) => {
       axios
         .put(`/candidate/${user.user._id}/profile`, validatedData)
         .then((res) => {
+          console.log(res)
           if (res.data.status && res.data.status != 200) {
+
+
             toast.error("Cập nhật hồ sơ thất bại");
           } else {
+            console.log(res.data);
+            const action = setCandidateData(res.data.updatedData, true)
+            dispatch(action);
             toast.success("Cập nhật hồ sơ thành công");
           }
         });
@@ -131,7 +140,7 @@ export default function UpdateProfile({ user }) {
       objectiveCv: JSON.stringify(convertToRaw(target.getCurrentContent())),
       activitiesCv: JSON.stringify(convertToRaw(activity.getCurrentContent())),
       certificationsCv: JSON.stringify(
-      convertToRaw(certificate.getCurrentContent())),
+        convertToRaw(certificate.getCurrentContent())),
       aboutMe: JSON.stringify(convertToRaw(aboutMe.getCurrentContent())),
       experienceCv: JSON.stringify(convertToRaw(experience.getCurrentContent())),
       skillsCv: JSON.stringify(convertToRaw(skills.getCurrentContent()))

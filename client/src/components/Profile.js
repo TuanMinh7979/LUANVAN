@@ -32,179 +32,178 @@ export default function Profile({ user }) {
 	function navigateTo(location) {
 		navigate(location);
 	}
-	const { data, loading, error } = useFetch(`/user/${user.user._id}`);
+	// const { data, loading, error } = useFetch(`/user/${user.user._id}`);
 	useEffect(() => {
 		if (user.user.role != "candidate") {
 			navigateTo("/");
 		}
 	});
+
+	const data = user.user
 	return (
 		<>
-			{loading ? (
-				<Loading />
-			) : (
-				<>
-					{data && data.aboutMe ? (
+			{
+				data.profile ? (
+					<Grid
+						container
+						sx={{
+							justifyContent: "center",
+							background: "#f1f2f7",
+							pb: 4,
+						}}
+					>
+						{/* Head */}
 						<Grid
+							xs={8}
 							container
+							component={Paper}
 							sx={{
+								mt: 3,
+								rowGap: 3,
 								justifyContent: "center",
-								background: "#f1f2f7",
-								pb: 4,
+								p: 3,
 							}}
 						>
-							{/* Head */}
+							<Box>
+								<Image
+									src={sampleImg}
+									width="1000px"
+									height="300px"
+									duration={0}
+									fit="scale-down"
+								/>
+							</Box>
 							<Grid
-								xs={8}
-								container
-								component={Paper}
+								item
+								xs={12}
 								sx={{
-									mt: 3,
-									rowGap: 3,
-									justifyContent: "center",
-									p: 3,
+									display: "flex",
+									alignItems: "center",
+									columnGap: 2,
 								}}
 							>
-								<Box>
+								<Grid xs={3}>
 									<Image
-										src={sampleImg}
-										width="1000px"
-										height="300px"
+										src={data.avatar}
+										width="250px"
+										height="250px"
 										duration={0}
 										fit="scale-down"
+										sx={{
+											borderRadius: "50%",
+										}}
 									/>
-								</Box>
+								</Grid>
+								<Grid xs={6}>
+									<Typography variant="h2" fontWeight={600}>{data.name}</Typography>
+									<Typography variant="h6">{data.title}</Typography>
+								</Grid>
+								<Grid xs={4}>
+									<Box
+										sx={{
+											display: "flex",
+											alignItems: "center",
+											mb: 1
+										}}
+									>
+										<EmailIcon fontSize="large" />
+										<Typography variant="h6" sx={{ ml: 2, fontWeight: 550 }}>
+											{data.email}
+										</Typography>
+									</Box>
+									<Box
+										sx={{
+											display: "flex",
+											alignItems: "center",
+										}}
+									>
+										<CallIcon fontSize="large" />
+										<Typography variant="h6" sx={{ ml: 2, fontWeight: 550 }}>
+											{data.phone}
+										</Typography>
+									</Box>
+								</Grid>
+							</Grid>
+						</Grid>
+						{/* Hoc van */}
+						<Grid
+							xs={8}
+							component={Paper}
+							container
+							sx={{
+								mt: 3,
+								justifyContent: "center",
+								p: 3,
+								alignItems: "center"
+							}}
+						>
+							<Grid
+								item
+								xs={7}>
 								<Grid
 									item
 									xs={12}
-									sx={{
-										display: "flex",
-										alignItems: "center",
-										columnGap: 2,
-									}}
 								>
-									<Grid xs={3}>
-										<Image
-											src={data.avatar}
-											width="250px"
-											height="250px"
-											duration={0}
-											fit="scale-down"
-											sx={{
-												borderRadius: "50%",
-											}}
-										/>
-									</Grid>
-									<Grid xs={6}>
-										<Typography variant="h2" fontWeight={600}>{data.name}</Typography>
-										<Typography variant="h6">{data.title}</Typography>
-									</Grid>
-									<Grid xs={4}>
-										<Box
-											sx={{
-												display: "flex",
-												alignItems: "center",
-												mb: 1
-											}}
-										>
-											<EmailIcon fontSize="large" />
-											<Typography variant="h6" sx={{ ml: 2, fontWeight: 550 }}>
-												{data.email}
-											</Typography>
-										</Box>
-										<Box
-											sx={{
-												display: "flex",
-												alignItems: "center",
-											}}
-										>
-											<CallIcon fontSize="large" />
-											<Typography variant="h6" sx={{ ml: 2, fontWeight: 550 }}>
-												{data.phone}
-											</Typography>
-										</Box>
-									</Grid>
+									<Typography variant="h4" fontWeight={550}>
+										※ Học vấn
+									</Typography>
 								</Grid>
+								<RichTextDisplay
+									data={JSON.parse(data.profile.educationCv)}
+								></RichTextDisplay>
 							</Grid>
-							{/* Hoc van */}
 							<Grid
-								xs={8}
-								component={Paper}
-								container
-								sx={{
-									mt: 3,
-									justifyContent: "center",
-									p: 3,
-									alignItems: "center"
-								}}
-							>
-								<Grid
-									item
-									xs={7}>
-									<Grid
-										item
-										xs={12}
-									>
-										<Typography variant="h4" fontWeight={550}>
-											※ Học vấn
-										</Typography>
-									</Grid>
-									<RichTextDisplay
-										data={JSON.parse(data.educationCv)}
-									></RichTextDisplay>
-								</Grid>
-								<Grid
-									item
-									xs={5}>
-									<Image
-										src={schoolImg}
-										duration={0}
-										alt={"Loading 99%"}
-									>
-									</Image>
-								</Grid>
-
+								item
+								xs={5}>
+								<Image
+									src={schoolImg}
+									duration={0}
+									alt={"Loading 99%"}
+								>
+								</Image>
 							</Grid>
-							{/* Muc tieu nghe nghiep */}
+
+						</Grid>
+						{/* Muc tieu nghe nghiep */}
+						<Grid
+							xs={8}
+							component={Paper}
+							container
+							sx={{
+								mt: 3,
+								rowGap: 3,
+								justifyContent: "center",
+								p: 3,
+								alignItems: "center"
+							}}
+						>
 							<Grid
-								xs={8}
-								component={Paper}
-								container
-								sx={{
-									mt: 3,
-									rowGap: 3,
-									justifyContent: "center",
-									p: 3,
-									alignItems: "center"
-								}}
-							>
+								item
+								xs={7}>
 								<Grid
 									item
-									xs={7}>
-									<Grid
-										item
-										xs={12}
-									>
-										<Typography variant="h4" fontWeight={550}>
-											※ Mục tiêu
-										</Typography>
-									</Grid>
-									<RichTextDisplay
-										data={JSON.parse(data.objectiveCv)}
-									></RichTextDisplay>
+									xs={12}
+								>
+									<Typography variant="h4" fontWeight={550}>
+										※ Mục tiêu
+									</Typography>
 								</Grid>
-								<Grid
-									item
-									xs={5}>
-									<Image
-										src={careerImg}
-										duration={0}
-									>
-									</Image>
-								</Grid>
-
+								<RichTextDisplay
+									data={JSON.parse(data.profile.objectiveCv)}
+								></RichTextDisplay>
 							</Grid>
-							{/* <Grid
+							<Grid
+								item
+								xs={5}>
+								<Image
+									src={careerImg}
+									duration={0}
+								>
+								</Image>
+							</Grid>
+
+						</Grid>
+						{/* <Grid
 								xs={8}
 								component={Paper}
 								sx={{
@@ -222,45 +221,45 @@ export default function Profile({ user }) {
 								></RichTextDisplay>
 							</Grid>
 							{/* Hoat dong */}
+						<Grid
+							xs={8}
+							component={Paper}
+							container
+							sx={{
+								mt: 3,
+								rowGap: 3,
+								justifyContent: "center",
+								p: 3,
+								alignItems: "center"
+							}}
+						>
 							<Grid
-								xs={8}
-								component={Paper}
-								container
-								sx={{
-									mt: 3,
-									rowGap: 3,
-									justifyContent: "center",
-									p: 3,
-									alignItems: "center"
-								}}
-							>
+								item
+								xs={7}>
 								<Grid
 									item
-									xs={7}>
-									<Grid
-										item
-										xs={12}
-									>
-										<Typography variant="h4" fontWeight={550}>
-											※ Hoạt động
-										</Typography>
-									</Grid>
-									<RichTextDisplay
-										data={JSON.parse(data.activitiesCv)}
-									></RichTextDisplay>
+									xs={12}
+								>
+									<Typography variant="h4" fontWeight={550}>
+										※ Hoạt động
+									</Typography>
 								</Grid>
-								<Grid
-									item
-									xs={5}>
-									<Image
-										src={activityImage}
-										duration={0}
-									>
-									</Image>
-								</Grid>
-
+								<RichTextDisplay
+									data={JSON.parse(data.profile.activitiesCv)}
+								></RichTextDisplay>
 							</Grid>
-							{/* <Grid
+							<Grid
+								item
+								xs={5}>
+								<Image
+									src={activityImage}
+									duration={0}
+								>
+								</Image>
+							</Grid>
+
+						</Grid>
+						{/* <Grid
 								xs={8}
 								component={Paper}
 								sx={{
@@ -277,46 +276,46 @@ export default function Profile({ user }) {
 									data={JSON.parse(data.activitiesCv)}
 								></RichTextDisplay>
 							</Grid> */}
-							{/* Chung chi */}
+						{/* Chung chi */}
+						<Grid
+							xs={8}
+							component={Paper}
+							container
+							sx={{
+								mt: 3,
+								rowGap: 3,
+								justifyContent: "center",
+								p: 3,
+								alignItems: "center"
+							}}
+						>
 							<Grid
-								xs={8}
-								component={Paper}
-								container
-								sx={{
-									mt: 3,
-									rowGap: 3,
-									justifyContent: "center",
-									p: 3,
-									alignItems: "center"
-								}}
-							>
+								item
+								xs={7}>
 								<Grid
 									item
-									xs={7}>
-									<Grid
-										item
-										xs={12}
-									>
-										<Typography variant="h4" fontWeight={550}>
-											※ Chứng chỉ
-										</Typography>
-									</Grid>
-									<RichTextDisplay
-										data={JSON.parse(data.certificationsCv)}
-									></RichTextDisplay>
+									xs={12}
+								>
+									<Typography variant="h4" fontWeight={550}>
+										※ Chứng chỉ
+									</Typography>
 								</Grid>
-								<Grid
-									item
-									xs={5}>
-									<Image
-										src={certificateImg}
-										duration={0}
-									>
-									</Image>
-								</Grid>
-
+								<RichTextDisplay
+									data={JSON.parse(data.profile.certificationsCv)}
+								></RichTextDisplay>
 							</Grid>
-							{/* <Grid
+							<Grid
+								item
+								xs={5}>
+								<Image
+									src={certificateImg}
+									duration={0}
+								>
+								</Image>
+							</Grid>
+
+						</Grid>
+						{/* <Grid
 								xs={8}
 								component={Paper}
 								sx={{
@@ -333,12 +332,13 @@ export default function Profile({ user }) {
 									data={JSON.parse(data.certificationsCv)}
 								></RichTextDisplay>
 							</Grid>  */}
-						</Grid>
-					) : (
-						<Navigate to="/updateprofile" replace={true} />
-					)}
-				</>
-			)}
+					</Grid>
+				) : (
+					<Navigate to="/updateprofile" replace={true} />
+				)
+			}
+
 		</>
+
 	);
 }

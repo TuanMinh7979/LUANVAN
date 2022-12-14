@@ -14,6 +14,7 @@ export const userSlice = createSlice({
             state.user = action.payload
             state.isLogin = true
         },
+
         setUserLogout: (state, action) => {
             state.user = "Người dùng"
             state.isLogin = false
@@ -28,19 +29,25 @@ export const userSlice = createSlice({
             //
             sessionStorage.setItem("user", JSON.stringify(state.user));
         },
-        setProfile: (state, action) => {
-            let cpState = { ...state.user };
-            cpState.profile = action.payload;
-            state.user = { ...cpState }
-            //
-            sessionStorage.setItem("user", JSON.stringify(state.user));
-        },
+        // setProfile: (state, action) => {
+        //     let cpState = { ...state.user };
+        //     cpState.profile = action.payload;
+        //     state.user = { ...cpState }
+        //     //
+        //     sessionStorage.setItem("user", JSON.stringify(state.user));
+        // },
 
         setApplyJobs: (state, action) => {
             let cpState = { ...state.user };
             cpState.applyJobs = action.payload;
             state.user = { ...cpState }
             //
+            sessionStorage.setItem("user", JSON.stringify(state.user));
+        },
+        //update profile :
+        setCandidateData: (state, action) => {
+            state.user = action.payload
+            state.isLogin = true
             sessionStorage.setItem("user", JSON.stringify(state.user));
         },
 
@@ -50,5 +57,5 @@ export const userSlice = createSlice({
     }
 })
 
-export const { setUserLogin, setUserLogout, setActivatedCvId, setProfile, setApplyJobs } = userSlice.actions
+export const { setUserLogin, setUserLogout, setActivatedCvId, setApplyJobs, setCandidateData } = userSlice.actions
 export default userSlice.reducer;

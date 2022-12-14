@@ -85,19 +85,25 @@ export const updateCandidateProfile = async (req, res, next) => {
       avatarLink = upRs.secure_url;
     }
 
-    const updatedCandidate = await Candidate.findOneAndUpdate(
+    const loggedUser = await User.findById(loggedUserId)
+
+    if (!loggedUser) {
+      return next(createError(404, "Không tìm thấy ứng viên"));
+    }
+
+    let updatedCandidate = await Candidate.findOneAndUpdate(
       { userId: loggedUserId },
       {
         $set: { ...candidateData, avatar: avatarLink },
       },
       { new: true }
     );
-    if (!updatedCandidate) {
-      return next(createError(404, "Không tìm thấy ứng viên"));
-    }
-    Candidate.findOne
-    return res.status(200).json({ ...updatedCandidate._doc });
+    updatedCandidate = filterSkipField(updatedCandidate._doc, "_id");
+
+    console.log({ ...loggedUser._doc, ...updatedCandidate })
+    return res.status(200).json({ updatedData: { ...loggedUser._doc, ...updatedCandidate } });
   } catch (e) {
+    console.log(e)
     next(e);
   }
 };
@@ -135,7 +141,7 @@ export const createResume = async (req, res, next) => {
 
 
 
-    res.status(200).json({ savedResumeId: savedResume._id});
+    res.status(200).json({ savedResumeId: savedResume._id });
   } catch (e) {
     console.log(e);
     next(e);

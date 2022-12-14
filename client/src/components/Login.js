@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserLogin, setActivatedCvId, setProfile, setApplyJobs } from "../store/userSlice";
+import { setUserLogin, setActivatedCvId, setApplyJobs } from "../store/userSlice";
 import { useNavigate } from "react-router-dom";
 import {
 	Grid,
