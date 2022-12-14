@@ -1,6 +1,8 @@
-import { Box,  Grid, MenuItem, MenuList, ListItemIcon, ListItemText, Paper } from '@mui/material/'
+import { Box, Grid, MenuItem, MenuList, ListItemIcon, ListItemText, Paper } from '@mui/material/'
 import { styled, alpha, createTheme } from "@mui/material/styles";
-
+import ArticleIcon from '@mui/icons-material/Article';
+import { Route, Routes } from 'react-router-dom';
+import JobMn from './JobMn';
 function SideBar() {
     const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
         "&:hover": {
@@ -13,26 +15,44 @@ function SideBar() {
     return (
         <Box
             sx={{
-                width: "100%"
+                width: "100%",
+                minHeight: "1000px"
             }}
             component={Paper}
         >
             <MenuList>
                 <CustomMenuItem
-                    // sx={{
-                    //     color: activeItem == 0 ? theme.palette.success.main : "",
-                    // }}
+                // sx={{
+                //     color: activeItem == 0 ? theme.palette.success.main : "",
+                // }}
 
                 >
-                    {/* <ListItemIcon sx={{ py: 2 }}>
-                        <EditIcon
-                            fontSize="small"
-                            sx={{
-                                color: activeItem == 0 ? theme.palette.success.main : "",
-                            }}
-                        />
-                    </ListItemIcon> */}
-                    <ListItemText>Đăng tin tuyển dụng mới</ListItemText>
+                    <ListItemIcon sx={{ py: 2 }}>
+                        <ArticleIcon />
+                    </ListItemIcon>
+                    <ListItemText>Quản lý tin tuyển dụng</ListItemText>
+                </CustomMenuItem>
+                <CustomMenuItem
+                // sx={{
+                //     color: activeItem == 0 ? theme.palette.success.main : "",
+                // }}
+
+                >
+                    <ListItemIcon sx={{ py: 2 }}>
+                        <ArticleIcon />
+                    </ListItemIcon>
+                    <ListItemText>Quản lý Ứng viên</ListItemText>
+                </CustomMenuItem>
+                <CustomMenuItem
+                // sx={{
+                //     color: activeItem == 0 ? theme.palette.success.main : "",
+                // }}
+
+                >
+                    <ListItemIcon sx={{ py: 2 }}>
+                        <ArticleIcon />
+                    </ListItemIcon>
+                    <ListItemText>Quản lý Nhà tuyển dụng</ListItemText>
                 </CustomMenuItem>
             </MenuList>
         </Box>
@@ -44,14 +64,26 @@ export default function DashBoard() {
             container
             spacing={0}
             sx={{
-                background: "#f1f2f7"
+                background: "#f1f2f7",
+                gap:3
             }}
         >
             <Grid
                 item
                 container
-                xs={4}>
-                    <SideBar />
+                xs={2}>
+                <SideBar />
+            </Grid>
+            <Grid
+                item
+                xs={9}
+                sx={{
+                    mt:4,
+                }}
+                >
+                <Routes>
+                    <Route path='/' element={<JobMn />  }></Route>
+                </Routes>
             </Grid>
         </Grid>
     )
