@@ -25,10 +25,6 @@ import { CircularProgress } from "@mui/material";
 import ProtectedRoute from "./page/ProtectedRoute";
 import MyCV from "./components/MyCV";
 
-import Stats from "./components/admincomponents/Stats";
-import JobMn from "./components/admincomponents/JobMn";
-import RecMn from "./components/admincomponents/RecMn";
-import CandidateMn from "./components/admincomponents/CandidateMn";
 import CVCard from "./components/CV/CVCard";
 import AppliedJobs from "./components/AppliedJobs";
 import DashBoard from "./components/admincomponents/DashBoard";
