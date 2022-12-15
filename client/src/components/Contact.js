@@ -9,7 +9,8 @@ import { contactProcesses } from "../clientData/selectData";
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
-export default function CandidateCVs() {
+import axios from "axios";
+export default function Contact() {
     // có thể lưu status dạng int là 0, 1, 2, mặc định là 0, xuống đây dựa dô cái mảng cvstatus dưới này mà lấy
     let [searchParams, setSearchParams] = useSearchParams();
     const user = useSelector((state) => state.user);
@@ -20,24 +21,51 @@ export default function CandidateCVs() {
 
 
     const [cvIdParam, setCvIdParam] = useState(searchParams.get('id'))
-    console.log(searchParams.get('id'))
 
-    const { data, setData, loading, error } = useFetch(`/rec/${user.user._id}/allmycontacts`);
+    const [data, setData] = useState([])
+    // const { data, setData, loading, error } = useFetch(`/rec/${user.user._id}/allmycontacts`);
+
+    // useEffect(() => {
+    //     if (cvIdParam !== "") {
+    //         console.log("______________right", cvIdParam, data)
+    //         let temp = [...data];
+    //         temp = temp.filter(item => {
+    //             console.log("---", item._id)
+    //             return item._id === cvIdParam
+    //         })
+
+    //         setData(temp)
+    //     }
+    // }, [cvIdParam]);
+
 
     useEffect(() => {
-       
-        if (cvIdParam !== "") {
-            alert("asdfsdf")
+        async function getAllMyContact() {
 
-            let temp = [...data];
-            temp = temp.filter(item => item._id === cvIdParam)
-            console.log(temp)
-            setData([...temp])
+            const allMyContact = await axios.get(
+                `/rec/${user.user._id}/allmycontacts`
+            );
+
+            if (cvIdParam) {
+                let temp = [...allMyContact.data];
+                temp = temp.filter(item => {
+
+                    return item._id === cvIdParam
+                })
+
+                setData(temp)
+            } else {
+
+                setData(allMyContact.data)
+            }
+
         }
-    }, [cvIdParam]);
+        getAllMyContact();
 
+    }, [])
+    console.log(data)
     return (
-        <>{loading ? <Loading /> :
+        <>{!data ? <Loading /> :
             <Grid
                 width={"95%"}
                 container

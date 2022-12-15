@@ -217,7 +217,7 @@ function SearchController({ setSearchCbData }) {
 
 // Card ung vien
 function CandidateCard({ data, type }) {
-  console.log(data)
+ 
   const commonStyle = {
     display: "flex",
     alignItems: "center",
@@ -375,9 +375,9 @@ function CandidateCard({ data, type }) {
         <Button variant="outlined" color="primary" onClick={() => navigate(`/viewcv/${data._id}`)} >
           Xem CV
         </Button>
-        {type == "ungtuyen" ? <Button variant="outlined" sx={{ ml: 2 }} onClick={() => navigate(`/hrhub/candidatecvs?id=${data._id}`)} color="success">
+        {type == "ungtuyen" ? <Button variant="outlined" sx={{ ml: 2 }} onClick={() => navigate(`/hrhub/contacts?id=${data.contactID}`)} color="success">
           Quản lý
-        </Button> : <Button variant="outlined" sx={{ ml: 2 }} onClick={() => navigate(`/hrhub/candidatecvs/${data._id}`)} color="error">
+        </Button> : <Button variant="outlined" sx={{ ml: 2 }} onClick={() => navigate(`/hrhub/contacts/id=${data.contactID}`)} color="error">
           Liên hệ
 
         </Button>}
@@ -388,7 +388,7 @@ function CandidateCard({ data, type }) {
   );
 }
 function Result({ data, type }) {
-  console.log("res", data)
+
   return (
     <>
       <Box
@@ -447,17 +447,21 @@ export default function SearchCandidate({ user, env }) {
   //cv list
   const [recommendData, setRecommendData] = useState([]);
   const [searchCbData, setSearchCbData] = useState([]);
-  const [appliedCvData, setAppliedCvData] = useState([]);
+  const [jobContacts, setJobContacts] = useState([]);
 
   //cv list
-  const fetchAppliedCvData = async () => {
+  const fetchJobContactsCvData = async () => {
     const jobContactsRes = await axios.get(
       `/rec/${user.user._id}/job/${jobPostId}/jobcontacts`
     );
 
-    let contactResumes = jobContactsRes.data.map(item => item.resumeId)
+    let contactResumes = jobContactsRes.data.map(item => {
+      let resumeData = item.resumeId
+      let rs = { ...resumeData, contactID: item._id }
+      return rs
+    })
 
-    setAppliedCvData(contactResumes)
+    setJobContacts(contactResumes)
 
   }
   const getSugListData = async () => {
@@ -517,7 +521,7 @@ export default function SearchCandidate({ user, env }) {
             aria-label="feature tabs"
           >
             <Tab label="Tìm ứng viên" {...a11yProps(0)} />
-            <Tab label="Ứng viên đã ứng tuyển" {...a11yProps(1)} onClick={() => fetchAppliedCvData()} />
+            <Tab label="Ứng viên đã ứng tuyển" {...a11yProps(1)} onClick={() => fetchJobContactsCvData()} />
             <Tab
               onClick={() => getSugListData()}
               label="Ứng viên được đề xuất bằng AI"
@@ -539,8 +543,8 @@ export default function SearchCandidate({ user, env }) {
           )}
         </TabPanel>
         <TabPanel value={tabValue} index={1}>
-          {appliedCvData && appliedCvData.length > 0 && (
-            <Result data={appliedCvData} type="ungtuyen" />
+          {jobContacts && jobContacts.length > 0 && (
+            <Result data={jobContacts} type="ungtuyen" />
           )}
         </TabPanel>
         <TabPanel value={tabValue} index={2}>

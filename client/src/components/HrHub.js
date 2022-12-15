@@ -62,7 +62,7 @@ import {
 	getSalaryTypeTitleFromId,
 	getRankTitleFromId,
 } from "./other/SelectDataUtils";
-import CandidateCVs from "./CandidateCVs"
+import Contact from "./Contact"
 
 const CustomMenuItem = styled(MenuItem)(({ theme }) => ({
 	"&:hover": {
@@ -163,7 +163,7 @@ export function HrSideBar({ uploadJob, editCompany, viewChart, news }) {
 						color: activeItem == 3 ? theme.palette.success.main : "",
 					}}
 					onClick={() => {
-						navigateTo("./candidatecvs");
+						navigateTo("./contacts");
 					}}
 				>
 					<ListItemIcon sx={{ py: 2 }}>
@@ -1248,7 +1248,7 @@ export default function HrHub() {
 							path="/searchcandidate/:id"
 							element={<SearchCandidate user={user} />}
 						/>
-						<Route path="/candidatecvs" element={<CandidateCVs user={user} />}></Route>
+						<Route path="/contacts" element={<Contact user={user} />}></Route>
 					</Routes>
 				</Grid>
 			</Grid>
