@@ -174,7 +174,7 @@ export function HrSideBar({ uploadJob, editCompany, viewChart, news }) {
 							}}
 						/>
 					</ListItemIcon>
-					<ListItemText>Quản lý CV ứng viên</ListItemText>
+					<ListItemText>Quản lý ứng tuyển</ListItemText>
 				</CustomMenuItem>
 			</MenuList>
 		</Box>

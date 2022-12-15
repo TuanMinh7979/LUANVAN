@@ -1,4 +1,4 @@
-import { jobCats, salaryTypes, ranks, workTypes, workExps, addresss, salaryFilterSelect } from "../../clientData/selectData.js";
+import { jobCats, salaryTypes, ranks, workTypes, workExps, addresss, salaryFilterSelect, contactProcesses } from "../../clientData/selectData.js";
 ///jobcat
 export const getCatNameList = () => {
     return jobCats.map((item) => item.name);
@@ -120,4 +120,18 @@ export const getSalaryFilterQueryFromTitle = (title) => {
 
     let salaryFilter = salaryFilterSelect.filter((item) => item.title == title)[0];
     return salaryFilter.query;
+}
+
+
+
+export const getValFromTitle = (title) => {
+    let contactProcess = contactProcesses.filter(item => item.title == title)[0]
+    return contactProcess.val
+
+}
+
+export const getTitleFromVal = (val) => {
+    let contactProcess = contactProcesses.filter(item => item.val == val)[0]
+    return contactProcess.title
+
 }

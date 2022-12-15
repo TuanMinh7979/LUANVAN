@@ -29,6 +29,7 @@ import { useLocation } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
+import Loading from "./Loading";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -214,7 +215,7 @@ function SearchController({ setSearchCbData }) {
 
 
 // Card ung vien
-function CandidateCard({ data }) {
+function CandidateCard({ data, type }) {
   const commonStyle = {
     display: "flex",
     alignItems: "center",
@@ -372,14 +373,19 @@ function CandidateCard({ data }) {
         <Button variant="outlined" color="primary" onClick={() => navigate(`/viewcv/${data._id}`)} >
           Xem CV
         </Button>
-        <Button variant="outlined" sx={{ ml: 2 }} onClick={() => navigate(`/hrhub/candidatecvs/${data._id}`)} color="success">
+        {type == "ungtuyen" ? <Button variant="outlined" sx={{ ml: 2 }} onClick={() => navigate(`/hrhub/candidatecvs?id=${data._id}`)} color="success">
           Quản lý
-        </Button>
+        </Button> : <Button variant="outlined" sx={{ ml: 2 }} onClick={() => navigate(`/hrhub/candidatecvs/${data._id}`)} color="error">
+          Liên hệ
+
+        </Button>}
+
+
       </Grid>
     </Grid>
   );
 }
-function Result({ data }) {
+function Result({ data, type }) {
   return (
     <>
       <Box
@@ -398,16 +404,28 @@ function Result({ data }) {
           }}
         >
           <SearchIcon />
-          <Typography variant="h6" fontWeight={550} sx={{ ml: 1 }}>
-            Tìm thấy{" "}
-            <Typography variant="span" color="success">
-              {data.length}
-            </Typography>{" "}
-            ứng viên phù hợp
-          </Typography>
+          {(type !== "ungtuyen") ?
+            <Typography variant="h6" fontWeight={550} sx={{ ml: 1 }}>
+              Tìm thấy{" "}
+              <Typography variant="span" color="success">
+                {data.length}
+              </Typography>{" "}
+              ứng viên phù hợp
+            </Typography>
+            :
+            <Typography variant="h6" fontWeight={550} sx={{ ml: 1 }}>
+
+              <Typography variant="span" color="success">
+                {data.length}
+              </Typography>{" "}
+              Ứng viên ứng tuyển
+
+            </Typography>
+          }
+
         </Box>
         {data.map((item) => {
-          return <CandidateCard data={item} />;
+          return <CandidateCard data={item} type={type} />;
         })}
       </Box>
     </>
@@ -420,11 +438,12 @@ export default function SearchCandidate({ user, env }) {
 
   const jobPostId = strArr[strArr.length - 1];
 
+  const { data, setData, loading, error } = useFetch(`/jobpost/${jobPostId}`)
+
+
   //cv list
   const [recommendData, setRecommendData] = useState([]);
   const [searchCbData, setSearchCbData] = useState([]);
-
-
   const [appliedCvData, setAppliedCvData] = useState([]);
 
   //cv list
@@ -456,7 +475,7 @@ export default function SearchCandidate({ user, env }) {
   };
 
   return (
-    <Grid
+    <>{loading ? <Loading /> : <Grid
       sx={{
         m: 3,
       }}
@@ -473,7 +492,7 @@ export default function SearchCandidate({ user, env }) {
       >
         <SearchIcon />
         <Typography variant="h5" fontWeight={550} sx={{ ml: 1 }}>
-          Tìm ứng viên
+          Tìm ứng viên cho {data.title}
         </Typography>
       </Box>
       {/* TAB */}
@@ -500,6 +519,7 @@ export default function SearchCandidate({ user, env }) {
               label="Ứng viên được đề xuất bằng AI"
               {...a11yProps(2)}
             />
+
           </Tabs>
         </Box>
         <TabPanel
@@ -516,16 +536,19 @@ export default function SearchCandidate({ user, env }) {
         </TabPanel>
         <TabPanel value={tabValue} index={1}>
           {appliedCvData && appliedCvData.length > 0 && (
-            <Result data={appliedCvData} />
+            <Result data={appliedCvData} type="ungtuyen" />
           )}
         </TabPanel>
         <TabPanel value={tabValue} index={2}>
           {recommendData && recommendData.length > 0 && (
-            <Result data={recommendData} />
+            <Result data={recommendData} type="goiy" />
           )}
         </TabPanel>
       </Box>
       {/* REsult */}
-    </Grid>
+    </Grid>}
+
+    </>
+
   );
 }

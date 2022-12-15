@@ -90,8 +90,6 @@ export const getAllAppliedCandidates = async (req, res, next) => {
   try {
 
     const rec = await Rec.findOne({ userId: req.params.id });
-
-
     const candidates = await Candidate.aggregate([
 
       {
@@ -111,18 +109,18 @@ export const getAllAppliedCandidates = async (req, res, next) => {
 
       },
       {
-        $addFields: { resumeApplyId: "$contactList.resumeId" }
+        $addFields: { appliedJobPostId: "$contactList.jobPostId" }
       },
 
       {
         $lookup: {
-          from: "resumes",
-          localField: "resumeApplyId",
+          from: "jobposts",
+          localField: "appliedJobPostId",
           foreignField: "_id",
-          as: "applyCvData",
+          as: "appliedJobPostData",
         },
       },
-      { $unwind: "$applyCvData" },
+      { $unwind: "$appliedJobPostData" },
 
 
     ]);

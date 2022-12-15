@@ -4,23 +4,38 @@ import ArticleIcon from "@mui/icons-material/Article";
 import useFetch from "../hooks/useFetch";
 import Loading from "./Loading";
 import { useSelector } from "react-redux";
+import { getValFromTitle, getTitleFromVal } from "./other/SelectDataUtils";
+import { contactProcesses } from "../clientData/selectData";
+import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { useEffect } from "react";
 export default function CandidateCVs() {
     // có thể lưu status dạng int là 0, 1, 2, mặc định là 0, xuống đây dựa dô cái mảng cvstatus dưới này mà lấy
-
+    let [searchParams, setSearchParams] = useSearchParams();
     const user = useSelector((state) => state.user);
-    const cvstatus = ["Chưa xem", "Không phù hợp", "Phù hợp"]
 
     function handleStatusChange(e, cvID) {
         console.log(e.target.value, cvID)
     }
-    const resumeId = location.pathname.split("/")[location.pathname.split("/").length - 1];
-    if (resumeId) {
-        console.log("abc")
-    }
+
+
+    const [cvIdParam, setCvIdParam] = useState(searchParams.get('id'))
+    console.log(searchParams.get('id'))
 
     const { data, setData, loading, error } = useFetch(`/rec/${user.user._id}/allappliedcandidates`);
-    
-    console.log(data, error)
+
+    useEffect(() => {
+        console.log("---- --------------- jhfsaf", cvIdParam, "?fjnsdjf")
+        if (cvIdParam !== "") {
+            alert("asdfsdf")
+
+            let temp = [...data];
+            temp = temp.filter(item => item._id === cvIdParam)
+            console.log(temp)
+            setData([...temp])
+        }
+    }, [cvIdParam]);
+
     return (
         <>{loading ? <Loading /> :
             <Grid
@@ -42,7 +57,7 @@ export default function CandidateCVs() {
                     >
                         <ArticleIcon />
                         <Typography variant="h5" fontWeight={550} sx={{ ml: 1 }}>
-                            Quản lý CV ứng viên
+                            Quản lý ứng tuyển
                         </Typography>
                     </Box>
                 </Grid>
@@ -74,23 +89,23 @@ export default function CandidateCVs() {
                                 {data.map(item => {
                                     return (<TableRow>
                                         <TableCell>
-                                            Nguyễn Quốc Anh
+                                            {item.name}
                                         </TableCell>
                                         <TableCell>
-                                            Lập trình viên
+                                            {item.title}
                                         </TableCell>
                                         <TableCell >
-                                            Fresher .Net
+                                            {item.appliedJobPostData.title}
                                         </TableCell>
                                         <TableCell>
                                             <Select
-                                                defaultValue={cvstatus[0]}
+                                                defaultValue={item.contactList.process}
                                                 size="small"
                                                 onChange={(e) => handleStatusChange(e, 1)}
                                             >
-                                                {cvstatus.map((item) => {
+                                                {contactProcesses.map((el) => {
                                                     return (
-                                                        <MenuItem value={item}>{item}</MenuItem>
+                                                        <MenuItem value={el.val}>{el.title}</MenuItem>
                                                     )
                                                 })}
                                             </Select>

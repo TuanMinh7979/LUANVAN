@@ -16,14 +16,14 @@ const ContactSchema = new Schema(
     recId: { type: mongoose.Schema.ObjectId, ref: "recs", required: true },
 
     process: {
-      type: String,
-      enum: ["consider", "interview", "offer", "accept", "refuse"],
-      default: "consider",
+      type: Number,
+      enum: [1, 2, 3, 0],
+      default: 1,
     },
     price: {
       type: Number
     },
-    
+
   },
   { timestamps: true }
   //createAt and updateAt
