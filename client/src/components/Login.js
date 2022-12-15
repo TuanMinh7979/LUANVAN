@@ -1,4 +1,4 @@
-	import axios from "axios";
+import axios from "axios";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserLogin, setActivatedCvId, setApplyJobs } from "../store/userSlice";
@@ -44,7 +44,7 @@ export default function Login() {
 				url: "auth/login",
 				data: data,
 			}).then((res) => {
-				console.log(res)
+				console.log("-----", res)
 				if (res.data.status && res.data.status != 200) {
 
 					toast.error(res.data.message)
