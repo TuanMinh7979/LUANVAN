@@ -30,6 +30,7 @@ import useFetch from "../hooks/useFetch";
 import { useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import Loading from "./Loading";
+import { convertLength } from "@mui/material/styles/cssUtils";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -216,6 +217,7 @@ function SearchController({ setSearchCbData }) {
 
 // Card ung vien
 function CandidateCard({ data, type }) {
+  console.log(data)
   const commonStyle = {
     display: "flex",
     alignItems: "center",
@@ -386,6 +388,7 @@ function CandidateCard({ data, type }) {
   );
 }
 function Result({ data, type }) {
+  console.log("res", data)
   return (
     <>
       <Box
@@ -448,12 +451,13 @@ export default function SearchCandidate({ user, env }) {
 
   //cv list
   const fetchAppliedCvData = async () => {
-    const appliedCvDataRes = await axios.get(
-      `/rec/${user.user._id}/job/${jobPostId}/appliedcandidates`
+    const jobContactsRes = await axios.get(
+      `/rec/${user.user._id}/job/${jobPostId}/jobcontacts`
     );
 
-    let appliedCvData = appliedCvDataRes.data.map(item => item.applyCvData)
-    setAppliedCvData(appliedCvData)
+    let contactResumes = jobContactsRes.data.map(item => item.resumeId)
+
+    setAppliedCvData(contactResumes)
 
   }
   const getSugListData = async () => {

@@ -22,10 +22,10 @@ export default function CandidateCVs() {
     const [cvIdParam, setCvIdParam] = useState(searchParams.get('id'))
     console.log(searchParams.get('id'))
 
-    const { data, setData, loading, error } = useFetch(`/rec/${user.user._id}/allappliedcandidates`);
+    const { data, setData, loading, error } = useFetch(`/rec/${user.user._id}/allmycontacts`);
 
     useEffect(() => {
-        console.log("---- --------------- jhfsaf", cvIdParam, "?fjnsdjf")
+       
         if (cvIdParam !== "") {
             alert("asdfsdf")
 
@@ -89,17 +89,17 @@ export default function CandidateCVs() {
                                 {data.map(item => {
                                     return (<TableRow>
                                         <TableCell>
-                                            {item.name}
+                                            {item.candidateId.name}
                                         </TableCell>
                                         <TableCell>
-                                            {item.title}
+                                            {item.candidateId.title}
                                         </TableCell>
                                         <TableCell >
-                                            {item.appliedJobPostData.title}
+                                            {item.jobPostId.title}
                                         </TableCell>
                                         <TableCell>
                                             <Select
-                                                defaultValue={item.contactList.process}
+                                                defaultValue={item.process}
                                                 size="small"
                                                 onChange={(e) => handleStatusChange(e, 1)}
                                             >
