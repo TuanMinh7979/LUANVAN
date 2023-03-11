@@ -1,0 +1,168 @@
+[{
+  "_id": {
+    "$oid": "63835e2d64c55633a6ef04ea"
+  },
+  "location": "Cần Thơ",
+  "introduce": "{\"blocks\":[{\"key\":\"eqrqd\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+  "members": "40",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669553709075"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669553709075"
+    }
+  },
+  "__v": 0,
+  "name": "Công ty cổ phần tài chính NQA",
+  "linkToLogo": "https://res.cloudinary.com/djnekmzdf/image/upload/v1669553707/com/vcfb5htndolxa8cmb962.jpg"
+},{
+  "_id": {
+    "$oid": "638478255f4dd5b0392e54e3"
+  },
+  "location": "TP HCM",
+  "phone": "0999999999",
+  "email": "companies@gmail.com",
+  "introduce": "FPT Software là công ty thành viên thuộc Tập đoàn FPT. Được thành lập từ năm 1999, FPT Software hiện là công ty chuyên cung cấp các dịch vụ và giải pháp phần mềm cho các khách hàng quốc tế, với hơn 25.500 nhân viên, hiện diện tại 27 quốc gia trên toàn cầu. Nhiều năm liền, FPT Software được bình chọn là Nhà Tuyển dụng được yêu thích nhất và nằm trong TOP các công ty có môi trường làm việc tốt nhất châu Á.",
+  "linkToLogo": "https://cdn.topcv.vn/140/company_logos/fpt-software-6073b38a10cb4.jpg",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669625894003"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669625894003"
+    }
+  },
+  "__v": 0,
+  "name": "FPT Software"
+},{
+  "_id": {
+    "$oid": "638478425f4dd5b0392e54e5"
+  },
+  "location": "02 Tan Vien, ward 2, Tan Binh, Ho Chi Minh",
+  "phone": "0999999999",
+  "email": "companies@gmail.com",
+  "introduce": "FPT Software là công ty thành viên thuộc Tập đoàn FPT. Được thành lập từ năm 1999, FPT Software hiện là công ty chuyên cung cấp các dịch vụ và giải pháp phần mềm cho các khách hàng quốc tế, với hơn 25.500 nhân viên, hiện diện tại 27 quốc gia trên toàn cầu. Nhiều năm liền, FPT Software được bình chọn là Nhà Tuyển dụng được yêu thích nhất và nằm trong TOP các công ty có môi trường làm việc tốt nhất châu Á.",
+  "linkToLogo": "http://static.ybox.vn/2018/8/5/1535082763510-Untitled-221.jpg",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669625922550"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669625922550"
+    }
+  },
+  "__v": 0,
+  "name": "KMS"
+},{
+  "_id": {
+    "$oid": "6385b98257e0cfad3549cb67"
+  },
+  "location": "1073/23 Đ. Cách Mạng Tháng 8, P.7, Tân Bình, Thành phố Hồ Chí Minh",
+  "phone": "0999999999",
+  "email": "companies@gmail.com",
+  "introduce": "FPT Software là công ty thành viên thuộc Tập đoàn FPT. Được thành lập từ năm 1999, FPT Software hiện là công ty chuyên cung cấp các dịch vụ và giải pháp phần mềm cho các khách hàng quốc tế, với hơn 25.500 nhân viên, hiện diện tại 27 quốc gia trên toàn cầu. Nhiều năm liền, FPT Software được bình chọn là Nhà Tuyển dụng được yêu thích nhất và nằm trong TOP các công ty có môi trường làm việc tốt nhất châu Á.",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669708162504"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669708162504"
+    }
+  },
+  "__v": 0,
+  "linkToLogo": "https://mona.media/wp-content/plugins/mona-button-plugin/images/icon-1024.png",
+  "name": "Mona Media"
+},{
+  "_id": {
+    "$oid": "6385b9c257e0cfad3549cb69"
+  },
+  "location": "24 Nguyễn Bỉnh Khiêm, Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
+  "phone": "0999999999",
+  "email": "companies@gmail.com",
+  "introduce": "FPT Software là công ty thành viên thuộc Tập đoàn FPT. Được thành lập từ năm 1999, FPT Software hiện là công ty chuyên cung cấp các dịch vụ và giải pháp phần mềm cho các khách hàng quốc tế, với hơn 25.500 nhân viên, hiện diện tại 27 quốc gia trên toàn cầu. Nhiều năm liền, FPT Software được bình chọn là Nhà Tuyển dụng được yêu thích nhất và nằm trong TOP các công ty có môi trường làm việc tốt nhất châu Á.",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669708226961"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669708226961"
+    }
+  },
+  "__v": 0,
+  "linkToLogo": "https://assets.topdev.vn/images/2021/03/15/NFQ-Logo-H7JBw.png",
+  "name": "Nfq"
+},{
+  "_id": {
+    "$oid": "639136c66f6f2bd65dcbd8c8"
+  },
+  "name": "Mgm",
+  "location": "Đà Nẵng",
+  "phone": "0999999999",
+  "email": "companies@gmail.com",
+  "introduce": "FPT Software là công ty thành viên thuộc Tập đoàn FPT. Được thành lập từ năm 1999, FPT Software hiện là công ty chuyên cung cấp các dịch vụ và giải pháp phần mềm cho các khách hàng quốc tế, với hơn 25.500 nhân viên, hiện diện tại 27 quốc gia trên toàn cầu. Nhiều năm liền, FPT Software được bình chọn là Nhà Tuyển dụng được yêu thích nhất và nằm trong TOP các công ty có môi trường làm việc tốt nhất châu Á.",
+  "linkToLogo": "https://itviec.com/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBK1lxREE9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--6163801645eb4792d6534169042826e45cbf6b51/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFJc0FXa0NMQUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--ee4e4854f68df0a745312d63f6c2782b5da346cd/mgm-technology-partners-vietnam-logo.png",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670461126285"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670461126285"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6391490a0f9362b03ae3d0fa"
+  },
+  "name": "CMC Global",
+  "location": "Hà Nội",
+  "phone": "0999999999",
+  "email": "companies@gmail.com",
+  "introduce": "FPT Software là công ty thành viên thuộc Tập đoàn FPT. Được thành lập từ năm 1999, FPT Software hiện là công ty chuyên cung cấp các dịch vụ và giải pháp phần mềm cho các khách hàng quốc tế, với hơn 25.500 nhân viên, hiện diện tại 27 quốc gia trên toàn cầu. Nhiều năm liền, FPT Software được bình chọn là Nhà Tuyển dụng được yêu thích nhất và nằm trong TOP các công ty có môi trường làm việc tốt nhất châu Á.",
+  "linkToLogo": "data:image/png;base64,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",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670465802241"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670465802241"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639158282e7bf4e4662d63cb"
+  },
+  "name": "Wolffun Game",
+  "location": "TP Hồ Chí Minh",
+  "phone": "0999999999",
+  "email": "companies@gmail.com",
+  "introduce": "FPT Software là công ty thành viên thuộc Tập đoàn FPT. Được thành lập từ năm 1999, FPT Software hiện là công ty chuyên cung cấp các dịch vụ và giải pháp phần mềm cho các khách hàng quốc tế, với hơn 25.500 nhân viên, hiện diện tại 27 quốc gia trên toàn cầu. Nhiều năm liền, FPT Software được bình chọn là Nhà Tuyển dụng được yêu thích nhất và nằm trong TOP các công ty có môi trường làm việc tốt nhất châu Á.",
+  "linkToLogo": "https://assets.topdev.vn/images/2020/06/25/wolffungame-LbGZ4.png",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670469672167"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670469672167"
+    }
+  },
+  "__v": 0
+}]

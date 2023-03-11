@@ -1,0 +1,69 @@
+{
+    "blocks": [
+        {
+            "key": "65iuk",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "type": "unordered-list-item",
+            "depth": 0,
+            "inlineStyleRanges": [],
+            "entityRanges": [],
+            "data": {}
+        },
+        {
+            "key": "fsb21",
+            "text": "Nghiêng",
+            "type": "unordered-list-item",
+            "depth": 0,
+            "inlineStyleRanges": [
+                {
+                    "offset": 0,
+                    "length": 7,
+                    "style": "ITALIC"
+                }
+            ],
+            "entityRanges": [],
+            "data": {}
+        },
+        {
+            "key": "a2dam",
+            "text": "In đậm",
+            "type": "unordered-list-item",
+            "depth": 0,
+            "inlineStyleRanges": [
+                {
+                    "offset": 0,
+                    "length": 6,
+                    "style": "ITALIC"
+                },
+                {
+                    "offset": 0,
+                    "length": 6,
+                    "style": "BOLD"
+                }
+            ],
+            "entityRanges": [],
+            "data": {}
+        },
+        {
+            "key": "2ithg",
+            "text": "Gạch đít",
+            "type": "unordered-list-item",
+            "depth": 0,
+            "inlineStyleRanges": [
+                {
+                    "offset": 0,
+                    "length": 8,
+                    "style": "ITALIC"
+                },
+                {
+                    "offset": 0,
+                    "length": 8,
+                    "style": "UNDERLINE"
+                }
+            ],
+            "entityRanges": [],
+            "data": {}
+        }
+    ],
+    "entityMap": {}
+}

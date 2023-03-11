@@ -1,0 +1,81 @@
+[{
+  "_id": {
+    "$oid": "638afe6c7ec61f444c65f4de"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670053484218"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670053484218"
+    }
+  },
+  "__v": 0,
+  "title": "Cà Mau"
+},{
+  "_id": {
+    "$oid": "638afe7f7ec61f444c65f4e0"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670053503203"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670053503203"
+    }
+  },
+  "__v": 0,
+  "title": "TP Hồ Chí Minh"
+},{
+  "_id": {
+    "$oid": "638afe887ec61f444c65f4e2"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670053512568"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670053512568"
+    }
+  },
+  "__v": 0,
+  "title": "Cần Thơ"
+},{
+  "_id": {
+    "$oid": "638afe8f7ec61f444c65f4e4"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670053519780"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670053519780"
+    }
+  },
+  "__v": 0,
+  "title": "Hà Nội"
+},{
+  "_id": {
+    "$oid": "6392263ff944c49d3c683aa7"
+  },
+  "title": "Đà Nẵng",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670522431463"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670522431463"
+    }
+  },
+  "__v": 0
+}]

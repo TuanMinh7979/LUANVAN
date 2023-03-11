@@ -1,0 +1,883 @@
+[{
+  "_id": {
+    "$oid": "6385b8f957e0cfad3549cb5d"
+  },
+  "username": "nfqHr",
+  "password": "$2a$10$wt9yavPy1UKuVAkz0Gbp9urGUZQ9jB.Q9sbPRtDnYyRGhoZMgcf8K",
+  "role": "rec",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638346702df37e37e8f739aa"
+  },
+  "username": "tuanCandidate",
+  "password": "$2a$10$iskd.3MWodhU0TYT9v.RX.GppKqMOFjgTJ2CgB40Ge6wFijLhq/6e",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638348ab2595fb1811fc34c8"
+  },
+  "username": "tuanrec",
+  "password": "$2a$10$N0v5jZUoRtili0UmnjYI..b.bvHxCJexnizqBgHgR.EkOJxNBgJWO",
+  "role": "rec",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6385b91757e0cfad3549cb61"
+  },
+  "username": "monaHr",
+  "password": "$2a$10$DQe0//75Wg4rrgNBUd03tuaoEH/y60x5UyzT5KDVJ2zlEngteMaXO",
+  "role": "rec",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c41e4aca32115f660329b"
+  },
+  "username": "BuiThiKimVang",
+  "password": "$2a$10$hARoEYbBDCxGtC5XiU0jPeJeUU9hPDmXTNOAZ8bRaEJOLesuPJP32",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c41f4aca32115f660329f"
+  },
+  "username": "LeThanhTai",
+  "password": "$2a$10$Eb.cxWqAABLThfNWP8JJUONlHpiR1ZOTkZx5IDXTq1VF3uO1R5MyG",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c4234aca32115f66032b3"
+  },
+  "username": "NguyenMinhThu",
+  "password": "$2a$10$XBAVTlzIQtX.iUtfKqap2OmXFDHjyRkKLLkPBglqKz67d.piHR.V6",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c42cf4c57f31e3233a18a"
+  },
+  "username": "YenNguyen",
+  "password": "$2a$10$ZgD675dtSJQEaXikvFzG6.5vA6D74zXR8av8YT2sQPft6E3b5N21m",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c42fe4c57f31e3233a19a"
+  },
+  "username": "NguyenHoMinhNhut",
+  "password": "$2a$10$J7v6j40bpqDtQF2IF67xFOvWU.iY8IlNiBTYi2WYuHl2R9ZI1AkEO",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c431a4c57f31e3233a1a6"
+  },
+  "username": "DoanHuu",
+  "password": "$2a$10$bGLZ1lAJwR2vnlXT3bFuWOR530G.akLPEt1C0TgfFc7V90O/nuEK6",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c436a4c57f31e3233a1c6"
+  },
+  "username": "PhamVietToan",
+  "password": "$2a$10$uaAj/9Y3QdduBkUnbwviaOqHVUeU9BalTMWcsOrIeQ7pizDjLNw9O",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c438a4c57f31e3233a1d2"
+  },
+  "username": "LeMinhDuc",
+  "password": "$2a$10$/DRB4GHyDoaojbqAK1Ap9OQDpBHXRr3KQPN06EFE9abAxLzPvHsrS",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43e44c57f31e3233a1fa"
+  },
+  "username": "NguyenVanDuc",
+  "password": "$2a$10$La8Epm13RhmnuCJ43JALaOPv2c3Kr9htYUTUzwqVmoY1.EdUAz1Yi",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43eb4c57f31e3233a1fe"
+  },
+  "username": "PhamHuyHoang",
+  "password": "$2a$10$NhALW0WcVi44QE44OvOFYuh6snLpS7bUJNfDJnU4DrSDmQO1mBJEC",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44194c57f31e3233a20a"
+  },
+  "username": "TranTienDuc",
+  "password": "$2a$10$WnJ4bMQ.VsuTc7ZbbCsUxukLYSJ6RyHt.lGHs79ey62QaVZGiAUTu",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44344c57f31e3233a212"
+  },
+  "username": "TranDinhDo",
+  "password": "$2a$10$.Ek00hyoY77QX.AYJkMjXOvAQjmUsAygDMQ9C3R8B3XzW0ToS8Lv2",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c443f4c57f31e3233a216"
+  },
+  "username": "NguyenDuyTuan",
+  "password": "$2a$10$GfTY6vnMG6C1NKlZTnPcGu3KSjN0t5UY17YIHpIA27Ur/wSEo6qTi",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c445a4c57f31e3233a222"
+  },
+  "username": "NguyenDinh",
+  "password": "$2a$10$Bo/MLYaARjgZMUwjjk1b.ekKplrTNXwi1u5P9qllKYNAjZ3CNdRiS",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44b94c57f31e3233a24a"
+  },
+  "username": "DangXuanMy",
+  "password": "$2a$10$icyjI4ePzC1N24erJd54D.nZYLlyEpXHRHK4SkxrecQ2plRumSC6K",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44bf4c57f31e3233a24e"
+  },
+  "username": "DoHoangDuc",
+  "password": "$2a$10$OrfjmUGnM81c7V48P/sulukt1kKf8DGxouAJbev6vQGA/MK6bzCSa",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44c84c57f31e3233a252"
+  },
+  "username": "PhucNguyen",
+  "password": "$2a$10$7bQ8sEFe8Ah7O5vXQ2lQCe1s3qQaxhLgIFY1tGvjcjUBCuvGUXiNW",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44d44c57f31e3233a256"
+  },
+  "username": "PhamDinhTuan",
+  "password": "$2a$10$Oc70gD3INhpAHZPRAqYS8.a6hIiLxLn39nQuCB02uQpnDTqJ8cdC.",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44dc4c57f31e3233a25a"
+  },
+  "username": "LeThiHanh",
+  "password": "$2a$10$TrCezXzKyh61HMa/QqXUx.t0PpYkcBDo/nGZ/UQK9KieZ9ydiAbfe",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44ec4c57f31e3233a262"
+  },
+  "username": "QuachNgocQuan",
+  "password": "$2a$10$Gpc9KO.i6B6RURtEeswsHOHUjkl/PgmUXPGsmAb5tDeR6xM1zmDZC",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44f64c57f31e3233a266"
+  },
+  "username": "TruongTuLong",
+  "password": "$2a$10$rnKYPPIRn3biSA5jIXxBf.ASXd2A7hh1HXW4HGpg1z3CLlXy3ObO.",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c45094c57f31e3233a26e"
+  },
+  "username": "PhungTrungDung",
+  "password": "$2a$10$UZHIT.iQwt.Mo8gi4bq.ROdhsBFM9g1BxN34Mi07fN6HdbY8xLm/y",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c45244c57f31e3233a27a"
+  },
+  "username": "PhanHongChuong",
+  "password": "$2a$10$w.EKRTl4hWoR5G8PRxUlRungt.2Hd4gVzXSzJ0OHSxkBjhFBoo/L2",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639149280f9362b03ae3d0fc"
+  },
+  "username": "cmcHr",
+  "password": "$2a$10$mkoDd10JeoAiDLumw.fh4.t9P/bYwmzLmNNSZp.czhCBwxquvg6.G",
+  "role": "rec",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c4149aca32115f6603296"
+  },
+  "username": "VuongDinhLePhuong",
+  "password": "$2a$10$Eh6N8/PlOUrVX2c5k1g65uM8ELBO5fwSYz1wkeAHssmm/vxASI24.",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c420daca32115f66032a7"
+  },
+  "username": "VuHungCuong",
+  "password": "$2a$10$ijgQhFE89AqAyLUdQPBGgu5KPkkTH.lksqV41YrLCRRecjdkjWQKm",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c4240aca32115f66032b7"
+  },
+  "username": "HoKimLongSon",
+  "password": "$2a$10$MZQd0j4Sws2EwLC1FAK8Ze0sR07YVOowRe.IUIYbjIa70sFwUOA1W",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c42da4c57f31e3233a18e"
+  },
+  "username": "DoQuangHai",
+  "password": "$2a$10$rVP9N0nB8NiDR61Jn/hLhOgtD6hyfXna.p2DCPYycs5dnHtwb.Tum",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c42f14c57f31e3233a196"
+  },
+  "username": "VuQuangHuy",
+  "password": "$2a$10$a1TJkCGKEeJI3rn9xh70eerxLi9OtSvdBy5VaFGaBk8khlgUqY4ua",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43254c57f31e3233a1aa"
+  },
+  "username": "VoVanTruong",
+  "password": "$2a$10$QxfGLdEDOOK5vINySNqigu16WUKeencVtusSn3wfOgZ.9u/xuI0UO",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43374c57f31e3233a1b2"
+  },
+  "username": "LaTuanDai",
+  "password": "$2a$10$Mim4ClNC9psLkNzwgp1v6uZpK3WaU2EsXcIKvme5swQFGexJ1zglq",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43404c57f31e3233a1b6"
+  },
+  "username": "LeVanThien",
+  "password": "$2a$10$WkiAKBr57EC6IwzEfGqBVeOfIf1RnhegcE3BIp4SkTRPltaPhAqD2",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c434a4c57f31e3233a1ba"
+  },
+  "username": "TranVanPhuongNam",
+  "password": "$2a$10$CrlSk1kuHrg2oIpUVzvX/uSDdhDVw4W3xjOA/T0KUt3UmDtGECb4.",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43764c57f31e3233a1ca"
+  },
+  "username": "VanTrungHue",
+  "password": "$2a$10$NS4.DcOvZj2OlKXgiRo7TeQNOpr14umyWmuJtBxRxS7HDwQznkHiC",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c437e4c57f31e3233a1ce"
+  },
+  "username": "VanThiThuHa",
+  "password": "$2a$10$Zq0JAxVCKui1Luvw1QFhE.vW0.dYgNfJl7S5xodqxTQBAQvFzWjWK",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43a34c57f31e3233a1de"
+  },
+  "username": "NguyenHoangHai",
+  "password": "$2a$10$t2SLmccad3OIAe2qkulsKunD9aNSI7oT6E1gj5lMYHFp2nA7.io/m",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43c84c57f31e3233a1ee"
+  },
+  "username": "NguyenDucHuy",
+  "password": "$2a$10$9PpeVstWSIf3LQf9pbgL4.fxrQilzfA0c3HETSmpreU9u2lsZW2Yi",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44784c57f31e3233a22e"
+  },
+  "username": "VuNgocThien",
+  "password": "$2a$10$sscU/gMctqlwZA5O2DR4O..SSbmbQNuZ/L9Hc0KAfeVnnPkEwrJ6m",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c448f4c57f31e3233a236"
+  },
+  "username": "VuTriTam",
+  "password": "$2a$10$6ytAiyB9KnUqbhdrUFPJ9OPhOSdxa8vs8MBfJK6TLOhqykmlqFS4G",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44a84c57f31e3233a242"
+  },
+  "username": "NguyenKyAnh",
+  "password": "$2a$10$rhSfyXD4VhwTk2D/oX5kg.tDNBXN.URRIQH4ASq0Y.X2gqeYdqzMe",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44b04c57f31e3233a246"
+  },
+  "username": "NguyenDinhHung",
+  "password": "$2a$10$Ld/KGrq9qPF4dPw/Wk3OSutEieFZdcYBMj/IcBI2BYFo3y4WtagsG",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44e34c57f31e3233a25e"
+  },
+  "username": "NhatHuy",
+  "password": "$2a$10$UlM/4t5IenWKhyeeEyErz.l8WfyRoDaDwzcFMjwYp0OCrjD1lD5M2",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c45124c57f31e3233a272"
+  },
+  "username": "HoCongViet",
+  "password": "$2a$10$bDOX0ZOCsEruETkhTpaMJuvDL8WNYGwmg.G3kuufEzbfJfjdz141a",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c452f4c57f31e3233a27e"
+  },
+  "username": "DoQuangThien",
+  "password": "$2a$10$kOKcm6A1fWQHb7/BlaB2sO62BN2oS3m7.xNHg/1tJRzHykUdppNl6",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c45544c57f31e3233a28e"
+  },
+  "username": "VuThiThaoHien",
+  "password": "$2a$10$vjwd48.HoNfU1dH595TzvuLtdnqKq8/YYpoVTRTjXPkCxScX1YtOG",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6391c8b4695c9b70a0bd882b"
+  },
+  "username": "gameDev1",
+  "password": "$2a$10$sRQrtdSUKF0vHOrelyEFWeZ6ek8GQ/iu1.gefT8sAVA/ddOiekGtC",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638371a30e4b4f5ea517cb2e"
+  },
+  "username": "nhatuyendung",
+  "password": "$2a$10$/Dy7NpFtT.8jVCG5s2KF/e6Xr49V9fYElfo6JipnyTAEy1c4L/alS",
+  "role": "rec",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638478505f4dd5b0392e54e7"
+  },
+  "username": "kmsHr",
+  "password": "$2a$10$SbJd2F8UxuCXHezo51/ut.C4lQ0.spXV0aZIPISqnn7lV76URvFqi",
+  "role": "rec",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638b2e1d6d7f87bb5c893e83"
+  },
+  "username": "aq",
+  "password": "$2a$10$ziUhjWUyE2tlXUFhFF.rz.p0.7ds2KnpDT9/DVJC90HXB8AQc6/J6",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638b64ba2f0d3e2aee558d26"
+  },
+  "username": "quocanh",
+  "password": "$2a$10$Efw.doX/bEvuUnOrM6OOyeot7hRx0uMeveS7g5bjQbrACLkGdOppK",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c40b19b91773316d1bb1b"
+  },
+  "username": "VuVanAn",
+  "password": "$2a$10$ZaVyFExC8c1s3TMx2ktOXO4uzo0zthCpSaq/Lj0SXqYNXnsljD.X.",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c4200aca32115f66032a3"
+  },
+  "username": "NguyenHoangChiBao",
+  "password": "$2a$10$JrI0pt0AAKeMQVoyXS3oLOiJovlY7RaHM1ch2ZZV7nzmAGCXkHpF6",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c4248aca32115f66032bb"
+  },
+  "username": "VuTrungThanh",
+  "password": "$2a$10$d3orpSoYL96Iv74B1AfWDedijoslkxNN53JQtU38bgkrX5TSriMHO",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c42e74c57f31e3233a192"
+  },
+  "username": "HoangHuuMy",
+  "password": "$2a$10$0i2gIXVoJlO96bd8IZ3R5OBTpNqHLG84mdPrF7HfCM3gweeIfL0sC",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c430f4c57f31e3233a1a2"
+  },
+  "username": "LeThanhBa",
+  "password": "$2a$10$CjWX3m2eqYNuTSsgudWqHusFzK2G5QWazB34BlTGfCrCbLgvHl3Zq",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43934c57f31e3233a1d6"
+  },
+  "username": "NguyenDangKhoa",
+  "password": "$2a$10$ozejM/hQZH50841u/KRMzue6y5aMNiU/7ummVnxbYQxXAv4GIgxXm",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c439a4c57f31e3233a1da"
+  },
+  "username": "CaoXuanNghia",
+  "password": "$2a$10$a92SWfFSXTISRfcPDAk8uObrVAAFL.kLD2PvgRa5O9/vj7bLd4F42",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43ab4c57f31e3233a1e2"
+  },
+  "username": "TrinhVanDuy",
+  "password": "$2a$10$ikraaJqQNKGSZ7isKTOYFukCSJS5Mb5AYxqJNn75harvfi.9ZQYMq",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43be4c57f31e3233a1ea"
+  },
+  "username": "TaChiToai",
+  "password": "$2a$10$iDmIlpNCyIWxuYvNmR83pe87KpSkj6.LceEkvv7glFQbhE71BQL62",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43f74c57f31e3233a202"
+  },
+  "username": "DaoTheThuong",
+  "password": "$2a$10$lX2XC.gUC1nCDedEZt4S/..mWZNWQ116sdiVN2W4f0S5lsO7JXUgy",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44104c57f31e3233a206"
+  },
+  "username": "ThangTran",
+  "password": "$2a$10$.AtaDhykkFa6LZAy09hkcOUEmNERMKMzDsJmPtuEoiq6V6EqXabVu",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44244c57f31e3233a20e"
+  },
+  "username": "PhanVanHung",
+  "password": "$2a$10$Fdf3m34oaMiQ29jsHKjc1eDHmWLsAF74/81AM85UXQyZ0ZLS.ZBfG",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44484c57f31e3233a21a"
+  },
+  "username": "PhamChiTrung",
+  "password": "$2a$10$8cBfb924.bkSizA5lZLLWuQVIur4V37wY/f0avY086z0aA2c8kDB.",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44644c57f31e3233a226"
+  },
+  "username": "TranChiKha",
+  "password": "$2a$10$MxGnaqP8ivChrmEDZ/sIDOoADDe9dN1K0HLBHkvx5yUNZNYjZWkny",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44944c57f31e3233a23a"
+  },
+  "username": "DongTran",
+  "password": "$2a$10$/zlDDvZo80L1HNPPACAL/.LhQhc2JLwMe5CRXp0IphUqeldL22Xoi",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44fd4c57f31e3233a26a"
+  },
+  "username": "LeHongQuang",
+  "password": "$2a$10$adPZ83.KgQs/WrYhKPvgvefha6mKuJVjBUb3nKqFrTd9z1D6QhM..",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c451b4c57f31e3233a276"
+  },
+  "username": "VoMinhLuan",
+  "password": "$2a$10$qpJMi98a6BYBvEAiFzhYc.5adLnwgPDrziPbiMT1rnJd4EF8tkjra",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c453a4c57f31e3233a282"
+  },
+  "username": "LeLongToan",
+  "password": "$2a$10$QT6p1hc8HfjFvGJlnBruE.LA9VDt1eN7vcPLD4PhmFH2oEOSg7kDK",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c45474c57f31e3233a28a"
+  },
+  "username": "LeMinhQuang",
+  "password": "$2a$10$IqL2m5A/noW1RjzCac9Om.5fG11Z5EvEFiTcXtc3t/IfGQENdAFVW",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638d66a01f0cde168c90edc3"
+  },
+  "username": "anhnode",
+  "password": "$2a$10$zgrqv3W2K8V3WTmpgrOIFet2gJty4DsWC5fUD91ssZ974xLXd2OSS",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6384785b5f4dd5b0392e54eb"
+  },
+  "username": "fptHr",
+  "password": "$2a$10$omR4rIIUHTSCX8.FXipFbOW3wmOlkHL0qVoZYTM7IUOtXOvhOAnKi",
+  "role": "rec",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638be0bf59dc4c47ec2bb3ad"
+  },
+  "username": "sonluu",
+  "password": "$2a$10$roesBxqNxYrhhXLEoNmaWup6uJHA0ARvTyAGjBKXV3UpvTV298Cd2",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c4223aca32115f66032ab"
+  },
+  "username": "PhanTrongHien",
+  "password": "$2a$10$3xREeM8m18IKrvbs6XyYCeMNmw8Hh2A7GowTf6F.E2wmy7VDkHJkq",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c422caca32115f66032af"
+  },
+  "username": "TranBaoQuoc",
+  "password": "$2a$10$HCsHFUlGrYHwzeeQoHYyvuJ4BrxZ.qwS09J/PGR5zXCNnV0Isg8zm",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43054c57f31e3233a19e"
+  },
+  "username": "MeVanTuan",
+  "password": "$2a$10$eHEeZEsk6YlNyuWr5hJCnOZidr2GDTEiwLxolLkZZhoKcBbg8nI56",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c432f4c57f31e3233a1ae"
+  },
+  "username": "VuDanhLong",
+  "password": "$2a$10$Z23iYjVrAMgMVgPn1Zi3IOqRzbR3WVx1D4p7Hy2Gr1GfZRiBztxqe",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43544c57f31e3233a1be"
+  },
+  "username": "TranAnhTuan",
+  "password": "$2a$10$rDNxdLSZ.dRo/usgEYOH8eBavEtZGfI/I/5.34oFXY/794bU7oUUm",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43624c57f31e3233a1c2"
+  },
+  "username": "BuiVanDung",
+  "password": "$2a$10$l5axkAi8wYMF0fUHvDlvzOgAPRTgZiycOYlT3xIxf5dylPrJXJaK6",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43b54c57f31e3233a1e6"
+  },
+  "username": "DangPham",
+  "password": "$2a$10$QQT0QU1r8TDIjDBKPfWtceeJ32zR1cuzaiXGoDM1lTNbQ5nPKULOC",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43d24c57f31e3233a1f2"
+  },
+  "username": "ChuongLuongVan",
+  "password": "$2a$10$.L8.cFC9xAiuvortlXL2G.tFMlsEJTCba5/lnv8CZmhuyV9oaiTEC",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43dd4c57f31e3233a1f6"
+  },
+  "username": "NgoCongTam",
+  "password": "$2a$10$Ul3/.nbwGMaZ2UnorVbUJOx0ZJ4pyWPrqRNHX9x6tBlVxpp.jMgBi",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44524c57f31e3233a21e"
+  },
+  "username": "DoQuocHuy",
+  "password": "$2a$10$LnYcmb9IADSs3Res51iIZeNd4l1NgJJ5UGQC541/b59GWBN8PVueq",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c446d4c57f31e3233a22a"
+  },
+  "username": "DaoVanHung",
+  "password": "$2a$10$yk2qjsLBBNRVmO7IUY0zEO5pXZaWlj8r4SQW1slX34NzWk3QCi7v2",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44854c57f31e3233a232"
+  },
+  "username": "NguyenHaiPhong",
+  "password": "$2a$10$qa8SwdbmbnqMyucPkOKah.jdci518F8zMzMDPzim3kaTXDODU44GS",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c449e4c57f31e3233a23e"
+  },
+  "username": "NguyenThanhLuan",
+  "password": "$2a$10$cqjtKLkfI/zqdVNYoE2rAObrS7iucLczlD8ntFnuzFWxVLlFKtIF6",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c45404c57f31e3233a286"
+  },
+  "username": "LeLongQuoc",
+  "password": "$2a$10$HmHwhuX/70ucr/00kBBkDebuISmIQrZh4IdRyseRTiBw9unPZd/qC",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639143450f9362b03ae3d0a9"
+  },
+  "username": "mgmHr",
+  "password": "$2a$10$IJWjQ0cTnnFjDCI1vJ1wjegl2aEIREZEVFihctcndsOIx55kn/1hi",
+  "role": "rec",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6391587f2e7bf4e4662d63cd"
+  },
+  "username": "wolffunHr",
+  "password": "$2a$10$7r/PkEpxe8TEys7cUFFJae6RuTbDXHtX.hxe10RO2vxBuSOy79r2.",
+  "role": "rec",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639aacd15e84aec2ec50e81c"
+  },
+  "username": "nguyenquocanh",
+  "password": "$2a$10$YsbV8fU/ggUzr4hCoueMKupdj1khQHSG9wuuoSbnagsNMzeh20UB6",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639ac75df1ff220028b70fca"
+  },
+  "username": "admin",
+  "password": "$2a$10$8k9WrXvM8Fqh625ZXAtc1OvPYA9ENr0S67PCo76ORj84wLbJuuhh6",
+  "role": "admin",
+  "isAdmin": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639ac94247a094c567c62722"
+  },
+  "username": "quocanhne",
+  "password": "$2a$10$MUNwd2iISCp/isJMJLIyVOEbNnT4PiuNCErtkejai1otIgojv2c.W",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639ac96847a094c567c62727"
+  },
+  "username": "nguyenhoanganh",
+  "password": "$2a$10$QJt9E3ixAGSWBx2/1.di4uEFVgdyKIQU2vAXEY4Jqpra0uR3yPLAO",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639addb98a4644cb66b04fe9"
+  },
+  "username": "nguyenanhquoc",
+  "password": "$2a$10$FNTQu4nrgoDstO6yUARy3eGbSJ.9pK8R.q5Fa/1KwXFHXVjvKIXGG",
+  "role": "candidate",
+  "isAdmin": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6402ffb010c19a55f9e2cace"
+  },
+  "username": "hr1",
+  "password": "$2a$10$wOPLHt2wVrdvQkytFa8vFuFsozIkwo6iL3WFTrzWJtxyqh4Q3.Rh6",
+  "role": "rec",
+  "isAdmin": true,
+  "__v": 0
+}]

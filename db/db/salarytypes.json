@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "639204922011ecee21d3d5c4"
+  },
+  "title": "Trong khoảng",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670513810695"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670513810695"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6392049b2011ecee21d3d5c6"
+  },
+  "title": "Cố định",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670513819727"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670513819727"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639204a22011ecee21d3d5c8"
+  },
+  "title": "Thỏa thuận",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670513826589"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670513826589"
+    }
+  },
+  "__v": 0
+}]

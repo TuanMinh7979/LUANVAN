@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "639217641fcf965827a4d716"
+  },
+  "title": "Toàn thời gian",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670518628573"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670518628573"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639217781fcf965827a4d718"
+  },
+  "title": "Bán thời gian",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670518648616"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670518648616"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6392178d1fcf965827a4d71a"
+  },
+  "title": "Làm từ xa",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670518669442"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670518669442"
+    }
+  },
+  "__v": 0
+}]

@@ -1,0 +1,113 @@
+[{
+  "_id": {
+    "$oid": "63920ecb75bd5201310c644d"
+  },
+  "title": "Thực tập sinh",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670516427805"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670516427805"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63920ee075bd5201310c644f"
+  },
+  "title": "Nhân viên",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670516448697"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670516448697"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63920ef675bd5201310c6451"
+  },
+  "title": "Trưởng nhóm",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670516470432"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670516470432"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63920f0475bd5201310c6453"
+  },
+  "title": "Trưởng/Phó phòng",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670516484676"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670516484676"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63920f0f75bd5201310c6455"
+  },
+  "title": "Quản lý / Giám sát",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670516495793"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670516495793"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63920f1c75bd5201310c6457"
+  },
+  "title": "Tổng chi nhánh",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670516508456"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670516508456"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63920f2975bd5201310c6459"
+  },
+  "title": "Giám đốc",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670516521386"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670516521386"
+    }
+  },
+  "__v": 0
+}]

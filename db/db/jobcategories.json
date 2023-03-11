@@ -1,0 +1,65 @@
+[{
+  "_id": {
+    "$oid": "638799cff4b7bb027a085a4d"
+  },
+  "title": "Finance",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669831119511"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669831119511"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635042dded1ee7636e6178ce"
+  },
+  "title": "Bán hàng",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666204381152"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1666204381152"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "635042e5ed1ee7636e6178d0"
+  },
+  "title": "IT",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666204389491"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1666204389491"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6350425ded1ee7636e6178cc"
+  },
+  "title": "Kế toán",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666204253248"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1666204253248"
+    }
+  },
+  "__v": 0
+}]

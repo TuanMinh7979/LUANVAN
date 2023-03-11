@@ -1,0 +1,1976 @@
+[{
+  "_id": {
+    "$oid": "638b48ca0f5f96bc5639d7be"
+  },
+  "name": "",
+  "email": "nhanvien@gmail.com",
+  "phone": "",
+  "avatar": "",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638b48ca0f5f96bc5639d7bc"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670072522850"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670072522850"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638b49c59bb7e782e0538ca0"
+  },
+  "name": "",
+  "email": "nhannvien@gmail.com",
+  "phone": "",
+  "avatar": "",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638b49c59bb7e782e0538c9e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670072773142"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670072773142"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638b4a319bb7e782e0538ca4"
+  },
+  "name": "",
+  "email": "nhanvien@gmail.com",
+  "phone": "",
+  "avatar": "",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638b4a319bb7e782e0538ca2"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670072881115"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670072881115"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638b64ba2f0d3e2aee558d28"
+  },
+  "name": "",
+  "email": "anhcmcm@gmail.com",
+  "phone": "",
+  "avatar": "",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638b64ba2f0d3e2aee558d26"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670079674360"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670079674360"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c40b19b91773316d1bb1d"
+  },
+  "name": "Vu Van An",
+  "email": "an@gmail.com",
+  "phone": "0909090909",
+  "avatar": "https://res.cloudinary.com/djnekmzdf/image/upload/v1670878877/ifo/maledefault_fechep.jpg",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c40b19b91773316d1bb1b"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670135985120"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1671089020825"
+    }
+  },
+  "__v": 0,
+  "applyJobs": [
+    {
+      "$oid": "6385c7473c4d036a0cccee16"
+    },
+    {
+      "$oid": "6385c8643c4d036a0cccee1a"
+    },
+    {
+      "$oid": "638cc894a8cae821625b4f65"
+    },
+    {
+      "$oid": "638cc911a8cae821625b4f69"
+    }
+  ],
+  "addressId": {
+    "$oid": "638afe7f7ec61f444c65f4e0"
+  },
+  "dob": {
+    "$date": {
+      "$numberLong": "1670976000000"
+    }
+  },
+  "fullAddress": "can tho",
+  "gender": "Nam",
+  "profile": {
+    "aboutMe": "{\"blocks\":[{\"key\":\"8rhev\",\"text\":\"js php\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "objective": "js php",
+    "education": "CTU",
+    "experience": "js php",
+    "skills": "js php",
+    "activities": "js php",
+    "certifications": "js php",
+    "objectiveCv": "{\"blocks\":[{\"key\":\"er3i4\",\"text\":\"js php\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "educationCv": "{\"blocks\":[{\"key\":\"evp3n\",\"text\":\"CTU\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "experienceCv": "{\"blocks\":[{\"key\":\"1bj3a\",\"text\":\"js php\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "skillsCv": "{\"blocks\":[{\"key\":\"254er\",\"text\":\"js php\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "activitiesCv": "{\"blocks\":[{\"key\":\"aduln\",\"text\":\"js php\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "certificationsCv": "{\"blocks\":[{\"key\":\"doghd\",\"text\":\"js php\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "_id": {
+      "$oid": "639acb7c3cdcda0afed69a6a"
+    }
+  },
+  "title": "web dev"
+},{
+  "_id": {
+    "$oid": "638c41e4aca32115f660329d"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c41e4aca32115f660329b"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136292179"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136292179"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c4234aca32115f66032b5"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c4234aca32115f66032b3"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136372924"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136372924"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c42fe4c57f31e3233a19c"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c42fe4c57f31e3233a19a"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136574492"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136574492"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c430f4c57f31e3233a1a4"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c430f4c57f31e3233a1a2"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136591735"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136591735"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c431a4c57f31e3233a1a8"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c431a4c57f31e3233a1a6"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136602348"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136602348"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43374c57f31e3233a1b4"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43374c57f31e3233a1b2"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136631204"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136631204"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c436b4c57f31e3233a1c8"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c436a4c57f31e3233a1c6"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136683067"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136683067"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c439a4c57f31e3233a1dc"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c439a4c57f31e3233a1da"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136730901"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136730901"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43ab4c57f31e3233a1e4"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43ab4c57f31e3233a1e2"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136747549"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136747549"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43be4c57f31e3233a1ec"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43be4c57f31e3233a1ea"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136766200"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136766200"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43d24c57f31e3233a1f4"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43d24c57f31e3233a1f2"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136786437"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136786437"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43e44c57f31e3233a1fc"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43e44c57f31e3233a1fa"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136804227"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136804227"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43ec4c57f31e3233a200"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43eb4c57f31e3233a1fe"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136812040"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136812040"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44104c57f31e3233a208"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44104c57f31e3233a206"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136848142"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136848142"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44344c57f31e3233a214"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44344c57f31e3233a212"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136884239"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136884239"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44784c57f31e3233a230"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44784c57f31e3233a22e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136952264"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136952264"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c449e4c57f31e3233a240"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c449e4c57f31e3233a23e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136990869"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136990869"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44b14c57f31e3233a248"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44b04c57f31e3233a246"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137009026"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137009026"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44c84c57f31e3233a254"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44c84c57f31e3233a252"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137032257"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137032257"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44dc4c57f31e3233a25c"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44dc4c57f31e3233a25a"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137052703"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137052703"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44e34c57f31e3233a260"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44e34c57f31e3233a25e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137059206"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137059206"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44f64c57f31e3233a268"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44f64c57f31e3233a266"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137078671"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137078671"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44fd4c57f31e3233a26c"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44fd4c57f31e3233a26a"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137085737"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137085737"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c45094c57f31e3233a270"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c45094c57f31e3233a26e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137097653"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137097653"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c451b4c57f31e3233a278"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c451b4c57f31e3233a276"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137115392"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137115392"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c45244c57f31e3233a27c"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c45244c57f31e3233a27a"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137124177"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137124177"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c453a4c57f31e3233a284"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c453a4c57f31e3233a282"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137146090"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137146090"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c45404c57f31e3233a288"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c45404c57f31e3233a286"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137152943"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137152943"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c45544c57f31e3233a290"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c45544c57f31e3233a28e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137172945"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137172945"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638b4caa63a06d92666d067f"
+  },
+  "name": "",
+  "email": "tmt@gmail.com",
+  "phone": "",
+  "avatar": "",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638b4caa63a06d92666d067d"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670073514624"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670073514624"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c4149aca32115f6603298"
+  },
+  "name": "",
+  "email": "nhanvien@gmail.com",
+  "phone": "",
+  "avatar": "",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c4149aca32115f6603296"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136137694"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136137694"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c41f5aca32115f66032a1"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c41f4aca32115f660329f"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136309055"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136309055"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c4201aca32115f66032a5"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c4200aca32115f66032a3"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136321014"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136321014"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c4248aca32115f66032bd"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c4248aca32115f66032bb"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136392298"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136392298"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43624c57f31e3233a1c4"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43624c57f31e3233a1c2"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136674353"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136674353"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43c84c57f31e3233a1f0"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43c84c57f31e3233a1ee"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136776091"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136776091"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44244c57f31e3233a210"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44244c57f31e3233a20e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136868617"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136868617"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44484c57f31e3233a21c"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44484c57f31e3233a21a"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136904825"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136904825"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44524c57f31e3233a220"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44524c57f31e3233a21e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136914490"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136914490"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44854c57f31e3233a234"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44854c57f31e3233a232"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136965777"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136965777"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c448f4c57f31e3233a238"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c448f4c57f31e3233a236"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136975417"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136975417"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44944c57f31e3233a23c"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44944c57f31e3233a23a"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136980736"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136980736"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638b476a51073556c99a21b7"
+  },
+  "name": "",
+  "email": "nhanvien@gmail.com",
+  "phone": "",
+  "avatar": "",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638b476a51073556c99a21b5"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670072170638"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670072170638"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638b4c6163a06d92666d067b"
+  },
+  "name": "",
+  "email": "newacc@gmail.com",
+  "phone": "",
+  "avatar": "",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638b4c6163a06d92666d0679"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670073441728"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670073441728"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c420daca32115f66032a9"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c420daca32115f66032a7"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136333108"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136333108"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c4240aca32115f66032b9"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c4240aca32115f66032b7"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136384254"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136384254"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c42cf4c57f31e3233a18c"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c42cf4c57f31e3233a18a"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136527129"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136527129"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c42e74c57f31e3233a194"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c42e74c57f31e3233a192"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136551412"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136551412"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43054c57f31e3233a1a0"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43054c57f31e3233a19e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136581915"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136581915"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c432f4c57f31e3233a1b0"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c432f4c57f31e3233a1ae"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136623130"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136623130"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43404c57f31e3233a1b8"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43404c57f31e3233a1b6"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136640590"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136640590"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43544c57f31e3233a1c0"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43544c57f31e3233a1be"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136660607"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136660607"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43764c57f31e3233a1cc"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43764c57f31e3233a1ca"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136694183"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136694183"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c437f4c57f31e3233a1d0"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c437e4c57f31e3233a1ce"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136703044"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136703044"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43934c57f31e3233a1d8"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43934c57f31e3233a1d6"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136723448"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136723448"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43dd4c57f31e3233a1f8"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43dd4c57f31e3233a1f6"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136797356"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136797356"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44194c57f31e3233a20c"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44194c57f31e3233a20a"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136857948"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136857948"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c443f4c57f31e3233a218"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c443f4c57f31e3233a216"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136895375"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136895375"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c445a4c57f31e3233a224"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c445a4c57f31e3233a222"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136922349"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136922349"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c446d4c57f31e3233a22c"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c446d4c57f31e3233a22a"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136941808"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136941808"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44a84c57f31e3233a244"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44a84c57f31e3233a242"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137000873"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137000873"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44b94c57f31e3233a24c"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44b94c57f31e3233a24a"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137017815"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137017815"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44c04c57f31e3233a250"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44bf4c57f31e3233a24e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137024036"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137024036"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44d54c57f31e3233a258"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44d44c57f31e3233a256"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137045062"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137045062"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c45124c57f31e3233a274"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c45124c57f31e3233a272"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137106096"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137106096"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c45474c57f31e3233a28c"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c45474c57f31e3233a28a"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137159447"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137159447"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638be0bf59dc4c47ec2bb3af"
+  },
+  "name": "",
+  "email": "ungvien@gmail.com",
+  "phone": "",
+  "avatar": "",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638be0bf59dc4c47ec2bb3ad"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670111423175"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670111423175"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c4223aca32115f66032ad"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c4223aca32115f66032ab"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136355918"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136355918"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c422caca32115f66032b1"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c422caca32115f66032af"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136364093"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136364093"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c42da4c57f31e3233a190"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c42da4c57f31e3233a18e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136538710"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136538710"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c42f14c57f31e3233a198"
+  },
+  "email": "vqh@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c42f14c57f31e3233a196"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136561914"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1671088919198"
+    }
+  },
+  "__v": 0,
+  "applyJobs": [
+    {
+      "$oid": "638cc894a8cae821625b4f65"
+    },
+    {
+      "$oid": "638cc911a8cae821625b4f69"
+    },
+    {
+      "$oid": "6385c7473c4d036a0cccee16"
+    },
+    {
+      "$oid": "6385c8643c4d036a0cccee1a"
+    }
+  ],
+  "addressId": {
+    "$oid": "638afe7f7ec61f444c65f4e0"
+  },
+  "avatar": "https://res.cloudinary.com/djnekmzdf/image/upload/v1670878877/ifo/maledefault_fechep.jpg",
+  "dob": {
+    "$date": {
+      "$numberLong": "1670371200000"
+    }
+  },
+  "fullAddress": "cantho",
+  "gender": "Nam",
+  "name": "Vu Quang Huy",
+  "phone": "0909090909",
+  "profile": {
+    "aboutMe": "{\"blocks\":[{\"key\":\"2s1l6\",\"text\":\"java, .net\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "objective": "java, .net",
+    "education": "CTU",
+    "experience": "java, .net",
+    "skills": "java, .net",
+    "activities": "java, .net",
+    "certifications": "java, .net",
+    "objectiveCv": "{\"blocks\":[{\"key\":\"b0ugm\",\"text\":\"java, .net\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "educationCv": "{\"blocks\":[{\"key\":\"ccf86\",\"text\":\"CTU\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "experienceCv": "{\"blocks\":[{\"key\":\"9aev3\",\"text\":\"java, .net\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "skillsCv": "{\"blocks\":[{\"key\":\"b6a3\",\"text\":\"java, .net\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "activitiesCv": "{\"blocks\":[{\"key\":\"5ncj0\",\"text\":\"java, .net\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "certificationsCv": "{\"blocks\":[{\"key\":\"4kdd5\",\"text\":\"java, .net\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "_id": {
+      "$oid": "639acb173cdcda0afed69a5a"
+    }
+  },
+  "title": "web dev"
+},{
+  "_id": {
+    "$oid": "638c43254c57f31e3233a1ac"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43254c57f31e3233a1aa"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136613315"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136613315"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c434a4c57f31e3233a1bc"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c434a4c57f31e3233a1ba"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136650802"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136650802"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c438a4c57f31e3233a1d4"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c438a4c57f31e3233a1d2"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136714286"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136714286"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43a34c57f31e3233a1e0"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43a34c57f31e3233a1de"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136739582"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136739582"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43b54c57f31e3233a1e8"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43b54c57f31e3233a1e6"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136757471"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136757471"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c43f74c57f31e3233a204"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c43f74c57f31e3233a202"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136823359"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136823359"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44654c57f31e3233a228"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44644c57f31e3233a226"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670136933056"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670136933056"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c44ed4c57f31e3233a264"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c44ec4c57f31e3233a262"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137069046"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137069046"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638c452f4c57f31e3233a280"
+  },
+  "email": "nhanvien@gmail.com",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638c452f4c57f31e3233a27e"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670137135785"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670137135785"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638d66a01f0cde168c90edc5"
+  },
+  "name": "",
+  "email": "nhanhvien@gmail.com",
+  "phone": "",
+  "avatar": "",
+  "saveJobs": [],
+  "userId": {
+    "$oid": "638d66a01f0cde168c90edc3"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670211232476"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670211232476"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639aacd15e84aec2ec50e81e"
+  },
+  "name": "",
+  "email": "anh@mail.com",
+  "phone": "",
+  "avatar": "",
+  "applyJobs": [
+    {
+      "$oid": "6385c8643c4d036a0cccee1a"
+    }
+  ],
+  "saveJobs": [],
+  "userId": {
+    "$oid": "639aacd15e84aec2ec50e81c"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1671081169597"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1671089796655"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639ac94247a094c567c62724"
+  },
+  "name": "",
+  "email": "anhcmcm@gmail.com",
+  "phone": "",
+  "avatar": "",
+  "applyJobs": [],
+  "saveJobs": [],
+  "userId": {
+    "$oid": "639ac94247a094c567c62722"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1671088450885"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1671088450885"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639ac96847a094c567c62729"
+  },
+  "name": "Nguyễn Hoàng Anh",
+  "email": "mail@mail.com",
+  "phone": "9018239012",
+  "avatar": "https://res.cloudinary.com/djnekmzdf/image/upload/v1670878877/ifo/maledefault_fechep.jpg",
+  "applyJobs": [],
+  "saveJobs": [],
+  "userId": {
+    "$oid": "639ac96847a094c567c62727"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1671088488811"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1671089475136"
+    }
+  },
+  "__v": 0,
+  "addressId": {
+    "$oid": "638afe7f7ec61f444c65f4e0"
+  },
+  "dob": {
+    "$date": {
+      "$numberLong": "973123200000"
+    }
+  },
+  "fullAddress": "Cà Mau",
+  "gender": "Nam",
+  "profile": {
+    "aboutMe": "{\"blocks\":[{\"key\":\"1i8i6\",\"text\":\"HELLO\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "objective": "dev",
+    "education": "CTU",
+    "experience": ".net java php",
+    "skills": ".net java php",
+    "activities": "Hoat dong doan hoi",
+    "certifications": "650 TOEIC",
+    "objectiveCv": "{\"blocks\":[{\"key\":\"ccb4o\",\"text\":\"dev\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "educationCv": "{\"blocks\":[{\"key\":\"6ef4c\",\"text\":\"CTU\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "experienceCv": "{\"blocks\":[{\"key\":\"a2maa\",\"text\":\".net\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"22q6e\",\"text\":\"java\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"chv8e\",\"text\":\"php\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "skillsCv": "{\"blocks\":[{\"key\":\"ad2uq\",\"text\":\".net\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"4evbg\",\"text\":\"java\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"5oro2\",\"text\":\"php\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "activitiesCv": "{\"blocks\":[{\"key\":\"blao4\",\"text\":\"Hoat dong doan hoi\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "certificationsCv": "{\"blocks\":[{\"key\":\"akd5p\",\"text\":\"650 TOEIC\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}",
+    "_id": {
+      "$oid": "639aca2f47a094c567c62737"
+    }
+  },
+  "title": ".net developer"
+},{
+  "_id": {
+    "$oid": "639addb98a4644cb66b04feb"
+  },
+  "name": "",
+  "email": "mail@mial.com",
+  "phone": "",
+  "avatar": "",
+  "applyJobs": [
+    {
+      "$oid": "6385c8643c4d036a0cccee1a"
+    }
+  ],
+  "saveJobs": [],
+  "userId": {
+    "$oid": "639addb98a4644cb66b04fe9"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1671093689981"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1671093966865"
+    }
+  },
+  "__v": 0
+}]

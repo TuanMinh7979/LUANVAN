@@ -1,0 +1,206 @@
+[{
+  "_id": {
+    "$oid": "638348ab2595fb1811fc34ca"
+  },
+  "email": "tuanrec@gmail.com",
+  "name": "tuanrec",
+  "address": "Can tho",
+  "phone": "0123456789",
+  "saveCvs": [],
+  "userId": {
+    "$oid": "638348ab2595fb1811fc34c8"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669548203146"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669548203146"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638478505f4dd5b0392e54e9"
+  },
+  "email": "kmsHr@gmail.com",
+  "name": "kmsHr",
+  "address": "TPHCM",
+  "phone": "0123456789",
+  "saveCvs": [],
+  "userId": {
+    "$oid": "638478505f4dd5b0392e54e7"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669625936718"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669648126825"
+    }
+  },
+  "__v": 0,
+  "companyId": {
+    "$oid": "638478425f4dd5b0392e54e5"
+  }
+},{
+  "_id": {
+    "$oid": "6384785b5f4dd5b0392e54ed"
+  },
+  "email": "fptHr@gmail.com",
+  "name": "fptHr",
+  "address": "TPHCM",
+  "phone": "0123456789",
+  "saveCvs": [],
+  "userId": {
+    "$oid": "6384785b5f4dd5b0392e54eb"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669625947984"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669644297293"
+    }
+  },
+  "__v": 0,
+  "companyId": {
+    "$oid": "638478255f4dd5b0392e54e3"
+  }
+},{
+  "_id": {
+    "$oid": "6385b8fa57e0cfad3549cb5f"
+  },
+  "email": "nfqHr@gmail.com",
+  "name": "nfqHr",
+  "address": "TPHCM",
+  "phone": "0123456789",
+  "saveCvs": [],
+  "userId": {
+    "$oid": "6385b8f957e0cfad3549cb5d"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669708026064"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669708533147"
+    }
+  },
+  "__v": 0,
+  "companyId": {
+    "$oid": "6385b9c257e0cfad3549cb69"
+  }
+},{
+  "_id": {
+    "$oid": "6385b91757e0cfad3549cb63"
+  },
+  "email": "monaHr@gmail.com",
+  "name": "monaHr",
+  "address": "TPHCM",
+  "phone": "0123456789",
+  "saveCvs": [],
+  "userId": {
+    "$oid": "6385b91757e0cfad3549cb61"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1669708055183"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1669708389568"
+    }
+  },
+  "__v": 0,
+  "companyId": {
+    "$oid": "6385b98257e0cfad3549cb67"
+  }
+},{
+  "_id": {
+    "$oid": "639143450f9362b03ae3d0ab"
+  },
+  "email": "mgmHr@gmail.com",
+  "name": "mgmHr",
+  "address": "Da Nang",
+  "phone": "0999999999",
+  "saveCvs": [],
+  "userId": {
+    "$oid": "639143450f9362b03ae3d0a9"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670464325177"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670464325177"
+    }
+  },
+  "__v": 0,
+  "companyId": {
+    "$oid": "639136c66f6f2bd65dcbd8c8"
+  }
+},{
+  "_id": {
+    "$oid": "639149280f9362b03ae3d0fe"
+  },
+  "email": "cmcHr@gmail.com",
+  "name": "cmcHr",
+  "address": "Ha Noi",
+  "phone": "0999999999",
+  "saveCvs": [],
+  "userId": {
+    "$oid": "639149280f9362b03ae3d0fc"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670465832540"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670465832540"
+    }
+  },
+  "__v": 0,
+  "companyId": {
+    "$oid": "6391490a0f9362b03ae3d0fa"
+  }
+},{
+  "_id": {
+    "$oid": "6391587f2e7bf4e4662d63cf"
+  },
+  "email": "wolffunHr@gmail.com",
+  "name": "wolffunHr",
+  "address": "TP HCM",
+  "phone": "0999999999",
+  "saveCvs": [],
+  "companyId": {
+    "$oid": "639158282e7bf4e4662d63cb"
+  },
+  "userId": {
+    "$oid": "6391587f2e7bf4e4662d63cd"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1670469759898"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1670469759898"
+    }
+  },
+  "__v": 0
+}]
